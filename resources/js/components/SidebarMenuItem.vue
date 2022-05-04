@@ -2,13 +2,13 @@
     <div class="header-menu__item dropdown" v-if="item.hasItem.length > 0" @click="toggleButton(item)">
         <div class="dropdown-btn" :class="{'active': item.isActive} ">
             <Arrow />
-           {{ item.title }}
+           {{ item.text }}
         </div>
         <slide-up-down v-model="item.isActive" :duration="250">
         <div class="dropdown-content" >
-                <router-link v-for="i in item.hasItem" :key="i.title" :to="i.url"
+                <router-link v-for="i in item.hasItem" :key="i.text" :to="i.url"
                              class="dropdown-content__item">
-                    {{ i.title }}
+                    {{ i.text }}
                 </router-link>
         </div>
     </slide-up-down>
@@ -17,7 +17,7 @@
             v-else
             :to="item.url"
             class="header-menu__item">
-        {{ item.title}}
+        {{ item.text}}
     </router-link>
 </template>
 

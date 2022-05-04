@@ -19639,14 +19639,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _components_Sidebar__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/Sidebar */ "./resources/js/components/Sidebar.vue");
-// import Dashboard from "./components/Dashboard";
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'App',
   components: {
     Sidebar: _components_Sidebar__WEBPACK_IMPORTED_MODULE_0__["default"]
-  } // components: {Dashboard}
-
+  }
 });
 
 /***/ }),
@@ -19807,7 +19805,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   var _component_router_view = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-view");
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("<div class=\"container\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Sidebar), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_view), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("</div>")], 64
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Sidebar), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_view)], 64
   /* STABLE_FRAGMENT */
   );
 }
@@ -19947,7 +19945,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["dropdown-btn", {
       'active': $props.item.isActive
     }])
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Arrow), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.item.title), 1
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Arrow), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.item.text), 1
   /* TEXT */
   )], 2
   /* CLASS */
@@ -19961,12 +19959,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.item.hasItem, function (i) {
         return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_router_link, {
-          key: i.title,
+          key: i.text,
           to: i.url,
           "class": "dropdown-content__item"
         }, {
           "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-            return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(i.title), 1
+            return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(i.text), 1
             /* TEXT */
             )];
           }),
@@ -19991,7 +19989,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": "header-menu__item"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.item.title), 1
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.item.text), 1
       /* TEXT */
       )];
     }),
@@ -20069,6 +20067,10 @@ var router = (0,vue_router__WEBPACK_IMPORTED_MODULE_0__.createRouter)({
   routes: routes,
   history: (0,vue_router__WEBPACK_IMPORTED_MODULE_0__.createWebHistory)(process.env.BASE_URL)
 });
+router.beforeEach(function (to, from, next) {
+  document.title = to.name;
+  next();
+});
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (router);
 
 /***/ }),
@@ -20112,37 +20114,54 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 var SidebarOptions = [{
   url: "/admin/orders",
-  title: 'Заказы',
+  text: 'Заказы',
   isActive: false,
   hasItem: []
 }, {
   url: "/admin/products",
-  title: 'Продукты',
+  text: 'Продукты',
   isActive: false,
   hasItem: [{
     url: "/admin/products-create",
-    title: 'Добовить новый продукт',
+    text: 'Добовить новый продукт',
     hasItem: []
   }, {
     url: "/admin/delivery",
-    title: 'Доставка',
+    text: 'Доставка',
     hasItem: []
   }, {
     url: "/admin/coupons",
-    title: 'Купоны',
+    text: 'Купоны',
     hasItem: []
   }]
 }, {
   url: "#",
-  title: 'Настройки',
+  text: 'Настройки',
   isActive: false,
   hasItem: [{
     url: "/admin/languages",
-    title: 'Язык',
+    text: 'Язык',
     hasItem: []
   }, {
     url: "/admin/settings",
-    title: 'Настройки магазина',
+    text: 'Настройки магазина',
+    hasItem: []
+  }]
+}, {
+  url: "#",
+  text: 'Медиа-страницы',
+  isActive: false,
+  hasItem: [{
+    url: "/admin/library",
+    text: 'Библиотека',
+    hasItem: []
+  }, {
+    url: "/admin/photo-galleries",
+    text: 'Фото Галерия',
+    hasItem: []
+  }, {
+    url: "/admin/video-galleries",
+    text: 'Видео Галерия',
     hasItem: []
   }]
 }];

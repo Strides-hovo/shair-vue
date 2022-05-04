@@ -1,45 +1,67 @@
 const SidebarOptions = [
     {
         url: "/admin/orders",
-        title: 'Заказы',
+        text: 'Заказы',
         isActive: false,
         hasItem: []
     },
     {
         url: "/admin/products",
-        title: 'Продукты',
+        text: 'Продукты',
         isActive: false,
         hasItem: [
             {
                 url: "/admin/products-create",
-                title: 'Добовить новый продукт',
+                text: 'Добовить новый продукт',
                 hasItem: []
             },
             {
                 url: "/admin/delivery",
-                title: 'Доставка',
+                text: 'Доставка',
                 hasItem: []
             },
             {
                 url: "/admin/coupons",
-                title: 'Купоны',
+                text: 'Купоны',
                 hasItem: []
             },
         ]
     },
     {
         url: "#",
-        title: 'Настройки',
+        text: 'Настройки',
         isActive: false,
         hasItem: [
             {
                 url: "/admin/languages",
-                title: 'Язык',
+                text: 'Язык',
                 hasItem: []
             },
             {
                 url: "/admin/settings",
-                title: 'Настройки магазина',
+                text: 'Настройки магазина',
+                hasItem: []
+            },
+        ]
+    },
+    {
+        url: "#",
+        text: 'Медиа-страницы',
+        isActive: false,
+        hasItem: [
+            {
+                url: "/admin/library",
+                text: 'Библиотека',
+                hasItem: []
+            },
+            {
+                url: "/admin/photo-galleries",
+                text: 'Фото Галерия',
+                hasItem: []
+            },
+            {
+                url: "/admin/video-galleries",
+                text: 'Видео Галерия',
                 hasItem: []
             },
         ]

@@ -1,11 +1,9 @@
 <template>
         <div class="cart-btns">
-            <div class="cart-btns__item lang-add-new btn circle">
+            <div class="cart-btns__item lang-add-new btn circle" @click="new_lang_modal = true">
                 <img src="../../../public/img/icons/add-icon.svg" alt="">
             </div>
-            <div class="cart-btns__item btn">
-                удалить
-            </div>
+            <div class="cart-btns__item btn">удалить</div>
         </div>
         <div class="container-content">
             <div class="container-content__top">
@@ -45,7 +43,7 @@
                         שמור
                     </div>
                 </div>
-                <div class="lang-new">
+                <div class="lang-new" :class="{active: new_lang_modal}">
                     <div class="lang-new__bg"></div>
                     <div class="lang-new__content">
                         <div class="lang-new__content-top">
@@ -133,10 +131,16 @@
 <script>
     export default {
         name: "Language",
+
         data:() => ({
             lang_modal: false,
-            new_lang_modal: false
-        })
+            new_lang_modal: false,
+
+        }),
+        mounted() {
+            this.title = this.$route.meta.title
+            //console.log()
+        }
     }
 </script>
 
