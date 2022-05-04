@@ -135,12 +135,8 @@
         data:() => ({
             lang_modal: false,
             new_lang_modal: false,
-
         }),
-        mounted() {
-            this.title = this.$route.meta.title
-            //console.log()
-        }
+
     }
 </script>
 

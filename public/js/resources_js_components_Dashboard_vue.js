@@ -42,9 +42,6 @@ __webpack_require__.r(__webpack_exports__);
       lang_modal: false,
       new_lang_modal: false
     };
-  },
-  mounted: function mounted() {
-    this.title = this.$route.meta.title; //console.log()
   }
 });
 

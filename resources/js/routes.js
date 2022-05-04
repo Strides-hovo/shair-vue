@@ -13,6 +13,12 @@ const routes = [
         component: () => import('./components/Language'),
         props: true
     },
+    {
+        path: "/admin/library",
+        name: 'library',
+        component: () => import('./components/Library'),
+        props: true
+    },
 
 ];
 
