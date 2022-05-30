@@ -14,3 +14,8 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('logout', [AuthController::class, 'logout']);
 });
 
+Route::group(['prefix' => 'admin'],function (){
+    Route::apiResource('image', \App\Http\Controllers\ImageController::class);
+    Route::apiResource('language', \App\Http\Controllers\LanguageController::class)->except(['destroy']);
+    Route::delete('language-delete/{ids?}', [\App\Http\Controllers\LanguageController::class,'destroy'])->name('language.destroy');
+});

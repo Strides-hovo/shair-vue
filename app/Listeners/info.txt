@@ -1,0 +1,10 @@
+Array
+(
+    [0] => Array
+        (
+            [name] => Echmiadzin.jpg
+            [path] => test/Echmiadzin.jpg
+            [extension] => jpg
+        )
+
+)

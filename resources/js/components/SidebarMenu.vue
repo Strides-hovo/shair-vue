@@ -10,23 +10,9 @@
 
     export default {
         name: "SidebarMenu",
-        props: {
-
-        },
         data: () => ({
             options: SidebarOptions
         }),
-        computed: {
-            getUrls(){
-                /*const b = Array.from(this.options).map(option => {
-                    console.log(option)
-                    return option.url
-                });
-
-                console.log( b );*/
-                //return this.$router.getRoutes()
-            }
-        },
         components: {SidebarMenuItem},
         methods: {
             toggleButton(item){

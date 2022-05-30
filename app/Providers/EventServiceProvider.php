@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+
+use Alexusmai\LaravelFileManager\Events\FilesUploading;
+use App\Listeners\UploadFileListener;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -18,6 +21,13 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+
+        FilesUploading::class => [
+            UploadFileListener::class
+        ]
+
+
+
     ];
 
     /**

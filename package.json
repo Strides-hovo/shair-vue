@@ -12,14 +12,16 @@
     "devDependencies": {
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
+        "path-browserify": "^1.0.1",
         "postcss": "^8.1.14",
         "sass-loader": "^12.6.0",
         "vue-loader": "^16.8.3"
     },
     "dependencies": {
         "axios": "^0.26.1",
+
         "laravel-file-manager": "^3.0.1",
-        "sass": "^1.51.0",
+
         "slide-element": "^2.2.6",
         "vue": "^3.2.31",
         "vue-router": "^4.0.13",

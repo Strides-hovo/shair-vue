@@ -1,27 +1,27 @@
 const SidebarOptions = [
     {
-        url: "/admin/orders",
+        url: "/orders",
         text: 'Заказы',
         isActive: false,
         hasItem: []
     },
     {
-        url: "/admin/products",
+        url: "/products",
         text: 'Продукты',
         isActive: false,
         hasItem: [
             {
-                url: "/admin/products-create",
+                url: "/products-create",
                 text: 'Добовить новый продукт',
                 hasItem: []
             },
             {
-                url: "/admin/delivery",
+                url: "/delivery",
                 text: 'Доставка',
                 hasItem: []
             },
             {
-                url: "/admin/coupons",
+                url: "/coupons",
                 text: 'Купоны',
                 hasItem: []
             },
@@ -33,12 +33,12 @@ const SidebarOptions = [
         isActive: false,
         hasItem: [
             {
-                url: "/admin/languages",
+                url: "/languages",
                 text: 'Язык',
                 hasItem: []
             },
             {
-                url: "/admin/settings",
+                url: "/settings",
                 text: 'Настройки магазина',
                 hasItem: []
             },
@@ -50,17 +50,17 @@ const SidebarOptions = [
         isActive: false,
         hasItem: [
             {
-                url: "/admin/library",
+                url: "/library",
                 text: 'Библиотека',
                 hasItem: []
             },
             {
-                url: "/admin/photo-galleries",
+                url: "/photo-galleries",
                 text: 'Фото Галерия',
                 hasItem: []
             },
             {
-                url: "/admin/video-galleries",
+                url: "/video-galleries",
                 text: 'Видео Галерия',
                 hasItem: []
             },

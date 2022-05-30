@@ -15,5 +15,6 @@ mix.js('resources/js/app.js', 'public/js')
     .vue()
     .alias({
     '@': path.join(__dirname, 'resources/js'),
-        'img$': path.join(__dirname,'public/img')
-});
+    '@css': path.join(__dirname,'public/css'),
+    '@img': path.join(__dirname,'public/img'),
+}).webpackConfig(require('./webpack.config'));

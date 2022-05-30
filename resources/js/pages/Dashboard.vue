@@ -6,7 +6,7 @@
 </template>
 
 <script>
-    import Sidebar from "./Sidebar";
+    import Sidebar from "@/components/Sidebar";
     import Language from "./Language";
     export default {
         name: "Dashboard",

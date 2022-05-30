@@ -1,25 +1,30 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import {createRouter, createWebHistory} from 'vue-router'
 
 const routes = [
     {
-        path: "/admin",
+        path: "/",
         name: 'dashboard',
-        component: () => import('./components/Dashboard'),
+        component: () => import('./pages/Dashboard'),
         props: true
     },
     {
-        path: "/admin/languages",
+        path: "/languages",
         name: 'languages',
-        component: () => import('./components/Language'),
+        component: () => import('./pages/Language'),
         props: true
     },
     {
-        path: "/admin/library",
+        path: "/library",
         name: 'library',
-        component: () => import('./components/Library'),
+        component: () => import('./pages/Library'),
         props: true
     },
-
+    {
+        path: "/:pathMatch(.*)*",
+        name: '404',
+        component: () => import('./pages/404'),
+        props: true
+    },
 ];
 
 
@@ -29,6 +34,17 @@ const router = createRouter({
 });
 router.beforeEach((to, from, next) => {
     document.title = to.name;
-    next();
+    //console.log(router.hasRoute('languages2'),to);
+    if (router.hasRoute(to.name)){
+        next();
+    }
+
 });
+
+/*router.afterEach((to, from, failure) => {
+    if (isNavigationFailure(failure)) {
+        console.log('failed navigation', failure)
+    }
+
+});*/
 export default router

@@ -30,9 +30,7 @@
         props: {
             item: Object,
         },
-        data:() => ({
 
-        }),
         methods:{
             toggleButton(item){
                 this.$emit('toggleButton',item);
