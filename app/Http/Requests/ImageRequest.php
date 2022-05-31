@@ -24,7 +24,8 @@ class ImageRequest extends FormRequest
     public function rules()
     {
         return [
-            'src' => 'string|nullable',
+            'src' => 'nullable|string',
+            'name' => 'string|nullable',
             'alt' => 'string|nullable',
             'title' => 'string|nullable',
             'language_id' => 'numeric|nullable',

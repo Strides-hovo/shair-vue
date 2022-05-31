@@ -2,25 +2,22 @@
 
 namespace App\Listeners;
 
-use Illuminate\Support\Facades\Storage;
+use Alexusmai\LaravelFileManager\Events\FilesUploading;
+use App\Http\Controllers\ImageController;
 
 class UploadFileListener
 {
 
 
 
-
-    public function handle( $event)
+    public function handle(FilesUploading $event)
     {
-        if (!empty($files = $event->files())){
-            foreach ($files as $file) {
-              if( Storage::exists("public/{$file['path']}") ){
-                  $old_file = $file;
-              }
-              else{
-                  $new_file = $file;
-              }
-            }
+
+        if ( $files = $event->files()) {
+            ImageController::updateOrCreate($files);
         }
     }
+
+
+
 }

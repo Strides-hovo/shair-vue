@@ -109,7 +109,6 @@ __webpack_require__.r(__webpack_exports__);
     axios.get('/api/admin/language').then(function (response) {
       _this.languages = response.data.data || [];
     });
-    /*console.log(helper )*/
   }
 });
 

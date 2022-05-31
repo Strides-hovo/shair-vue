@@ -2,78 +2,59 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ImageRequest;
 use App\Models\Image;
+use App\Services\External\TinyPng;
 use Illuminate\Http\Request;
 
 class ImageController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        //
+
     }
 
 
-    public function create()
+    public static function updateOrCreate(array $files)
     {
-        //
+        $data = [];
+        foreach ($files as $file) {
+            $data['name'] = substr($file['name'], 0, -(strlen($file['extension']) + 1));
+            $data['src'] = $file['path'];
+            $images[] = Image::updateOrCreate([
+                'src' => $data['src']
+            ], $data);
+        }
+
+        foreach ($files as $file) {
+            $file_path = public_path() . "/storage{$file['path']}";
+            //debug($file_path);
+            /*if (file_exists($file_path)){
+                TinyPng::optimiseImage($file_path);
+            }*/
+        }
+
     }
 
 
-    public function store(ImageRequest $request)
+    public static function destroy(array $items)
     {
 
-        Image::updateOrCreate([
-            'src' => $request->src
-        ],[$request->validated()]);
-
-        return response()->json([
-            'message' => 'success'
-        ],201);
+        foreach ($items as $file) {
+            try {
+                $src = str_contains($file['path'], '/') ? $file['path'] : '/' . $file['path'];
+                Image::where('src', $src)->delete();
+            } catch (\Exception $e) {
+                throw new \ErrorException('Image cannot be deleted');
+            }
+        }
     }
 
 
-    public function show(Image $image)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Image  $image
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Image $image)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Image  $image
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Image $image)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Image  $image
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Image $image)
-    {
-        //
-    }
+
 }

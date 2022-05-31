@@ -12,6 +12,7 @@ return new class extends Migration
         Schema::create('images', function (Blueprint $table) {
             $table->id();
             $table->string('src');
+            $table->string('name',50);
             $table->string('alt')->nullable();
             $table->string('title')->nullable();
             $table->foreignId('language_id')->nullable()->constrained();

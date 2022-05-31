@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 
 
+//Route::get('/{page?}',[MainController::class,'admin'])->where('page','^api.*$');
 Route::get('/{page?}',[MainController::class,'admin'])->where('page','^[^api].*$');
 
 

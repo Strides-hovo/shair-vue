@@ -1,6 +1,6 @@
 <template>
 
-    <file-manager></file-manager>
+    <file-manager :viewType="viewType" ></file-manager>
 
 </template>
 
@@ -8,6 +8,12 @@
 
     export default {
         name: "Library",
+        computed: {
+            viewType() {
+                return this.$store.state.fm[this.$store.state.fm.activeManager].viewType = 'grid';
+            },
+        }
+
     }
 </script>
 

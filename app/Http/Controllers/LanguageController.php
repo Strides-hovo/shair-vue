@@ -55,7 +55,6 @@ class LanguageController extends Controller
                 $language->delete();
             } catch (\Exception $e) {
                 $this->error_message[] = 'Languages cannot be deleted';
-                //return response()->error($this->error_message);
             }
 
             /*foreach ($language->getAllRelations()['Illuminate\Database\Eloquent\Relations\HasMany'] as $relation) {
@@ -63,7 +62,6 @@ class LanguageController extends Controller
                     $language->$relation()->update(['language_id'  => 1]) ;
                 }
             }*/
-
 
         });
 

@@ -11,8 +11,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _helpers_he__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../helpers/he */ "./resources/js/helpers/he.js");
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: "Library"
+  name: "Library",
+  computed: {
+    viewType: function viewType() {
+      return this.$store.state.fm[this.$store.state.fm.activeManager].viewType = 'grid';
+    },
+    settings: function settings() {
+      return {
+        lang: 'he',
+        baseUrl: 'http://shid-vue.loc/file-manager/',
+        translation: {
+          lang: _helpers_he__WEBPACK_IMPORTED_MODULE_0__["default"],
+          content: {
+            about: 'Über',
+            back: 'Zurück'
+          }
+        }
+      };
+    }
+  }
 });
 
 /***/ }),
@@ -32,8 +52,215 @@ __webpack_require__.r(__webpack_exports__);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_file_manager = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("file-manager");
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_file_manager);
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_file_manager, {
+    viewType: $options.viewType,
+    settings: $options.settings
+  }, null, 8
+  /* PROPS */
+  , ["viewType", "settings"]);
 }
+
+/***/ }),
+
+/***/ "./resources/js/helpers/he.js":
+/*!************************************!*\
+  !*** ./resources/js/helpers/he.js ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/**
+ * Arabic translate - D34DlyM4N(https://github.com/D34DlyM4N)
+ * @type Object
+ */
+var he = {
+  btn: {
+    about: 'حول',
+    back: 'رجوع',
+    cancel: 'الغاء',
+    clear: 'مسح',
+    copy: 'نسخ',
+    cut: 'قص',
+    "delete": '222',
+    edit: 'تعديل',
+    forward: 'الى الامام',
+    folder: 'مجلد جديد',
+    file: 'ملف جديد',
+    fullScreen: 'ملء الشاشة',
+    grid: 'شبكة',
+    paste: 'لصق',
+    refresh: 'تحديث',
+    submit: 'ارسال',
+    table: 'جدول',
+    upload: 'رفع',
+    uploadSelect: 'اختر الملفات',
+    hidden: 'الملفات المخفية'
+  },
+  clipboard: {
+    actionType: 'نوع',
+    copy: 'نسخ',
+    cut: 'قص',
+    none: 'لا شيء محدد',
+    title: 'ذاكرة النصوص'
+  },
+  contextMenu: {
+    copy: 'نسخ',
+    cut: 'قص',
+    "delete": 'حذف',
+    download: 'تحميل',
+    info: 'اختير:',
+    open: 'فتح',
+    paste: 'لصق',
+    properties: 'الخصائص',
+    rename: 'اعادة تسمية',
+    select: 'اختيار',
+    view: 'عرض',
+    zip: 'ضغط',
+    unzip: 'أستخراج',
+    edit: 'تعديل',
+    audioPlay: 'تشغيل',
+    videoPlay: 'تشغيل'
+  },
+  info: {
+    directories: 'المجلدات:',
+    files: 'الملفات:',
+    selected: 'أختيرت:',
+    selectedSize: 'حجم الملفات:',
+    size: 'حجم الملفات:'
+  },
+  manager: {
+    table: {
+      date: 'تأريخ',
+      folder: 'مجلد',
+      name: 'أسم',
+      size: 'حجم',
+      type: 'نوع'
+    }
+  },
+  modal: {
+    about: {
+      developer: 'مطور',
+      name: 'Laravel File Manager',
+      title: 'حول',
+      version: 'الإصدار'
+    },
+    "delete": {
+      noSelected: 'لا شيء محدد!',
+      title: 'حذف'
+    },
+    newFile: {
+      fieldName: 'أسم الملف',
+      fieldFeedback: 'الملف موجود!',
+      title: 'أنشاء ملف جديد'
+    },
+    newFolder: {
+      fieldName: 'أسم المجلد',
+      fieldFeedback: 'المجلد موجود!',
+      title: 'انشاء مجلد جديد'
+    },
+    preview: {
+      title: 'عرض'
+    },
+    properties: {
+      disk: 'قرص',
+      modified: 'تم التعديل',
+      name: 'أسم',
+      path: 'مسار',
+      size: 'حجم',
+      title: 'خصائص',
+      type: 'نوع',
+      url: 'رابط',
+      access: 'التمكن من',
+      access_0: 'تم الرفض',
+      access_1: 'قراءة فقط',
+      access_2: 'اقرا و اكتب'
+    },
+    rename: {
+      directoryExist: 'المجلد موجود',
+      fieldName: 'ادخال اسم جديد',
+      fieldFeedback: 'اسم خاطئ',
+      fileExist: 'الملف موجود',
+      title: 'اعادة تسمية'
+    },
+    status: {
+      noErrors: 'لايوجد خطأ!',
+      title: 'الحالة'
+    },
+    upload: {
+      ifExist: 'اذا الملف موجود:',
+      noSelected: 'لا توجد ملفات مختارة!',
+      overwrite: 'اعادة الكتابة!',
+      selected: 'المختارة:',
+      size: 'الحجم:',
+      skip: 'تخطي',
+      title: 'رفع الملفات'
+    },
+    editor: {
+      title: 'محرر'
+    },
+    audioPlayer: {
+      title: 'مشغل الاصوات'
+    },
+    videoPlayer: {
+      title: 'مشغل الفيديو'
+    },
+    zip: {
+      title: 'أنشاء أرشيف',
+      fieldName: 'أسم الارشيف',
+      fieldFeedback: 'الارشيف موجود!'
+    },
+    unzip: {
+      title: 'فك الارشيف',
+      fieldName: 'أسم المجلد',
+      fieldRadioName: 'أستخراج الى:',
+      fieldRadio1: 'الى المجلد الحالي',
+      fieldRadio2: 'في مجلد جديد',
+      fieldFeedback: 'المجلد موجود!',
+      warning: 'تحذير! اذا تشابهت الاسماء, سيتم استبدال الملفات!'
+    },
+    cropper: {
+      title: 'قص',
+      apply: 'تطبيق',
+      reset: 'اعادة تعين',
+      save: 'حفظ'
+    }
+  },
+  notifications: {
+    cutToClipboard: 'قص إلى الحافظة!',
+    copyToClipboard: 'نسخ إلى الحافظة!'
+  },
+  response: {
+    noConfig: 'الاعدادت غير متوفرة!',
+    notFound: 'غير متوفر!',
+    diskNotFound: 'القرص غير موجود!',
+    pathNotFound: 'مسار غير موجود!',
+    diskSelected: 'تم اختيار القرص!',
+    // files
+    fileExist: 'الملف موجود بالفعل!',
+    fileCreated: 'تم إنشاء الملف!',
+    fileUpdated: 'تم تحديث الملف!',
+    fileNotFound: 'الملف غير موجود!',
+    // directories
+    dirExist: 'المجلد موجود بالفعل!',
+    dirCreated: 'تم أنشاء المجلد!',
+    dirNotFound: 'المجلد غير موجود',
+    // actions
+    uploaded: 'تم تحديث كل الملفات!',
+    notAllUploaded: 'بعض الملفات غير المحملة!',
+    delNotFound: 'بعض الملفات غير موجودة! تحديث!',
+    deleted: 'تم الحذف!',
+    renamed: 'أعيدت تسميتها!',
+    copied: 'تم النسخ بنجاح!',
+    // zip
+    zipError: 'خطأ في إنشاء الأرشيف!',
+    // acl
+    aclError: 'تم الرفض!'
+  }
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (he);
 
 /***/ }),
 

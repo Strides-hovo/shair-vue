@@ -172,6 +172,7 @@
             deleteLanguage,
             updateLanguage,
             updateStatus,
+
             closeModal(status){
                 this.new_lang_modal = !status
             },
@@ -203,7 +204,7 @@
                 this.languages = response.data.data || [];
             });
 
-            /*console.log(helper )*/
+
         }
     }
 </script>

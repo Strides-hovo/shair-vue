@@ -93614,6 +93614,7 @@ var app = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createApp)({});
 
 
 
+laravel_file_manager__WEBPACK_IMPORTED_MODULE_5__["default"].viewType = "grid";
 app.component('slide-up-down', vue3_slide_up_down__WEBPACK_IMPORTED_MODULE_3__["default"]);
 app.component('app', _App_vue__WEBPACK_IMPORTED_MODULE_4__["default"]);
 app.use(_routes__WEBPACK_IMPORTED_MODULE_1__["default"]).use(_store__WEBPACK_IMPORTED_MODULE_2__["default"]).use(laravel_file_manager__WEBPACK_IMPORTED_MODULE_5__["default"], {
