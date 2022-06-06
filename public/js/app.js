@@ -20088,17 +20088,69 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
 /* harmony import */ var _modules_Sidebar_options__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/Sidebar-options */ "./resources/js/store/modules/Sidebar-options.js");
+/* harmony import */ var _modules_Portion__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/Portion */ "./resources/js/store/modules/Portion.js");
  // import language from './modules/language'
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
   modules: {
     // language,
-    SidebarOptions: _modules_Sidebar_options__WEBPACK_IMPORTED_MODULE_0__["default"]
+    SidebarOptions: _modules_Sidebar_options__WEBPACK_IMPORTED_MODULE_0__["default"],
+    Portions: _modules_Portion__WEBPACK_IMPORTED_MODULE_1__["default"]
   }
 }));
+
+/***/ }),
+
+/***/ "./resources/js/store/modules/Portion.js":
+/*!***********************************************!*\
+  !*** ./resources/js/store/modules/Portion.js ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+var state = {
+  portions: [{
+    width: 127,
+    height: 127
+  }, {
+    width: 250,
+    height: 167
+  }, {
+    width: 115,
+    height: 180
+  }]
+};
+var actions = {
+  addPortion: function addPortion(_ref, portions) {
+    var commit = _ref.commit;
+    commit('setPortion', portions);
+  }
+};
+var mutations = {
+  setPortion: function setPortion(state, portions) {
+    state.portions.push(portions);
+  }
+};
+var getters = {
+  getPortions: function getPortions(state) {
+    return state.portions;
+  }
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  // namespaced: true,
+  state: state,
+  getters: getters,
+  actions: actions,
+  mutations: mutations
+});
 
 /***/ }),
 
@@ -81350,6 +81402,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var cropperjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! cropperjs */ "./node_modules/cropperjs/dist/cropper.js");
 /* harmony import */ var cropperjs__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(cropperjs__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _mixins_translate__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../mixins/translate */ "./node_modules/laravel-file-manager/src/mixins/translate.js");
+/* harmony import */ var _resources_js_store_modules_Portion__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../resources/js/store/modules/Portion */ "./resources/js/store/modules/Portion.js");
+
 
 
 
@@ -81385,6 +81439,7 @@ __webpack_require__.r(__webpack_exports__);
                 this.rotate = typeof e.detail.rotate !== 'undefined' ? e.detail.rotate : '';
                 this.scaleX = typeof e.detail.scaleX !== 'undefined' ? e.detail.scaleX : '';
                 this.scaleY = typeof e.detail.scaleY !== 'undefined' ? e.detail.scaleY : '';
+
             },
         });
     },
@@ -81399,8 +81454,17 @@ __webpack_require__.r(__webpack_exports__);
         selectedItem() {
             return this.$store.getters['fm/selectedItems'][0];
         },
+        Portions(){
+            return this.$store.getters.getPortions
+        }
     },
     methods: {
+        cropPortion(event){
+            let portion = event.target.value.split(',')
+            this.width = parseInt(portion[0]);
+            this.height = parseInt(portion[1]);
+        },
+
         /**
          * Move
          * @param x
@@ -86084,97 +86148,104 @@ const _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createEleme
 const _hoisted_19 = { class: "input-group input-group-sm" }
 const _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   class: "input-group-text",
+  for: "dataHeight"
+}, "Portion", -1 /* HOISTED */)
+const _hoisted_21 = ["value"]
+const _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", { class: "input-group-text" }, "px", -1 /* HOISTED */)
+const _hoisted_23 = { class: "input-group input-group-sm" }
+const _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  class: "input-group-text",
   for: "dataRotate"
 }, "Rotate", -1 /* HOISTED */)
-const _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", { class: "input-group-text" }, "deg", -1 /* HOISTED */)
-const _hoisted_22 = { class: "input-group input-group-sm" }
-const _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+const _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", { class: "input-group-text" }, "deg", -1 /* HOISTED */)
+const _hoisted_26 = { class: "input-group input-group-sm" }
+const _hoisted_27 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   class: "input-group-text",
   for: "dataScaleX"
 }, "ScaleX", -1 /* HOISTED */)
-const _hoisted_24 = { class: "input-group input-group-sm" }
-const _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+const _hoisted_28 = { class: "input-group input-group-sm" }
+const _hoisted_29 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   class: "input-group-text",
   for: "dataScaleY"
 }, "ScaleY", -1 /* HOISTED */)
-const _hoisted_26 = { class: "d-grid gap-2" }
-const _hoisted_27 = ["title"]
-const _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", { class: "bi bi-check-lg" }, null, -1 /* HOISTED */)
-const _hoisted_29 = [
-  _hoisted_28
-]
-const _hoisted_30 = { class: "d-flex justify-content-between" }
-const _hoisted_31 = {
-  class: "btn-group me-2",
-  role: "group",
-  "aria-label": "Scale"
-}
-const _hoisted_32 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", { class: "bi bi-arrow-left" }, null, -1 /* HOISTED */)
+const _hoisted_30 = { class: "d-grid gap-2" }
+const _hoisted_31 = ["title"]
+const _hoisted_32 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", { class: "bi bi-check-lg" }, null, -1 /* HOISTED */)
 const _hoisted_33 = [
   _hoisted_32
 ]
-const _hoisted_34 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", { class: "bi bi-arrow-right" }, null, -1 /* HOISTED */)
-const _hoisted_35 = [
-  _hoisted_34
-]
-const _hoisted_36 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", { class: "bi bi-arrow-up" }, null, -1 /* HOISTED */)
-const _hoisted_37 = [
-  _hoisted_36
-]
-const _hoisted_38 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", { class: "bi bi-arrow-down" }, null, -1 /* HOISTED */)
-const _hoisted_39 = [
-  _hoisted_38
-]
-const _hoisted_40 = {
+const _hoisted_34 = { class: "d-flex justify-content-between" }
+const _hoisted_35 = {
   class: "btn-group me-2",
   role: "group",
   "aria-label": "Scale"
 }
-const _hoisted_41 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", { class: "bi bi-arrow-left-right" }, null, -1 /* HOISTED */)
-const _hoisted_42 = [
-  _hoisted_41
+const _hoisted_36 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", { class: "bi bi-arrow-left" }, null, -1 /* HOISTED */)
+const _hoisted_37 = [
+  _hoisted_36
 ]
-const _hoisted_43 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", { class: "bi bi-arrow-down-up" }, null, -1 /* HOISTED */)
-const _hoisted_44 = [
-  _hoisted_43
+const _hoisted_38 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", { class: "bi bi-arrow-right" }, null, -1 /* HOISTED */)
+const _hoisted_39 = [
+  _hoisted_38
 ]
-const _hoisted_45 = {
+const _hoisted_40 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", { class: "bi bi-arrow-up" }, null, -1 /* HOISTED */)
+const _hoisted_41 = [
+  _hoisted_40
+]
+const _hoisted_42 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", { class: "bi bi-arrow-down" }, null, -1 /* HOISTED */)
+const _hoisted_43 = [
+  _hoisted_42
+]
+const _hoisted_44 = {
+  class: "btn-group me-2",
+  role: "group",
+  "aria-label": "Scale"
+}
+const _hoisted_45 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", { class: "bi bi-arrow-left-right" }, null, -1 /* HOISTED */)
+const _hoisted_46 = [
+  _hoisted_45
+]
+const _hoisted_47 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", { class: "bi bi-arrow-down-up" }, null, -1 /* HOISTED */)
+const _hoisted_48 = [
+  _hoisted_47
+]
+const _hoisted_49 = {
   class: "btn-group me-2",
   role: "group",
   "aria-label": "Rotate"
 }
-const _hoisted_46 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", { class: "bi bi-arrow-counterclockwise" }, null, -1 /* HOISTED */)
-const _hoisted_47 = [
-  _hoisted_46
+const _hoisted_50 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", { class: "bi bi-arrow-counterclockwise" }, null, -1 /* HOISTED */)
+const _hoisted_51 = [
+  _hoisted_50
 ]
-const _hoisted_48 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", { class: "bi bi-arrow-clockwise" }, null, -1 /* HOISTED */)
-const _hoisted_49 = [
-  _hoisted_48
+const _hoisted_52 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", { class: "bi bi-arrow-clockwise" }, null, -1 /* HOISTED */)
+const _hoisted_53 = [
+  _hoisted_52
 ]
-const _hoisted_50 = {
+const _hoisted_54 = {
   class: "btn-group me-2",
   role: "group",
   "aria-label": "Rotate"
 }
-const _hoisted_51 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", { class: "bi bi-plus-circle" }, null, -1 /* HOISTED */)
-const _hoisted_52 = [
-  _hoisted_51
+const _hoisted_55 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", { class: "bi bi-plus-circle" }, null, -1 /* HOISTED */)
+const _hoisted_56 = [
+  _hoisted_55
 ]
-const _hoisted_53 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", { class: "bi bi-dash-circle" }, null, -1 /* HOISTED */)
-const _hoisted_54 = [
-  _hoisted_53
+const _hoisted_57 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", { class: "bi bi-dash-circle" }, null, -1 /* HOISTED */)
+const _hoisted_58 = [
+  _hoisted_57
 ]
-const _hoisted_55 = ["title"]
-const _hoisted_56 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", { class: "bi bi-arrow-repeat" }, null, -1 /* HOISTED */)
-const _hoisted_57 = [
-  _hoisted_56
+const _hoisted_59 = ["title"]
+const _hoisted_60 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", { class: "bi bi-arrow-repeat" }, null, -1 /* HOISTED */)
+const _hoisted_61 = [
+  _hoisted_60
 ]
-const _hoisted_58 = ["title"]
-const _hoisted_59 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", { class: "bi bi-save" }, null, -1 /* HOISTED */)
-const _hoisted_60 = [
-  _hoisted_59
+const _hoisted_62 = ["title"]
+const _hoisted_63 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", { class: "bi bi-save" }, null, -1 /* HOISTED */)
+const _hoisted_64 = [
+  _hoisted_63
 ]
-const _hoisted_61 = { class: "d-block" }
+const _hoisted_65 = { class: "d-block" }
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [
@@ -86262,8 +86333,23 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           ]),
           (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_19, [
             _hoisted_20,
+            (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
+              class: "custom-select form-control",
+              onChange: _cache[4] || (_cache[4] = $event => ($options.cropPortion($event)))
+            }, [
+              ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($options.Portions, (por, i) => {
+                return ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", {
+                  value: `${por.width},${por.height}`,
+                  key: i
+                }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(`${por.width} x ${por.height}`), 9 /* TEXT, PROPS */, _hoisted_21))
+              }), 128 /* KEYED_FRAGMENT */))
+            ], 32 /* HYDRATE_EVENTS */),
+            _hoisted_22
+          ]),
+          (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_23, [
+            _hoisted_24,
             (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-              "onUpdate:modelValue": _cache[4] || (_cache[4] = $event => (($data.rotate) = $event)),
+              "onUpdate:modelValue": _cache[5] || (_cache[5] = $event => (($data.rotate) = $event)),
               type: "text",
               class: "form-control",
               id: "dataRotate"
@@ -86275,12 +86361,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                 { number: true }
               ]
             ]),
-            _hoisted_21
+            _hoisted_25
           ]),
-          (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [
-            _hoisted_23,
+          (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_26, [
+            _hoisted_27,
             (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-              "onUpdate:modelValue": _cache[5] || (_cache[5] = $event => (($data.scaleX) = $event)),
+              "onUpdate:modelValue": _cache[6] || (_cache[6] = $event => (($data.scaleX) = $event)),
               type: "text",
               class: "form-control",
               id: "dataScaleX"
@@ -86293,10 +86379,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               ]
             ])
           ]),
-          (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_24, [
-            _hoisted_25,
+          (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_28, [
+            _hoisted_29,
             (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-              "onUpdate:modelValue": _cache[6] || (_cache[6] = $event => (($data.scaleY) = $event)),
+              "onUpdate:modelValue": _cache[7] || (_cache[7] = $event => (($data.scaleY) = $event)),
               type: "text",
               class: "form-control",
               id: "dataScaleY"
@@ -86309,93 +86395,93 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               ]
             ])
           ]),
-          (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_26, [
+          (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_30, [
             (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-              onClick: _cache[7] || (_cache[7] = $event => ($options.setData())),
+              onClick: _cache[8] || (_cache[8] = $event => ($options.setData())),
               title: _ctx.lang.modal.cropper.apply,
               type: "button",
               class: "btn btn-block btn-sm btn-info mb-2"
-            }, _hoisted_29, 8 /* PROPS */, _hoisted_27)
+            }, _hoisted_33, 8 /* PROPS */, _hoisted_31)
           ])
         ])
       ])
     ], 4 /* STYLE */),
-    (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_30, [
+    (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_34, [
       (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [
-        (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_31, [
+        (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_35, [
           (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-            onClick: _cache[8] || (_cache[8] = $event => ($options.cropMove(-10, 0))),
-            type: "button",
-            class: "btn btn-info"
-          }, _hoisted_33),
-          (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-            onClick: _cache[9] || (_cache[9] = $event => ($options.cropMove(10, 0))),
-            type: "button",
-            class: "btn btn-info"
-          }, _hoisted_35),
-          (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-            onClick: _cache[10] || (_cache[10] = $event => ($options.cropMove(0, -10))),
+            onClick: _cache[9] || (_cache[9] = $event => ($options.cropMove(-10, 0))),
             type: "button",
             class: "btn btn-info"
           }, _hoisted_37),
           (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-            onClick: _cache[11] || (_cache[11] = $event => ($options.cropMove(0, 10))),
+            onClick: _cache[10] || (_cache[10] = $event => ($options.cropMove(10, 0))),
             type: "button",
             class: "btn btn-info"
-          }, _hoisted_39)
+          }, _hoisted_39),
+          (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+            onClick: _cache[11] || (_cache[11] = $event => ($options.cropMove(0, -10))),
+            type: "button",
+            class: "btn btn-info"
+          }, _hoisted_41),
+          (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+            onClick: _cache[12] || (_cache[12] = $event => ($options.cropMove(0, 10))),
+            type: "button",
+            class: "btn btn-info"
+          }, _hoisted_43)
         ]),
-        (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_40, [
+        (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_44, [
           (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-            onClick: _cache[12] || (_cache[12] = $event => ($options.cropScaleX())),
+            onClick: _cache[13] || (_cache[13] = $event => ($options.cropScaleX())),
             type: "button",
             class: "btn btn-info"
-          }, _hoisted_42),
+          }, _hoisted_46),
           (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-            onClick: _cache[13] || (_cache[13] = $event => ($options.cropScaleY())),
+            onClick: _cache[14] || (_cache[14] = $event => ($options.cropScaleY())),
             type: "button",
             class: "btn btn-info"
-          }, _hoisted_44)
+          }, _hoisted_48)
         ]),
-        (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_45, [
+        (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_49, [
           (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-            onClick: _cache[14] || (_cache[14] = $event => ($options.cropRotate(-45))),
+            onClick: _cache[15] || (_cache[15] = $event => ($options.cropRotate(-45))),
             type: "button",
             class: "btn btn-info"
-          }, _hoisted_47),
+          }, _hoisted_51),
           (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-            onClick: _cache[15] || (_cache[15] = $event => ($options.cropRotate(45))),
+            onClick: _cache[16] || (_cache[16] = $event => ($options.cropRotate(45))),
             type: "button",
             class: "btn btn-info"
-          }, _hoisted_49)
+          }, _hoisted_53)
         ]),
-        (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_50, [
+        (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_54, [
           (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-            onClick: _cache[16] || (_cache[16] = $event => ($options.cropZoom(0.1))),
+            onClick: _cache[17] || (_cache[17] = $event => ($options.cropZoom(0.1))),
             type: "button",
             class: "btn btn-info"
-          }, _hoisted_52),
+          }, _hoisted_56),
           (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-            onClick: _cache[17] || (_cache[17] = $event => ($options.cropZoom(-0.1))),
+            onClick: _cache[18] || (_cache[18] = $event => ($options.cropZoom(-0.1))),
             type: "button",
             class: "btn btn-info"
-          }, _hoisted_54)
+          }, _hoisted_58)
         ]),
         (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-          onClick: _cache[18] || (_cache[18] = $event => ($options.cropReset())),
+          onClick: _cache[19] || (_cache[19] = $event => ($options.cropReset())),
           title: _ctx.lang.modal.cropper.reset,
           type: "button",
           class: "btn btn-info me-2"
-        }, _hoisted_57, 8 /* PROPS */, _hoisted_55),
+        }, _hoisted_61, 8 /* PROPS */, _hoisted_59),
         (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-          onClick: _cache[19] || (_cache[19] = $event => ($options.cropSave())),
+          onClick: _cache[20] || (_cache[20] = $event => ($options.cropSave())),
           title: _ctx.lang.modal.cropper.save,
           type: "button",
           class: "btn btn-danger me-2"
-        }, _hoisted_60, 8 /* PROPS */, _hoisted_58)
+        }, _hoisted_64, 8 /* PROPS */, _hoisted_62)
       ]),
-      (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_61, [
+      (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_65, [
         (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-          onClick: _cache[20] || (_cache[20] = $event => (_ctx.$emit('closeCropper'))),
+          onClick: _cache[21] || (_cache[21] = $event => (_ctx.$emit('closeCropper'))),
           type: "button",
           class: "btn btn-light"
         }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.lang.btn.back), 1 /* TEXT */)

@@ -22,7 +22,7 @@ app.component('app', App);
 app
     .use(router)
     .use(store)
-    .use(FileManager, {store})
+    .use(FileManager, { store })
     .mount("#app");
 
 

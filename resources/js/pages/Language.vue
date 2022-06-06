@@ -98,7 +98,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr class="order-row unwatched" v-for="lang of languages" :key="language.id" >
+                    <tr class="order-row unwatched" v-for="lang of languages" :key="lang.id" >
                         <td>
                             <label>
                                 <input type="checkbox"
@@ -139,13 +139,14 @@
 
 <script>
     import Modal from '../components/UI/ModalLnaguage'
-
+    import apiRoutes from "../api-routes";
     import { createLanguage,deleteLanguage,updateLanguage,updateStatus } from '../http/language'
 
     export default {
         name: "Language",
         components: {Modal},
         data:() => ({
+            
             editIcon: require('@img/icons/edit-ico.svg'),
             deleteIcon: require('@img/icons/delete-ico.svg'),
             closeIcon: require('@img/icons/close.svg'),
@@ -200,7 +201,7 @@
 
         },
         mounted() {
-            axios.get('/api/admin/language').then(response => {
+            axios.get(apiRoutes('language.index')).then(response => {
                 this.languages = response.data.data || [];
             });
 

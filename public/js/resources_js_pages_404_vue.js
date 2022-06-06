@@ -11,8 +11,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _api_routes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../api-routes */ "./resources/js/api-routes.js");
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: "404"
+  name: "404",
+  mounted: function mounted() {
+    console.log((0,_api_routes__WEBPACK_IMPORTED_MODULE_0__["default"])('language.index'));
+  }
 });
 
 /***/ }),
@@ -31,6 +36,33 @@ __webpack_require__.r(__webpack_exports__);
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, "404 page not found");
+}
+
+/***/ }),
+
+/***/ "./resources/js/api-routes.js":
+/*!************************************!*\
+  !*** ./resources/js/api-routes.js ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* export default binding */ __WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+var api_routes = __webpack_require__(/*! ./routes.json */ "./resources/js/routes.json");
+
+/* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__() {
+  var args = Array.prototype.slice.call(arguments);
+  var name = args.shift();
+
+  if (api_routes[name] === undefined) {
+    console.log('error not routing');
+  } else {
+    return '/' + api_routes[name].split('/').map(function (str) {
+      return str[0] == '{' ? args.shift() : str;
+    }).join('/');
+  }
 }
 
 /***/ }),
@@ -89,6 +121,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_404_vue_vue_type_template_id_82158542__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./404.vue?vue&type=template&id=82158542 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/pages/404.vue?vue&type=template&id=82158542");
 
+
+/***/ }),
+
+/***/ "./resources/js/routes.json":
+/*!**********************************!*\
+  !*** ./resources/js/routes.json ***!
+  \**********************************/
+/***/ ((module) => {
+
+module.exports = JSON.parse('{"":"api/logout","language.index":"api/admin/language","language.store":"api/admin/language","language.show":"api/admin/language/{language}","language.update":"api/admin/language/{language}","language.destroy":"api/admin/language-delete/{ids?}"}');
 
 /***/ })
 

@@ -1,0 +1,8 @@
+{
+    "": "api\/logout",
+    "language.index": "api\/admin\/language",
+    "language.store": "api\/admin\/language",
+    "language.show": "api\/admin\/language\/{language}",
+    "language.update": "api\/admin\/language\/{language}",
+    "language.destroy": "api\/admin\/language-delete\/{ids?}"
+}
