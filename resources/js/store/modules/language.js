@@ -1,32 +1,34 @@
 import axios from "axios";
+import apiRoutes from "../../api-routes";
 
 const state = {
-    language: []
+    languages: []
 };
 
 const actions = {
-    addLanguage({commit}, language) {
-        commit('setLanguage', language)
+   async allLanguages({commit}) {
+       axios.get(apiRoutes('language.index')).then(response => {
+            commit('setLanguage', response.data.data)
+            return  response.data.data
+       });
+     
+        
     }
 };
 
 const mutations = {
-    setLanguage(state, language){
-        state.language.push(language)
+    setLanguage:(state, languages) =>{
+        state.languages = languages
     }
 };
 
 
 const getters = {
-    getLanguages(){
-        return [{
-            name: 'ru',
-            code: 'Ru',
-            dir: 'ltr'
-        }];
+    getLanguages(state){
+        return state.languages;
     },
-    getLanguage(id){
-        return id;
+    getLanguage(state,id){
+        return state.languages.filter(language => language.id == id)
     }
 };
 

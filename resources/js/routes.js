@@ -21,6 +21,12 @@ const routes = [
         props: true
     },
     {
+        path: "/photo-galleries",
+        name: 'PhotoGallery',
+        component: () => import('./pages/PhotoGallery'),
+        props: true
+    },
+    {
         path: "/:pathMatch(.*)*",
         name: '404',
         component: () => import('./pages/404'),
