@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\LanguageRequest;
 use App\Models\Language;
+use Illuminate\Http\Request;
 
 class LanguageController extends Controller
 {
@@ -33,8 +34,10 @@ class LanguageController extends Controller
     }
 
 
-    public function update(LanguageRequest $request, Language $language)
+    public function update(LanguageRequest $request,  $id )
     {
+        debug($request->all());
+        $language = Language::find($id);
         try {
             $language->fill($request->validated());
             $language->save();

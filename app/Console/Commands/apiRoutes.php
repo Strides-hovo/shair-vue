@@ -6,6 +6,8 @@ use File;
 use Illuminate\Console\Command;
 use Illuminate\Routing\Router;
 
+
+
 class apiRoutes extends Command
 {
     /**
@@ -45,5 +47,6 @@ class apiRoutes extends Command
 
         }
         File::put('resources/js/routes.json',json_encode($routes,JSON_PRETTY_PRINT));
+        return null;
     }
 }

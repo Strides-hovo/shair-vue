@@ -33,7 +33,7 @@ class UploadedFileListener
                 $file_path = public_path() . "/storage{$file['path']}";
 
                 if (file_exists($file_path)) {
-                    TinyPng::optimiseImage($file_path);
+                    //TinyPng::optimiseImage($file_path);
                 }
             }
 

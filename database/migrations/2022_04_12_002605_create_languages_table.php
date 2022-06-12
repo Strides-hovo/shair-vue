@@ -14,12 +14,12 @@ return new class extends Migration
             $table->string('code');
             $table->string('name');
             $table->enum('dir',['ltr','rtl'])->default('rtl');
-            $table->enum('status',['0','1'])->default('1');
+            $table->boolean('status')->default(1);
             $table->timestamps();
         });
     }
 
-
+ 
     public function down()
     {
         Schema::dropIfExists('languages');

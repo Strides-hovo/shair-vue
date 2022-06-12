@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Category;
+use App\Models\Image;
 use App\Models\Language;
 use App\Models\Product;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -14,11 +15,12 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
 
-        $this->call([
-            Language::factory(2)->create(),
-            Category::factory(5)->create(),
-            Product::factory(30)->create()
-        ]);
+        $this->call(LanguageSedder::class);
+        $this->call(PagePhotoGallerySeeder::class);
+        $this->call(PhotoGallerySeeder::class);
+        // $this->call(Category::factory(5)->create());
+        // $this->call(Image::factory(30)->create());
+        // $this->call(Product::factory(30)->create());
 
     }
 }

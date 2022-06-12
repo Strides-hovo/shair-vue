@@ -14,8 +14,6 @@ class ImageFactory extends Factory
         return [
             'src' => $this->faker->imageUrl,
             'name' => $this->faker->name,
-            'alt' => $this->faker->title,
-            'title' => $this->faker->title,
             'language_id' => Language::all()->random()->id,
         ];
     }

@@ -17,7 +17,7 @@ class ProductFactory extends Factory
             'name' => $this->faker->title,
             'price' => $this->faker->numberBetween(20,500),
             'category_id' => Category::all()->random()->id,
-            'image_id' => Factory::factoryForModel(Image::class),
+            'image_id' => Image::all()->random()->id,
             'language_id' => Language::all()->random()->id,
             'reserves' => $this->faker->numberBetween(10,50),
             'description' => $this->faker->realText,

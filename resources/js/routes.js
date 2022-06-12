@@ -22,8 +22,14 @@ const routes = [
     },
     {
         path: "/photo-galleries",
+        name: 'PhotoGalleries',
+        component: () => import('./pages/photo-gallery/PagePhotoGalleries'),
+        props: true
+    },
+    {
+        path: "/photo-galleries/:id",
         name: 'PhotoGallery',
-        component: () => import('./pages/PhotoGallery'),
+        component: () => import('./pages/photo-gallery/PhotoGallery'),
         props: true
     },
     {

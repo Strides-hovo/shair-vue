@@ -1,11 +1,20 @@
 <template>
   <file-manager :viewType="viewType"></file-manager>
+  <button class="selected" @click="checkImages">Select</button>
+
 </template>
 
 <script>
+
+
+import {mapGetters} from "vuex";
+
 export default {
   name: "Library",
   computed: {
+    ...mapGetters({selected: 'fm/selectedItems'}),
+    
+
     viewType() {
       return (this.$store.state.fm[
         this.$store.state.fm.activeManager
@@ -16,6 +25,13 @@ export default {
       return this.$store.getters.getPortions;
     },
   },
+  methods:{
+    checkImages(){
+      console.log(this.selected)
+    }
+  },
+ 
+
 };
 </script>
 

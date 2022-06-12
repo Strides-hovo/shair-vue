@@ -4,5 +4,15 @@
     "language.store": "api\/admin\/language",
     "language.show": "api\/admin\/language\/{language}",
     "language.update": "api\/admin\/language\/{language}",
-    "language.destroy": "api\/admin\/language-delete\/{ids?}"
+    "language.destroy": "api\/admin\/language-delete\/{ids?}",
+    "pagePhotoGallery.index": "api\/admin\/pagePhotoGallery",
+    "pagePhotoGallery.store": "api\/admin\/pagePhotoGallery",
+    "pagePhotoGallery.show": "api\/admin\/pagePhotoGallery\/{pagePhotoGallery}",
+    "pagePhotoGallery.update": "api\/admin\/pagePhotoGallery\/{pagePhotoGallery}",
+    "pagePhotoGallery.destroy": "api\/admin\/pagePhotoGallery\/{pagePhotoGallery}",
+    "photoGallery.index": "api\/admin\/photoGallery",
+    "photoGallery.store": "api\/admin\/photoGallery",
+    "photoGallery.show": "api\/admin\/photoGallery\/{photoGallery}",
+    "photoGallery.update": "api\/admin\/photoGallery\/{photoGallery}",
+    "photoGallery.destroy": "api\/admin\/photoGallery\/{photoGallery}"
 }

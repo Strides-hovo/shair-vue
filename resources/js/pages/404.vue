@@ -1,4 +1,8 @@
 <template>
+
+  <Modal  v-model:is-active="ppp" v-model:header-text="text"/>
+
+
     <div>404 page not found</div>
 </template>
 

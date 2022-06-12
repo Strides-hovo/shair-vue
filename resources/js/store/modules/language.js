@@ -11,9 +11,8 @@ const actions = {
             commit('setLanguage', response.data.data)
             return  response.data.data
        });
-     
-        
     }
+
 };
 
 const mutations = {
@@ -27,9 +26,14 @@ const getters = {
     getLanguages(state){
         return state.languages;
     },
-    getLanguage(state,id){
-        return state.languages.filter(language => language.id == id)
-    }
+
+    getActualLanguages(state){
+        return state.languages.filter(language => language.status == 1)
+    },
+
+    getLanguageById: (state) => (id) => {
+        return state.languages.find(thing => thing.id === id)
+      }
 };
 
 export default  {
