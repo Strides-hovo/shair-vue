@@ -35,27 +35,36 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     return {
       showIcon: (__webpack_require__(/*! @img/icons/show.svg */ "./public/img/icons/show.svg")["default"]),
       unshow: (__webpack_require__(/*! @img/icons/close.svg */ "./public/img/icons/close.svg")["default"]),
-      language: 1,
-      PagePhotoGalleries: []
+      PagePhotoGalleries: [],
+      defaultLanguage: null
     };
   },
   computed: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapGetters)({
     languages: 'language/getLanguages',
     actualLanguages: 'language/getActualLanguages'
   })), {}, {
-    defaultLanguage: function defaultLanguage() {
-      return this.actualLanguages[this.language - 1];
+    languageId: {
+      get: function get() {
+        if (this.defaultLanguage === null) {
+          if (this.actualLanguages.length > 0) {
+            return this.actualLanguages[0].id;
+          }
+        } else {
+          return this.defaultLanguage;
+        }
+      },
+      set: function set(val) {
+        this.defaultLanguage = val;
+      }
     },
     pageFilter: function pageFilter() {
       var _this = this;
 
-      return this.PagePhotoGalleries.map(function (item) {
-        if (_typeof(_this.defaultLanguage) !== undefined) {
-          if (item.language_id === _this.defaultLanguage.id) {
-            return item.photo_galleries;
-          }
+      return this.PagePhotoGalleries.filter(function (item) {
+        if (_typeof(_this.languageId) !== undefined) {
+          return item.language_id === _this.languageId;
         }
-      }).filter(Boolean)[0];
+      });
     }
   }),
   methods: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapActions)(['language/allLanguages'])), {}, {
@@ -64,11 +73,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         sorting: sorting
       });
     },
-    changeLanguage: function changeLanguage(evt) {
-      var a = this.actualLanguages.find(function (lang) {
-        return lang.id == evt.target.value;
-      });
-      console.log(this.defaultLanguage, a);
+    setDefaoulLanguage: function setDefaoulLanguage() {
+      return this.actualLanguages[0];
     }
   }),
   mounted: function mounted() {
@@ -77,7 +83,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     axios__WEBPACK_IMPORTED_MODULE_0___default().get((0,_api_routes__WEBPACK_IMPORTED_MODULE_1__["default"])('pagePhotoGallery.index')).then(function (response) {
       return _this2.PagePhotoGalleries = response.data.data;
     });
-    this['language/allLanguages'](); //this.$store.getters.getLanguageById(2)
+    this['language/allLanguages']();
   }
 });
 
@@ -134,7 +140,7 @@ var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 );
 
 var _hoisted_13 = ["onUpdate:modelValue", "value", "onChange"];
-var _hoisted_14 = ["value"];
+var _hoisted_14 = ["value", "selected"];
 var _hoisted_15 = {
   "class": "articles-delete-btn"
 };
@@ -156,11 +162,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, null, 8
   /* PROPS */
   , _hoisted_3)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
-    onChange: _cache[0] || (_cache[0] = function () {
-      return $options.changeLanguage && $options.changeLanguage.apply($options, arguments);
-    }),
-    "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
-      return _ctx.language = $event;
+    "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
+      return $options.languageId = $event;
     })
   }, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.actualLanguages, function (lang) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", {
@@ -171,9 +174,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     , _hoisted_8);
   }), 128
   /* KEYED_FRAGMENT */
-  ))], 544
-  /* HYDRATE_EVENTS, NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, _ctx.language]])]), _hoisted_9])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_11, [_hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($options.pageFilter, function (gallery) {
+  ))], 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $options.languageId]])]), _hoisted_9])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_11, [_hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($options.pageFilter, function (gallery) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("tr", {
       "class": "order-row",
       key: gallery.id
@@ -181,15 +184,16 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     /* TEXT */
     ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
       "onUpdate:modelValue": function onUpdateModelValue($event) {
-        return gallery.sorting = $event;
+        return gallery.gallery_sorting = $event;
       },
-      value: gallery.sorting,
+      value: gallery.gallery_sorting,
       onChange: function onChange($event) {
         return $options.changeSorting($event.target.value, gallery.id);
       }
     }, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($options.pageFilter.length, function (item) {
       return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", {
-        value: item
+        value: item,
+        selected: item === gallery.gallery_sorting
       }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item), 9
       /* TEXT, PROPS */
       , _hoisted_14);
@@ -197,7 +201,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     /* UNKEYED_FRAGMENT */
     ))], 40
     /* PROPS, HYDRATE_EVENTS */
-    , _hoisted_13), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, gallery.sorting]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+    , _hoisted_13), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, gallery.gallery_sorting]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
       src: (__webpack_require__(/*! @img/icons/delete-ico.svg */ "./public/img/icons/delete-ico.svg")["default"]),
       alt: ""
     }, null, 8

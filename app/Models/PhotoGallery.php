@@ -9,11 +9,16 @@ class PhotoGallery extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['page_photo_gallery_id', 'status', 'sorting', 'title', 'image', 'image_name', 'image_alt', 'image_title'];
+    protected $fillable = ['page_photo_gallery_id', 'status', 'sorting'];
 
     public function page()
     {
         return $this->belongsTo(PagePhotoGallery::class);
+    }
+
+
+    public function galleries(){
+      return $this->hasMany(PhotoGalleriesItem::class);
     }
 
 }

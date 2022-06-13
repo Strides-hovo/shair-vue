@@ -33,15 +33,11 @@ __webpack_require__.r(__webpack_exports__);
       photoGallery: {},
       Galleries: [],
       ButtonTab: true,
-      FileManager: false,
-      language: {}
+      LeftAssaid: false,
+      FileManager: false
     };
   },
-  computed: {
-    PageLanguage: function PageLanguage() {
-      console.log(this.language);
-    }
-  },
+  computed: {},
   methods: {
     setLanguage: function setLanguage(id) {
       //console.log(id)
@@ -160,28 +156,34 @@ var _hoisted_14 = {
 };
 var _hoisted_15 = ["src"];
 var _hoisted_16 = {
-  "class": "container-content__tabs"
+  "class": "container-content__top-title"
 };
 var _hoisted_17 = {
-  "class": "container-content__body container-content__body_info"
+  "class": "container-content__top-row"
 };
 var _hoisted_18 = {
+  "class": "container-content__tabs"
+};
+var _hoisted_19 = {
+  "class": "container-content__body container-content__body_info"
+};
+var _hoisted_20 = {
   key: 0,
   "class": "container-content__body-info article product-params gallery-img"
 };
 
-var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"info-row small\"><div class=\"info-item small\"><span> שם לשימוש פנימי: </span><input type=\"text\" placeholder=\"אנא הזינו שם לשימוש פנימי\"></div></div><div class=\"info-item small\"><span> description: </span><input type=\"text\" placeholder=\"אנא הזינו שם ב-Hebrew\"></div><div class=\"info-item\"><span> טקסט תחתון ב-Hebrew: </span><input type=\"text\" placeholder=\"אנא הזינו טקסט תחתון ב-Hebrew\"></div>", 3);
+var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"info-row small\"><div class=\"info-item small\"><span> שם לשימוש פנימי: </span><input type=\"text\" placeholder=\"אנא הזינו שם לשימוש פנימי\"></div></div><div class=\"info-item small\"><span> description: </span><input type=\"text\" placeholder=\"אנא הזינו שם ב-Hebrew\"></div><div class=\"info-item\"><span> טקסט תחתון ב-Hebrew: </span><input type=\"text\" placeholder=\"אנא הזינו טקסט תחתון ב-Hebrew\"></div>", 3);
 
-var _hoisted_22 = [_hoisted_19];
-var _hoisted_23 = {
+var _hoisted_24 = [_hoisted_21];
+var _hoisted_25 = {
   key: 1,
   "class": "container-content__body"
 };
-var _hoisted_24 = {
+var _hoisted_26 = {
   "class": "orders products productspage product-products product-images"
 };
 
-var _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("thead", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+var _hoisted_27 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("thead", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "check"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
   type: "checkbox"
@@ -191,11 +193,11 @@ var _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_26 = {
+var _hoisted_28 = {
   "class": "order-row"
 };
 
-var _hoisted_27 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+var _hoisted_29 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "check"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
   type: "checkbox"
@@ -205,16 +207,16 @@ var _hoisted_27 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_28 = ["src"];
-var _hoisted_29 = {
+var _hoisted_30 = ["src"];
+var _hoisted_31 = {
   "class": "table-img__title"
 };
 
-var _hoisted_30 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" שינוי תמונה ");
+var _hoisted_32 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" שינוי תמונה ");
 
-var _hoisted_31 = ["src"];
+var _hoisted_33 = ["src"];
 
-var _hoisted_32 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_34 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "table-img__info"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "table-img__info-item"
@@ -235,10 +237,10 @@ var _hoisted_32 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_33 = ["value"];
-var _hoisted_34 = ["src"];
+var _hoisted_35 = ["value"];
+var _hoisted_36 = ["src"];
 
-var _hoisted_35 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("להציג");
+var _hoisted_37 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("להציג");
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_LeftAssaid = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("LeftAssaid");
@@ -274,7 +276,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     alt: ""
   }, null, 8
   /* PROPS */
-  , _hoisted_15)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  , _hoisted_15)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.photoGallery.title), 1
+  /* TEXT */
+  )])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     onClick: _cache[1] || (_cache[1] = function ($event) {
       return _ctx.ButtonTab = true;
     }),
@@ -292,7 +296,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }, "container-content__tabs-item"])
   }, " Фото ", 2
   /* CLASS */
-  )])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [_ctx.ButtonTab ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_18, _hoisted_22)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_23, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("        <div class=\"product-content__tabs\">\r\n          <a href=\"#\" class=\"product-content__tabs-item\">\r\n            תמונות לדסקטופ\r\n          </a>\r\n          <a href=\"#\" class=\"product-content__tabs-item active\">\r\n            תמונות לסלולר\r\n          </a>\r\n        </div>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_24, [_hoisted_25, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", _hoisted_26, [_hoisted_27, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  )])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_19, [_ctx.ButtonTab ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_20, _hoisted_24)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_25, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("        <div class=\"product-content__tabs\">\r\n          <a href=\"#\" class=\"product-content__tabs-item\">\r\n            תמונות לדסקטופ\r\n          </a>\r\n          <a href=\"#\" class=\"product-content__tabs-item active\">\r\n            תמונות לסלולר\r\n          </a>\r\n        </div>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_26, [_hoisted_27, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", _hoisted_28, [_hoisted_29, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     "class": "table-img",
     onClick: _cache[3] || (_cache[3] = function ($event) {
       return _ctx.FileManager = true;
@@ -302,7 +306,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     alt: ""
   }, null, 8
   /* PROPS */
-  , _hoisted_28), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_modal_lnaguage, {
+  , _hoisted_30), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_modal_lnaguage, {
     "is-active": _ctx.FileManager
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -315,12 +319,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   }, 8
   /* PROPS */
-  , ["is-active"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_29, [_hoisted_30, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+  , ["is-active"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_31, [_hoisted_32, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
     src: (__webpack_require__(/*! @img/icons/edit-ico.svg */ "./public/img/icons/edit-ico.svg")["default"]),
     alt: ""
   }, null, 8
   /* PROPS */
-  , _hoisted_31)])])]), _hoisted_32, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
+  , _hoisted_33)])])]), _hoisted_34, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
     "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
       return _ctx.photoGallery.sorting = $event;
     })
@@ -330,7 +334,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       key: count
     }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(count), 9
     /* TEXT, PROPS */
-    , _hoisted_33);
+    , _hoisted_35);
   }), 128
   /* KEYED_FRAGMENT */
   ))], 512
@@ -340,7 +344,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     alt: ""
   }, null, 8
   /* PROPS */
-  , _hoisted_34), _hoisted_35])])])])])])]))])])], 64
+  , _hoisted_36), _hoisted_37])])])])])])]))])])], 64
   /* STABLE_FRAGMENT */
   );
 }

@@ -11,7 +11,7 @@
             <div class="container-content__top-row">
 
                 <div class="select-top">
-                    <select @change="changeLanguage" v-model="language">
+                    <select v-model="languageId">
                         <option :value="lang.id" v-for="lang in actualLanguages" :key="lang.id">{{ lang.code }}
                         </option>
                     </select>
@@ -47,9 +47,10 @@
                         </td>
                         <td>
                             <label>
-                                <select v-model="gallery.sorting" :value="gallery.sorting"
+                                <select v-model="gallery.gallery_sorting" :value="gallery.gallery_sorting"
                                     @change="changeSorting($event.target.value, gallery.id)">
-                                    <option v-for="item in pageFilter.length" :value="item">{{ item }}</option>
+                                    <option v-for="item in pageFilter.length" :value="item" :selected="item === gallery.gallery_sorting">{{ item  }}
+                                    </option>
                                 </select>
                             </label>
                         </td>
@@ -90,9 +91,9 @@ export default {
     data: () => ({
         showIcon: require('@img/icons/show.svg').default,
         unshow: require('@img/icons/close.svg').default,
-        language: 1,
+
         PagePhotoGalleries: [],
-        
+        defaultLanguage: null,
 
     }),
 
@@ -101,55 +102,51 @@ export default {
         ...mapGetters({
             languages: 'language/getLanguages',
             actualLanguages: 'language/getActualLanguages',
-           
-        }),
-      
 
-        defaultLanguage() {
-            return this.actualLanguages[this.language - 1]
-        },
-        pageFilter() {
-            return this.PagePhotoGalleries.map(item => {
-                if (typeof this.defaultLanguage !== undefined) {
-                    if (item.language_id === this.defaultLanguage.id) {
-                        return item.photo_galleries
+        }),
+
+        languageId: {
+            get() {
+                if (this.defaultLanguage === null) {
+                    if (this.actualLanguages.length > 0) {
+                        return this.actualLanguages[0].id
                     }
                 }
-            }).filter(Boolean)[0]
+                else {
+                    return this.defaultLanguage;
+                }
+            },
+            set(val) {
+                this.defaultLanguage = val
+            }
         },
-        
+
+        pageFilter() {
+            return this.PagePhotoGalleries.filter(item => {
+                if (typeof this.languageId !== undefined) {
+                  return item.language_id === this.languageId;
+                }
+            })
+        },
+
     },
 
 
 
-
-
-
-
-
-
-
-
     methods: {
-
         ...mapActions(['language/allLanguages']),
-
         changeSorting(sorting, id) {
             axios.put(apiRoutes('photoGallery.update', id), { sorting: sorting })
         },
-        changeLanguage(evt) {
-
-            let a = this.actualLanguages.find(lang => lang.id == evt.target.value);
-            
-            console.log( this.defaultLanguage,a  );
+        setDefaoulLanguage() {
+            return this.actualLanguages[0]
         }
     },
 
     mounted() {
         axios.get(apiRoutes('pagePhotoGallery.index')).then(response => this.PagePhotoGalleries = response.data.data)
         this['language/allLanguages']();
-        
-        //this.$store.getters.getLanguageById(2)
+
     }
 }
 </script>

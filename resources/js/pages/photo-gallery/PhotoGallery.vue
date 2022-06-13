@@ -16,42 +16,47 @@
       שמירה
     </div>
   </div>
- <LeftAssaid :is-active="LeftAssaid" @CloseLeftAssaid="CloseLeftAssaid">
-        <div class="productpage-modal__top">
-            <div class="productpage-modal__top-item">
-                <span>Page Slug:</span>
-                <input type="text" placeholder="אנא הזינו שם לעמוד ב URL">
-            </div>
-        </div>
-        <div class="productpage-modal__content">
-            <div class="productpage-modal__content-title">
-                הגדרות META:
-            </div>
-            <div class="productpage-modal__content-item">
-                <span>Page Title:</span>
-                <input type="text" placeholder="אנא הזינו Page Title">
-            </div>
-            <div class="productpage-modal__content-item">
-                <span>:Meta Description </span>
-                <input type="text" placeholder="אנא הזינו Meta Description">
-            </div>
-            <div class="productpage-modal__content-item">
-                <span>Meta Keywords:</span>
-                <input type="text" placeholder="אנא הזינו Meta Keywords">
-            </div>
-        </div>
-        <div class="productpage-modal__btn btn">
-            שמור
-        </div>
+  <LeftAssaid :is-active="LeftAssaid" @CloseLeftAssaid="CloseLeftAssaid">
+    <div class="productpage-modal__top">
+      <div class="productpage-modal__top-item">
+        <span>Page Slug:</span>
+        <input type="text" placeholder="אנא הזינו שם לעמוד ב URL">
+      </div>
+    </div>
+    <div class="productpage-modal__content">
+      <div class="productpage-modal__content-title">
+        הגדרות META:
+      </div>
+      <div class="productpage-modal__content-item">
+        <span>Page Title:</span>
+        <input type="text" placeholder="אנא הזינו Page Title">
+      </div>
+      <div class="productpage-modal__content-item">
+        <span>:Meta Description </span>
+        <input type="text" placeholder="אנא הזינו Meta Description">
+      </div>
+      <div class="productpage-modal__content-item">
+        <span>Meta Keywords:</span>
+        <input type="text" placeholder="אנא הזינו Meta Keywords">
+      </div>
+    </div>
+    <div class="productpage-modal__btn btn">
+      שמור
+    </div>
 
-    </LeftAssaid>
+  </LeftAssaid>
   <div class="container-content">
     <div class="container-content__top container-content__top_tabs">
 
       <div class="container-content__top-row">
         <div class="settings-btn productpage-params__btn" @click="LeftAssaid = true">
           <img :src="require('@img/icons/settings.svg').default" alt="">
+        </div>
+        <div class="container-content__top-title">
+          <span>{{photoGallery.title}}</span>
+        </div>
       </div>
+      <div class="container-content__top-row">
         <div class="container-content__tabs">
           <button @click="ButtonTab = true" :class="{ active: ButtonTab === true }"
             class="container-content__tabs-item ">
@@ -212,17 +217,14 @@ export default {
     photoGallery: {},
     Galleries: [],
     ButtonTab: true,
-
+    LeftAssaid: false,
     FileManager: false,
-    language: {},
+
   }),
 
 
   computed: {
 
-    PageLanguage() {
-      console.log(this.language)
-    },
 
   },
 
@@ -235,8 +237,8 @@ export default {
       //console.log( this.language )
     },
     CloseLeftAssaid() {
-            this.LeftAssaid = false
-      }
+      this.LeftAssaid = false
+    }
   },
   mounted() {
 

@@ -18,11 +18,10 @@ class PhotoGalleryFactory extends Factory
      */
     public function definition()
     {
-        
+
         return [
             'title' => $this->faker->name,
-            'image' => $this->faker->imageUrl,
-            'image_name' => $this->faker->imageUrl,
+          
             'page_photo_gallery_id' => PagePhotoGallery::all()->random()->id
         ];
     }

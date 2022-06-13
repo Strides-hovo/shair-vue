@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
         $this->call(LanguageSedder::class);
         $this->call(PagePhotoGallerySeeder::class);
         $this->call(PhotoGallerySeeder::class);
+        $this->call(PhotoGalleriesItemSeeder::class);
         // $this->call(Category::factory(5)->create());
         // $this->call(Image::factory(30)->create());
         // $this->call(Product::factory(30)->create());
