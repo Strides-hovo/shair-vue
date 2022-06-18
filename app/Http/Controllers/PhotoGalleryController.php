@@ -25,13 +25,14 @@ class PhotoGalleryController extends Controller
     
     public function show(PhotoGallery $photoGallery)
     {
-        return response()->success($photoGallery);
+        return response()->success($photoGallery->load(['galleries']) );
     }
 
     
      
     public function update(PhotoGalleryRequest $request, PhotoGallery $photoGallery)
     {
+
         $photoGallery->update($request->validated());
         return response()->success($photoGallery);
     }

@@ -21,7 +21,8 @@ class PhotoGalleryFactory extends Factory
 
         return [
             'title' => $this->faker->name,
-          
+            'slug' => Str::slug($title),
+            'meta_title' => $this->faker->name,
             'page_photo_gallery_id' => PagePhotoGallery::all()->random()->id
         ];
     }

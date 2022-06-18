@@ -9,7 +9,7 @@
 
 <script>
 export default {
-    name: 'LeftAssaid',
+    name: 'LeftAside',
     props: {
         isActive: {
             type: Boolean,
@@ -18,7 +18,7 @@ export default {
     },
     methods: {
         closeModal() {
-            this.$emit('CloseLeftAssaid')
+            this.$emit('CloseLeftAside')
         }
     },
 

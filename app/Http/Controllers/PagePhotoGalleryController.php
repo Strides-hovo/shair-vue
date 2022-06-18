@@ -63,12 +63,12 @@ class PagePhotoGalleryController extends Controller
         // return response()->success($p);
         
         
-        $t = PagePhotoGallery::all()->load(['language','photoGalleries','photoGalleries.galleries']);
+        // $t = PagePhotoGallery::all()->load(['language','photoGalleries','photoGalleries.galleries']);
 
-        return response()->success($t);
+        // return response()->success($t);
 
-
-        //return response()->success(PagePhotoGallery::with(['language','photoGalleries','photoGalleries.galleries'])->get());
+        debug( PagePhotoGallery::with(['language','photoGalleries','photoGalleries.galleries'])->get() );
+        return response()->success(PagePhotoGallery::with(['photoGalleries','photoGalleries.galleries'])->get());
 
     }
 

@@ -1,7 +1,7 @@
-import LeftAsaid from './LeftAsaid'
+import LeftAside from './LeftAside'
 import StrModal from './StrModal'
 
 
 export default [
-    LeftAsaid,StrModal
+    LeftAside, StrModal
 ]

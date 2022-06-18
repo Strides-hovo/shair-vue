@@ -47,19 +47,23 @@
                         </td>
                         <td>
                             <label>
-                                <select v-model="gallery.gallery_sorting" :value="gallery.gallery_sorting"
+                                <select v-model="gallery.sorting" :value="gallery.sorting"
                                     @change="changeSorting($event.target.value, gallery.id)">
-                                    <option v-for="item in pageFilter.length" :value="item" :selected="item === gallery.gallery_sorting">{{ item  }}
+                                    <option v-for="item in pageFilter.length" :value="item"
+                                        :selected="item === gallery.sorting">{{ item }}
                                     </option>
                                 </select>
                             </label>
                         </td>
                         <td>
                             <div>
-                                <span class="articles-delete-btn"><img
-                                        :src="require('@img/icons/delete-ico.svg').default" alt=""></span>
-                                <router-link :to="{ name: 'PhotoGallery', params: { id: gallery.id } }"
-                                    :class="'branches-edit-btn'">
+                                <span class="articles-delete-btn">
+                                    <img :src="require('@img/icons/delete-ico.svg').default" alt="">
+                                </span>
+                                <router-link
+                                    :to="{ name: 'PhotoGallery', params: { id: gallery.id  } }"
+                                    :class="'branches-edit-btn'" :photoGaller="gallery"  >
+
                                     <img :src="require('@img/icons/edit-ico.svg').default" alt="">עריכה
                                 </router-link>
 
@@ -77,10 +81,11 @@
 <script>
 
 import axios from 'axios';
-import apiRoutes from '@/api-routes';
+import apiRoutes from '@/routes/api-routes';
 // import vuexMixin from '@mixin/vuex'
 // import pageFilter from '@/filters/pagePhotoGalleries'
 import { mapGetters, mapActions } from 'vuex'
+import { filter } from 'minimatch';
 
 
 export default {
@@ -122,11 +127,14 @@ export default {
         },
 
         pageFilter() {
-            return this.PagePhotoGalleries.filter(item => {
+            return this.PagePhotoGalleries.map(item => {
                 if (typeof this.languageId !== undefined) {
-                  return item.language_id === this.languageId;
+                    if (item.language_id === this.languageId) {
+                        return item.photo_galleries
+                    }
+
                 }
-            })
+            }).filter(Boolean)[0]
         },
 
     },

@@ -2,9 +2,9 @@
 
 const state = {
     portions: [
-        {width: 127,height: 127},
-        {width: 250,height: 167},
-        {width: 115,height: 180},
+        {id: 1,width: 127,height: 127},
+        {id: 2,width: 250,height: 167},
+        {id: 3,width: 115,height: 180},
     ]
 };
 
@@ -29,7 +29,7 @@ const getters = {
 };
 
 export default  {
-    // namespaced: true,
+    namespaced: true,
     state,
     getters,
     actions,

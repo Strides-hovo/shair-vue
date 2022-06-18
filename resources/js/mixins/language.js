@@ -1,4 +1,4 @@
-import apiRoutes from "../api-routes";
+import apiRoutes from "../routes/api-routes";
 
 export default {
     data: () => ({
@@ -10,7 +10,8 @@ export default {
         newLanguage: {
             dir: 'ltr',
             code: '',
-            name: ''
+            name: '',
+            status: true
         },
         languages: [],
         languageIds: [],
@@ -19,7 +20,7 @@ export default {
     methods: {
         createLanguage() {
 
-            axios.post(apiRoutes('language.create'), this.newLanguage).then(response => {
+            axios.post(apiRoutes('language.store'), this.newLanguage).then(response => {
                 if (response.data.status === 'Success') {
                     this.new_lang_modal = !this.new_lang_modal;
                     this.languages.push(response.data.data);

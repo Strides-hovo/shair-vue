@@ -5,37 +5,37 @@ const routes = [
     {
         path: "/",
         name: 'dashboard',
-        component: () => import('./pages/Dashboard'),
+        component: () => import('@/pages/Dashboard'),
         props: true
     },
     {
         path: "/languages",
-        name: 'languages',
-        component: () => import('./pages/Language'),
+        name: 'Languages',
+        component: () => import('@/pages/language/index'),
         props: true
     },
     {
         path: "/library",
         name: 'library',
-        component: () => import('./pages/Library'),
+        component: () => import('@/pages/Library'),
         props: true
     },
     {
         path: "/photo-galleries",
         name: 'PhotoGalleries',
-        component: () => import('./pages/photo-gallery/PagePhotoGalleries'),
+        component: () => import('@/pages/photo-gallery/PagePhotoGalleries'),
         props: true
     },
     {
         path: "/photo-galleries/:id",
         name: 'PhotoGallery',
-        component: () => import('./pages/photo-gallery/PhotoGallery'),
+        component: () => import('@/pages/photo-gallery/PhotoGallery/index'),
         props: true
     },
     {
         path: "/:pathMatch(.*)*",
         name: '404',
-        component: () => import('./pages/404'),
+        component: () => import('@/pages/404'),
         props: true
     },
 ];

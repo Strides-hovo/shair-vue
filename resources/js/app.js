@@ -4,10 +4,10 @@
 require('./bootstrap');
 
 import { createApp } from 'vue';
-import router from "./routes";
+import router from "./routes/routes";
 import store from './store'
 import UiComponents from './components/Ui'
-import LanguageMixin from '@mixin/vuex'
+// import LanguageMixin from '@mixin/vuex'
 
 
 
@@ -18,7 +18,7 @@ UiComponents.forEach(component => {
 });
 
 // app.mixin(LanguageMixin)
-//app.component()
+
 
 import SlideUpDown from 'vue3-slide-up-down';
 import App from './App.vue';

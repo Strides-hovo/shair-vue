@@ -1,0 +1,70 @@
+
+    <div class="bloc">
+
+        <ul class="tab-images">
+            <li class="tab-images_img" v-for="(src, key ) in images" :key="key"
+                :class="{ active: coordinates.src.includes(src) }" @click="checkImages"><img :src="src" alt=""></li>
+        </ul>
+
+        <!--    <str-new-gallery :galleriesCount="photoGallery.galleries ? photoGallery.galleries.length : 0" v-model:newImage="newImage" @checkImages="checkImages"/>-->
+        <div class="info">
+
+            <div class="table-img__info">
+                <div class="table-img__info-item"><span>Alt:</span>
+                    <input type="text" placeholder="סוכה כשרה" v-model="newImage.image_alt" @change="checkImages">
+                </div>
+                <div class="table-img__info-item"><span>Title:</span>
+                    <input type="text" placeholder="סוכה כשרה" v-model="newImage.image_title" @change="checkImages">
+                </div>
+                <div class="table-img__info-item"><span>File name:</span>
+                    <input type="text" placeholder="סוכה-כשרה6667" v-model="newImage.image_name" @change="checkImages">
+                </div>
+                <div class="table-img__info-item"><span>сортировка:</span>
+                    <select v-model="newImage.sorting" @change="checkImages" id="sort">
+                        <option :value="count" v-for="count in photoGallery.galleries.length || 1" :key="count">{{ count
+                        }}</option>
+                    </select>
+                </div>
+                <div class="table-img__info-item"><span>Sizes:</span>
+                    <select class="custom-select" id="portions" @change="checkPortions">
+                        <option :value="portion.id" v-for="portion in portions">
+                            {{ `${portion.width} * ${portion.height}` }}
+                        </option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="upload-file">
+
+
+                {{ canvasStatusMove }}
+                <div style="position: relative;">
+                    <div class="str-canvas-bg" @drop="ondrag" :style="image" ref="bg" @mouseover="Mouseover" @mouseout="canvasStatusMove = false"  draggable="true" @dragover.prevent>
+                    <img :src="image.src" ref="img"  style="position: absolute" />
+                    
+                </div>
+                    <canvas class="str-canvas" :style="CanvasStyle"  @dragend="DragEnd" draggable="true"
+                        @dragstart="DragStart" ref="canvas">
+                    </canvas>
+                </div>
+                
+
+                <div class="button-wrapper">
+                    <label class="upload-button" for="upload">Load image</label>
+                    <input type="file" ref="file" @change="loadImage" accept="image/*" id="upload">
+                    <button class="btn-upload" :disabled="!coordinates.src" @click="uploadImage">Upload</button>
+                </div>
+            </div>
+
+        </div>
+
+
+
+        <cropper v-if="select" class="cropper" :src="coordinates.src" :canvas="{
+            height: 100,
+            width: 100
+        }" :width="img.width" :height="img.height" :stencil-props="{
+           aspectRatio: 10 / 12
+         }" @change="onChange" />
+
+    </div>

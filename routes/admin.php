@@ -23,5 +23,10 @@ Route::group(['prefix' => 'admin'],function (){
     Route::delete('language-delete/{ids?}', [\App\Http\Controllers\LanguageController::class,'destroy'])->name('language.destroy');
     Route::apiResource('pagePhotoGallery',PagePhotoGalleryController::class);
     Route::apiResource('photoGallery',PhotoGalleryController::class);
+    Route::apiResource('photoGalleryItems',\App\Http\Controllers\PhotoGalleriesItemController::class);
+
+    Route::get('all-images',[\App\Services\Images::class,'getImages'])->name('get.images');
+    Route::post('image-upload',[\App\Services\Images::class,'upload'])->name('image.upload');
+
 
 });

@@ -18,10 +18,12 @@ class PhotoGalleriesItemFactory extends Factory
     public function definition()
     {
         return [
-          'title' => $this->faker->name,
           'image' => $this->faker->imageUrl,
           'image_name' => $this->faker->imageUrl,
           'photo_gallery_id' => PhotoGallery::all()->random()->id
         ];
     }
+
+
+
 }

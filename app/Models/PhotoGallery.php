@@ -9,7 +9,9 @@ class PhotoGallery extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['page_photo_gallery_id', 'status', 'sorting'];
+  
+
+    protected $fillable = ['title','page_photo_gallery_id', 'status', 'sorting', 'slug','meta_title','meta_description','meta_keywords'];
 
     public function page()
     {

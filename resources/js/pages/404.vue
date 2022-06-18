@@ -7,7 +7,7 @@
 </template>
 
 <script>
-    import apiRoutes from "../api-routes";
+    import apiRoutes from "../routes/api-routes";
 
     export default {
         name: "404",

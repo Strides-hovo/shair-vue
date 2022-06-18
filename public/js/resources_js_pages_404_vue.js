@@ -11,12 +11,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _api_routes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../api-routes */ "./resources/js/api-routes.js");
+/* harmony import */ var _routes_api_routes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../routes/api-routes */ "./resources/js/routes/api-routes.js");
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "404",
   mounted: function mounted() {
-    console.log((0,_api_routes__WEBPACK_IMPORTED_MODULE_0__["default"])('language.index'));
+    console.log((0,_routes_api_routes__WEBPACK_IMPORTED_MODULE_0__["default"])('language.index'));
   }
 });
 
@@ -72,13 +72,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _404_vue_vue_type_template_id_82158542__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./404.vue?vue&type=template&id=82158542 */ "./resources/js/pages/404.vue?vue&type=template&id=82158542");
 /* harmony import */ var _404_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./404.vue?vue&type=script&lang=js */ "./resources/js/pages/404.vue?vue&type=script&lang=js");
-/* harmony import */ var C_OpenServer_domains_shid_vue_loc_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_OpenServer_domains_shair_loc_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_OpenServer_domains_shid_vue_loc_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_404_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_404_vue_vue_type_template_id_82158542__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/pages/404.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_OpenServer_domains_shair_loc_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_404_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_404_vue_vue_type_template_id_82158542__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/pages/404.vue"]])
 /* hot reload */
 if (false) {}
 

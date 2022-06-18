@@ -13,7 +13,8 @@ class PagePhotoGallery extends Model
         'created_at','updated_at'
     ];
 
-    protected $fillable = ['language_id'];
+    
+    protected $fillable = ['language_id',''];
 
 
 

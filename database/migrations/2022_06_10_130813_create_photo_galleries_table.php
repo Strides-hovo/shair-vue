@@ -20,6 +20,10 @@ return new class extends Migration
             $table->foreignId('page_photo_gallery_id')->constrained();
             $table->boolean('status')->default(1);
             $table->integer('sorting')->default(1);
+            $table->string('slug',100);
+            $table->string('meta_title');
+            $table->string('meta_description')->nullable();
+            $table->string('meta_keywords')->nullable();
             $table->timestamps();
         });
     }

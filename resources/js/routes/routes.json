@@ -14,5 +14,12 @@
     "photoGallery.store": "api\/admin\/photoGallery",
     "photoGallery.show": "api\/admin\/photoGallery\/{photoGallery}",
     "photoGallery.update": "api\/admin\/photoGallery\/{photoGallery}",
-    "photoGallery.destroy": "api\/admin\/photoGallery\/{photoGallery}"
+    "photoGallery.destroy": "api\/admin\/photoGallery\/{photoGallery}",
+    "photoGalleryItems.index": "api\/admin\/photoGalleryItems",
+    "photoGalleryItems.store": "api\/admin\/photoGalleryItems",
+    "photoGalleryItems.show": "api\/admin\/photoGalleryItems\/{photoGalleryItem}",
+    "photoGalleryItems.update": "api\/admin\/photoGalleryItems\/{photoGalleryItem}",
+    "photoGalleryItems.destroy": "api\/admin\/photoGalleryItems\/{photoGalleryItem}",
+    "get.images": "api\/admin\/all-images",
+    "image.upload": "api\/admin\/image-upload"
 }

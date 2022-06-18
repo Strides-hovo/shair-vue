@@ -5,7 +5,7 @@
 <script>
 import Sidebar from "@/components/Sidebar";
 import Language from "./Language";
-import apiRoutes from "../api-routes";
+import apiRoutes from "../routes/api-routes";
 export default {
   name: "Dashboard",
   components: { Language, Sidebar },

@@ -1,0 +1,121 @@
+<div class="cart-btns">
+    <div class="cart-btns__item lang-add-new btn circle" @click="new_lang_modal = true">
+        <img :src="addIcon.default" alt="">
+    </div>
+    <button :disabled="delete_btn" class="cart-btns__item btn" @click="deleteLanguage">удалить</button>
+</div>
+<div class="container-content">
+    <div class="container-content__top">
+       
+        <div class="container-content__top-title">
+            Языки
+        </div>
+    </div>
+    <div class="container-content__body">
+
+        <form class="lang-modal" :class="{ active: lang_modal }" @submit.prevent="updateLanguage">
+            <div class="lang-modal__close" @click="lang_modal = false">
+                <img :src="closeIcon.default" alt="">
+            </div>
+            <div class="lang-modal__title">
+                עריכת שפה
+            </div>
+            <div class="lang-modal__content">
+                <div class="lang-modal__content-item">
+                    <span>קיצור: </span>
+                    <input type="text" placeholder="En" v-model="language.code">
+                </div>
+                <div class="lang-modal__content-item">
+                    <span>שם שפה: </span>
+                    <input type="text" placeholder="English" v-model="language.name">
+                </div>
+                <div class="lang-modal__content-item">
+                    <span>שם שפה: </span>
+                    <select name="ltr" v-model="language.dir">
+                        <option value="ltr">LTR</option>
+                        <option value="rtl">RTL</option>
+                    </select>
+                </div>
+            </div>
+            <button class="lang-modal__btn btn">
+                שמור
+            </button>
+        </form>
+
+        <StrModal v-if="new_lang_modal" @CloseModal="closeModal" :is-active="new_lang_modal">
+
+            <form @submit.prevent="createLanguage">
+                <div class="lang-new__content-edit">
+                    <div class="lang-new__content-item">
+                        <span>קיצור: </span>
+                        <input type="text" placeholder="En" v-model="newLanguage.code">
+                    </div>
+                    <div class="lang-new__content-item">
+                        <span>שם שפה: </span>
+                        <input type="text" placeholder="אנא הזינו שם שפה" v-model="newLanguage.name">
+                    </div>
+                    <div class="lang-new__content-item">
+                        <span>שם שפה: </span>
+                        <select name="ltr" v-model="newLanguage.dir">
+                            <option value="ltr">LTR</option>
+                            <option value="rtl">RTL</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="lang-new__content-btn btn">
+                    הוספה
+                </button>
+            </form>
+        </StrModal>
+
+
+        <table class="orders">
+            <thead>
+
+                <tr>
+                    <td>
+                        <label>
+                            <input type="checkbox" @change="selectAllLanguages" v-model="all_checked"
+                                :checked="all_checked">
+                            <span class="fake"></span>
+                        </label>
+                    </td>
+                    <td>язык</td>
+                    <td>Код</td>
+                    <td>Напровление</td>
+                    <td>Показано на сайте</td>
+                    <td>Действия</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="order-row unwatched" v-for="lang of languages" :key="lang.id">
+                    <td>
+                        <label>
+                            <input type="checkbox" @change="selectLanguage" :value="lang.id" v-model="languageIds">
+                            <span class="fake"></span>
+                        </label>
+                    </td>
+                    <td>{{ lang.name }}</td>
+                    <td>{{ lang.code }}</td>
+                    <td>{{ lang.dir }}</td>
+                    <td>
+                        <label>
+                            <input type="checkbox" :checked="lang.status" v-model="lang.status"
+                                @change="updateStatus(lang.id, lang.status)">
+                            <span class="fake"></span>
+                        </label>
+                    </td>
+                    <td>
+                        <div>
+                            <span class="lang-delete-btn"><img :src="deleteIcon.default" alt=""></span>
+                            редактирование
+                            <span class="lang-edit-btn" @click="checkLanguage(lang.id), lang_modal = !lang_modal;">
+                                <img :src="editIcon.default" alt="">
+                            </span>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

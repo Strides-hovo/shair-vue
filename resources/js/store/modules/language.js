@@ -1,5 +1,5 @@
 import axios from "axios";
-import apiRoutes from "../../api-routes";
+import apiRoutes from "../../routes/api-routes";
 
 const state = {
     languages: []

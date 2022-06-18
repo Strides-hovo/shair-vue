@@ -24,14 +24,18 @@ class PhotoGalleryRequest extends FormRequest
     public function rules()
     {
         return [
-            'page_photo_gallery_id' => 'nullable|exists:photo_page_galeries,id', 
+            'page_photo_gallery_id' => 'nullable|exists:page_photo_galleries,id', 
             'status' => 'nullable|boolean', 
             'sorting' => 'nullable|integer', 
             'title' => 'nullable|string', 
             'image' => 'nullable|string', 
             'image_name' => 'nullable|string', 
             'image_alt' => 'nullable|string', 
-            'image_title' => 'nullable|string'
+            'image_title' => 'nullable|string',
+            'slug' => 'required|string',
+            'meta_title' => 'required|string',
+            'meta_description' => 'nullable|string',
+            'meta_keywords' => 'nullable|string'
         ];
     }
 }

@@ -46,7 +46,7 @@ class apiRoutes extends Command
             }
 
         }
-        File::put('resources/js/routes.json',json_encode($routes,JSON_PRETTY_PRINT));
+        File::put('resources/js/routes/routes.json',json_encode($routes,JSON_PRETTY_PRINT));
         return null;
     }
 }

@@ -15,7 +15,6 @@ return new class extends Migration
     {
         Schema::create('photo_galleries_items', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
             $table->foreignId('photo_gallery_id')->constrained();
 
             $table->string('image');
