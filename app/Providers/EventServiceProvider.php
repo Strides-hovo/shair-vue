@@ -27,19 +27,19 @@ class EventServiceProvider extends ServiceProvider
             SendEmailVerificationNotification::class,
         ],
 
-        FilesUploading::class => [
-            UploadFileListener::class
-        ],
-
-        FilesUploaded::class => [
-            UploadedFileListener::class
-        ],
-
-
-
-        Deleting::class => [
-            DeleteFileListener::class
-        ]
+//        FilesUploading::class => [
+//            UploadFileListener::class
+//        ],
+//
+//        FilesUploaded::class => [
+//            UploadedFileListener::class
+//        ],
+//
+//
+//
+//        Deleting::class => [
+//            DeleteFileListener::class
+//        ]
 
     ];
 

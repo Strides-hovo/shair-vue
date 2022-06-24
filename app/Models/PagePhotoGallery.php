@@ -9,12 +9,10 @@ class PagePhotoGallery extends Model
 {
     use HasFactory;
 
-    protected $hidden = [
-        'created_at','updated_at'
-    ];
+    public $timestamps = false;
 
     
-    protected $fillable = ['language_id',''];
+    protected $fillable = ['language_id'];
 
 
 
@@ -22,6 +20,8 @@ class PagePhotoGallery extends Model
     {
         return $this->hasMany(PhotoGallery::class);
     }
+
+
 
     public function language()
     {

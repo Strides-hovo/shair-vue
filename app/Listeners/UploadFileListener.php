@@ -3,7 +3,7 @@
 namespace App\Listeners;
 
 use Alexusmai\LaravelFileManager\Events\FilesUploading;
-use App\Http\Controllers\ImageController;
+//use App\Http\Controllers\ImageController;
 
 class UploadFileListener
 {
@@ -14,7 +14,7 @@ class UploadFileListener
     {
 
         if ( $files = $event->files()) {
-            ImageController::updateOrCreate($files);
+//            ImageController::updateOrCreate($files);
         }
     }
 

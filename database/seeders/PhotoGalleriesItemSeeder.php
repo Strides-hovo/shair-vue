@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\PhotoGalleriesItem;
+use App\Models\PhotoGalleryItem;
 
 class PhotoGalleriesItemSeeder extends Seeder
 {
@@ -15,6 +15,6 @@ class PhotoGalleriesItemSeeder extends Seeder
      */
     public function run()
     {
-      PhotoGalleriesItem::factory(5)->create();
+      PhotoGalleryItem::factory(5)->create();
     }
 }

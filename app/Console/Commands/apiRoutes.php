@@ -41,10 +41,9 @@ class apiRoutes extends Command
     {
         $routes = [];
         foreach ($this->router->getRoutes() as $route) {
-            if (str_contains( $route->uri,'api')){
+            if (str_contains( $route->uri,'admin')){
                 $routes[$route->getName()] = $route->uri;
             }
-
         }
         File::put('resources/js/routes/routes.json',json_encode($routes,JSON_PRETTY_PRINT));
         return null;

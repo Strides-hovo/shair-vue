@@ -8,11 +8,14 @@ use Illuminate\Support\Facades\Storage;
 class Images
 {
 
-    public function getImages()
+    public function getImages($type = 'images')
     {
 
-       $a = Storage::allFiles('public');
-       return str_replace('public','/storage',$a);
+        $image_types = $type === 'images' ? ['.jpg', '.jpeg', '.png', '.gif'] : ['.mp4'];
+        $files = Storage::allFiles('public');
+        $files = array_filter($files,fn($f) => in_array(stristr($f,'.'),$image_types));
+
+        return str_replace('public', '/storage', $files);
     }
 
 

@@ -28,7 +28,7 @@ class AppServiceProvider extends ServiceProvider
         Response::macro('success',function ($data,int $code = 200, $message = ''): JsonResponse{
             return response()->json([
                 'status' => 'Success',
-                'data' => $data,
+                 'data' => $data,
                 'message' => $message
             ], $code);
         });

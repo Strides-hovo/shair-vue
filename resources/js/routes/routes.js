@@ -1,37 +1,54 @@
-import {createRouter, createWebHistory} from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 
 
 const routes = [
     {
         path: "/",
         name: 'dashboard',
-        component: () => import('@/pages/Dashboard'),
+        component: () => import('@/pages/dashboard/Dashboard'),
         props: true
     },
     {
         path: "/languages",
-        name: 'Languages',
-        component: () => import('@/pages/language/index'),
+        name: 'Lang',
+        component: () => import('@/pages/lang/index'),
         props: true
     },
     {
         path: "/library",
         name: 'library',
-        component: () => import('@/pages/Library'),
+        component: () => import('@/pages/library/Library'),
         props: true
     },
     {
         path: "/photo-galleries",
         name: 'PhotoGalleries',
-        component: () => import('@/pages/photo-gallery/PagePhotoGalleries'),
-        props: true
+        component: () => import('@/pages/photo-galleries/index'),
+        props: true,
+        children: [
+            {
+                path: ":id",
+                name: 'PhotoGallery',
+                component: () => import('@/pages/photo-galleries/photo-gallery/index'),
+                props: true
+            }
+        ]
     },
     {
-        path: "/photo-galleries/:id",
-        name: 'PhotoGallery',
-        component: () => import('@/pages/photo-gallery/PhotoGallery/index'),
-        props: true
+        path: "/video-galleries",
+        name: 'VideoGalleries',
+        component: () => import('@/pages/video-galleries/index'),
+        props: true,
+        children: [
+            {
+                path: ":id",
+                name: 'VideoGallery',
+                component: () => import('@/pages/video-galleries/video-gallery/index'),
+                props: true
+            }
+        ]
     },
+
     {
         path: "/:pathMatch(.*)*",
         name: '404',
@@ -48,7 +65,7 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
     document.title = to.name;
     //console.log(router.hasRoute('languages2'),to);
-    if (router.hasRoute(to.name)){
+    if (router.hasRoute(to.name)) {
         next();
     }
 

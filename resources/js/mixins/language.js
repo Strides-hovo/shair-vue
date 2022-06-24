@@ -1,4 +1,6 @@
 import apiRoutes from "../routes/api-routes";
+import {mapActions, mapGetters} from "vuex";
+
 
 export default {
     data: () => ({
@@ -13,13 +15,12 @@ export default {
             name: '',
             status: true
         },
-        languages: [],
         languageIds: [],
         language: {},
     }),
     methods: {
-        createLanguage() {
 
+        createLanguage() {
             axios.post(apiRoutes('language.store'), this.newLanguage).then(response => {
                 if (response.data.status === 'Success') {
                     this.new_lang_modal = !this.new_lang_modal;
@@ -66,12 +67,15 @@ export default {
         },
         updateStatus(id, status) {
             axios.put(apiRoutes('language.update', id), { status });
-        }
+        },
+        ...mapActions(['lang/allLanguages']),
+    },
+    computed: {
+        ...mapGetters({ languages: 'lang/getLanguages'})
     },
     mounted() {
-        axios.get(apiRoutes('language.index')).then(response => {
-            this.languages = response.data.data || [];
-        });
+        this['lang/allLanguages']()
+
     }
 
 }

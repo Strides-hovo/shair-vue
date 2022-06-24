@@ -1,5 +1,7 @@
 import axios from "axios";
 import apiRoutes from "../../routes/api-routes";
+import { getField, updateField } from 'vuex-map-fields';
+
 
 const state = {
     languages: []
@@ -18,11 +20,13 @@ const actions = {
 const mutations = {
     setLanguage:(state, languages) =>{
         state.languages = languages
-    }
+    },
+    updateField
 };
 
 
 const getters = {
+    getField,
     getLanguages(state){
         return state.languages;
     },
