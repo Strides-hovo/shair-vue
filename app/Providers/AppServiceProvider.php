@@ -33,7 +33,7 @@ class AppServiceProvider extends ServiceProvider
             ], $code);
         });
 
-        Response::macro('error',function ($message,int $code = 404): JsonResponse{
+        Response::macro('error',function (string $message,int $code = 404): JsonResponse{
             return response()->json([
                 'status' => 'Error',
                 'message' => $message

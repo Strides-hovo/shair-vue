@@ -15,7 +15,7 @@ class LanguageFactory extends Factory
             'name' => $this->faker->country(),
             'code' => $this->faker->languageCode() ,
             'dir' => $this->faker->randomElement(['ltr', 'rtl']),
-            'status' => $this->faker->randomElement(['0', '1']),
+            'status' => true,
         ];
     }
 }

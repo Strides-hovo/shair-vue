@@ -6,6 +6,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @method static where(string $string, bool $true)
+ */
 class Language extends Model
 {
     use HasFactory;
@@ -16,6 +19,11 @@ class Language extends Model
         'status' => 'boolean',
     ];
 
+
+    public static function actual(): Language
+    {
+        return self::where('status',true)->first();
+    }
 
 
 }

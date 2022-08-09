@@ -30,8 +30,8 @@ class VideoGalleryItemController extends Controller
             $ids = explode(',',$ids) ;
         }
 
-        VideoGalleryItem::whereIn('id',$ids)->delete();
+        $count = VideoGalleryItem::whereIn('id',$ids)->delete();
 
-        return response()->success( 'Gallery deleted' );
+        return response()->success( $count . ' Gallery deleted' );
     }
 }

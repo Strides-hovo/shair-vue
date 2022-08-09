@@ -34,7 +34,7 @@ class VideoGalleryController extends Controller
 
         $videoGallery->update($request->validated());
         debug($videoGallery);
-        return response()->success($videoGallery);
+        return response()->success($videoGallery->load('galleries'));
     }
 
 

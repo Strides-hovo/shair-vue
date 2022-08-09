@@ -1,21 +1,26 @@
 const mix = require('laravel-mix');
-const path = require('path');
-/*
- |--------------------------------------------------------------------------
- | Mix Asset Management
- |--------------------------------------------------------------------------
- |
- | Mix provides a clean, fluent API for defining some Webpack build steps
- | for your Laravel applications. By default, we are compiling the CSS
- | file for the application as well as bundling up all the JS files.
- |
- */
+const path = require('path')
+require('laravel-mix-simple-image-processing')
 
-mix.js('resources/js/app.js', 'public/js')
-    .vue()
+mix
+    .js(
+        'resources/js/app.js',
+        'public/assets/js'
+    )
+    .vue({version: 3})
+    .options({
+        processCssUrls: false,
+    })
+
+    .imgs({
+        source: 'resources/js/assets/img',
+        destination: 'public/img',
+    })
     .alias({
-    '@': path.join(__dirname, 'resources/js'),
-    '@mixin': path.join(__dirname, 'resources/js/mixins'),
-    '@css': path.join(__dirname,'public/css'),
-    '@img': path.join(__dirname,'public/img'),
-}).webpackConfig(require('./webpack.config'));
+        '@': path.join(__dirname, 'resources/js'),
+        '@backend': path.join(__dirname, 'resources/js/backend'),
+        '@frontend': path.join(__dirname, 'resources/js/frontend'),
+        '@img': path.join(__dirname,'resources/js/assets/img'),
+    })
+    .disableNotifications()
+    .version();

@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\VideoGalleryItem;
 use Illuminate\Foundation\Http\FormRequest;
 
 class VideoGalleryItemRequest extends FormRequest
@@ -33,6 +34,6 @@ class VideoGalleryItemRequest extends FormRequest
 
     public function prepareForValidation(): void
     {
-        StrPrepareForValidation($this,'video');
+        StrPrepareForValidation($this,VideoGalleryItem::class,'video');
     }
 }

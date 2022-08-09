@@ -1,0 +1,112 @@
+
+<router-view v-if="this.$route.name === 'VideoGallery'"  ></router-view>
+
+<div v-else style="width: 100%;">
+    <div class="cart-btns">
+        <div class="cart-btns__item branches-new-btn btn circle" @click="ButtonNewPageModal = true">
+            <img src="@img/icons/add-icon.svg" alt="">
+        </div>
+    </div>
+
+  <str-modal :is-active="ButtonNewPageModal"  HeaderText="Добовить новый страницу" @closeModal="closeNewPageModal">
+
+      <div class="container-content__body-info">
+          <div class="table-img__info-item">
+              <span>Page Name:</span>
+              <input type="text" placeholder="סוכה כשרה" v-model="NewVideoGallery.title">
+          </div>
+          <div class="table-img__info-item">
+                <span>Sorting:</span>
+              <label>
+                  <select v-model="NewVideoGallery.sorting">
+                      <option :value="sort" v-for="sort in (VideoGallery.length + 1)">{{ sort }}</option>
+                  </select>
+              </label>
+          </div>
+
+          <div class="table-img__info-item">
+              <span>Slug: </span>
+              <input type="text" placeholder="" v-model="NewVideoGallery.slug">
+          </div>
+          <div class="table-img__info-item">
+				<span>Meta Title:</span>
+              <input type="text" placeholder="Hebrew" v-model="NewVideoGallery.meta_title">
+          </div>
+            <button class="cart-btns__item branches-new-btn btn circle" @click="saveNewGallery"> Save </button>
+      </div>
+
+  </str-modal>
+
+
+  
+    <div class="container-content">
+        <div class="container-content__top">
+            <div class="container-content__top-row">
+
+                <LanguageSelect
+                        v-model:language_id="languageId"
+                        :actual-languages="actualLanguages"
+                />
+                <div class="container-content__top-title">
+                    עמודי מדיה
+                    <span>
+                        Фотогалереи 2
+                    </span>
+                </div>
+            </div>
+
+        </div>
+        <div class="container-content__body">
+            <table class="orders cupons shipping-cities branches gallery-img">
+                <thead>
+                    <tr>
+                        <td>
+                            Название
+                        </td>
+                        <td>
+                            сортировка
+                        </td>
+                        <td>
+                            Действия
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="order-row" v-for="gallery in VideoGallery" :key="gallery.id">
+                        <td>
+                            {{ gallery.title }}
+                        </td>
+                        <td>
+                            <label>
+                                <select v-model="gallery.sorting" :value="gallery.sorting"
+                                    @change="UpdateGalleryField({id: gallery.id, sorting: $event.target.value})">
+                                    <option v-for="item in (VideoGallery.length > 5 ? VideoGallery.length : 5)" :value="item"
+                                        :selected="item === gallery.sorting">{{ item }}
+                                    </option>
+                                </select>
+                            </label>
+                        </td>
+                        <td>
+                            <div>
+                                <span class="articles-delete-btn" @click="DeleteVideoGallery(gallery.id)">
+                                    <img :src="require('@img/icons/delete-ico.svg').default" alt="">
+                                </span>
+                                <router-link
+                                    :to="{ name: 'VideoGallery', params: { id: gallery.id  } }"
+                                    :class="'branches-edit-btn'" :videoGaller="gallery"  >
+
+                                    <img src="@img/icons/edit-ico.svg" alt="">עריכה
+                                </router-link>
+
+                                <span @click="UpdateGalleryField({id: gallery.id, status: !gallery.status })">
+                                    <img :src="gallery.status ? showIcon : unshow">להציג
+                                </span>
+                            </div>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

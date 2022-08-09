@@ -4221,38 +4221,16 @@ table.orders.business.kashruet td:last-child {
 }
 
 .products-modal-edit {
-  position: fixed;
-  z-index: 10;
+
   height: 100vh;
-  left: 0;
-  background: #FBFBFB;
   padding: 15px 20px;
   width: 450px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-transition: all .5s ease;
-  -o-transition: all .5s ease;
-  transition: all .5s ease;
-  -webkit-transform: translate(-100%, 0);
-      -ms-transform: translate(-100%, 0);
-          transform: translate(-100%, 0);
-  pointer-events: none;
-  visibility: hidden;
+ flex-direction: column;
   border-right: 1px solid #BFBFBF;
 }
 
-.products-modal-edit.active {
-  -webkit-transform: translate(0);
-      -ms-transform: translate(0);
-          transform: translate(0);
-  pointer-events: all;
-  visibility: visible;
-}
+
 
 .products-modal-edit__close {
   cursor: pointer;
@@ -4337,38 +4315,17 @@ table.orders.business.kashruet td:last-child {
 }
 
 .products-modal-size {
-  position: fixed;
-  z-index: 10;
+
   height: 100vh;
-  left: 0;
-  background: #FBFBFB;
+ 
   padding: 15px 20px;
   width: 530px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-transition: all .5s ease;
-  -o-transition: all .5s ease;
-  transition: all .5s ease;
-  -webkit-transform: translate(-100%, 0);
-      -ms-transform: translate(-100%, 0);
-          transform: translate(-100%, 0);
-  pointer-events: none;
-  visibility: hidden;
+ flex-direction: column;
   border-right: 1px solid #BFBFBF;
 }
 
-.products-modal-size.active {
-  -webkit-transform: translate(0);
-      -ms-transform: translate(0);
-          transform: translate(0);
-  pointer-events: all;
-  visibility: visible;
-}
+
 
 .products-modal-size__top {
   display: -webkit-box;
@@ -4393,7 +4350,7 @@ table.orders.business.kashruet td:last-child {
   border: 1px solid #286B9E;
   padding: 3px;
   position: relative;
-  display: none;
+  display: flex;
 }
 
 .products-modal-size__new.active {
@@ -4698,38 +4655,15 @@ table.orders.business.kashruet td:last-child {
 }
 
 .products-modal-seo {
-  position: fixed;
-  z-index: 10;
   height: 100vh;
-  left: 0;
-  background: #FBFBFB;
   padding: 15px 20px;
   width: 450px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-transition: all .5s ease;
-  -o-transition: all .5s ease;
-  transition: all .5s ease;
-  -webkit-transform: translate(-100%, 0);
-      -ms-transform: translate(-100%, 0);
-          transform: translate(-100%, 0);
-  pointer-events: none;
-  visibility: hidden;
   border-right: 1px solid #BFBFBF;
 }
 
-.products-modal-seo.active {
-  -webkit-transform: translate(0);
-      -ms-transform: translate(0);
-          transform: translate(0);
-  pointer-events: all;
-  visibility: visible;
-}
+
 
 .products-modal-seo__close {
   cursor: pointer;
@@ -4786,6 +4720,11 @@ table.orders.business.kashruet td:last-child {
   color: #2B2B2B;
   border-bottom: 1px solid #B7B7B7;
   width: 100%;
+  
+}
+
+.products-modal-seo__content-item textarea{
+  text-decoration: underline;
 }
 
 .products-modal-seo__content-item input::-webkit-input-placeholder, .products-modal-seo__content-item textarea::-webkit-input-placeholder {

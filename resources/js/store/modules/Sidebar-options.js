@@ -1,22 +1,27 @@
 const SidebarOptions = [
     {
-        url: "/orders",
+        url: "/admin/orders",
         text: 'Заказы',
         isActive: false,
         hasItem: []
     },
     {
-        url: "/products",
+        url: "/admin/products",
         text: 'Продукты',
         isActive: false,
         hasItem: [
             {
-                url: "/products-create",
-                text: 'Добовить новый продукт',
+                url: "/admin/categories",
+                text: 'Категории',
                 hasItem: []
             },
             {
-                url: "/delivery",
+                url: "/admin/product",
+                text: 'Продукты',
+                hasItem: []
+            },
+            {
+                url: "/admin/delivery",
                 text: 'Доставка',
                 hasItem: []
             },
@@ -33,12 +38,12 @@ const SidebarOptions = [
         isActive: false,
         hasItem: [
             {
-                url: "/languages",
+                url: "/admin/languages",
                 text: 'Язык',
                 hasItem: []
             },
             {
-                url: "/settings",
+                url: "/admin/settings",
                 text: 'Настройки магазина',
                 hasItem: []
             },
@@ -50,20 +55,28 @@ const SidebarOptions = [
         isActive: false,
         hasItem: [
             {
-                url: "/library",
-                text: 'Библиотека',
-                hasItem: []
-            },
-            {
-                url: "/photo-galleries",
+                url: "/admin/page-photo",
                 text: 'Фото Галерия',
                 hasItem: []
             },
             {
-                url: "/video-galleries",
+                url: "/admin/page-video",
                 text: 'Видео Галерия',
                 hasItem: []
             },
+        ]
+    },
+    {
+        url: "#",
+        text: 'Страницы',
+        isActive: false,
+        hasItem: [
+            {
+                url: "/admin/about",
+                text: 'About',
+                hasItem: []
+            },
+            
         ]
     },
 ];

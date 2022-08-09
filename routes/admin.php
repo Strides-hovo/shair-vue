@@ -1,13 +1,23 @@
 <?php
 
 
-use App\Http\Controllers\PhotoGalleryItemController;
-use App\Http\Controllers\VideoGalleryController;
-use App\Http\Controllers\VideoGalleryItemController;
+
+use App\Http\Controllers\Galleries\PhotoPageController;
+use App\Http\Controllers\Galleries\PhotoPageGalleryController;
+
+use App\Http\Controllers\Galleries\VideoPageController;
+use App\Http\Controllers\Galleries\VideoPageGalleryController;
+
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProductPhotoController;
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 
-use App\Http\Controllers\PhotoGalleryController;
+
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\CategoryController;
+
 
 
 Route::post('register', [AuthController::class, 'register']);
@@ -27,20 +37,46 @@ Route::group(['prefix' => 'admin'],function (){
 
     Route::group([],function (){
 
-        Route::apiResource('photoGallery',PhotoGalleryController::class);
-        Route::apiResource('photoGalleryItems',PhotoGalleryItemController::class)->only(['store','update']);
-        Route::delete('photoGalleryItems/{ids}',[PhotoGalleryItemController::class,'destroy'])->name('photoGalleryItems.destroy');
+        Route::apiResource('photo-page',PhotoPageController::class)->except(['show']);
 
-        Route::apiResource('videoGallery',VideoGalleryController::class);
-        Route::apiResource('videoGalleryItems',VideoGalleryItemController::class)->only(['store','update']);
-        Route::delete('videoGalleryItems/{ids}',[VideoGalleryItemController::class,'destroy'])->name('videoGalleryItems.destroy');
+        Route::apiResource('photo-gallery',PhotoPageGalleryController::class)->only(['store','update']);
+        Route::delete('photo-gallery/{ids}',[PhotoPageGalleryController::class,'destroy'])->name('photo-gallery.destroy');
+
+
+        Route::apiResource('video-page',VideoPageController::class)->except(['show']);
+
+        Route::apiResource('video-gallery',VideoPageGalleryController::class)->only(['store','update']);
+        Route::delete('video-gallery/{ids}',[VideoPageGalleryController::class,'destroy'])->name('photo-gallery.destroy');
+
+
+       
 
     });
 
-
+    Route::group([],function(){
+        Route::apiResource('about', AboutController::class );
+        Route::post('about-update',[AboutController::class,'uploadImage'])->name('tiny.upload');
+    });
 
     Route::get('all-images/{type?}',[\App\Services\Images::class,'getImages'])->name('get.images');
     Route::post('image-upload',[\App\Services\Images::class,'upload'])->name('image.upload');
 
+
+
+    Route::group([],function (){
+        Route::apiResource('category',CategoryController::class)->except('show');
+        Route::apiResource('category-size',\App\Http\Controllers\CategorySizeController::class)->except(['show','index','destroy']);
+        Route::delete('category-size-destroy/{ids}',[\App\Http\Controllers\CategorySizeController::class,'destroy'])->name('category-size.destroy');
+
+        Route::apiResource('product',ProductController::class)->except(['show','destroy']);
+        Route::delete('product/{ids}', [ProductController::class,'destroy'])->name('product.destroy');
+        Route::apiResource('product-photo',ProductPhotoController::class)->only(['store','update']);
+        Route::delete('product-photo/{ids}', [ProductPhotoController::class,'destroy'])->name('product-photo.destroy');
+    });
+
+
+    Route::group(['prefix' => 'export'],function(){
+        Route::get('categories/', [CategoryController::class, 'export'])->name('category.export');
+    });
 
 });

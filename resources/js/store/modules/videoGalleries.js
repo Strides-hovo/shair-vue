@@ -1,117 +1,183 @@
-import apiRoutes from "../../routes/api-routes";
+import apiRoutes from "@/routes/api-routes";
 import axios from "axios";
 
 
 
 const state = {
     VideoGalleries: [],
+    Videos: []
 };
 
 const actions = {
 
-    addVideoGalleries({commit}, gallery) {
-        commit('addVideoGalleries', gallery)
+    async setVideos({commit}){
+        let images = await axios.get(apiRoutes('get.images'),{params: {type: 'video'}})
+        commit('setVideos',(await images.data))
     },
 
-    async allVideoGalleries({commit}) {
-        let galleries = await axios.get(apiRoutes('videoGallery.index'))
-        commit('allVideoGalleries', galleries.data.data)
+    async set({commit}) {
+        axios.get(apiRoutes('videoGallery.index')).then(response => {
+            commit('set', response.data.data)
+            return  response.data.data
+        });
     },
 
-    async createNewGallery({commit}, gallery) {
-        let response = await axios.post(apiRoutes('videoGallery.store'), gallery)
-        commit('createNewGallery', response.data.data)
-        return response.data.data
+    async create({commit},gallery){
+        try {
+            let response = await axios.post(apiRoutes('videoGallery.store'), gallery)
+            commit('add',(await response).data.data)
+        }
+        catch (e) {
+            alert(e.response.data.message)
+        }
     },
 
-    async createNewGalleryItem({commit}, galleryItem) {
-        let response = await axios.post(apiRoutes('videoGalleryItems.store'), galleryItem)
-        commit('createNewGalleryItem', response.data.data)
-        return response.data.data
+    async update({commit},gallery){
+        let response = axios.put(apiRoutes('videoGallery.update', gallery.id), gallery)
+        commit('update',(await response).data.data)
     },
 
-    async updateGallery({commit}, gallery) {
-        let response = await axios.put(apiRoutes('videoGallery.update', gallery.id), gallery)
-        commit('updateGallery', response.data.data)
+    async updateField({commit},gallery){
+       await axios.put(apiRoutes('videoGallery.update', gallery.id), gallery);
+        commit('updateField',gallery)
     },
 
-    async updateGalleryItem({commit}, galleryItem) {
-        let response = await axios.put(apiRoutes('videoGalleryItems.update', galleryItem.id), galleryItem)
-        commit('updateGalleryItem', galleryItem)
+
+    async destroy({commit},id){
+        try{
+            await axios.delete(apiRoutes('videoGallery.destroy', id))
+            commit('destroy',id)
+        }
+        catch (e) {
+            alert(e.response.data.message)
+        }
     },
 
-    async DeleteVideoGallery({commit}, id) {
-        await axios.delete(apiRoutes('videoGallery.destroy', id))
-        commit('DeleteVideoGallery', id)
+
+
+    async createItem({commit},galleryItem){
+        try {
+            let response = await axios.post(apiRoutes('videoGalleryItem.store'), galleryItem)
+            commit('addItem',(await response).data.data)
+        }
+        catch (e) {
+            alert(e.response.data.message)
+        }
     },
 
-    DeleteVideoGalleryItem({commit}, ids) {
-        axios.delete(apiRoutes('videoGalleryItems.destroy', ids))
-        commit('DeleteVideoGalleryItem', ids)
-    }
 
-};
+    async updateItem({commit},galleryItem){
+        let response = axios.put(apiRoutes('videoGalleryItem.update', galleryItem.id), galleryItem)
+        commit('updateItem',(await response).data.data)
+    },
+
+    async updateItemField({commit},galleryItem){
+        axios.put(apiRoutes('videoGalleryItem.update', galleryItem.id),  galleryItem );
+        commit('updateItemField',galleryItem)
+    },
+
+
+    async destroyItem({commit},ids){
+        console.log(ids)
+        try{
+            await axios.delete(apiRoutes('videoGalleryItem.destroy', ids))
+            commit('destroyItem',ids)
+        }
+        catch (e) {
+            alert(e.response.data.message)
+        }
+    },
+
+
+
+
+
+}
 
 const mutations = {
 
-    addVideoGalleries(state, gallery) {
-        state.VideoGalleries = gallery
+    setVideos: (state, videos) => {
+        state.videos = videos
+        console.log('lll', state.videos)
     },
 
-    allVideoGalleries(state, galleries) {
+    set: (state, galleries) =>{
         state.VideoGalleries = galleries
     },
 
-    createNewGallery(state, gallery) {
+    add: (state, gallery) =>{
+        gallery.status = true
         state.VideoGalleries.push(gallery)
     },
 
-    createNewGalleryItem(state, galleryItem) {
+    update:(state,gallery) =>{
+        state.VideoGalleries = state.VideoGalleries.map(g => {
+            return g.id === gallery.id ? gallery : g
+        })
+    },
 
+    updateField: (state, gallery) =>{
+        state.VideoGalleries = state.VideoGalleries.map(g => {
+            if(g.id === gallery.id ){
+                if (typeof gallery.status !== 'undefined' ){
+                    g.status = gallery.status
+                }
+                else{
+                    g.sorting = gallery.sorting
+                }
+            }
+            return g
+        })
+    },
+
+
+    destroy:(state,id)=>{
+        state.VideoGalleries = state.VideoGalleries.filter(g => g.id !== id)
+    },
+
+
+
+    addItem: (state, galleryItem) => {
         state.VideoGalleries
             .map(gallery => {
-                if (gallery.id === +galleryItem.video_gallery_id ) {
-                    if (gallery.galleries) {
-                        gallery.galleries.push(galleryItem)
-                    } else {
-                        gallery.galleries = [galleryItem]
-                    }
-
+                if (gallery.id === +galleryItem.video_gallery_id) {
+                    gallery.galleries ? gallery.galleries.push(galleryItem) : gallery.galleries = [galleryItem]
                 }
             })
     },
 
-    updateGallery(state, gallery) {
-
-        state.VideoGalleries.map(g => {
-            if (g.id === +gallery.id) {
-                g = gallery
-            }
-        })
-    },
-
-    updateGalleryItem(state, galleryItem) {
-
+    updateItem:(state,galleryItem) =>{
         state.VideoGalleries.map(gallery => {
             if (gallery.id === +galleryItem.video_gallery_id) {
                 let index = gallery.galleries.findIndex(item => item.id === galleryItem.id)
-                galleryItem.image_name ? gallery.galleries[index] = galleryItem : gallery.galleries[index].image = galleryItem.image
+                galleryItem.video_name ? gallery.galleries[index] = galleryItem : gallery.galleries[index].video = galleryItem.video
             }
         })
-
-    },
-
-    DeleteVideoGallery(state, id) {
-        state.VideoGalleries = state.VideoGalleries.filter(p => p.id !== id)
     },
 
 
-    DeleteVideoGalleryItem(state, ids) {
+    updateItemField: (state, galleryItem) =>{
+        state.VideoGalleries = state.VideoGalleries.map(gallery => {
+            let index = gallery.galleries.findIndex(item => item.id === galleryItem.id)
+            galleryItem.status
+                ? gallery.galleries[index].status = galleryItem.status
+                : gallery.galleries[index].sorting = galleryItem.sorting
+
+            return gallery
+        })
+    },
+
+
+    destroyItem: (state, ids) =>{
         state.VideoGalleries = state.VideoGalleries.map(p => {
             p.galleries = p.galleries.filter(g => !ids.includes(g.id))
             return p
         })
-    }
+    },
+
+
+
+
 
 };
 
@@ -128,9 +194,12 @@ const getters = {
 
     getVideoGalleryByLanguageId: (state) => (languageId) => {
         return state.VideoGalleries.filter(g => g.page.language_id === +languageId)
-    }
+    },
 
-};
+    getVideos (state) {
+        return state.videos
+    }
+}
 
 export default {
     namespaced: true, state, getters, actions, mutations

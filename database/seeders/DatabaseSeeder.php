@@ -7,6 +7,7 @@ use App\Models\Image;
 use App\Models\Language;
 use App\Models\PageVideoGallery;
 use App\Models\Product;
+
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -19,12 +20,12 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             LanguageSedder::class,
-            PagePhotoGallerySeeder::class,
-            PhotoGallerySeeder::class,
-            PhotoGalleriesItemSeeder::class,
-            PageVideoGallerySeeder::class,
-            VideoGallerySeeder::class,
-            VideoGalleryItemSeeder::class
+            CategorySeeder::class,
+            ProductSeeder::class,
+            PhotoPageSedder::class,
+            
+            VideoPageSeeder::class,
+           
         ]);
 
     }

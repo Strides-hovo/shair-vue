@@ -1,0 +1,85 @@
+
+<router-view v-if="this.$route.name === 'BackendPhoto'"  ></router-view>
+
+<div v-else style="width: 100%;">
+    <div class="cart-btns">
+        <div class="cart-btns__item branches-new-btn btn circle" @click="ButtonNewPageModal = true">
+            <img src="@img/icons/add-icon.svg" alt="">
+        </div>
+    </div>
+
+    <add-page 
+    :ButtonNewPageModal="ButtonNewPageModal"
+    :NewPage="NewPage"
+    :SortLength="PhotoPages.length"
+    @closeModal="closeNewPageModal"
+    @saveNewPage="saveNewPage"
+    />
+
+    <div class="container-content">
+        <div class="container-content__top">
+            <div class="container-content__top-row">
+
+                <div class="container-content__top-title">
+                    עמודי מדיה
+                    <span>
+                        Фотогалереи 2
+                    </span>
+                </div>
+            </div>
+
+        </div>
+        <div class="container-content__body">
+            <table class="orders cupons shipping-cities branches gallery-img">
+                <thead>
+                    <tr>
+                        <td>
+                            Название
+                        </td>
+                        <td>
+                            сортировка
+                        </td>
+                        <td>
+                            Действия
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr class="order-row" v-for="page in PhotoPages" :key="page.id">
+                        <td>
+                            {{ page.translate.name }}
+                        </td>
+                        <td>
+                            <label>
+                                <select v-model="page.sorting" :value="page.sorting"
+                                    @change="UpdatePage({id: page.id, sorting: $event.target.value} )">
+                                    <option v-for="item in (PhotoPages.length > 5 ? PhotoPages.length : 5)" :value="item"
+                                        :selected="item === page.sorting">{{ item }}
+                                    </option>
+                                </select>
+                            </label>
+                        </td>
+                        <td>
+                            <div>
+                                <span class="articles-delete-btn" @click="DeletePage(page.id)">
+                                    <img src="@img/icons/delete-ico.svg" alt="">
+                                </span>
+                                <router-link
+                                    :to="{ name: 'BackendPhoto', params: { id: page.id  } }"
+                                    class="branches-edit-btn"  >
+                                    <img src="@img/icons/edit-ico.svg" alt="">עריכה
+                                </router-link>
+
+                                <span @click="UpdatePage({ id: page.id, status: !page.status })">
+                                    <img :src="page.status ? showIcon : unshow">להציג
+                                </span>
+                            </div>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

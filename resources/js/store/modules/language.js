@@ -1,43 +1,125 @@
 import axios from "axios";
-import apiRoutes from "../../routes/api-routes";
-import { getField, updateField } from 'vuex-map-fields';
-
+import apiRoutes from "@/routes/api-routes";
 
 const state = {
-    languages: []
+    languages: [],
+    SITE_LANGUAGE: {},
+    languageId: null
 };
 
 const actions = {
-   async allLanguages({commit}) {
-       axios.get(apiRoutes('language.index')).then(response => {
-            commit('setLanguage', response.data.data)
-            return  response.data.data
-       });
+
+   async set({commit}) {
+     const response = await axios.get(apiRoutes('language.index'));
+    const languages = await response.data.data
+        commit('setLanguages', languages)
+        commit('SET_SITE_LANGUAGE')
+        
+        
+    },
+
+   async create({commit},language){
+       try {
+           let response = await axios.post(apiRoutes('language.store'), language)
+           commit('add',(await response).data.data)
+       }
+       catch (e) {
+           alert(e.response.data.message)
+       }
+   },
+
+   async update({commit},language){
+       let response = axios.put(apiRoutes('language.update', language.id), language)
+        commit('update',(await response).data.data)
+    },
+
+    async updateStatus({commit},language){
+        axios.put(apiRoutes('language.update', language.id), { status: language.status });
+        commit('updateStatus',language)
+    },
+
+   async destroy({commit},languageIds){
+       try{
+          await axios.delete(apiRoutes('language.destroy', languageIds), { ids: languageIds })
+           commit('destroy',languageIds)
+           commit('setSiteLanguage')
+       }
+       catch (e) {
+           alert(e.response.data.message)
+       }
     }
 
 };
 
 const mutations = {
-    setLanguage:(state, languages) =>{
+
+    setLanguages: (state, languages) => {
         state.languages = languages
+        
     },
-    updateField
+
+    add:(state,language) =>{
+        state.languages.push(language)
+    },
+ 
+    update:(state,language) =>{
+        state.languages = state.languages.map(lang => {
+            return lang.id === language.id ? language : lang
+        })
+    },
+
+    updateStatus: (state, language) =>{
+        state.languages = state.languages.map(lang => {
+             lang.id === language.id ? lang.status = language.status : lang.status
+            return lang
+        })
+    },
+
+    destroy:(state,languageIds)=>{
+        state.languages = state.languages.filter(lang => !languageIds.includes(lang.id))
+    },
+
+    SET_SITE_LANGUAGE: (state,language_id = null) =>{
+        state.SITE_LANGUAGE = language_id ? state.languages.find(lang => lang.id === +language_id) : state.languages[0]
+        
+    },
+ 
+    // setLanguageId: (state, language_id = null) => {
+    //     state.languageId = language_id ? language_id : state.languages[0].id
+    // },
+
+    setAdminLanguageId: (state, languageId) => {
+        state.languageId = languageId
+    }
 };
 
-
+ 
 const getters = {
-    getField,
-    getLanguages(state){
-        return state.languages;
-    },
 
-    getActualLanguages(state){
-        return state.languages.filter(language => language.status == 1)
+    getLanguages: (state) => state.languages,
+
+    getActualLanguages: (state) => {
+        return state.languages.filter(language => language.status === true)
     },
 
     getLanguageById: (state) => (id) => {
         return state.languages.find(thing => thing.id === id)
-      }
+    },
+
+
+    getlanguageId: (state) => {
+        return state.languageId !== null 
+        ? state.languageId 
+        : (state.languages.length > 0 ? state.languages[0].id : null)
+    },
+
+    getLanguage: (state) => {
+        return state.languageId !== null
+        ? state.languages.find(thing => thing.id === state.languageId)
+            : {}
+    },
+
+    GET_SITE_LANGUAGE: state => state.SITE_LANGUAGE
 };
 
 export default  {

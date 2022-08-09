@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\LanguageRequest;
 use App\Models\Language;
+use Exception;
 use Illuminate\Http\Request;
 
 class LanguageController extends Controller
@@ -36,12 +37,13 @@ class LanguageController extends Controller
 
     public function update(LanguageRequest $request,  $id )
     {
-        debug($request->all());
+
         $language = Language::find($id);
         try {
             $language->fill($request->validated());
             $language->save();
-        } catch (\Exception $e) {
+        }
+        catch (\Exception $e) {
             return response()->error($e->getMessage());
         }
 
@@ -53,21 +55,16 @@ class LanguageController extends Controller
     {
 
         Language::whereIn('id', explode(',', $ids))->each(function ($language) {
-
             try {
                 $language->delete();
-            } catch (\Exception $e) {
-                $this->error_message[] = 'Languages cannot be deleted';
+                return response()->success(Language::all());
             }
-
-            /*foreach ($language->getAllRelations()['Illuminate\Database\Eloquent\Relations\HasMany'] as $relation) {
-                if ($language->$relation ){
-                    $language->$relation()->update(['language_id'  => 1]) ;
-                }
-            }*/
-
+            catch ( \Exception $e) {
+                report($e);
+                $this->error_message = 'Languages cannot be deleted';
+                return response()->error( $this->error_message );
+            }
         });
-
-        return response()->success(Language::all(), 200, $this->error_message);
+        return response()->error( $this->error_message );
     }
 }

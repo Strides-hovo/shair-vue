@@ -1,0 +1,193 @@
+<div class="cart-btns">
+  <div
+    class="cart-btns__item peoducts-add-new btn circle"
+    @click="ButtonNewCategory = true"
+  >
+    <img src="@img/icons/add-icon.svg" alt="" />
+  </div>
+  <div class="cart-btns__item btn" @click="exportdata">export excel</div>
+</div>
+<div class="left_aside">
+  <LeftAside
+    :is-active="ButtonLeftAside"
+    @CloseLeftAside="CloseLeftAside"
+  ></LeftAside>
+</div>
+
+<StrModal
+  :is-active="ButtonNewCategory"
+  HeaderText="Добовить новый Категорию "
+  @closeModal="closeNewCategoryModal"
+  width="600px"
+>
+  test
+</StrModal>
+
+<div class="container-content">
+  <div class="container-content__top">
+
+    <LanguageSelect
+      v-model:language_id="languageId"
+      />
+
+    <div class="container-content__top-title">
+      הגדרות מוצרים
+      <span> קטגוריות וגדלים </span>
+    </div>
+  </div>
+ 
+  <teleport to=".productpage-modal" v-if="Teleport">
+    <transition name="fade">
+      <div class="products-modal-edit" v-if="ButtonEdit">
+        <div class="products-modal-edit__title">Name</div>
+        <div class="products-modal-edit__content">
+          <div class="products-modal-edit__content-item">
+            <span>שם של הקטגוריה: </span>
+            <input
+              type="text"
+              placeholder="סוכה טלסקופית"
+              v-model="category.translate.name"
+            />
+          </div>
+        </div>
+        <div class="products-modal-edit__btn btn" @click="update">שמור</div>
+      </div>
+    </transition>
+  </teleport>
+
+  <teleport to=".productpage-modal" v-if="Teleport">
+    <transition name="fade">
+      <div class="products-modal-size" v-if="ButtonSize">
+        <div class="products-modal-size__top">
+          <span>
+            <img src="@img/icons/div-ico.svg" alt="" />
+          </span>
+          <div
+            class="products-modal-size__add"
+            @click="ButtonNewSize = !ButtonNewSize"
+            :class="{ 'active': ButtonNewSize }"
+          >
+            <img src="@img/icons/close.svg" alt="" />
+          </div>
+          <div class="products-modal-size__title">
+            גדלים עבור מסגרת סוכה טלסקופית
+          </div>
+        </div>
+
+        <StrSize
+          :sizes="category.sizes"
+          :category_id="category.id"
+          @FilterSizes="FilterSizes"
+          :ButtonNewSize="ButtonNewSize"
+        />
+      </div>
+    </transition>
+  </teleport>
+
+  <teleport to=".productpage-modal" v-if="Teleport">
+    <transition name="fade">
+      <div class="products-modal-seo" v-if="ButtonSeo">
+        <div class="products-modal-seo__title">הגדרות products</div>
+        <div class="products-modal-seo__content">
+        
+          <div class="products-modal-seo__content-item">
+            <span>Meta Title: </span>
+            <input
+              type="text"
+              placeholder="סוכה טלסקופית"
+              v-model="category.translate.meta_title"
+            />
+          </div>
+          <div class="products-modal-seo__content-item">
+            <span>Meta Description:</span>
+            <input
+              type="text"
+              placeholder="סוכה טלסקופית"
+              v-model="category.translate.meta_keywords"
+            />
+          </div>
+          <div class="products-modal-seo__content-item">
+            <span>טקסט בתחתית:</span>
+            <textarea
+              placeholder="Description"
+              v-model="category.translate.description"
+            ></textarea>
+          </div>
+        </div>
+        <div class="products-modal-seo__btn btn" @click="update">שמור</div>
+      </div>
+    </transition>
+  </teleport>
+
+  <div class="container-content__body">
+    <table class="orders products">
+      <thead>
+        <tr>
+          <td>קטגוריות</td>
+          <td>מיקום</td>
+          <td>פעולות</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="order-row" v-for="cat in categories">
+          <td>{{ cat.translate.name }}</td>
+          <td>
+            <label>
+              <select
+                v-model="cat.sorting"
+                :value="cat.sorting"
+                @change="UpdateField({ id: cat.id, sorting: $event.target.value })"
+              >
+                <option
+                  v-for="item in (categories.length > 5 ? categories.length : 5)"
+                  :value="item"
+                  :selected="item === cat.sorting"
+                >
+                  {{ item }}
+                </option>
+              </select>
+            </label>
+          </td>
+          <td>
+            <div>
+              <span class="products-delete-btn" @click="destroy( cat )">
+                <img src="@img/icons/delete-ico.svg" alt="" />
+              </span>
+              <span
+                class="products-show-btn"
+                @click="UpdateField({ id: cat.id, status: !cat.status })"
+              >
+                <img
+                  :src="cat.status ? '/img/icons/show.svg' : '/img/icons/notshow.svg'"
+                  alt=""
+                />
+                להציג
+              </span>
+              <span
+                class="products-seo-btn"
+                @click="OpenLeftAside('ButtonSeo', cat.id)"
+              >
+                <img src="@img/icons/seo.svg" alt="" />
+                SEO
+              </span>
+              <span
+                class="products-size-btn"
+                @click="OpenLeftAside('ButtonSize', cat.id)"
+              >
+                <img src="@img/icons/link-ico.svg" alt="" />
+                מידות
+              </span>
+              <span
+                class="products-edit-btn"
+                @click="OpenLeftAside('ButtonEdit', cat.id)"
+              >
+                <img src="@img/icons/edit-ico.svg" alt="" />
+                עריכה
+              </span>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

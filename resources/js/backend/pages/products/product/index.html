@@ -1,0 +1,156 @@
+
+
+
+<left-aside :is-active="ButtonSetting" @CloseLeftAside="ButtonSetting = false">
+  <div class="productpage-modal__top">
+    <div class="productpage-modal__top-item">
+      <span>Page Slug:</span>
+      <input type="text" placeholder="אנא הזינו שם לעמוד ב URL" v-model="product.translate.slug" />
+    </div>
+  </div>
+  <div class="productpage-modal__content">
+    <div class="productpage-modal__content-title">הגדרות META:</div>
+    <div class="productpage-modal__content-item">
+      <span>Page Title:</span>
+      <input type="text" placeholder="אנא הזינו Page Title" v-model="product.translate.meta_title" />
+    </div>
+    <div class="productpage-modal__content-item">
+      <span>:Meta Description </span>
+      <input type="text" placeholder="אנא הזינו Meta Description" v-model="product.translate.meta_description" />
+    </div>
+    <div class="productpage-modal__content-item">
+      <span>Meta Keywords:</span>
+      <input type="text" placeholder="אנא הזינו Meta Keywords"  v-model="product.translate.meta_keywords" />
+    </div>
+  </div>
+  <div class="productpage-modal__btn btn" @click="SaveProduct">שמור</div>
+</left-aside>
+
+<div class="product-new">
+  <div class="product-new__bg"></div>
+  <div class="product-new__content">
+    <div class="product-new__content-top">
+      <span class="product-new__close">
+        <img src="@img/icons/close.svg" alt="" />
+      </span>
+      <div class="product-new__content-div">
+        <img src="@img/icons/div-ico.svg" alt="" />
+      </div>
+      <div class="search">
+        <button>חפש</button>
+        <input type="text" placeholder="חיפוש לפי שם מוצר " />
+      </div>
+      <div class="container-content__submenu-select">
+        <label>
+          <select>
+            <option value="כל המוצרים">כל המוצרים</option>
+            <option value="כל המוצרים">כל המוצרים</option>
+            <option value="כל המוצרים">כל המוצרים</option>
+          </select>
+        </label>
+        <span> מוצרים לתצוגה: </span>
+      </div>
+      <span class="product-new__title"> הוספת מוצרים משלימים </span>
+    </div>
+    <div class="product-new-modal__content">
+      <table class="orders productspage product-products">
+        <thead>
+          <tr>
+            <td>
+              <label>
+                <input type="checkbox" />
+                <span class="fake"></span>
+              </label>
+            </td>
+            <td>תמונה של המוצר</td>
+            <td>שם המוצר</td>
+            <td>קטגוריה</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="order-row">
+            <td>
+              <label>
+                <input type="checkbox" />
+                <span class="fake"></span>
+              </label>
+            </td>
+            <td>
+              <img src="@img/article-img.png" alt="" />
+            </td>
+            <td>בד אוקספורד לסוכה</td>
+            <td>סוכות לנצח</td>
+          </tr>
+          <tr class="order-row">
+            <td>
+              <label>
+                <input type="checkbox" />
+                <span class="fake"></span>
+              </label>
+            </td>
+            <td>
+              <img src="@img/article-img.png" alt="" />
+            </td>
+            <td>בד אוקספורד לסוכה</td>
+            <td>סוכות לנצח</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="product-new-modal__btn btn">שמור</div>
+  </div>
+</div>
+
+
+<div class="container-content">
+  <div class="container-content__top container-content__top_tabs">
+    <div class="container-content__top-row">
+      <div class="settings-btn productpage-params__btn" @click="ButtonSetting = true">
+        <img src="@img/icons/settings.svg" alt="" />
+      </div>
+
+      <LanguageSelect  />
+
+      <div class="container-content__top-title">
+        הגדרות מוצרים
+        <span class="with-info">
+          מוצרים למכירה <span>/ בד אוקספורד לסוכה</span>
+        </span>
+      </div>
+    </div>
+    <div class="container-content__top-row">
+      <div class="container-content__tabs tabs">
+        <span
+          class="container-content__tabs-item"
+          :class="{active: activeTabs === 'options'}"
+          @click="activeTabs = 'options'"
+        >
+          информация о продукте
+        </span>
+        <span
+          class="container-content__tabs-item"
+          :class="{active: activeTabs === 'complementary'}"
+          @click="activeTabs = 'complementary'"
+        >
+          Дополнительные продукты
+        </span>
+        <span
+          class="container-content__tabs-item"
+          :class="{active: activeTabs === 'photo'}"
+          @click="activeTabs = 'photo'"
+        >
+          Фото и видео
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <photo-video v-if="activeTab('photo')" :photos="product.photos" :product_id="product.id" />
+  <options v-if="activeTab('options')"
+           :product="product"
+           :categories="categories"
+           v-model:category_id="category_id"
+           @update:Instruction_file="Instruction_file"
+  />
+  <complementary v-if="activeTab('complementary')" />
+</div>
