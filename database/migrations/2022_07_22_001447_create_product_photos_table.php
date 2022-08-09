@@ -13,7 +13,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('product_id')->constrained()->onDelete('cascade');
             $table->string('image');
-            $table->string('name');
+            $table->string('name')->nullable();
             $table->integer('sorting')->default(1);
             $table->boolean('by_default')->default(false);
 
