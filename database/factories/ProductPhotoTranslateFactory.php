@@ -17,7 +17,7 @@ class ProductPhotoTranslateFactory extends Factory
      * @return array<string, mixed>
      */
     public function definition()
-    {
+    { 
         return [
             'language_id' => Language::all()->random()->id,
             'product_photo_id' => ProductPhoto::all()->random()->id,
@@ -25,8 +25,5 @@ class ProductPhotoTranslateFactory extends Factory
             'title' => $this->faker->title,
             
         ];
-
-
-
     }
 }
