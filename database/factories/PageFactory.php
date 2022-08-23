@@ -24,7 +24,7 @@ class PageFactory extends Factory
             ],
         ];
         
-            Page::insert($date);
+            Page::insert($dates);
         
 
 
@@ -45,7 +45,7 @@ class PageFactory extends Factory
             ],
         ];
         
-        PageTranslate::insert($date);
+        PageTranslate::insert($translates);
         
 
     }
