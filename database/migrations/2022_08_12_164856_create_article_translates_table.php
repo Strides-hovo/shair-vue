@@ -23,7 +23,7 @@ return new class extends Migration
             $table->text('footer_text')->nullable();
             $table->string('image_alt')->nullable();
             $table->string('image_title')->nullable();
-            $table->string('image_name')->nullable();
+            
             meta_migrations($table);
         });
     }

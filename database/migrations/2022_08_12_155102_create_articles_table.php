@@ -16,6 +16,7 @@ return new class extends Migration
 
             $table->date('published_at')->nullable()->useCurrent();
             $table->string('image')->nullable();
+            $table->string('image_name')->nullable();
             $table->boolean('status')->default(true);
             $table->integer('sorting')->default(1);
             $table->timestamps();
