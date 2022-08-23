@@ -23,9 +23,9 @@ class PageFactory extends Factory
                 'sub_menu' => true,
             ],
         ];
-        foreach ($dates as $date){
-            Page::create($date);
-        }
+        
+            Page::insert($date);
+        
 
 
         $translates = [
@@ -44,10 +44,9 @@ class PageFactory extends Factory
                 'language_id' => 1,
             ],
         ];
-
-        foreach ($translates as $date){
-            PageTranslate::create($date);
-        }
+        
+        PageTranslate::insert($date);
+        
 
     }
 }
