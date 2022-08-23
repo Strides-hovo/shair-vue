@@ -47,7 +47,7 @@ export default {
         NewPhoto: { image: null },
     }),
     computed: {
-        ...mapGetters({ languageId: 'lang/getlanguageId' })
+        ...mapGetters({ languageId: 'lang/getLanguageId' })
     },
     methods: {
 

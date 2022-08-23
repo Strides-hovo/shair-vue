@@ -2,29 +2,29 @@
 
 namespace App\Models;
 
+use App\InterFaces\MakeRelations;
+use App\Traits\MakeLanguages;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 
 
-class PhotoPage extends Model
+class PhotoPage extends Model implements MakeRelations
 {
-    use HasFactory;
+    use HasFactory, MakeLanguages;
 
     public $timestamps = false;
 
     protected $guarded = [];
 
     protected $casts = ['status' => 'boolean'];
-    
-    private static $language_id = null;
 
-  
+    private string $relationTranslate = PhotoPageTranslate::class;
 
 
-    public static function withs(): Builder
+
+    public static function withs($frontend = false): Builder
     {
         return self::with(['translations','translate','galleries']);
     }
@@ -36,11 +36,6 @@ class PhotoPage extends Model
     }
 
 
-    public static function setLanguageId($language_id)
-    {
-        self::$language_id = $language_id;
-    }
-
 
     public function galleries() :HasMany
     {
@@ -48,15 +43,5 @@ class PhotoPage extends Model
     }
 
 
-    public function translate(): HasOne
-    {
-        if(!self::$language_id) self::$language_id = Language::actual()->id;
-        return $this->hasOne(PhotoPageTranslate::class)->where('language_id', self::$language_id);
-    }
 
-
-    public function translations() :HasMany
-    {
-      return $this->hasMany(PhotoPageTranslate::class);
-    }
 }

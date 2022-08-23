@@ -4,13 +4,10 @@
     
         <the-header />
         
-        <router-view />
+        <router-view @footerContent="footerContent" />
   </div>
 
-
-  <the-footer />
-
-
+  <the-footer :content="footer" />
 
 </template>
 
@@ -21,11 +18,21 @@ import TheFooter from "@frontend/components/footer/TheFooter.vue";
 
 export default {
   name: 'frontend',
-  components: { TheHeader,TheFooter }
+  components: { TheHeader,TheFooter },
+  data() {
+    return {
+      footer: {}
+    }
+  },
+  methods:{
+    footerContent(footer){
+      this.footer = footer
+    }
+  }
 }
 </script>
 
 <style >
 @import '../assets/css/style.css';
-/* @import '../assets/css/frontend.css'; */
+/* @import '../assets/css/frontend.scss';*/
 </style>

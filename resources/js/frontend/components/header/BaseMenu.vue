@@ -12,11 +12,25 @@
       </div>
       <nav class="header-menu__btns one">
         <ul>
+
+          <!--     menus     -->
+
           <li>
-            <router-link class="header-menu__btns-item" :to="{ name: 'FrontHome' }">
+            <router-link class="header-menu__btns-item" :to="{ name: 'Home' }">
               מחירון
             </router-link>
           </li>
+          <li>
+            <router-link class="header-menu__btns-item" :to="{ name: 'About',params: {slug: 'test'} }">
+              About
+            </router-link>
+          </li>
+          <li>
+            <router-link class="header-menu__btns-item" :to="{ name: 'Articles',params: {slug: 'test'} }">
+              Articles
+            </router-link>
+          </li>
+
           <li>
             <div class="header-menu__btns-item menu-dropdown-btn">
               <span class="header-menu__btn" @click="subMenu = !subMenu">
@@ -25,12 +39,12 @@
               </span>
               <Transition name="slide-up">
                 <div class="menu-dropdown-content" v-show="subMenu">
-                  <router-link class="header-menu__btns-item" :to="{ name: 'FrontPagePhoto' }">
+                  <router-link class="header-menu__btns-item" :to="{ name: 'PhotoGalleries' }">
                     PhotoGallery
                   </router-link>
-                  <!-- <router-link class="header-menu__btns-item" to="/page-videos">
+                  <router-link class="header-menu__btns-item" to="/page-video">
                     Video Gallery
-                  </router-link> -->
+                  </router-link>
 
                 </div>
               </Transition>
@@ -52,6 +66,9 @@
 
 <script>
 
+import {mapGetters,mapActions} from "vuex";
+import {generate_routes} from '@/helpers'
+
 export default {
   name: "BaseMenu",
 
@@ -59,11 +76,39 @@ export default {
     isActive: false,
     subMenu: false
   },
+  computed: {
+    ...mapGetters({
+      language_id: 'lang/getLanguageId',
+      PagesData: 'page/GET_ROUTES',
+    }),
+
+
+    /*pages() {
+      const pages = this.PagesData(this.language_id)
+      return pages
+    },
+
+    menus(){
+      generate_routes(this.pages)
+      const routes = this.$router.getRoutes()
+          .filter(r => !r.path.includes('admin') && !r.path.includes('*'))
+          .map(r => ({slug: r.path,sub_menu: r.meta.sub_menu,name: r.meta.name  }) )
+      return routes
+    }*/
+  },
   methods: {
+    ...mapActions(['page/SET_PAGES']),
     close() {
       this.$emit('closeMenu')
     }
-  }
+  },
+  beforeMount() {
+    // if (!this.pages || this.pages.length === 0) {
+    //   this['page/SET_PAGES'](this.language_id)
+    // }
+
+
+  },
 }
 </script>
 

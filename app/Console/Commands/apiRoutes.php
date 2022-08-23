@@ -2,10 +2,10 @@
 
 namespace App\Console\Commands;
 
-use File;
+
 use Illuminate\Console\Command;
 use Illuminate\Routing\Router;
-
+use Illuminate\Support\Facades\File;
 
 
 class apiRoutes extends Command
@@ -24,7 +24,7 @@ class apiRoutes extends Command
      */
     protected $description = 'Command description';
 
-    protected $router;
+    protected Router $router;
 
     public function __construct(Router $router )
     {
@@ -32,11 +32,7 @@ class apiRoutes extends Command
         $this->router = $router;
     }
 
-    /**
-     * Execute the console command.
-     *
-     * @return int
-     */
+
     public function handle()
     {
         $routes = [];

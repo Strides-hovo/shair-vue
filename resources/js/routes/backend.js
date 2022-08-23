@@ -15,6 +15,12 @@ const routes = [
         props: true
     },
     {
+        path: "/admin/translate",
+        name: 'Translate',
+        component: () => import('@backend/pages/translate/page'),
+        props: true
+    },
+    {
         path: "/admin/library",
         name: 'library',
         component: () => import('@backend/pages/library/Library'),
@@ -55,6 +61,24 @@ const routes = [
         props: true,
     },
     {
+        path: "/admin/article",
+        name: 'BackendArticles',
+        component: () => import('@backend/pages/article/pages'),
+        props: true,
+        children: [
+            {
+                path: ":id",
+                name: 'BackendArticle',
+                component: () => import('@backend/pages/article/page'),
+                props: (route) => {
+                    const props = { ...route.params }
+                    props.id = Number(props.id)
+                    return props
+                },
+            }
+        ]
+    },
+    {
         path: "/admin/categories",
         name: 'Category',
         component: () => import('@backend/pages/category/index'),
@@ -83,9 +107,9 @@ const routes = [
     },
 ];
 
-for (let route of routes ){
-    route['meta'] = {}
-    route['meta']['layout'] = 'backend'
-}
+// for (let route of routes ){
+//     route['meta'] = {}
+//     route['meta']['layout'] = 'backend'
+// }
 
 export default routes

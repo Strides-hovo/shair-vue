@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 
 class AboutRequest extends FormRequest
@@ -18,18 +19,18 @@ class AboutRequest extends FormRequest
 
     public function rules()
     {
-        if($this->method() === 'POST'){
-           $rules = [
-            'language_id' => 'required|exists:languages,id',
-            'title' => 'required',
-            'content' => 'required',
+
+           /*$rules = [
+            '' => 'required|exists:languages,id',
+            'title' => 'required|string',
+            'content' => 'required|string',
             'slug' => 'nullable|string',
             'meta_title' => 'nullable|string',
             'meta_keywords' => 'nullable|string',
             'meta_description' => 'nullable|string',
-        ]; 
-        }
-        else{
+        ];*/
+
+
             $rules = [
                 'language_id' => 'nullable|exists:languages,id',
                 'title' => 'nullable',
@@ -39,8 +40,13 @@ class AboutRequest extends FormRequest
                 'meta_keywords' => 'nullable|string',
                 'meta_description' => 'nullable|string',
             ]; 
-        }
+
 
         return $rules;
+    }
+
+    public function failedValidation(Validator $validator)
+    {
+        return $validator->errors();
     }
 }

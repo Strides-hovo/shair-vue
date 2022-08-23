@@ -1,7 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\Storage;
 
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\Request;
 function StrPrepareForValidation($request, $model,  $type = 'image'): void
 {
 
@@ -59,7 +62,37 @@ function changeImageName(string $imageOldName,string $imageNewName ): string|nul
 }
 
 
+function meta_migrations (Blueprint &$table) : void {
+
+    $table->string('slug',100)->nullable();
+    $table->string('meta_title')->nullable();
+    $table->string('meta_description')->nullable();
+    $table->string('meta_keywords')->nullable();
+    $table->foreignId('language_id')->index()->constrained()->onDelete('cascade');
+}
 
 
+function neta_seeder(array $array, $faker ): array
+{
+
+    return array_merge($array, [
+        'slug' => $faker->slug,
+        'meta_title' => $faker->name,
+        'meta_description' => $faker->name,
+        'meta_keywords' => $faker->name,
+        'language_id' => $faker->randomElement([1,2]),
+    ]);
+}
+
+function meta_translate(Request $request): array{
 
 
+    return $request->validate([
+        'translate.slug' => 'nullable|string',
+        'translate.meta_description' => 'nullable|string',
+        'translate.meta_title' => 'nullable|string',
+        'translate.meta_keywords' => 'nullable|string',
+        'translate.language_id' => 'required|exists:languages,id',
+    ]);
+
+}

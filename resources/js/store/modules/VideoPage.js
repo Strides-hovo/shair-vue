@@ -10,9 +10,9 @@ const state = {
 
 const actions = {
 
-    async setImages({commit}){
+    async setVideos({commit}){
         let videos = await axios.get(apiRoutes('get.images','video'))
-        commit('setImages',(await videos.data))
+        commit('setVideos',(await videos.data))
     },
 
     //page
@@ -74,6 +74,7 @@ const actions = {
             commit('destroyGalleries',ids)
         }
         catch (e) {
+            console.log(e);
             alert(e.response.data.message)
         }
     },
@@ -95,7 +96,7 @@ const actions = {
 
 const mutations = {
 
-    setImages: (state, videos) => {
+    setVideos: (state, videos) => {
         state.galleries = videos
     },
 
@@ -150,31 +151,31 @@ const mutations = {
 const getters = {
 
     GetVideoPages: (state)  => {
-       return state.PageVideo.map(page => {
-           page.translate = page.translate || page.translations[0] || {}
-           return page
-       })
-    } ,
-
-
-    GetVideoPage: (state) => (id, languageId) => {
-        
-        const page = state.PageVideo.find(page => page.id === Number(id))
-        page.translate = page.translations.find(tr => tr.language_id === languageId) || page.translations[0] || {}
-        return page
-    },
-
-    GetPagesByLnag: (state) => languageId => {
         return state.PageVideo.map(page => {
-            page.translate = page.translations.find(tr => tr.language_id === languageId) || page.translations[0] || {}
-
+            page.translate = page.translate || page.translations[0] || {}
             return page
-        }).filter(page => typeof page.translate.slug !== 'undefined' && page.galleries.length > 0 )
-    },
-
-    getImages (state) {
-        return state.galleries
-    }
+        })
+     } ,
+ 
+ 
+     GetVideoPage: (state) => (id, languageId) => {
+         
+         const page = state.PageVideo.find(page => page.id === Number(id))
+         page.translate = page.translations.find(tr => tr.language_id === languageId) || page.translations[0] || {}
+         return page
+     },
+ 
+     GetPagesByLnag: (state) => languageId => {
+         return state.PageVideo.map(page => {
+             page.translate = page.translations.find(tr => tr.language_id === languageId) || page.translations[0] || {}
+ 
+             return page
+         }).filter(page => typeof page.translate.slug !== 'undefined' && page.galleries.length > 0 )
+     },
+ 
+     getVideos (state) {
+         return state.galleries
+     }
 }
 
 export default {

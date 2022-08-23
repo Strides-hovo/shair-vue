@@ -28,7 +28,7 @@ export default {
   computed: {
     ...mapGetters({
       VideoPages: 'PageVideo/GetVideoPages',
-      languageId: 'lang/getlanguageId',
+      languageId: 'lang/getLanguageId',
     }),
 
   },

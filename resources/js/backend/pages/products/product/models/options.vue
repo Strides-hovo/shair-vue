@@ -253,7 +253,7 @@ export default {
     Instruction_file: null
   }),
   computed: {
-    ...mapGetters({ catData: 'category/FilterSizes', languageId: 'lang/getlanguageId' }),
+    ...mapGetters({ catData: 'category/FilterSizes', languageId: 'lang/getLanguageId' }),
 
     category() {
 

@@ -151,23 +151,31 @@ const getters = {
 
     GetPhotoPages: (state)  => {
        return state.PhotoPages.map(page => {
-           page.translate = page.translate || page.translations[0] || {}
+           page.translate = page.translate
+               || page.translations[0]
+               || {}
+
            return page
        })
     } ,
 
 
     GetPhotoPage: (state) => (id, languageId) => {
-        
         const page = state.PhotoPages.find(page => page.id === Number(id))
-        page.translate = page.translations.find(tr => tr.language_id === languageId) || page.translations[0] || {}
+        page.translate = page.translations
+            .find(tr => tr.language_id === languageId)
+            || page.translations[0]
+            || {}
+
         return page
     },
 
-    GetPagesByLnag: (state) => languageId => {
+    GetPagesByLang: (state) => languageId => {
         return state.PhotoPages.map(page => {
-            page.translate = page.translations.find(tr => tr.language_id === languageId) || page.translations[0] || {}
-
+            page.translate =
+                page.translations.find(tr => tr.language_id === languageId)
+                || page.translations[0]
+                || {}
             return page
         }).filter(page => typeof page.translate.slug !== 'undefined' && page.galleries.length > 0 )
     },

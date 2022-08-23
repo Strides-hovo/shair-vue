@@ -2,64 +2,50 @@
 
 namespace App\Models;
 
+use App\InterFaces\MakeRelations;
+use App\Traits\MakeLanguages;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 
 /**
  * @method static first()
  */
-class Category extends Model
+class Category extends Model implements MakeRelations
 {
-    use HasFactory;
+    use HasFactory, MakeLanguages;
 
+    private string $relationTranslate = CategoryTranslate::class;
 
-    private static mixed $language_id = null;
-
+    protected $casts = ['status' => 'boolean'];
     protected $fillable = [
-        'status','sorting'
+        'status', 'sorting'
     ];
 
 
-    public static function setLanguageId($language_id)
+    public static function withs($frontend = false): Builder
     {
-        self::$language_id = $language_id;
-    }
-
-
-    public static function withs(): Builder
-    {
-        return self::with(['translate','translations','sizes']);
+        return self::with(['translate', 'translations', 'sizes']);
     }
 
 
     public function loads(): Category
     {
-        return $this->load(['translate','translations','sizes']);
+        return $this->load(['translate', 'translations', 'sizes'])->refresh();
     }
 
 
-
-
-
-    protected static function boot() {
+    protected static function boot()
+    {
         parent::boot();
 
-        static::deleting(function($model) {
+        static::deleting(function ($model) {
             $model->sizes()->delete();
             $model->translations()->delete();
         });
     }
-
-
-
-
-
-
 
 
     public function sizes(): HasMany
@@ -68,25 +54,10 @@ class Category extends Model
     }
 
 
-
-    public function language():BelongsTo
+    public function language(): BelongsTo
     {
         return $this->belongsTo(Language::class);
     }
-
-
-    public function translate():HasOne
-    {
-        if(!self::$language_id) self::$language_id = Language::actual()->id;
-        return $this->hasOne(CategoryTranslate::class)->where('language_id', self::$language_id);
-    }
-
-    public function translations(): HasMany
-    {
-        return $this->hasMany(CategoryTranslate::class);
-    }
-
-
 
 
 }

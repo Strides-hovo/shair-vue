@@ -5,14 +5,23 @@ import frontend from './frontend'
 import layout from "./layout";
 
 
-const routes = frontend.concat(backend)
+let routes = frontend.concat(backend)
 
 const router = createRouter({
     routes,
     history: createWebHistory(process.env.BASE_URL)
 });
 
+export const addRoute = (route) => {
+    let r = routes.find(r => r.name === route.name)
+    if (r){
+        routes = routes.map(r => r.name === route.name ? route : r)
+    }
+    else{
+        routes.push(route)
+    }
 
+}
 
 router.beforeEach(layout);
 

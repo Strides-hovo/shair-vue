@@ -11,7 +11,7 @@ export default {
         metainfo: {
             title: {
                 type: String,
-                default: ''
+                default: 'Shakira'
             },
             meta_description: {
                 type: String,
@@ -33,7 +33,7 @@ export default {
     },
     methods: {
         change(metainfo) {
-            document.title = metainfo.title
+            document.title = metainfo.title || ''
             document.head.querySelector('meta[name="description"]').content = metainfo.meta_description
             document.head.querySelector('meta[name="keywords"]').content = metainfo.meta_keywords
         }

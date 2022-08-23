@@ -20,7 +20,7 @@
             </div>
             <div class="combobox-list" :class="{ active: ButtonMobileTab }">
                 <div class="combobox-list__item" v-for="page in pages" :key="page.id">
-                    <router-link :to="{ name: 'FrontPhoto', params: { slug: page.translate.slug, id: page.id } }"
+                    <router-link :to="{ name: 'PhotoGallery', params: { slug: page.translate.slug, id: page.id } }"
                         @click="ButtonMobileTab = false">
                         {{ page.translate.name }}
                     </router-link>
@@ -38,7 +38,8 @@
                 </div>
             </div>
 
-            <photo-sidebar :pages="pages" />
+          <photo-page-sidebar :pages="pages" routeName="PhotoGallery" />
+
         </div>
     </div>
 
@@ -49,13 +50,13 @@
 <script>
 
 import { mapActions, mapGetters } from 'vuex'
-import PhotoSidebar from './modules/PhotoSidebar.vue';
-import BaseSlideShow from '@frontend/components/BaseSlideShow'
 
+import BaseSlideShow from '@frontend/components/BaseSlideShow'
+import PhotoPageSidebar from "@frontend/components/sidebar/PhotoPageSidebar";
 export default {
 
     name: 'PhotoGallery',
-    components: { PhotoSidebar, BaseSlideShow },
+    components: {  BaseSlideShow,PhotoPageSidebar },
     props: {
         slug: String,
         id: String
@@ -69,7 +70,7 @@ export default {
     },
     watch: {
         'page.translate.slug'(slug) {
-            this.$router.replace({ name: 'FrontPhoto', params: { id: this.id, slug } })
+            this.$router.replace({ name: 'PhotoGallery', params: { id: this.id, slug } })
         },
 
     },
@@ -83,16 +84,16 @@ export default {
         },
 
         ...mapGetters({
-            language: 'lang/GET_SITE_LANGUAGE',
-            PagesData: 'PhotoPage/GetPagesByLnag',
+          language_id: 'lang/getLanguageId',
+            PagesData: 'PhotoPage/GetPagesByLang',
             PageData: 'PhotoPage/GetPhotoPage',
         }),
 
         pages() {
-            return this.PagesData(this.language.id)
+            return this.PagesData(this.language_id)
         },
         page() {
-            return this.PageData(this.id, this.language.id)
+            return this.PageData(this.id, this.language_id)
         },
 
 

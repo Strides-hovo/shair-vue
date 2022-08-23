@@ -1,4 +1,5 @@
 const mutations = {
+
   SET(state, products) {
     state.PRODUCTS_TR = products;
   },
@@ -56,10 +57,16 @@ export const TranslateProducts = (state, language_id) => {
 
 
 export const create_translate = (data, languageId) => {
+
+  const tr =
+      typeof data.translate?.language_id !== "undefined" &&
+      data.translate?.language_id === languageId;
   return (
-    data.translations.find(
-      (translate) => translate.language_id === +languageId
-    ) || {}
+      tr ?
+          data.translate :
+    data.translations?.find(
+      (translate) => translate.language_id === languageId
+    ) || defaultTranslateData
   );
 };
 
@@ -104,5 +111,12 @@ const delete_photos = (state, ids) => {
     return product;
   });
 };
+
+const defaultTranslateData = {
+    slug: '',
+    meta_title: '',
+    meta_keywords: '',
+    meta_description: ''
+}
 
 export default mutations;

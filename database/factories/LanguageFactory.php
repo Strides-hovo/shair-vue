@@ -13,7 +13,7 @@ class LanguageFactory extends Factory
     {
         return [
             'name' => $this->faker->country(),
-            'code' => $this->faker->languageCode() ,
+            'code' => $this->faker->randomElement(['ru', 'en']),
             'dir' => $this->faker->randomElement(['ltr', 'rtl']),
             'status' => true,
         ];

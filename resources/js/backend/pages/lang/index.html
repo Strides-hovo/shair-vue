@@ -1,8 +1,15 @@
 <div class="cart-btns">
     <div class="cart-btns__item lang-add-new btn circle" @click="new_lang_modal = true">
-        <img src="@img/icons/add-icon.svg" alt="">
+        <img src="@img/icons/add-icon.svg" >
     </div>
-    <button :disabled="delete_btn" class="cart-btns__item btn" @click="deleteLanguage">удалить</button>
+    <base-translate-slide >
+        <button  class="cart-btns__item btn"
+                 v-if="languageIds.length > 0"
+                 @click="deleteLanguage"
+        >удалить</button>
+    </base-translate-slide>
+
+
 </div>
 <div class="container-content">
     <div class="container-content__top">
@@ -13,7 +20,10 @@
     </div>
     <div class="container-content__body">
 
-        <form class="lang-modal" :class="{ active: lang_modal }" @submit.prevent="updateLanguage">
+        <form class="lang-modal"
+              :class="{ active: lang_modal }"
+              @submit.prevent="updateLanguage"
+        >
             <div class="lang-modal__close" @click="lang_modal = false">
                 <img src="@img/icons/close.svg" alt="">
             </div>
@@ -75,8 +85,10 @@
                 <tr>
                     <td>
                         <label>
-                            <input type="checkbox" @change="selectAllLanguages" v-model="all_checked"
-                                :checked="all_checked">
+                            <input type="checkbox"
+                                    v-model="all_checked"
+                                    :checked="all_checked"
+                            >
                             <span class="fake"></span>
                         </label>
                     </td>
@@ -91,7 +103,7 @@
                 <tr class="order-row unwatched" v-for="lang of languages" :key="lang.id">
                     <td>
                         <label>
-                            <input type="checkbox" @change="selectLanguage" :value="lang.id" v-model="languageIds">
+                            <input type="checkbox"  :value="lang.id" v-model="languageIds">
                             <span class="fake"></span>
                         </label>
                     </td>
@@ -111,7 +123,10 @@
                                 <img src="@img/icons/delete-ico.svg" alt="">
                             </span>
 
-                            <span class="lang-edit-btn" @click="checkLanguage(lang.id), lang_modal = !lang_modal;">
+                            <span class="lang-edit-btn"
+                                  @click="checkLanguage(lang.id),
+                                  lang_modal = !lang_modal;"
+                            >
                                 редактирование
                                 <img src="@img/icons/edit-ico.svg" alt="">
                             </span>

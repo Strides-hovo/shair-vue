@@ -28,20 +28,20 @@ export default {
 
   computed: {
     ...mapGetters({
-      PhotoPages: 'PhotoPage/GetPhotoPages',
-      languageId: 'lang/getlanguageId',
+      pages: 'PhotoPage/GetPhotoPages',
+      languageId: 'lang/getLanguageId',
     }),
 
   },
 
   methods: {
     ...mapActions([
-      'lang/set',
+
       'PhotoPage/set',
       'PhotoPage/create',
       'PhotoPage/update',
       'PhotoPage/destroy',
-      'PhotoPage/updateField',
+      // 'PhotoPage/updateField',
     ]),
 
 
@@ -91,7 +91,7 @@ export default {
 
 
   mounted() {
-    if (this.PhotoPages.length === 0) {
+    if (this.pages.length === 0) {
       this['PhotoPage/set']()
     }
   }

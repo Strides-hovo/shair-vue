@@ -3,13 +3,7 @@
 namespace App\Providers;
 
 
-use Alexusmai\LaravelFileManager\Events\Deleted;
-use Alexusmai\LaravelFileManager\Events\Deleting;
-use Alexusmai\LaravelFileManager\Events\FilesUploaded;
-use Alexusmai\LaravelFileManager\Events\FilesUploading;
-use App\Listeners\DeleteFileListener;
-use App\Listeners\UploadedFileListener;
-use App\Listeners\UploadFileListener;
+
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -27,19 +21,7 @@ class EventServiceProvider extends ServiceProvider
             SendEmailVerificationNotification::class,
         ],
 
-//        FilesUploading::class => [
-//            UploadFileListener::class
-//        ],
-//
-//        FilesUploaded::class => [
-//            UploadedFileListener::class
-//        ],
-//
-//
-//
-//        Deleting::class => [
-//            DeleteFileListener::class
-//        ]
+
 
     ];
 

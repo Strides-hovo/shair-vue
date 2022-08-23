@@ -1,79 +1,65 @@
-
 <template src="./index.html"></template>
+
 
 <script>
 
-import { mapActions, mapGetters } from 'vuex'
+import {mapActions, mapGetters} from 'vuex'
 import StrSetting from "./modules/StrSetting";
 
 export default {
-    name: 'About',
+  name: 'About',
 
-    components: {  StrSetting },
+  components: {StrSetting},
 
-    data: () => ({
-        defaultLanguage: null,
-        ButtonLeftAside: false,
+  data: () => ({
+    defaultLanguage: null,
+    ButtonLeftAside: false,
+  }),
+
+
+  computed: {
+    ...mapGetters({
+      language_id: 'lang/getLanguageId',
+      language: 'lang/getLanguage',
+      about: 'about/GET_PAGE',
     }),
 
-    methods: {
-        ...mapActions([
-            'about/getAllPages',
-            'lang/set',
-            'about/UpdateAbout',
-            'about/CreatePage',
-        ]),
-
-        UpdatePage() {
-            if (typeof this.page.id === 'undefined') {
-                this['about/CreatePage'](this.page)
-            }
-            else {
-                this['about/UpdateAbout'](this.page)
-            }
-            this.CloseLeftAside()
-        },
-        CloseLeftAside() {
-            this.ButtonLeftAside = false
-        }
+    page() {
+      const page = this.about(this.language_id)
+      const id = page.id ?? null
+      return page.translate && page.translate.language_id ? page : this.newPage(id)
     },
 
-    computed: {
-        ...mapGetters({
-            aboutes: 'about/getAll',
-            about: 'about/getByLanguage',
-            actualLanguages: 'lang/getActualLanguages',
-        }),
-
-        languageId: {
-            get() {
-                return this.defaultLanguage === null && this.actualLanguages.length > 0 ? this.actualLanguages[0].id : this.defaultLanguage;
-            },
-            set(val) {
-                this.defaultLanguage = val
-            }
-        },
-
-        page() {
-            return this.about(this.languageId) || this.newPage
-        },
-        newPage() {
-            return {
-                content: '',
-                title: '',
-                language_id: this.languageId
-            }
+  },
+  methods: {
+    ...mapActions([
+      'about/SET_PAGE',
+      'about/UPDATE_PAGE',
+    ]),
+    newPage(about_id) {
+      let translate = {
+        translate : {
+          language_id: this.language_id,
+          content: '',
+          title: '',
         }
-    },
-
-    mounted() {
-
-      if (this.actualLanguages.length === 0 ){
-        this['lang/set']()
       }
-      this['about/getAllPages']()
+      if(about_id)  translate.translate.about_id = about_id
+      return translate
+    },
+    UpdatePage() {
+      this['about/UPDATE_PAGE'](this.page)
+      this.CloseLeftAside()
+    },
 
+    CloseLeftAside() {
+      this.ButtonLeftAside = false
     }
+
+  },
+  mounted() {
+    this['about/SET_PAGE']()
+  }
 
 
 }

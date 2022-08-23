@@ -1,0 +1,73 @@
+<left-aside :is-active="ButtonLeftAside" @CloseLeftAside="CloseLeftAside">
+    <base-setting :page="page" @UpdateSetting="UpdateSetting" />
+</left-aside>
+
+<div class="cart-btns">
+    <button class="cart-btns__item btn" @click="UpdatePage">
+        שמירה
+    </button>
+</div>
+
+<div class="container-content">
+    <div class="container-content__top">
+        <div class="settings-btn products-seo-btn"
+             @click="ButtonLeftAside = true">
+            <base-icon icon="setting" width="15" height="16"/>
+        </div>
+        <LanguageSelect/>
+        <div class="container-content__top-title">
+            עמודי תוכן<span>
+          אודות החברה
+        </span>
+        </div>
+    </div>
+    <div class="container-content__body container-content__body_info">
+
+        <div class="container-content__body-info article">
+            <div class="info-item">
+                <span>כותרת {{ language.name }}: </span>
+                <input type="text" placeholder="אנא הזינו כותרת" v-model="page.translate.name">
+            </div>
+
+            <div class="info-row">
+                <div class="info-item small">
+                    <span>מאת {{ language.name }}: </span>
+                    <input type="text" placeholder="אנא הזינו כותרת" v-model="page.translate.author">
+                </div>
+                <div class="info-item small">
+                    <label>
+                        <button @click="ButtonProductList = true"><span>קטגוריה {{ language.name }}: </span></button>
+                    </label>
+                </div>
+            </div>
+            <div class="info-item small">
+                <span>תאריך  </span>
+
+                <input type="date" placeholder="אנא הזינו טקסט" min="2020-01-01" max="2030-12-31"
+                       v-model="page.published_at">
+            </div>
+            <div class="info-item">
+                <span>תקציר {{ language.name }}: </span>
+                <input type="text" placeholder="אנא הזינו טקסט" v-model="page.translate.short_description">
+            </div>
+
+
+            <div class="info-texteditor">
+
+                <tiny-editor v-model="page.translate.description"></tiny-editor>
+
+            </div>
+
+            <div class="info-item">
+                <span>טקסט תחתון {{ language.name }}: </span>
+                <textarea v-model="page.translate.footer_text"> </textarea>
+            </div>
+
+            <page-image-block v-model:page="page" @UpdateImage="UpdateImage"/>
+
+        </div>
+    </div>
+    <base-product-list
+            v-model:ButtonProductList="ButtonProductList" @checkProduct="checkProduct" v-model:product_id="page.product_id" />
+</div>
+

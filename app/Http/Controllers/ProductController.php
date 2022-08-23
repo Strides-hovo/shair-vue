@@ -58,15 +58,17 @@ class ProductController extends Controller
     {
         $request = request();
         $translate = $request->validate([
+            'translate.slug' => 'nullable|string',
             'translate.meta_title' => 'nullable|string',
             'translate.meta_description' => 'nullable|string',
             'translate.meta_keywords' => 'nullable|string',
+
             'translate.short_description' => 'nullable|string',
             'translate.description' => 'nullable|string',
             'translate.name' => 'nullable|string',
             'translate.advantage' => 'nullable|string',
             'translate.flag_text' => 'nullable|string',
-            'translate.slug' => 'nullable|string',
+
             'product_id' => 'nullable|exists:products,id',
             'language_id' => 'nullable|exists:languages,id',
         ]);

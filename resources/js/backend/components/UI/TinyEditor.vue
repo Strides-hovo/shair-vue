@@ -22,12 +22,13 @@ export default {
         apiKey: 'wy3zt36qvhur3o89yifolne6uk3oh3px8tbv2w9s954xkkys',
         conf: {
             min_height: 500,
-            menubar: 'file',
+            menubar: 'file edit view insert format tools tc help',
             plugins: [
                 'advlist autolink lists link image charmap print preview anchor',
                 'searchreplace visualblocks code fullscreen',
-                'insertdatetime media table paste imagetools wordcount'],
-            toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+                'insertdatetime media table  imagetools wordcount directionality '],
+            toolbar: `insertfile undo redo | styleselect | bold italic | ltr rtl media code fullscreen  print preview anchor backcolor
+             alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image`,
             images_upload_handler: fileUploader
         },
     }),
@@ -35,7 +36,8 @@ export default {
     emits: ['update:content'],
     methods:{
         change(content){
-            this.$emit('update:content',content)
+          console.log(content)
+            this.$emit('update:content',content.level.content)
         }
     }
 

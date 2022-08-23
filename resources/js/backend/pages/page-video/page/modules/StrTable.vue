@@ -123,11 +123,11 @@ export default {
       }
     },
 
-    ...mapGetters({ videos: 'PageVideo/getImages' })
+    ...mapGetters({ videos: 'PageVideo/getVideos' })
   },
 
   methods: {
-    ...mapActions(['PageVideo/setImages']),
+    ...mapActions(['PageVideo/setVideos']),
 
     UpdateGalleryItem(id,replace = false) {
       
@@ -168,7 +168,7 @@ export default {
 
   async mounted() {
     if (this.videos.length === 0) {
-      this['PageVideo/setImages']()
+      this['PageVideo/setVideos']()
     }
     
   }

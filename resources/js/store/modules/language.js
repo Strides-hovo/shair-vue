@@ -1,9 +1,11 @@
-import axios from "axios";
+
 import apiRoutes from "@/routes/api-routes";
 
 const state = {
     languages: [],
-    SITE_LANGUAGE: {},
+    SITE_LANGUAGE: {
+        code: null
+    },
     languageId: null
 };
 
@@ -14,8 +16,6 @@ const actions = {
     const languages = await response.data.data
         commit('setLanguages', languages)
         commit('SET_SITE_LANGUAGE')
-        
-        
     },
 
    async create({commit},language){
@@ -31,21 +31,23 @@ const actions = {
    async update({commit},language){
        let response = axios.put(apiRoutes('language.update', language.id), language)
         commit('update',(await response).data.data)
+        commit('SET_SITE_LANGUAGE')
     },
 
     async updateStatus({commit},language){
-        axios.put(apiRoutes('language.update', language.id), { status: language.status });
+        await axios.put(apiRoutes('language.update', language.id), { status: language.status });
         commit('updateStatus',language)
+        commit('SET_SITE_LANGUAGE')
     },
 
-   async destroy({commit},languageIds){
+   async destroy({commit},ids){
        try{
-          await axios.delete(apiRoutes('language.destroy', languageIds), { ids: languageIds })
-           commit('destroy',languageIds)
-           commit('setSiteLanguage')
+          await axios.delete(apiRoutes('language.destroy', ids), ids )
+           commit('destroy',ids)
+           commit('SET_SITE_LANGUAGE')
        }
        catch (e) {
-           alert(e.response.data.message)
+           console.log(e)
        }
     }
 
@@ -68,19 +70,22 @@ const mutations = {
         })
     },
 
-    updateStatus: (state, language) =>{
+    updateStatus: (state, language) => {
+        console.log(44)
         state.languages = state.languages.map(lang => {
              lang.id === language.id ? lang.status = language.status : lang.status
             return lang
         })
     },
 
-    destroy:(state,languageIds)=>{
+    destroy:(state, languageIds )=> {
         state.languages = state.languages.filter(lang => !languageIds.includes(lang.id))
     },
 
     SET_SITE_LANGUAGE: (state,language_id = null) =>{
-        state.SITE_LANGUAGE = language_id ? state.languages.find(lang => lang.id === +language_id) : state.languages[0]
+        state.SITE_LANGUAGE = language_id ? state.languages.find(lang => lang.id === +language_id) : state.languages.find(l => l.status === true) || {}
+        state.languageId = state.SITE_LANGUAGE.id
+        console.log(state.SITE_LANGUAGE)
         
     },
  
@@ -107,7 +112,7 @@ const getters = {
     },
 
 
-    getlanguageId: (state) => {
+    getLanguageId: (state) => {
         return state.languageId !== null 
         ? state.languageId 
         : (state.languages.length > 0 ? state.languages[0].id : null)

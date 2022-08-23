@@ -1,7 +1,5 @@
 <?php
 
-
-
 use App\Http\Controllers\Galleries\PhotoPageController;
 use App\Http\Controllers\Galleries\PhotoPageGalleryController;
 
@@ -46,16 +44,18 @@ Route::group(['prefix' => 'admin'],function (){
         Route::apiResource('video-page',VideoPageController::class)->except(['show']);
 
         Route::apiResource('video-gallery',VideoPageGalleryController::class)->only(['store','update']);
-        Route::delete('video-gallery/{ids}',[VideoPageGalleryController::class,'destroy'])->name('photo-gallery.destroy');
+        Route::delete('video-gallery/{ids}',[VideoPageGalleryController::class,'destroy'])->name('video-gallery.destroy');
 
-
+        Route::apiResource('page',\App\Http\Controllers\PageController::class);
        
 
     });
 
     Route::group([],function(){
-        Route::apiResource('about', AboutController::class );
+        Route::apiResource('about', AboutController::class )->only(['index','store']);
         Route::post('about-update',[AboutController::class,'uploadImage'])->name('tiny.upload');
+
+        Route::apiResource('article',\App\Http\Controllers\ArticleController::class)->except('show');
     });
 
     Route::get('all-images/{type?}',[\App\Services\Images::class,'getImages'])->name('get.images');
@@ -77,6 +77,7 @@ Route::group(['prefix' => 'admin'],function (){
 
     Route::group(['prefix' => 'export'],function(){
         Route::get('categories/', [CategoryController::class, 'export'])->name('category.export');
+        Route::post('create-translate',[\App\Services\Translate::class,'store'])->name('translate.store');
     });
 
 });

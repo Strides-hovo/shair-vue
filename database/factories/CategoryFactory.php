@@ -15,7 +15,6 @@ class CategoryFactory extends Factory
     {
         return [
             'status' => true,
-            
         ];
     }
 }

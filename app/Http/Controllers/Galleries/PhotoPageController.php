@@ -39,10 +39,11 @@ class PhotoPageController extends Controller
 
         try {
             $translate = $request->validate([
-                'translate.slug' => 'nullable|string',
+
                 'translate.name' => 'required|string',
                 'translate.description' => 'nullable|string',
 
+                'translate.slug' => 'nullable|string',
                 'translate.meta_description' => 'nullable|string',
                 'translate.meta_title' => 'nullable|string',
                 'translate.meta_keywords' => 'nullable|string',

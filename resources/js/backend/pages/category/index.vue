@@ -2,15 +2,12 @@
 
 <script>
 
-import { mapActions, mapGetters } from "vuex";
+import {mapActions, mapGetters} from "vuex";
 import StrSize from "./StrSize";
-
-
 
 export default {
 
-  components: { StrSize },
-
+  components: {StrSize},
   name: "category",
 
   data: () => ({
@@ -33,18 +30,17 @@ export default {
       actualLanguages: 'lang/getActualLanguages',
       allCategories: 'category/all',
       categoryById: 'category/getByLanguage',
-      languageId: 'lang/getlanguageId',
+      languageId: 'lang/getLanguageId',
       categoryData: 'category/FilterSizes'
     }),
-
 
 
     categories() {
       return this.categoryById(this.languageId)
     },
 
-    category(){
-      return this.categoryData(this.id,this.languageId)
+    category() {
+      return this.categoryData(this.id, this.languageId)
     }
 
   },
@@ -62,10 +58,10 @@ export default {
 
     CloseLeftAside() {
       this.ButtonLeftAside = false,
-        this.ButtonEdit = false,
-        this.ButtonSeo = false,
-        this.ButtonSize = false,
-        this.Teleport = false
+          this.ButtonEdit = false,
+          this.ButtonSeo = false,
+          this.ButtonSize = false,
+          this.Teleport = false
     },
 
     FilterSizes(id) {
@@ -76,8 +72,8 @@ export default {
 
       this.id = id
       this[form] = true
-      this.ButtonLeftAside = true
       this.Teleport = true
+      this.ButtonLeftAside = true
     },
 
 
@@ -119,16 +115,17 @@ export default {
 }
 </script>
 
-<style >
-.fade-enter-active,
-.fade-leave-active {
+<style>
+.aside-enter-active,
+.aside-leave-active {
   transition: opacity .5s;
 }
 
-.fade-enter,
-.fade-leave-to {
+.aside-enter,
+.aside-leave-to {
   opacity: 0;
 }
+
 
 .tab-pane.fade {
   display: none;

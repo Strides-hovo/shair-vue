@@ -15,7 +15,7 @@ export default {
   computed: {
 
     ...mapGetters({
-      languageId: 'lang/getlanguageId',
+      languageId: 'lang/getLanguageId',
       categoriesByLang: 'category/getByLanguage',
       GET_PRODUCTS_BY_CAT: 'products/GET_PRODUCTS_TR_CAT'
     }),

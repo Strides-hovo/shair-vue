@@ -117,7 +117,7 @@ export default {
 
   computed: {
     ...mapGetters({
-      languageId: 'lang/getlanguageId',
+      languageId: 'lang/getLanguageId',
 
     }),
 

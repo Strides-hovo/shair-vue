@@ -23,7 +23,6 @@ export default {
     id: {
       required: true
     },
-
   },  
 
   data: () => ({
@@ -41,7 +40,7 @@ export default {
   computed: {
     ...mapGetters({
       GetPhotoPage: 'PhotoPage/GetPhotoPage',
-      languageId: 'lang/getlanguageId',
+      languageId: 'lang/getLanguageId',
     }),
 
     PhotoGallery(){

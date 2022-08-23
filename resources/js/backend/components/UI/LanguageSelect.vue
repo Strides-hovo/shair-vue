@@ -24,7 +24,7 @@ export default {
     
     language_id: {
       get() {
-        return this.$store.getters['lang/getlanguageId']
+        return this.$store.getters['lang/getLanguageId']
       },
       set(val) {
         this['lang/setAdminLanguageId'](val)

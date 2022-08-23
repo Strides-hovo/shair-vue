@@ -91,7 +91,7 @@ export default {
     ButtonMenu: false
   }),
   mounted(){
-    console.log(this.$route.name);
+    //console.log(this.$route.name);
   }
 
 }
@@ -421,7 +421,7 @@ export default {
 }
 
 .header-menu__btns::after {
-  content: url(./img/header/menu-bg-bottom.png);
+  content: url(/img/header/menu-bg-bottom.png);
   z-index: -1;
   position: absolute;
   display: block;
@@ -556,7 +556,7 @@ export default {
 
   .header-menu__btns::after {
     content: '';
-    background-image: url(./img/menu-bg-bottom.png);
+    background-image: url(/img/header/menu-bg-bottom.png);
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;

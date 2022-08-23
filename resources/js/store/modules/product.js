@@ -37,9 +37,31 @@ const getters = {
     return product
   },
 
-  GET_PRODUCT_BY_CAT: (state) => (category_id,languageId) => {
+  GET_PRODUCTS_FILTER: (state) => (languageId, category_id = '', name = null) => {
 
+      let products = state.PRODUCTS_TR.map(pr => {
+        const translate = pr.translate?.language_id === languageId
+        ? pr.translate
+            : create_translate(pr,languageId)
+        pr.translate = translate
+        pr.category.translate = create_translate(pr.category,languageId)
+
+        return pr
+      })
+
+      if (category_id){
+        products = products.filter(pr => pr.category_id === category_id)
+      }
+
+      if (name){
+        products = products.filter(pr => pr.translate.name?.includes(name))
+      }
+
+      return products
   }
+
+
+
 };
 
 export default {

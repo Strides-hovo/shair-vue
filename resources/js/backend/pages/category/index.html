@@ -20,24 +20,22 @@
   @closeModal="closeNewCategoryModal"
   width="600px"
 >
-  test
+
 </StrModal>
 
 <div class="container-content">
   <div class="container-content__top">
 
-    <LanguageSelect
-      v-model:language_id="languageId"
-      />
+    <LanguageSelect />
 
     <div class="container-content__top-title">
       הגדרות מוצרים
       <span> קטגוריות וגדלים </span>
     </div>
   </div>
- 
+
   <teleport to=".productpage-modal" v-if="Teleport">
-    <transition name="fade">
+    <transition name="aside">
       <div class="products-modal-edit" v-if="ButtonEdit">
         <div class="products-modal-edit__title">Name</div>
         <div class="products-modal-edit__content">
@@ -56,7 +54,7 @@
   </teleport>
 
   <teleport to=".productpage-modal" v-if="Teleport">
-    <transition name="fade">
+    <transition name="aside">
       <div class="products-modal-size" v-if="ButtonSize">
         <div class="products-modal-size__top">
           <span>
@@ -85,11 +83,11 @@
   </teleport>
 
   <teleport to=".productpage-modal" v-if="Teleport">
-    <transition name="fade">
+    <transition name="aside">
       <div class="products-modal-seo" v-if="ButtonSeo">
         <div class="products-modal-seo__title">הגדרות products</div>
         <div class="products-modal-seo__content">
-        
+
           <div class="products-modal-seo__content-item">
             <span>Meta Title: </span>
             <input

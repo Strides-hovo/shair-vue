@@ -43,8 +43,8 @@ const SidebarOptions = [
                 hasItem: []
             },
             {
-                url: "/admin/settings",
-                text: 'Настройки магазина',
+                url: "/admin/translate",
+                text: 'Переводы',
                 hasItem: []
             },
         ]
@@ -74,6 +74,11 @@ const SidebarOptions = [
             {
                 url: "/admin/about",
                 text: 'About',
+                hasItem: []
+            },
+            {
+                url: "/admin/article",
+                text: 'Article',
                 hasItem: []
             },
             

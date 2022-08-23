@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\InterFaces\MakeRelations;
+use App\Traits\MakeLanguages;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -10,15 +12,14 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\Relations\HasOne;
-use JetBrains\PhpStorm\NoReturn;
 
-class Product extends Model
+class Product extends Model implements MakeRelations
 {
-    use HasFactory;
+    use HasFactory, MakeLanguages;
 
     protected $guarded = [];
 
-    private static $language_id = null;
+    private string $relationTranslate = ProductTranslate::class;
 
     protected $casts = [
         'status' => 'boolean',
@@ -29,31 +30,29 @@ class Product extends Model
     ];
 
 
-    protected static function boot() {
+    protected static function boot()
+    {
         parent::boot();
 
-        static::deleting(function($model) {
+        static::deleting(function ($model) {
             $model->addition()->delete();
             $model->translations()->delete();
         });
     }
 
 
-    public static function setLanguageId($language_id)
+    public static function withs(bool $frontend = false): Builder
     {
-        self::$language_id = $language_id;
-    }
-
-
-    public static function withs(): Builder
-    {
-        return self::with(['addition','sizes','translations','translate','photos','videos','prices']);
+        if ($frontend){
+            return self::with(['addition', 'sizes', 'translations', 'translate', 'photos.translations', 'videos.translations', 'category.translations']);
+        }
+        return self::with(['addition', 'sizes', 'translations',  'photos.translations', 'videos.translations', 'category.translations']);
     }
 
 
     public function loads(): Product
     {
-        return $this->load(['addition','sizes','translations','translate','photos','videos','prices']);
+        return $this->load(['addition', 'sizes', 'translations', 'translate', 'photos', 'videos', 'prices'])->refresh();
     }
 
 
@@ -63,14 +62,7 @@ class Product extends Model
 
     public function addition(): BelongsToMany
     {
-        return $this->belongsToMany(self::class,'product_additionals','additional_id','product_id','id','id');
-    }
-
-
-    public function translate(): HasOne
-    {
-        if(!self::$language_id) self::$language_id = Language::actual()->id;
-        return $this->hasOne(ProductTranslate::class)->where('language_id', self::$language_id);
+        return $this->belongsToMany(self::class, 'product_additionals', 'additional_id', 'product_id', 'id', 'id');
     }
 
 
@@ -79,30 +71,27 @@ class Product extends Model
         return $this->belongsTo(Language::class);
     }
 
-    public function category(): BelongsToMany
+    public function category():HasOne
     {
-        return $this->belongsToMany(Category::class);
+        return $this->hasOne(Category::class,'id','category_id');
     }
-
-
 
 
     public function sizes(): HasManyThrough
     {
-        return $this->HasManyThrough(CategorySize::class,Category::class,'id','category_id')
+        return $this->HasManyThrough(CategorySize::class, Category::class, 'id', 'category_id')
             ->orderBy('category_sizes.height', 'desc');
     }
 
-    public function translations(): HasMany
-    {
-        return $this->HasMany(ProductTranslate::class);
-    }
 
-
-
-    public function photos():HasMany
+    public function photos(): HasMany
     {
         return $this->hasMany(ProductPhoto::class);
+    }
+
+    public function photo(): HasOne
+    {
+        return $this->hasOne(ProductPhoto::class);
     }
 
     public function videos(): HasMany

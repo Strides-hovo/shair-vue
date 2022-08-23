@@ -8,10 +8,10 @@
         </div>
     </div>
 
-    <add-page 
+    <add-page
     :ButtonNewPageModal="ButtonNewPageModal"
     :NewPage="NewPage"
-    :SortLength="PhotoPages.length"
+    :SortLength="pages.length"
     @closeModal="closeNewPageModal"
     @saveNewPage="saveNewPage"
     />
@@ -46,7 +46,7 @@
                 </thead>
                 <tbody>
 
-                    <tr class="order-row" v-for="page in PhotoPages" :key="page.id">
+                    <tr class="order-row" v-for="page in pages" :key="page.id">
                         <td>
                             {{ page.translate.name }}
                         </td>
@@ -54,7 +54,7 @@
                             <label>
                                 <select v-model="page.sorting" :value="page.sorting"
                                     @change="UpdatePage({id: page.id, sorting: $event.target.value} )">
-                                    <option v-for="item in (PhotoPages.length > 5 ? PhotoPages.length : 5)" :value="item"
+                                    <option v-for="item in (pages.length > 5 ? pages.length : 5)" :value="item"
                                         :selected="item === page.sorting">{{ item }}
                                     </option>
                                 </select>

@@ -16,10 +16,7 @@
       <div class="settings-btn products-seo-btn" @click="ButtonLeftAside = true">
         <img src="@img/icons/settings.svg" alt="">
       </div>
-        <LanguageSelect
-                v-model:language_id="languageId"
-                :actual-languages="actualLanguages"
-        />
+        <LanguageSelect />
       <div class="container-content__top-title">
         עמודי תוכן<span>
           אודות החברה
@@ -27,107 +24,25 @@
       </div>
     </div>
     <div class="container-content__body container-content__body_info">
-      <div class="shipping-types-modal-edit">
-        <div class="shipping-types-modal-edit__close">
-          <img src="@img/icons/close.svg" alt="">
-        </div>
-        <div class="shipping-types-modal-edit__title">
-          עריכת צורת משלוח
-        </div>
-        <div class="shipping-types-modal-edit__content">
-          <div class="shipping-types-modal-edit__content-item">
-            <span>שם שיטת משלוח: </span>
-            <input type="text" placeholder="משלוח מאשדוד">
-          </div>
-          <div class="shipping-types-modal-edit__content-item">
-            <span>שם שיטת משלוח באנגלית: </span>
-            <input type="text" placeholder="אנא הזינו שם באנגלית">
-          </div>
-          <div class="shipping-types-modal-edit__content-item">
-            <span>שם שיטת משלוח באיתלקית: </span>
-            <input type="text" placeholder="אנא הזינו שם  עיר באיתלקית">
-          </div>
-          <div class="shipping-types-modal-edit__content-item">
-            <span>שם שיטת משלוח ברוסית: </span>
-            <input type="text" placeholder="אנא הזינו שם עיר ברוסית">
-          </div>
-          <div class="shipping-types-modal-edit__content-item">
-            <span>שם שיטת משלוח בצרפתית: </span>
-            <input type="text" placeholder="אנא הזינו שם עיר בצרפתית">
-          </div>
-          <div class="shipping-types-modal-edit__content-check">
-            <label>
-              <input type="checkbox">
-              <span class="fake"></span>
-              <span class="text">נדרש לבחור עיר</span>
-            </label>
-          </div>
-        </div>
-        <div class="shipping-types-modal-edit__btn btn">
-          שמור
-        </div>
-      </div>
-      <div class="shipping-types-new">
-        <div class="shipping-types-new__bg"></div>
-        <div class="shipping-types-new__content">
-          <div class="shipping-types-new__content-top">
-            <span class="shipping-types-new__close">
-              <img src="@img/icons/close.svg" alt="">
-            </span>
-            <span class="shipping-types-new__title">
-              הוספת צורת משלוח
-            </span>
-          </div>
-          <div class="shipping-types-new__content-edit">
-            <div class="shipping-types-modal-edit__content-item">
-              <span>שם שיטת משלוח: </span>
-              <input type="text" placeholder="משלוח מאשדוד">
-            </div>
-            <div class="shipping-types-modal-edit__content-item">
-              <span>שם שיטת משלוח באנגלית: </span>
-              <input type="text" placeholder="אנא הזינו שם באנגלית">
-            </div>
-            <div class="shipping-types-modal-edit__content-item">
-              <span>שם שיטת משלוח באיתלקית: </span>
-              <input type="text" placeholder="אנא הזינו שם  עיר באיתלקית">
-            </div>
-            <div class="shipping-types-modal-edit__content-item">
-              <span>שם שיטת משלוח ברוסית: </span>
-              <input type="text" placeholder="אנא הזינו שם עיר ברוסית">
-            </div>
-            <div class="shipping-types-modal-edit__content-item">
-              <span>שם שיטת משלוח בצרפתית: </span>
-              <input type="text" placeholder="אנא הזינו שם עיר בצרפתית">
-            </div>
-            <div class="shipping-types-modal-edit__content-check">
-              <label>
-                <input type="checkbox">
-                <span class="fake"></span>
-                <span class="text">נדרש לבחור עיר</span>
-              </label>
-            </div>
-          </div>
-          <div class="shipping-types-new__content-btn btn">
-            הוספה
-          </div>
-        </div>
-      </div>
+
+
       <div class="container-content__body-info about">
         <div class="info-item">
-          <span>כותרת Hebrew: </span>
-          <input type="text" placeholder="אנא הזינו כותרת" v-model="page.title">
+          <span>כותרת {{ language.name }}: </span>
+          <input type="text" placeholder="אנא הזינו כותרת" v-model="page.translate.title">
         </div>
         <div class="info-texteditor">
-          <tiny-editor  v-model="page.content"  > </tiny-editor>
+
+          <tiny-editor  v-model="page.translate.content"> </tiny-editor>
           
         </div>
         <div class="info-item">
           <span>אנא הזינו כותרת</span>
-          <input type="text" placeholder="אנא הזינו לינק">
+          <input type="text" placeholder="אנא הזינו לינק" v-model="page.translate.btn_price_list" >
         </div>
         <div class="info-item">
-          <span>לינק לכפתור “לכל המוצרים” Hebrew </span>
-          <input type="text" placeholder="אנא הזינו לינק">
+          <span>לינק לכפתור “לכל המוצרים” {{ language.name }} </span>
+          <input type="text" placeholder="אנא הזינו לינק" v-model="page.translate.btn_products">
         </div>
       </div>
     </div>

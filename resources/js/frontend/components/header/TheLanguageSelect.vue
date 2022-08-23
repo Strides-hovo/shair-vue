@@ -1,98 +1,123 @@
 <template>
-    <div class="header-body__btns-item circle lang-select">
-        <span class="lang-select__btn" @click="isActive = !isActive">{{ language.code }}</span>
-        <ul class="lang-select__dropdown" :class="{ active: isActive }">
-            <li v-for="lang in Languages" :key="lang.id" :value="lang.id" @click="CheckLanguage(lang.id)">
-                <span>{{ lang.code }}</span>
-            </li>
-        </ul>
-    </div>
+  <div class="header-body__btns-item circle lang-select" v-if="Languages">
+    <span class="lang-select__btn" @click="isActive = !isActive">{{ language.code ?? null}}</span>
+    <ul class="lang-select__dropdown" :class="{ active: isActive }">
+      <li v-for="lang in Languages" :key="lang.id" :value="lang.id" @click="CheckLanguage(lang.id)">
+        <span>{{ lang.code }}</span>
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script>
-import { mapGetters, mapMutations, mapActions } from 'vuex'
+import {mapGetters, mapMutations, mapActions} from 'vuex'
+// import store from "../../../store";
+// import routes from "../../../routes/frontend";
+import {generate_routes} from '@/helpers'
+
 
 export default {
-    name: 'TheLanguageSelect',
+  name: 'TheLanguageSelect',
 
-    data: () => ({
-        isActive: false
+  data: () => ({
+    isActive: false
+  }),
+  methods: {
+    ...mapMutations(['lang/SET_SITE_LANGUAGE']),
+    ...mapActions(['lang/set','page/SET_PAGES']),
+    ...mapMutations(['page/SET_PAGE_LINKS']),
+
+    CheckLanguage(lang_id) {
+      this['lang/SET_SITE_LANGUAGE'](lang_id)
+      this.isActive = false
+      document.body.removeAttribute('class')
+      document.documentElement.setAttribute('lang', this.language.code)
+      document.body.classList.add(this.language.dir)
+    },
+
+  },
+  computed: {
+    ...mapGetters({
+      Languages: 'lang/getActualLanguages',
+      language: 'lang/GET_SITE_LANGUAGE',
+      language_id: 'lang/getLanguageId',
+      pageDates: 'page/GET_ROUTES'
     }),
-    methods: {
-        ...mapMutations(['lang/SET_SITE_LANGUAGE']),
-        ...mapActions(['lang/set']),
+    /*pages() {
+      const page = this.pageDates(this.language_id)
 
-        CheckLanguage(lang_id) {
-            this['lang/SET_SITE_LANGUAGE'](lang_id)
-            this.isActive = false
-            document.body.removeAttribute('class')
-            document.documentElement.setAttribute('lang', this.language.code)
-            document.body.classList.add(this.language.dir)
-        },
-    },
-    computed: {
-        ...mapGetters({ Languages: 'lang/getActualLanguages', language: 'lang/GET_SITE_LANGUAGE' }),
-    },
+      generate_routes(page)
 
-    beforemounted() {
-        if ( typeof this.language.id === 'undefined' ) {
-            this['lang/SET_SITE_LANGUAGE']()
-        }
-        
+      console.log('lang: ',  this.$router.options.routes )
+
+      return page
+    }*/
+  },
+
+  beforeMount() {
+    if (! this.language_id) {
+      this['lang/SET_SITE_LANGUAGE']()
     }
+    // if (!this.pages || this.pages.length === 0) {
+    //   this['page/SET_PAGES'](this.language_id)
+    // }
+
+    // console.log(this.pages.length)
+  },
+
 }
 </script>
 
-<style lang="scss" >
+<style lang="scss">
 .lang-select__dropdown {
-    -webkit-appearance: none;
+  -webkit-appearance: none;
 }
 
 .header-body__btns-item.lang-select {
-    position: relative;
-    overflow: visible;
-    cursor: pointer;
+  position: relative;
+  overflow: visible;
+  cursor: pointer;
 }
 
 .header-body__btns-item.lang-select.active {
-    border-radius: 50% 50% 0 0;
-    border-bottom: none;
+  border-radius: 50% 50% 0 0;
+  border-bottom: none;
 }
 
 .header-body__btns-item.lang-select .lang-select__dropdown {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    position: absolute;
-    top: 54px;
-    left: -1px;
-    width: calc(100% + 3px);
-    min-height: 100%;
-    background: rgba(255, 255, 255, 0.8);
-    border-top: none;
-    border: 2px solid #376B00;
-    border-radius: 0 0 28px 28px;
-    display: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  position: absolute;
+  top: 54px;
+  left: -1px;
+  width: calc(100% + 3px);
+  min-height: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  border-top: none;
+  border: 2px solid #376B00;
+  border-radius: 0 0 28px 28px;
+  display: none;
 }
 
 .header-body__btns-item.lang-select .lang-select__dropdown.active {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .header-body__btns-item.lang-select .lang-select__dropdown li {
-    padding: 10px 0;
+  padding: 10px 0;
 }
 
 .header-body__btns-item.lang-select .lang-select__dropdown li a {
-    color: #000000;
+  color: #000000;
 }
 </style>

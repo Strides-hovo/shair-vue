@@ -1,62 +1,51 @@
 
 
 import axios from "axios";
-import apiRoutes from "../../routes/api-routes";
-
+import apiRoutes from "@/routes/api-routes";
+import {BackendErrorHandler} from "@/helpers";
 
 const state = {
-    aboutes: []
+    about: { }
 }
 
 const actions = {
 
-    async getAllPages({ commit }) {
+    async SET_PAGE({ commit }) {
         let response = await axios.get(apiRoutes('about.index'))
-        commit('setAll', response.data.data)
+        commit('UPDATE_PAGE', response.data.data)
     },
 
-    async UpdateAbout({ commit }, about) {
-        let response = await axios.put(apiRoutes('about.update', about.id), about).catch(err => err)
-        console.log(response)
-        commit('UpdateAbout', response.data.data)
+    async UPDATE_PAGE({ commit }, about) {
+        let response = await axios.post(apiRoutes('about.store'), about).catch(err => BackendErrorHandler(err))
+        commit('UPDATE_PAGE', response.data.data)
     },
 
-    async CreatePage({commit},about){
-        let response = await axios.post(apiRoutes('about.store'), about).catch(err => err)
-        console.log(response)
-        commit('CreatePage', response.data.data)
-    }
+
 
 }
 
 const mutations = {
-
-    setAll(state, aboutes) {
-        state.aboutes = aboutes
-    },
-  
-    UpdateAbout: (state, about ) => {
-        state.aboutes.map(item => {
-            if (item.id === about.id) {
-                item = about
-            }
-        })
-
-        console.log(state.aboutes, about )
-    },
-    CreatePage: (state,about) => {
-        state.aboutes.push(about)
+    UPDATE_PAGE: (state, about ) => {
+        state.about = about ?? state.about
     }
 }
 
 const getters = {
-    getAll(state) {
-        return state.aboutes
+
+    GET_PAGE: (state) => (language_id) => {
+
+         const translate = state.about.translate && state.about.translate.language_id === language_id
+        ? state.about.translate
+             : (state.about.translations
+                 ? state.about.translations.find(tr => tr.language_id === language_id ) || {}
+                 : {})
+
+
+        state.about.translate = translate
+        return state.about
     },
 
-    getByLanguage: (state) => (language_id) => {
-        return state.aboutes.find(about => about.language_id == language_id)
-    }
+
 }
 
 

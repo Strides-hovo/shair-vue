@@ -1,10 +1,13 @@
 <template>
-    <div class="productpage-modal" :class="{ active: isActive }">
-        <div class="productpage-modal__close" @click="closeModal">
-            <img src="@img/icons/close.svg" alt="">
-        </div>
-        <slot></slot>
+<!--  <transition name="aside">-->
+    <div class="productpage-modal" :class="{ active: isActive }" >
+      <div class="productpage-modal__close" @click="closeModal">
+        <img src="@img/icons/close.svg" alt="">
+      </div>
+      <slot></slot>
     </div>
+<!--  </transition>-->
+
 </template>
 
 <script>
@@ -45,8 +48,6 @@ export default {
     -webkit-transition: all .5s ease;
     -o-transition: all .5s ease;
     transition: all .5s ease;
-    -webkit-transform: translate(-100%, 0);
-    -ms-transform: translate(-100%, 0);
     transform: translate(-100%, 0);
     pointer-events: none;
     visibility: hidden;
@@ -54,10 +55,23 @@ export default {
 }
 
 .productpage-modal.active {
-    -webkit-transform: translate(0);
-    -ms-transform: translate(0);
     transform: translate(0);
     pointer-events: all;
     visibility: visible;
 }
+
+/*.aside-enter-active,
+.aside-leave-active {
+  transition: opacity .5s;
+  transform: translate(0);
+}
+
+.aside-enter,
+.aside-leave-to {
+  transform: translate(-100%, 0);
+  opacity: 0;
+
+}*/
+
+
 </style>

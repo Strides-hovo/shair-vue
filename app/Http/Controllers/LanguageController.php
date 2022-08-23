@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\LanguageRequest;
 use App\Models\Language;
+use App\Services\Translate;
 use Exception;
 use Illuminate\Http\Request;
 
 class LanguageController extends Controller
 {
 
-    private $error_message;
+    private string $error_message = '';
 
     public function index()
     {
@@ -22,7 +23,12 @@ class LanguageController extends Controller
     {
         try {
             $language = Language::create($request->validated());
-        } catch (\Exception $e) {
+            $request->merge(['key' => $language->code]);
+            $file = file_get_contents(resource_path("js/translate/en.json"));
+            $request->merge(['data' => json_decode($file) ]);
+            Translate::store($request);
+        }
+        catch (\Exception $e) {
             return response()->error($e->getMessage());
         }
         return response()->success($language);
@@ -39,9 +45,14 @@ class LanguageController extends Controller
     {
 
         $language = Language::find($id);
+
         try {
-            $language->fill($request->validated());
-            $language->save();
+            $old_key = $language->code;
+            $new_key = $request->code;
+            if ($request->has('code')){
+                Translate::update($old_key, $new_key);
+            }
+            $language->update($request->validated());
         }
         catch (\Exception $e) {
             return response()->error($e->getMessage());
@@ -54,17 +65,21 @@ class LanguageController extends Controller
     public function destroy($ids)
     {
 
-        Language::whereIn('id', explode(',', $ids))->each(function ($language) {
-            try {
-                $language->delete();
-                return response()->success(Language::all());
-            }
-            catch ( \Exception $e) {
-                report($e);
-                $this->error_message = 'Languages cannot be deleted';
-                return response()->error( $this->error_message );
-            }
-        });
-        return response()->error( $this->error_message );
+        if (is_string($ids)){
+            $ids = explode(',', $ids);
+        }
+
+        try {
+            Translate::destroy($ids);
+            Language::whereIn('id', $ids)->delete();
+        }
+        catch (\Exception $e) {
+            report($e);
+            $this->error_message = 'Languages cannot be deleted';
+            return response()->error( $this->error_message );
+        }
+
+        return response()->success(Language::all());
+
     }
 }

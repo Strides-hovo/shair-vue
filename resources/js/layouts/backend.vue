@@ -15,7 +15,7 @@
 
 <script>
 
-
+// import('../assets/css/backend.css')
 // import Sidebar from "@backend/components/Sidebar.vue";
     import Sidebar from "../backend/components/Sidebar.vue";
 
@@ -27,5 +27,6 @@ export default {
 
 
 <style >
-  @import '../assets/css/backend.css';
+  @import '../assets/css/backend.scss';
+  @import '../assets/css/backend-last.scss';
 </style>

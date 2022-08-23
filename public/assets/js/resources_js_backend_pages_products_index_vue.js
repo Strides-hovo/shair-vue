@@ -35,7 +35,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     };
   },
   computed: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapGetters)({
-    languageId: 'lang/getlanguageId',
+    languageId: 'lang/getLanguageId',
     categoriesByLang: 'category/getByLanguage',
     GET_PRODUCTS_BY_CAT: 'products/GET_PRODUCTS_TR_CAT'
   })), {}, {

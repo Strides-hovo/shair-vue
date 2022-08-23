@@ -5,40 +5,33 @@
 <script>
 
 import mixinLanguage from "@backend/mixins/language";
-import {mapActions, mapGetters} from 'vuex'
+import BaseTranslateSlide from "../../components/BaseTranslateSlide";
+
 
 export default {
     name: "language",
     mixins: [mixinLanguage],
+    components: {BaseTranslateSlide},
+    computed:{
+        all_checked: {
+          get(){
+            return this.languageIds.length === this.languages.length
+          },
+          set(value){
+            this.languageIds = value ? this.languages.map(i => i.id) : []
+          }
+        }
+    },
 
-    data: () => ({
-
-    }),
     methods: {
-
         closeModal() {
             this.new_lang_modal = false
-        },
-        selectLanguage() {
-            this.delete_btn = this.languageIds.length < 1;
-        },
-        selectAllLanguages() {
-            if (this.all_checked) {
-                this.languageIds = this.languages.map(lang => {
-                    return lang.id
-                });
-            }
-            else {
-                this.languageIds = [];
-            }
-            this.selectLanguage()
         },
         checkLanguage(id) {
             let language = this.languages.find(lang => {
                 return lang.id === id;
             });
             this.language = Object.assign({}, language);
-            //this.lang_modal = !this.lang_modal;
         },
 
 

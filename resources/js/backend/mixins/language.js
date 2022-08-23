@@ -1,4 +1,4 @@
-import apiRoutes from "@/routes/api-routes";
+
 import {mapActions, mapGetters} from "vuex";
 
 
@@ -6,9 +6,6 @@ export default {
     data: () => ({
         lang_modal: false,
         new_lang_modal: false,
-        delete_btn: true,
-        all_checked: false,
-
         newLanguage: {
             dir: 'ltr',
             code: '',
@@ -18,8 +15,13 @@ export default {
         languageIds: [],
         language: {},
     }),
+
+    computed: {
+        ...mapGetters({ languages: 'lang/getLanguages'}),
+
+    },
     methods: {
-        ...mapActions(['lang/set','lang/create','lang/update','lang/updateStatus' ,'lang/destroy']),
+        ...mapActions(['lang/create','lang/update','lang/updateStatus' ,'lang/destroy']),
         createLanguage() {
             this['lang/create'](this.newLanguage).catch(error => {
                 if (error.response.data.status === 'Error') {
@@ -32,12 +34,11 @@ export default {
             this.newLanguage.dir = 'ltr';
         },
 
-        deleteLanguage(languageIds = []) {
-            this['lang/destroy']([languageIds] ?? this.languageIds).catch(error => {
-
-            });
+        deleteLanguage(id = null) {
+            const ids = Number(id) || this.languageIds
+            this['lang/destroy'](ids)
             this.languageIds = [];
-            this.delete_btn = true;
+
 
         },
         updateLanguage() {
@@ -57,16 +58,8 @@ export default {
         },
 
     },
-    computed: {
-        ...mapGetters({ languages: 'lang/getLanguages'})
-    },
-    mounted() {
-        if (this.languages.length === 0){
-            this['lang/set']()
-        }
 
 
-    }
 
 }
 
