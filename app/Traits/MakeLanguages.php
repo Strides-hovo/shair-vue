@@ -3,12 +3,16 @@
 namespace App\Traits;
 
 use App\Models\Language;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+
+
+use App\Traits\FilteredSlug;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
-trait MakeLanguages
-{
+trait MakeLanguages {
 
+    use FilteredSlug;
+    
     private static int|null $language_id = null;
 
 
@@ -29,6 +33,8 @@ trait MakeLanguages
     {
         return $this->hasMany($this->relationTranslate);
     }
+
+
 
 
     /**

@@ -1,4 +1,7 @@
 <?php
+/** @noinspection PhpMissingReturnTypeInspection */
+
+/** @noinspection PhpUnnecessaryLocalVariableInspection */
 
 namespace App\Models;
 
@@ -13,6 +16,10 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
+/**
+ * @method static first()
+ * @method static find(int $int)
+ */
 class Product extends Model implements MakeRelations
 {
     use HasFactory, MakeLanguages;
@@ -29,11 +36,17 @@ class Product extends Model implements MakeRelations
         'dimension' => 'boolean',
     ];
 
+    protected $attributes = [
+        'status' => true,
+        'rent' => true,
+        'sale' => true,
+        'guarantee' => true,
+        'dimension' => true,
+    ];
 
     protected static function boot()
     {
         parent::boot();
-
         static::deleting(function ($model) {
             $model->addition()->delete();
             $model->translations()->delete();
@@ -44,32 +57,62 @@ class Product extends Model implements MakeRelations
     public static function withs(bool $frontend = false): Builder
     {
         if ($frontend){
-            return self::with(['addition', 'sizes', 'translations', 'translate', 'photos.translations', 'videos.translations', 'category.translations']);
+            return self::with(['additions', 'sizes', 'translations',  'photos.translations', 'videos.translations', 'category.translations']);
         }
-        return self::with(['addition', 'sizes', 'translations',  'photos.translations', 'videos.translations', 'category.translations']);
+
+        return self::with(['additions', 'sizes', 'translations',  'photos.translations', 'videos.translations', 'category.translations']);
     }
 
 
     public function loads(): Product
     {
-        return $this->load(['addition', 'sizes', 'translations', 'translate', 'photos', 'videos', 'prices'])->refresh();
+        return $this->load(['additions', 'sizes', 'translations', 'category.translations', 'photos.translations', 'videos', ])->refresh();
     }
+
+
+    public function page(): HasOne
+    {
+        return $this->hasOne(Page::class,'name','page_name');
+    }
+
+
+    const PRODUCT_SIZES = [
+        'width',
+        'height',
+        'categories.id as category_id',
+        'category_sizes.id as category_size_id',
+        'product_sizes.status as status',
+        'product_sizes.sku',
+        'product_sizes.price',
+        'product_sizes.invoice_code',
+        'product_sizes.delivery_sale',
+        'product_sizes.delivery_rent',
+    ];
+
+
+    public function sizes()
+    {
+
+       return $this
+            ->HasManyThrough(CategorySize::class, Category::class, 'id', 'category_id','category_id','id')
+            ->select(self::PRODUCT_SIZES)
+            ->leftJoin('product_sizes','product_sizes.category_size_id','=','category_sizes.id');
+
+    }
+
 
 
     /**
      * Relations
      */
 
-    public function addition(): BelongsToMany
+    public function additions(): BelongsToMany
     {
-        return $this->belongsToMany(self::class, 'product_additionals', 'additional_id', 'product_id', 'id', 'id');
+        return $this->belongsToMany(self::class, 'product_additionals', 'product_id','additional_id',  'id', 'id');
     }
 
 
-    public function language(): BelongsTo
-    {
-        return $this->belongsTo(Language::class);
-    }
+
 
     public function category():HasOne
     {
@@ -77,11 +120,10 @@ class Product extends Model implements MakeRelations
     }
 
 
-    public function sizes(): HasManyThrough
-    {
-        return $this->HasManyThrough(CategorySize::class, Category::class, 'id', 'category_id')
-            ->orderBy('category_sizes.height', 'desc');
-    }
+//    public function sizes(): HasMany
+//    {
+//        return $this->hasMany(ProductSize::class);
+//    }
 
 
     public function photos(): HasMany
@@ -100,9 +142,9 @@ class Product extends Model implements MakeRelations
     }
 
 
-    public function prices()
-    {
-        return $this->hasMany(ProductPrice::class)->orderBy('product_prices.height', 'desc');;
-    }
+
+
+
+
 
 }

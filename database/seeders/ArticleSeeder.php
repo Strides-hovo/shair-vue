@@ -15,7 +15,7 @@ class ArticleSeeder extends Seeder
      */
     public function run()
     {
-        Article::factory(2)->create();
-        ArticleTranslate::factory(4)->create();
+        Article::factory(6)->create();
+        ArticleTranslate::factory(12)->create();
     }
 }

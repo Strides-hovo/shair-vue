@@ -2,15 +2,12 @@
 
 namespace App\Http\Requests;
 
+use App\Traits\FailedValidation;
 use Illuminate\Foundation\Http\FormRequest;
 
 class PageVideoGalleryRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
+    use FailedValidation;
     public function authorize()
     {
         return false;

@@ -3,17 +3,17 @@
 namespace App\Http\Requests;
 
 use App\Models\PhotoPageGallery;
-use App\Models\ProductPhoto;
+use App\Traits\FailedValidation;
 use Illuminate\Foundation\Http\FormRequest;
 
 class PhotoPageGalleryRequest extends FormRequest
 {
 
+    use FailedValidation;
     public function authorize(): bool
     {
         return true;
     }
-
 
 
     public function rules()
@@ -30,15 +30,13 @@ class PhotoPageGalleryRequest extends FormRequest
     }
 
 
-
     public function prepareForValidation(): void
     {
-
-        if($this->replace){
+        if ($this->replace) {
             $model = PhotoPageGallery::find($this->id);
-            $image = changeImageName( $model->image, $this->image_name );
+            $image = changeImageName($model->image, $this->image_name);
             $this->merge(['image' => $image]);
-           
+
         }
     }
 }

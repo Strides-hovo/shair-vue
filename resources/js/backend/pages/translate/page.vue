@@ -47,7 +47,7 @@ export default {
     ...mapGetters({language_id: "lang/getLanguageId", language: "lang/getLanguage" }),
 
     translates(){
-      return this.$trans._translate() || {}
+      return this.$trans._translate(this.language ? this.language.code : null) || {}
     },
 
   },

@@ -37,7 +37,8 @@ class apiRoutes extends Command
     {
         $routes = [];
         foreach ($this->router->getRoutes() as $route) {
-            if (str_contains( $route->uri,'admin')){
+
+            if (!str_contains( $route->uri,'_debugbar') && !str_contains( $route->uri,'_ignition' ) && !empty($route->getName()) ){
                 $routes[$route->getName()] = $route->uri;
             }
         }

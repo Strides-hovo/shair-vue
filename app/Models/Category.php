@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 /**
  * @method static first()
@@ -17,23 +18,34 @@ class Category extends Model implements MakeRelations
 {
     use HasFactory, MakeLanguages;
 
+    public $timestamps = false;
+
     private string $relationTranslate = CategoryTranslate::class;
 
     protected $casts = ['status' => 'boolean'];
+
     protected $fillable = [
         'status', 'sorting'
     ];
 
+    protected $attributes = [
+        'status' => true,
+        'sorting' => 1
+    ];
 
-    public static function withs($frontend = false): Builder
+    public static function withs(bool $frontend = false): Builder
     {
-        return self::with(['translate', 'translations', 'sizes']);
+
+        if ($frontend){
+            return self::with('translations','products.sizes', 'products.translations', 'products.photos.translations');
+        }
+        return self::with([ 'translations', 'sizes']);
     }
 
 
     public function loads(): Category
     {
-        return $this->load(['translate', 'translations', 'sizes'])->refresh();
+        return $this->load([ 'translations', 'sizes'])->refresh();
     }
 
 
@@ -59,5 +71,16 @@ class Category extends Model implements MakeRelations
         return $this->belongsTo(Language::class);
     }
 
+
+    public function page(): HasOne
+    {
+        return $this->hasOne(Page::class,'name','page_name');
+    }
+
+
+    public function products() : HasMany
+    {
+        return $this->hasMany(Product::class);
+    }
 
 }

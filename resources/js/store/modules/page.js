@@ -1,4 +1,4 @@
-import axios from "axios";
+
 import apiRoutes from "@/routes/api-routes";
 import {create_translate} from "./products/mutations";
 
@@ -13,9 +13,9 @@ const actions = {
         commit('SET_PAGES',pages.data.data)
     },
 
-    async UPDATE ({commit},page)  {
-      const response = await  axios.put(apiRoutes('page.update',page.id),page)
-        commit('UPDATE',response.data.data)
+    async UPDATE_OR_CREATE ({commit},page)  {
+      const response = await axios.post(apiRoutes('page.firstOrCreate'),page)
+        commit('UPDATE_OR_CREATE',response.data.data)
     },
 
 
@@ -30,16 +30,29 @@ const mutations = {
 
     SET_PAGE_LINKS: (state, language_id) => {
         for (let page of state.pages) {
-            const translate = page.translate && page.translate.language_id === language_id
-                ? page.translate
-                : page.translations.find(tr => tr.language_id === language_id) || {slug: null}
+            const translate = create_translate(page,language_id) 
             state.pageLinks[page.name] = translate.slug
         }
     },
 
+    UPDATE_OR_CREATE: (state, page) =>  {
+        
+        const isset = state.pages.find(p => p.id === page.id)
+        if(isset){
+            state.pages = state.pages.map(p => p.id === page.id ? page : p)
+        }
+        else{
+            state.pages.push(page)
+        }
+
+        
+    },
+
+
     UPDATE: (state, page) => (state.pages = state.pages.map(a => page.id === a.id ? page : a))
 
 }
+
 
 
 const getters = {
@@ -47,11 +60,7 @@ const getters = {
     GET_PAGES: (state) => (language_id = null) => {
         return language_id ?
             state.pages.map(page => {
-
-                page.translate = page.translate && page.translate.language_id === language_id
-                    ? page.translate
-                    : page.translations.find(tr => tr.language_id === language_id) || page.translations[0] || {}
-                return page
+                page.translate = create_translate(page,language_id)
             })
             : state.pages
     },
@@ -78,17 +87,37 @@ const getters = {
 
         return pages
     },
+ 
 
-
-    GET_PAGE: (state) => (name,language_id) => {
+    GET_PAGE: (state) => ( name , languageId ) => {
         const page = state.pages.find(p => p.name === name)
-        if(page){
-            page.translate = create_translate(page,language_id)
+        if (page){
+            page.translate = create_translate(page,languageId)
         }
-        console.log(page)
-         return page
+
+        return page || {}
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+const defaultTranslateData = {
+    slug: '',
+    meta_title: '',
+    meta_keywords: '',
+    meta_description: '',
+    language_id: null
+}
+
 
 export default {
     namespaced: true,

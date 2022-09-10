@@ -9,6 +9,34 @@ export default {
             <path d="M7.01172 8.207L6.30472 7.5L7.01172 6.793L7.71872 7.5L7.01172 8.207Z" fill="#82AD00"/>`,
       div: `<path d="M0 0H1V3H0V0Z" fill="#C4C4C4"/><path d="M0 12H1V15H0V12Z" fill="#C4C4C4"/><path d="M0 6H1V9H0V6Z" fill="#C4C4C4"/>`,
     "arrow-green" : `<path d="M1.52148 1L9.00029 8.73063L16.4791 1" stroke="#53A300" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>`,
-
-
+    "add-icon" : `<path d="M6 1C6 0.447716 6.44772 0 7 0C7.55228 0 8 0.447715 8 1V13C8 13.5523 7.55228 14 7 14C6.44772 14 6 13.5523 6 13V1Z" fill="white"/>
+                  <path d="M1 8C0.447716 8 0 7.55228 0 7C0 6.44772 0.447715 6 1 6H13C13.5523 6 14 6.44772 14 7C14 7.55228 13.5523 8 13 8H1Z" fill="white"/>`,
+    "slider-arrow-prev": `<g filter="url(#filter0_d_210_10059)">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M32.1353 2.63552L14.2707 20.5001L32.1353 38.3647L29.5 41L9.00008 20.5001L29.5 0.000232697L32.1353 2.63552Z" fill="white"/>
+        </g>
+        <defs>
+            <filter id="filter0_d_210_10059" x="0.368365" y="0" width="40.3985" height="58.2633" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+            <feOffset dy="8.63163"/>
+            <feGaussianBlur stdDeviation="4.31582"/>
+            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_210_10059"/>
+            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_210_10059" result="shape"/>
+            </filter>
+        </defs>`,
+    "slider-arrow-next": `<g filter="url(#filter0_d_210_10056)">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M9.05615 2.6355L26.9208 20.5001L9.05615 38.3647L11.6914 41L32.1913 20.5001L11.6914 0.000232697L9.05615 2.6355Z" fill="white"/></g>
+        <defs>
+                <filter id="filter0_d_210_10056" x="0.424518" y="0" width="40.3985" height="58.2633" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                <feOffset dy="8.63163"/>
+                <feGaussianBlur stdDeviation="4.31582"/>
+                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_210_10056"/>
+                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_210_10056" result="shape"/>
+                </filter>
+            </defs>`,
+    "modal-close" : `<path d="M2.53553 2L45.5355 45M45 2L2 45" stroke="white" stroke-width="5"/>`,
 }

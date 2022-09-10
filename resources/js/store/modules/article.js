@@ -52,7 +52,8 @@ const getters = {
 
         let articles = state.ARTICLES.map(article => {
             article.translate = create_translate(article, language_id)
-            article.page.translate = create_translate(article.page, language_id)
+
+
             if (article.recommended && article.recommended.length > 0) {
                 article.recommended.translate = create_translate(article.recommended, language_id)
             }
@@ -70,10 +71,23 @@ const getters = {
     GET_ARTICLES_TR: state => (language_id) => {
         return state.ARTICLES.map(article => {
             article.translate = create_translate(article, language_id)
-            article.page.translate = create_translate(article.page, language_id)
+            console.log(article)
+            
+            if (article.page){
+                article.page.translate = create_translate(article.page, language_id)
+            }
+            if (article.pages){
+                article.pages = article.pages.map(p => {
+                    p.translate = create_translate(p, language_id)
+                    return p
+                })
+            }
+
+
             if (article.recommended && article.recommended.length > 0) {
-                article.recommended.map(rec => {
+                article.recommended = article.recommended.map(rec => {
                     rec.translate = create_translate(rec, language_id)
+                    return rec
                 })
             }
 

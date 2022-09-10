@@ -23,15 +23,17 @@ export default {
     methods: {
         ...mapActions(['lang/create','lang/update','lang/updateStatus' ,'lang/destroy']),
         createLanguage() {
-            this['lang/create'](this.newLanguage).catch(error => {
+            this['lang/create'](this.newLanguage)
+                .catch(error => {
                 if (error.response.data.status === 'Error') {
                     alert(error.response.data.message);
                 }
-            });
+            })
             this.new_lang_modal = !this.new_lang_modal;
             this.newLanguage.code = '';
             this.newLanguage.name = '';
             this.newLanguage.dir = 'ltr';
+
         },
 
         deleteLanguage(id = null) {

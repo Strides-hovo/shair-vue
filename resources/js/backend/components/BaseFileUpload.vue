@@ -1,7 +1,7 @@
 <template>
   <input type="file" style="display: none" @change="UploadFile" ref="fileInput" :accept="type">
   <button class="str-file-upload" @click="uploaded">
-    <slot />
+    <slot/>
   </button>
 
 </template>
@@ -32,11 +32,12 @@ export default {
       this.$emit('UploadNewFile', image)
       this.$refs.fileInput.value = ''
     },
- uploaded(){
-    this.$refs.fileInput.click()
-  }
+
+    uploaded() {
+      this.$refs.fileInput.click()
+    }
   },
- 
+
 
 }
 </script>

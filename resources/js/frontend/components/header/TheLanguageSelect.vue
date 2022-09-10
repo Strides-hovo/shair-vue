@@ -13,7 +13,7 @@
 import {mapGetters, mapMutations, mapActions} from 'vuex'
 // import store from "../../../store";
 // import routes from "../../../routes/frontend";
-import {generate_routes} from '@/helpers'
+// import {generate_routes} from '@/helpers'
 
 
 export default {
@@ -22,10 +22,11 @@ export default {
   data: () => ({
     isActive: false
   }),
+
   methods: {
-    ...mapMutations(['lang/SET_SITE_LANGUAGE']),
+    ...mapMutations(['lang/SET_SITE_LANGUAGE','page/SET_PAGE_LINKS']),
     ...mapActions(['lang/set','page/SET_PAGES']),
-    ...mapMutations(['page/SET_PAGE_LINKS']),
+
 
     CheckLanguage(lang_id) {
       this['lang/SET_SITE_LANGUAGE'](lang_id)
@@ -54,9 +55,9 @@ export default {
     }*/
   },
 
-  beforeMount() {
-    if (! this.language_id) {
-      this['lang/SET_SITE_LANGUAGE']()
+  mounted() {
+    if (! this.language.code) {
+      this['lang/set']()
     }
     // if (!this.pages || this.pages.length === 0) {
     //   this['page/SET_PAGES'](this.language_id)
@@ -67,6 +68,8 @@ export default {
 
 }
 </script>
+
+
 
 <style lang="scss">
 .lang-select__dropdown {

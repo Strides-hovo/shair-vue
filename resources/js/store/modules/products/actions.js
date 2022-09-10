@@ -1,6 +1,7 @@
-import axios from "axios";
+
 import apiRoutes from "@/routes/api-routes";
 import {BackendErrorHandler} from "@/helpers";
+import {export_data} from "../../../helpers";
 
 const actions = {
 
@@ -9,11 +10,49 @@ const actions = {
     commit("SET", (await response.data.data));
   },
 
+
+
+
+
+
   async create({ commit }, product) {
     let response = await axios
       .post(apiRoutes("product.store"), product)
       .catch((err) => BackendErrorHandler(err) );
-    commit("create", response.data.data);
+    commit("CREATE_PRODUCT", response.data.data);
+  },
+
+
+  async status({ commit }, status) {
+    let response = await axios
+      .put(apiRoutes("product.status",Number(status) ),Number(status))
+    commit("SET", (await response.data.data));
+  },
+
+  async copy({ commit }, product) {
+    let response = await axios
+        .post(apiRoutes("product.copy"), product)
+        .catch((err) => BackendErrorHandler(err) );
+    commit("CREATE_PRODUCT", response.data.data);
+  },
+
+  async export({ commit }, id ){
+    await axios.get(apiRoutes('product.export', id ), { params: {id} } ).then(response => {
+      export_data(apiRoutes('product.export',id), 'name')
+    })
+  },
+
+
+  async import_file({ commit },file ){
+    await axios.post( apiRoutes('product.import'),  file )
+  },
+
+
+  async updateOrCreateSize({ commit }, size) {
+    let response = await axios
+      .post(apiRoutes("product.size.updateOrCreate"), size)
+      .catch((err) => BackendErrorHandler(err) );
+
   },
 
   async update({ commit }, product) {
@@ -23,11 +62,27 @@ const actions = {
     commit("UPDATE_PRODUCT", response.data.data);
   },
 
-  async destroy({ commit }, product) {
-    await axios
-      .delete(apiRoutes("product.destroy", product.id), product)
+  async updateAdditions({ commit }, product) {
+    let response = await axios
+      .put(apiRoutes("product.update.additions", product.id), product)
       .catch((err) => BackendErrorHandler(err));
-    commit("destroy", product);
+    commit("UPDATE_PRODUCT", response.data.data);
+  },
+
+
+  async deleteAdditions({ commit }, {id, ids}) {
+    console.log( id, ids )
+    let response = await axios
+      .delete(apiRoutes("product.delete.additions",  id, ids), id, ids)
+      .catch((err) => BackendErrorHandler(err));
+    commit("UPDATE_PRODUCT", response.data.data);
+  },
+
+  async destroy({ commit }, ids) {
+    await axios
+      .delete(apiRoutes("product.destroy", ids), ids)
+      .catch((err) => BackendErrorHandler(err));
+    commit("DELETE_PRODUCTS", ids);
   },
 
 

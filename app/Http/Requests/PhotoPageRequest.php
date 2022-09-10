@@ -2,11 +2,12 @@
 
 namespace App\Http\Requests;
 
+use App\Traits\FailedValidation;
 use Illuminate\Foundation\Http\FormRequest;
-use JetBrains\PhpStorm\ArrayShape;
 
 class PhotoPageRequest extends FormRequest
 {
+    use FailedValidation;
 
     public function authorize(): bool
     {
@@ -14,14 +15,13 @@ class PhotoPageRequest extends FormRequest
     }
 
 
-     public function rules(): array
+    public function rules(): array
     {
         return [
             'status' => 'nullable|boolean',
             'sorting' => 'nullable|integer',
         ];
     }
-
 
 
 }

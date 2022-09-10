@@ -21,6 +21,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'Articles',
+  data: function data() {
+    return {
+      fronted: true
+    };
+  },
   computed: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapGetters)({
     language: 'lang/GET_SITE_LANGUAGE',
     GET_ARTICLES: 'article/GET_ARTICLES_TR'
@@ -48,7 +53,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   mounted: function mounted() {
     var _this$page, _this$page$page$trans;
 
-    if (this.pages && this.pages.length === 0) {
+    if (this.pages && (this.pages.length === 0 || !this.pages.recommended)) {
       this['article/SET_ARTICLES'](true);
     }
 

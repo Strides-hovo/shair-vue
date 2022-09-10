@@ -52,7 +52,7 @@
 import { mapActions, mapGetters } from 'vuex'
 
 import BaseSlideShow from '@frontend/components/BaseSlideShow'
-import PhotoPageSidebar from "@frontend/components/sidebar/PhotoPageSidebar";
+import PhotoPageSidebar from "@frontend/components/sidebar/PageSidebar";
 export default {
 
     name: 'PhotoGallery',
@@ -70,9 +70,9 @@ export default {
     },
     watch: {
         'page.translate.slug'(slug) {
-            this.$router.replace({ name: 'PhotoGallery', params: { id: this.id, slug } })
+            this.$router.replace({ name: 'PhotoGallery', params: { id: this.id, _slug: slug } })
         },
-
+   
     },
     computed: {
         setMetaInfo() {

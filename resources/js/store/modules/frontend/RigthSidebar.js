@@ -1,73 +1,57 @@
 import apiRoutes from "@/routes/api-routes";
-import axios from "axios";
+import {create_translate} from "../products/mutations";
+
 
 
 const state = {
-    SiteMenu: [],
+    Menus: [],
 };
 
 
 const actions = {
-        SET_PHOTO_PAGE: ({commit}) => {
-
+       async SET_MENUS ({commit})  {
+           const response = await axios.get(apiRoutes('menus'))
+           commit('SET_MENUS', response.data.data)
         } 
 };
 
 
 const mutations = {
-    SET_PHOTO_PAGE: (state, pages) => {
-        state.PHOTO_PAGES = pages
+    SET_MENUS: (state, menus) => {
+        state.Menus = menus
     } 
 };
 
 
 const getters = {
-    GET_PHOTO_PAGE: (state,language_id) => {
-        const page = state.SiteMenu.PHOTO_PAGES.filter(page => {
-            
+
+    GET_MENUS: state => language_id => {
+        return  state.Menus.map(menu => {
+            const translate = create_translate(menu,language_id)
+               const children = menu.children.map(ch => {
+                    const translate = create_translate(ch,language_id)
+                    return {name: ch.name,slug: translate?.slug }
+                })
+
+            if (children.length > 0){
+                return {name: menu.name,slug: translate?.slug, children }
+            }
+            else{
+                return {name: menu.name,slug: translate?.slug }
+            }
         })
     }
 }
 
 
 
+export default {
+    namespaced: true,
+    state,
+    actions,
+    getters,
+    mutations
+}
 
 
 
-
-
-
-
-
-const SiteMenu = [
-  {
-    url: "/",
-    text: "Home",
-    isActive: false,
-    hasItem: [],
-  },
-  {
-    url: "/price-list",
-    text: "Price list",
-    isActive: false,
-    hasItem: [],
-  },
-  {
-    url: "/o-nas",
-    text: "O nas i informaziya",
-    isActive: false,
-    hasItem: [],
-  },
-  {
-    url: "/shatri-arendu",
-    text: "Shatri v arendu",
-    isActive: false,
-    hasItem: [],
-  },
-  {
-    url: "/galerei",
-    text: "Galerei",
-    isActive: false,
-    hasItem: [],
-  },
-];

@@ -1,21 +1,15 @@
 <?php
 
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\Galleries\PhotoPageController;
 use App\Http\Controllers\Galleries\PhotoPageGalleryController;
-
 use App\Http\Controllers\Galleries\VideoPageController;
 use App\Http\Controllers\Galleries\VideoPageGalleryController;
-
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductPhotoController;
-
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController;
-
-
-use App\Http\Controllers\AboutController;
-use App\Http\Controllers\CategoryController;
-
 
 
 Route::post('register', [AuthController::class, 'register']);
@@ -28,7 +22,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('logout', [AuthController::class, 'logout']);
 });
 
-Route::group(['prefix' => 'admin'],function (){
+Route::group(['prefix' => 'admin','middleware' => 'api'],function (){
     
     Route::apiResource('language', \App\Http\Controllers\LanguageController::class)->except(['destroy']);
     Route::delete('language-delete/{ids?}', [\App\Http\Controllers\LanguageController::class,'destroy'])->name('language.destroy');
@@ -46,7 +40,8 @@ Route::group(['prefix' => 'admin'],function (){
         Route::apiResource('video-gallery',VideoPageGalleryController::class)->only(['store','update']);
         Route::delete('video-gallery/{ids}',[VideoPageGalleryController::class,'destroy'])->name('video-gallery.destroy');
 
-        Route::apiResource('page',\App\Http\Controllers\PageController::class);
+        Route::get('page',[\App\Http\Controllers\PageController::class, 'index'])->name('page.index');
+        Route::post('page',[\App\Http\Controllers\PageController::class, 'firstOrCreate'])->name('page.firstOrCreate');
        
 
     });
@@ -70,14 +65,23 @@ Route::group(['prefix' => 'admin'],function (){
 
         Route::apiResource('product',ProductController::class)->except(['show','destroy']);
         Route::delete('product/{ids}', [ProductController::class,'destroy'])->name('product.destroy');
+
+        Route::put('product/status/{status}', [ProductController::class,'status'])->name('product.status');
+        Route::post('product/copy', [ProductController::class,'copy'])->name('product.copy');
+        Route::put('product/addition/{product}', [ProductController::class,'updateAdditions'])->name('product.update.additions');
+        Route::delete('product/addition/{product}/{ids}', [ProductController::class,'deleteAdditions'])->name('product.delete.additions');
+
         Route::apiResource('product-photo',ProductPhotoController::class)->only(['store','update']);
         Route::delete('product-photo/{ids}', [ProductPhotoController::class,'destroy'])->name('product-photo.destroy');
+        Route::post('product-size',[\App\Http\Controllers\ProductSizeController::class,'updateOrCreate'])->name('product.size.updateOrCreate');
     });
 
 
     Route::group(['prefix' => 'export'],function(){
-        Route::get('categories/', [CategoryController::class, 'export'])->name('category.export');
+        Route::get('category', [CategoryController::class, 'export'])->name('category.export');
+        Route::get('product/{id?}', [ProductController::class, 'export'])->name('product.export');
         Route::post('create-translate',[\App\Services\Translate::class,'store'])->name('translate.store');
     });
+    Route::post('product-import', [ProductController::class, 'import'])->name('product.import');
 
 });

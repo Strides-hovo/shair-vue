@@ -11,35 +11,49 @@ use Illuminate\Http\Request;
 class PageController extends Controller
 {
 
-
     public function index()
     {
         return response()->success(Page::withs()->get());
     }
 
-
-    public function store(Request $request)
+    public function firstOrCreate(Request $request)
     {
+        
+        $data = $request->validate([
+            'name' => 'required|string',
+            'parent_id' => 'nullable|exists:pages,id',
+        ]);
 
+        $page = Page::firstOrCreate([
+            'name' => $request->name,
+        ], $data);
+
+        if ($request->has('translate')) {
+            $translate = $request->input('translate');
+            $translate = array_merge($translate, ['page_id' => $page->id]);
+            $request->merge(['translate' => $translate]);
+        } 
+        else {
+            return response()->success($page);
+        }
+        $this->translate($request, $page);
+        return response()->success($page->loads()->refresh());
     }
 
-    public function update(Request $request,Page $page )
+
+    public function translate(Request $request, Page $page)
     {
-        $data = $request->validate([
-            'translate.slug' => 'nullable|string',
-            'translate.meta_title' => 'nullable|string',
-            'translate.meta_keywords' => 'nullable|string',
-            'translate.meta_description' => 'nullable|string',
-            'translate.language_id' => 'required|exists:languages,id',
-        ]);
-        Page::setLanguageId($request->translate['language_id']);
-        if ($page->translate){
-            $page->translate()->update($data['translate']);
-        }
-        else{
-            $page->translate()->create($data['translate']);
-        }
-        return response()->success($page->refresh());
+
+        $translate = array_merge_recursive($request->validate([
+            'translate.page_id' => 'required|exists:pages,id',
+        ]), meta_translate($request));
+
+        $page->translations()->updateOrCreate([
+            'language_id' => $request['translate']['language_id'],
+            'page_id' => $request['translate']['page_id']],
+            $request['translate']
+        );
+
     }
 
 }

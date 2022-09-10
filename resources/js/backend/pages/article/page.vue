@@ -55,8 +55,8 @@ export default {
       this['article/UPDATE'](page)
     },
 
-    checkProduct(product_id) {
-      this.page.product_id = product_id
+    checkProduct(product_ids) {
+      this.page.product_id = product_ids[0]
       this['article/UPDATE'](this.page)
     },
 

@@ -14,14 +14,9 @@
   ></LeftAside>
 </div>
 
-<StrModal
-  :is-active="ButtonNewCategory"
-  HeaderText="Добовить новый Категорию "
-  @closeModal="closeNewCategoryModal"
-  width="600px"
->
 
-</StrModal>
+<add-category v-model:ButtonNewCategory="ButtonNewCategory" />
+
 
 <div class="container-content">
   <div class="container-content__top">
@@ -34,9 +29,9 @@
     </div>
   </div>
 
-  <teleport to=".productpage-modal" v-if="Teleport">
-    <transition name="aside">
-      <div class="products-modal-edit" v-if="ButtonEdit">
+  <teleport to=".productpage-modal" v-if="ButtonEdit">
+
+      <div class="products-modal-edit"  >
         <div class="products-modal-edit__title">Name</div>
         <div class="products-modal-edit__content">
           <div class="products-modal-edit__content-item">
@@ -48,14 +43,14 @@
             />
           </div>
         </div>
-        <div class="products-modal-edit__btn btn" @click="update">שמור</div>
+        <button class="products-modal-edit__btn btn" @click="update">שמור</button>
       </div>
-    </transition>
+
   </teleport>
 
-  <teleport to=".productpage-modal" v-if="Teleport">
-    <transition name="aside">
-      <div class="products-modal-size" v-if="ButtonSize">
+  <teleport to=".productpage-modal" v-if="ButtonSize">
+
+      <div class="products-modal-size" >
         <div class="products-modal-size__top">
           <span>
             <img src="@img/icons/div-ico.svg" alt="" />
@@ -79,12 +74,12 @@
           :ButtonNewSize="ButtonNewSize"
         />
       </div>
-    </transition>
+
   </teleport>
 
-  <teleport to=".productpage-modal" v-if="Teleport">
-    <transition name="aside">
-      <div class="products-modal-seo" v-if="ButtonSeo">
+  <teleport to=".productpage-modal" v-if="ButtonSeo">
+
+      <div class="products-modal-seo" >
         <div class="products-modal-seo__title">הגדרות products</div>
         <div class="products-modal-seo__content">
 
@@ -114,7 +109,7 @@
         </div>
         <div class="products-modal-seo__btn btn" @click="update">שמור</div>
       </div>
-    </transition>
+
   </teleport>
 
   <div class="container-content__body">

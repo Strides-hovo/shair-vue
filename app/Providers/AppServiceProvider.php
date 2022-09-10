@@ -1,19 +1,23 @@
 <?php
+/** @noinspection PhpUndefinedMethodInspection */
 
 namespace App\Providers;
 
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
-use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Response;
+use Illuminate\Support\ServiceProvider;
+
 class AppServiceProvider extends ServiceProvider
 {
+
+
+
     /**
      * Register any application services.
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
         //
     }
@@ -23,20 +27,21 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         Response::macro('success',function ($data,int $code = 200, $message = ''): JsonResponse{
-            return response()->json([
+             return response()->json([
                 'status' => 'Success',
-                 'data' => $data,
-                'message' => $message
+                'message' => $message,
+                'data' => $data
             ], $code);
         });
 
-        Response::macro('error',function (string $message,int $code = 404): JsonResponse{
-            return response()->json([
+        Response::macro('error',function (string $message = null, int $code = 404, $data = null): JsonResponse{
+             return response()->json([
                 'status' => 'Error',
-                'message' => $message
+                'message' => $message,
+                'data' => $data
             ], $code);
         });
     }

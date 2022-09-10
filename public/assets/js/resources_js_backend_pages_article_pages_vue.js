@@ -116,7 +116,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       return this.pagesDates(this.languageId, this.searchName);
     },
     page: function page() {
-      return this.pageData('article', this.languageId);
+      return this.pageData('Articles', this.languageId);
     }
   }),
   methods: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapActions)(['article/SET_ARTICLES', 'article/UPDATE', 'article/DESTROY', 'article/CREATE', 'page/SET_PAGES', 'page/UPDATE'])), {}, {
@@ -153,7 +153,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this['article/SET_ARTICLES']();
     }
 
-    if (!this.page) {
+    if (!('name' in this.page)) {
       this['page/SET_PAGES']();
     }
   }

@@ -1,43 +1,49 @@
 <template>
-    <div>
+  <div>
 
-    </div>
+  </div>
 </template>
 
 <script>
 export default {
-    name: 'BaseMetaInfo',
-    props: {
-        metainfo: {
-            title: {
-                type: String,
-                default: 'Shakira'
-            },
-            meta_description: {
-                type: String,
-                default: ''
-            },
-            meta_keywords: {
-                type: String,
-                default: ''
-            },
-        }
-    },
-    watch: {
-        'metainfo'(val) {
-            this.change(val)
-        }
-    },
-    mounted() {
-        this.change(this.metainfo)
-    },
-    methods: {
-        change(metainfo) {
-            document.title = metainfo.title || ''
-            document.head.querySelector('meta[name="description"]').content = metainfo.meta_description
-            document.head.querySelector('meta[name="keywords"]').content = metainfo.meta_keywords
-        }
+  name: 'BaseMetaInfo',
+  props: {
+    metaInfo: {
+      title: {
+        type: String,
+        default: 'Shakra',
+        required: false
+      },
+      meta_description: {
+        type: String,
+        default: 'Shakra',
+        required: false
+      },
+      meta_keywords: {
+        type: String,
+        default: 'Shakra',
+        required: false
+      },
     }
+  },
+  watch: {
+    'metaInfo'(val) {
+      this.change(val)
+    }
+  },
+  mounted() {
+    this.change(this.metaInfo)
+  },
+  methods: {
+    change(metaInfo) {
+      if(metaInfo){
+        document.title = metaInfo.title
+        document.head.querySelector('meta[name="description"]').content = metaInfo.meta_description
+        document.head.querySelector('meta[name="keywords"]').content = metaInfo.meta_keywords
+      }
+
+    }
+  }
 }
 </script>
 

@@ -13,7 +13,7 @@ class AboutTranslateFactory extends Factory
 
     public function definition()
     {
-        return neta_seeder([
+        return meta_seeder([
             'about_id' => About::all()->random()->id,
             'title' => $this->faker->title,
             'content' => $this->faker->realText,

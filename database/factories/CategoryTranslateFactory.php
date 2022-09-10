@@ -16,10 +16,11 @@ class CategoryTranslateFactory extends Factory
     public function definition()
     {
         return [
-            'language_id' => Language::all()->random()->id,
-            'category_id' => Category::all()->random()->id,
+            'language_id' => Language::all()->unique()->random()->id,
+            'category_id' => Category::all()->unique()->random()->id,
             'name' => $this->faker->name,
             'description' => $this->faker->text,
+            'slug' => $this->faker->slug,
         ];
     }
 }

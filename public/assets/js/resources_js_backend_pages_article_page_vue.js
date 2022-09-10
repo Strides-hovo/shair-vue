@@ -96,13 +96,16 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   emits: ['update:ButtonProductList', 'checkProduct'],
   props: {
     ButtonProductList: false,
-    product_id: null
+    product_id: null,
+    check_product_ids: {
+      "default": []
+    }
   },
   data: function data() {
     return {
       searchName: null,
       category_id: '',
-      check_product: null
+      check_product: this.check_product_ids
     };
   },
   computed: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapGetters)({
@@ -111,7 +114,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     languageId: 'lang/getLanguageId'
   })), {}, {
     productsList: function productsList() {
-      return this.productsData(this.languageId, this.category_id, this.searchName);
+      var _this = this;
+
+      var products = this.productsData(this.languageId, this.category_id, this.searchName).filter(function (product) {
+        return _this.product_id ? product.id !== _this.product_id : true;
+      }); //if (this.product_id)
+
+      return products;
     },
     categories: function categories() {
       return this.categoriesData(this.languageId);
@@ -121,9 +130,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     closeModal: function closeModal() {
       this.$emit('update:ButtonProductList', !this.ButtonProductList);
       console.log(this.ButtonProductList);
-    },
-    checkProduct: function checkProduct(product_id) {
-      this.check_product = product_id;
     },
     saveProduct: function saveProduct() {
       this.$emit('checkProduct', this.check_product);
@@ -285,8 +291,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       page.translate.language_id = this.languageId;
       this['article/UPDATE'](page);
     },
-    checkProduct: function checkProduct(product_id) {
-      this.page.product_id = product_id;
+    checkProduct: function checkProduct(product_ids) {
+      this.page.product_id = product_ids[0];
       this['article/UPDATE'](this.page);
     }
   }),
@@ -402,7 +408,7 @@ var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_15 = ["onChange", "checked"];
+var _hoisted_15 = ["checked", "value"];
 
 var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "fake"
@@ -444,10 +450,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $data.category_id = $event;
     })
   }, [_hoisted_8, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($options.categories, function (category) {
+    var _category$translate;
+
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", {
       value: category.id,
       key: category.id
-    }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(category.translate.name), 9
+    }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(category === null || category === void 0 ? void 0 : (_category$translate = category.translate) === null || _category$translate === void 0 ? void 0 : _category$translate.name), 9
     /* TEXT, PROPS */
     , _hoisted_9);
   }), 128
@@ -455,34 +463,34 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   ))], 512
   /* NEED_PATCH */
   ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.category_id]])]), _hoisted_10]), _hoisted_11]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_13, [_hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($options.productsList, function (product) {
-    var _product$photos$;
+    var _product$photos$, _product$category, _product$category$tra;
 
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("tr", {
       "class": "order-row",
       key: product.id
-    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-      type: "radio",
-      name: "product_id",
-      onChange: function onChange($event) {
-        return $options.checkProduct(product.id);
-      },
-      checked: $props.product_id === product.id
-    }, null, 40
-    /* PROPS, HYDRATE_EVENTS */
-    , _hoisted_15), _hoisted_16])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+      type: "checkbox",
+      checked: $props.check_product_ids.includes(product.id),
+      "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
+        return $data.check_product = $event;
+      }),
+      value: product.id
+    }, null, 8
+    /* PROPS */
+    , _hoisted_15), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, $data.check_product]]), _hoisted_16])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
       src: (_product$photos$ = product.photos[0]) === null || _product$photos$ === void 0 ? void 0 : _product$photos$.image
     }, null, 8
     /* PROPS */
     , _hoisted_17)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(product.translate.name), 1
     /* TEXT */
-    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(product.category.translate.name), 1
+    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)((_product$category = product.category) === null || _product$category === void 0 ? void 0 : (_product$category$tra = _product$category.translate) === null || _product$category$tra === void 0 ? void 0 : _product$category$tra.name), 1
     /* TEXT */
     )]);
   }), 128
   /* KEYED_FRAGMENT */
   ))])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     "class": "product-new-modal__btn btn",
-    onClick: _cache[3] || (_cache[3] = function () {
+    onClick: _cache[4] || (_cache[4] = function () {
       return $options.saveProduct && $options.saveProduct.apply($options, arguments);
     })
   }, " שמור ")])], 2
@@ -915,13 +923,10 @@ function render(_ctx, _cache) {
       return _ctx.ButtonProductList = $event;
     }),
     onCheckProduct: _ctx.checkProduct,
-    product_id: _ctx.page.product_id,
-    "onUpdate:product_id": _cache[11] || (_cache[11] = function ($event) {
-      return _ctx.page.product_id = $event;
-    })
+    check_product_ids: [_ctx.page.product_id]
   }, null, 8
   /* PROPS */
-  , ["ButtonProductList", "onCheckProduct", "product_id"])])], 64
+  , ["ButtonProductList", "onCheckProduct", "check_product_ids"])])], 64
   /* STABLE_FRAGMENT */
   );
 }

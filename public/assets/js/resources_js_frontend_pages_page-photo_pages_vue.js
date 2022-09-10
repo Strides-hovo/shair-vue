@@ -1,10 +1,10 @@
 "use strict";
 (self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_frontend_pages_page-photo_pages_vue"],{
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/frontend/components/sidebar/PhotoPageSidebar.vue?vue&type=script&lang=js":
-/*!***************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/frontend/components/sidebar/PhotoPageSidebar.vue?vue&type=script&lang=js ***!
-  \***************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/frontend/components/sidebar/PageSidebar.vue?vue&type=script&lang=js":
+/*!**********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/frontend/components/sidebar/PageSidebar.vue?vue&type=script&lang=js ***!
+  \**********************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -20,7 +20,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: "PhotoPageSidebar",
+  name: "PageSidebar",
   props: {
     pages: {
       type: Array,
@@ -53,7 +53,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
-/* harmony import */ var _frontend_components_sidebar_PhotoPageSidebar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @frontend/components/sidebar/PhotoPageSidebar */ "./resources/js/frontend/components/sidebar/PhotoPageSidebar.vue");
+/* harmony import */ var _frontend_components_sidebar_PageSidebar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @frontend/components/sidebar/PageSidebar */ "./resources/js/frontend/components/sidebar/PageSidebar.vue");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -71,7 +71,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'Page-Photo',
   components: {
-    PhotoPageSidebar: _frontend_components_sidebar_PhotoPageSidebar__WEBPACK_IMPORTED_MODULE_1__["default"]
+    PhotoPageSidebar: _frontend_components_sidebar_PageSidebar__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   data: function data() {
     return {
@@ -115,10 +115,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/frontend/components/sidebar/PhotoPageSidebar.vue?vue&type=template&id=af7a86f0":
-/*!*******************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/frontend/components/sidebar/PhotoPageSidebar.vue?vue&type=template&id=af7a86f0 ***!
-  \*******************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/frontend/components/sidebar/PageSidebar.vue?vue&type=template&id=5cb3dce0":
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/frontend/components/sidebar/PageSidebar.vue?vue&type=template&id=5cb3dce0 ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -148,7 +148,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       to: {
         name: $props.routeName,
         params: {
-          slug: page.translate.slug,
+          _slug: page.translate.slug,
           id: page.id
         }
       }
@@ -256,21 +256,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   return this.$route.name === 'PhotoGallery' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_router_view, {
     key: 0
-  })) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-    href: "",
-    onClick: _cache[0] || (_cache[0] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
-      return _ctx.$router.replace('products');
-    }, ["prevent"]))
-  }, "Products"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-    href: "",
-    onClick: _cache[1] || (_cache[1] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
-      return _ctx.$router.replace('продукты');
-    }, ["prevent"]))
-  }, "products-2"), _hoisted_2, _hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  })) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [_hoisted_2, _hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["combobox__active", {
       active: _ctx.ButtonMobileTab
     }]),
-    onClick: _cache[2] || (_cache[2] = function ($event) {
+    onClick: _cache[0] || (_cache[0] = function ($event) {
       return _ctx.ButtonMobileTab = !_ctx.ButtonMobileTab;
     })
   }, _hoisted_7, 2
@@ -287,7 +277,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       to: {
         name: 'PhotoGallery',
         params: {
-          slug: page.translate.slug,
+          _slug: page.translate.slug,
           id: page.id
         }
       }
@@ -315,7 +305,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       to: {
         name: 'PhotoGallery',
         params: {
-          slug: page.translate.slug,
+          _slug: page.translate.slug,
           id: page.id
         }
       }
@@ -376,25 +366,25 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/frontend/components/sidebar/PhotoPageSidebar.vue":
-/*!***********************************************************************!*\
-  !*** ./resources/js/frontend/components/sidebar/PhotoPageSidebar.vue ***!
-  \***********************************************************************/
+/***/ "./resources/js/frontend/components/sidebar/PageSidebar.vue":
+/*!******************************************************************!*\
+  !*** ./resources/js/frontend/components/sidebar/PageSidebar.vue ***!
+  \******************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _PhotoPageSidebar_vue_vue_type_template_id_af7a86f0__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PhotoPageSidebar.vue?vue&type=template&id=af7a86f0 */ "./resources/js/frontend/components/sidebar/PhotoPageSidebar.vue?vue&type=template&id=af7a86f0");
-/* harmony import */ var _PhotoPageSidebar_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PhotoPageSidebar.vue?vue&type=script&lang=js */ "./resources/js/frontend/components/sidebar/PhotoPageSidebar.vue?vue&type=script&lang=js");
+/* harmony import */ var _PageSidebar_vue_vue_type_template_id_5cb3dce0__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PageSidebar.vue?vue&type=template&id=5cb3dce0 */ "./resources/js/frontend/components/sidebar/PageSidebar.vue?vue&type=template&id=5cb3dce0");
+/* harmony import */ var _PageSidebar_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PageSidebar.vue?vue&type=script&lang=js */ "./resources/js/frontend/components/sidebar/PageSidebar.vue?vue&type=script&lang=js");
 /* harmony import */ var C_OpenServer_domains_shair_admin_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_OpenServer_domains_shair_admin_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_PhotoPageSidebar_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_PhotoPageSidebar_vue_vue_type_template_id_af7a86f0__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/frontend/components/sidebar/PhotoPageSidebar.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_OpenServer_domains_shair_admin_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_PageSidebar_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_PageSidebar_vue_vue_type_template_id_5cb3dce0__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/frontend/components/sidebar/PageSidebar.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -430,17 +420,17 @@ if (false) {}
 
 /***/ }),
 
-/***/ "./resources/js/frontend/components/sidebar/PhotoPageSidebar.vue?vue&type=script&lang=js":
-/*!***********************************************************************************************!*\
-  !*** ./resources/js/frontend/components/sidebar/PhotoPageSidebar.vue?vue&type=script&lang=js ***!
-  \***********************************************************************************************/
+/***/ "./resources/js/frontend/components/sidebar/PageSidebar.vue?vue&type=script&lang=js":
+/*!******************************************************************************************!*\
+  !*** ./resources/js/frontend/components/sidebar/PageSidebar.vue?vue&type=script&lang=js ***!
+  \******************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PhotoPageSidebar_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PageSidebar_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PhotoPageSidebar_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./PhotoPageSidebar.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/frontend/components/sidebar/PhotoPageSidebar.vue?vue&type=script&lang=js");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PageSidebar_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./PageSidebar.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/frontend/components/sidebar/PageSidebar.vue?vue&type=script&lang=js");
  
 
 /***/ }),
@@ -460,17 +450,17 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/frontend/components/sidebar/PhotoPageSidebar.vue?vue&type=template&id=af7a86f0":
-/*!*****************************************************************************************************!*\
-  !*** ./resources/js/frontend/components/sidebar/PhotoPageSidebar.vue?vue&type=template&id=af7a86f0 ***!
-  \*****************************************************************************************************/
+/***/ "./resources/js/frontend/components/sidebar/PageSidebar.vue?vue&type=template&id=5cb3dce0":
+/*!************************************************************************************************!*\
+  !*** ./resources/js/frontend/components/sidebar/PageSidebar.vue?vue&type=template&id=5cb3dce0 ***!
+  \************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PhotoPageSidebar_vue_vue_type_template_id_af7a86f0__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PageSidebar_vue_vue_type_template_id_5cb3dce0__WEBPACK_IMPORTED_MODULE_0__.render)
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PhotoPageSidebar_vue_vue_type_template_id_af7a86f0__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./PhotoPageSidebar.vue?vue&type=template&id=af7a86f0 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/frontend/components/sidebar/PhotoPageSidebar.vue?vue&type=template&id=af7a86f0");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PageSidebar_vue_vue_type_template_id_5cb3dce0__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./PageSidebar.vue?vue&type=template&id=5cb3dce0 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/frontend/components/sidebar/PageSidebar.vue?vue&type=template&id=5cb3dce0");
 
 
 /***/ }),

@@ -5,8 +5,7 @@ namespace Database\Seeders;
 use App\Models\Product;
 use App\Models\ProductPhoto;
 use App\Models\ProductPhotoTranslate;
-use App\Models\ProductPrice;
-
+use App\Models\ProductSize;
 use App\Models\ProductTranslate;
 use Illuminate\Database\Seeder;
 
@@ -19,13 +18,12 @@ class ProductSeeder extends Seeder
      */
     public function run()
     {
-        Product::factory(2)->create();
-        ProductTranslate::factory(4)->create();
+        Product::factory(10)->create();
+        ProductTranslate::factory(20)->create();
 
+        ProductPhoto::factory(40)->create();
+        ProductPhotoTranslate::factory(80)->create();
 
-        ProductPhoto::factory(2)->create();
-        ProductPhotoTranslate::factory(4)->create();
-
-        ProductPrice::factory(4)->create();
+        ProductSize::factory(20)->create();
     }
 }

@@ -15,8 +15,8 @@ class PhotoPageTranslateFactory extends Factory
     {
         return [
           'slug' => $this->faker->slug,
-          'language_id' => Language::all()->random()->id,
-          'photo_page_id' => PhotoPage::all()->random()->id,
+          'language_id' => Language::all()->unique()->random()->id,
+          'photo_page_id' => PhotoPage::all()->unique()->random()->id,
           'name' => $this->faker->name,
           'description' => $this->faker->text,
           'meta_title' => $this->faker->name,

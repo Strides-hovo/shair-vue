@@ -18,9 +18,8 @@
           <label>
             <select v-model="category_id">
               <option value="">כל המוצרים</option>
-              <option :value="category.id" v-for="category in categories" :key="category.id">{{
-                  category.translate.name
-                }}
+              <option :value="category.id" v-for="category in categories" :key="category.id">
+                {{category?.translate?.name}}
               </option>
             </select>
           </label>
@@ -57,9 +56,12 @@
           <tr class="order-row" v-for="product in productsList" :key="product.id">
             <td>
               <label>
-                <input type="radio" name="product_id"
-                       @change="checkProduct(product.id)"
-                       :checked="product_id === product.id"
+                <input type="checkbox"
+
+                       :checked="check_product_ids.includes(product.id)"
+                       v-model="check_product"
+
+                       :value="product.id"
                 >
                 <span class="fake"></span>
               </label>
@@ -71,14 +73,16 @@
               {{ product.translate.name }}
             </td>
             <td>
-              {{ product.category.translate.name }}
+              {{ product.category?.translate?.name }}
             </td>
           </tr>
 
           </tbody>
         </table>
       </div>
-      <button class="product-new-modal__btn btn" @click="saveProduct">
+      <button class="product-new-modal__btn btn"
+              @click="saveProduct"
+      >
         שמור
       </button>
     </div>
@@ -94,13 +98,16 @@ export default {
   emits: ['update:ButtonProductList', 'checkProduct'],
   props: {
     ButtonProductList: false,
-    product_id: null
+    product_id: null,
+    check_product_ids: {
+      default: []
+    }
   },
   data() {
     return {
       searchName: null,
       category_id: '',
-      check_product: null
+      check_product: this.check_product_ids
     }
   },
   computed: {
@@ -111,7 +118,11 @@ export default {
     }),
 
     productsList() {
-      return this.productsData(this.languageId, this.category_id, this.searchName)
+      const products =
+          this.productsData(this.languageId, this.category_id, this.searchName)
+          .filter(product => this.product_id ? product.id !== this.product_id : true)
+      //if (this.product_id)
+      return products
     },
 
     categories() {
@@ -128,9 +139,7 @@ export default {
       console.log(this.ButtonProductList)
     },
 
-    checkProduct(product_id) {
-     this.check_product = product_id
-    },
+
 
     saveProduct(){
       this.$emit('checkProduct',this.check_product)

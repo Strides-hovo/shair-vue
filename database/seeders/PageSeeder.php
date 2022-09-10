@@ -1,54 +1,58 @@
 <?php
+/** @noinspection PhpUndefinedMethodInspection */
+/** @noinspection PhpMissingReturnTypeInspection */
 
 namespace Database\Seeders;
 
 use App\Models\Page;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Database\Seeder;
 use App\Models\PageTranslate;
+use Illuminate\Database\Seeder;
 
 class PageSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
+
+    private \Faker\Generator $faker;
+
     public function run()
     {
-        $faker = \Faker\Factory::create('ru_RU');
-        $dates = [
-            [
-                'name' => 'product',
-                'sub_menu' => false,
-            ],
-            [
-                'name' => 'article',
-                'sub_menu' => true,
-            ],
-        ];
-        
-            Page::insert($dates);
-        
+        $this->faker = \Faker\Factory::create('ru_RU');
+        $pages = $this->pages();
+        $translates = $this->translate();
 
-
-        $translates = [
-            [
-                'page_id' => 1,
-                'title' => $faker->title,
-                'slug' => $faker->slug,
-                'meta_title' => $faker->name,
-                'language_id' => 1,
-            ],
-            [
-                'page_id' => 2,
-                'title' => $faker->title,
-                'slug' => $faker->slug,
-                'meta_title' => $faker->name,
-                'language_id' => 1,
-            ],
-        ];
-        
+        Page::insert($pages);
         PageTranslate::insert($translates);
     }
+
+
+    private function pages()
+    {
+        return [
+            ['name' => 'Home', 'sub_menu' => false,'parent_id' => null],
+            ['name' => 'About', 'sub_menu' => false,'parent_id' => null],
+            ['name' => 'Articles', 'sub_menu' => false,'parent_id' => null],
+            ['name' => 'Gallery', 'sub_menu' => true,'parent_id' => null],
+            ['name' => 'PhotoGalleries', 'sub_menu' => false, 'parent_id' => 4],
+            ['name' => 'VideoGalleries', 'sub_menu' => false, 'parent_id' => 4],
+            ['name' => 'Products', 'sub_menu' => false, 'parent_id' => null],
+        ];
+    }
+
+    private function translate()
+    {
+        return [
+            ['page_id' => 1, 'slug' => $this->faker->slug, 'language_id' => 1],
+            ['page_id' => 1, 'slug' => $this->faker->slug, 'language_id' => 2],
+            ['page_id' => 2, 'slug' => $this->faker->slug, 'language_id' => 1],
+            ['page_id' => 2, 'slug' => $this->faker->slug, 'language_id' => 2],
+            ['page_id' => 3, 'slug' => $this->faker->slug, 'language_id' => 1],
+            ['page_id' => 3, 'slug' => $this->faker->slug, 'language_id' => 2],
+            ['page_id' => 5, 'slug' => $this->faker->slug, 'language_id' => 1],
+            ['page_id' => 5, 'slug' => $this->faker->slug, 'language_id' => 2],
+            ['page_id' => 6, 'slug' => $this->faker->slug, 'language_id' => 1],
+            ['page_id' => 6, 'slug' => $this->faker->slug, 'language_id' => 2],
+            ['page_id' => 7, 'slug' => $this->faker->slug, 'language_id' => 2],
+            ['page_id' => 7, 'slug' => $this->faker->slug, 'language_id' => 1],
+        ];
+    }
+
 }

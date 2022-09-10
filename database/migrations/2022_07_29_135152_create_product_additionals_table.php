@@ -14,10 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::create('product_additionals', function (Blueprint $table) {
+            $table->id();
             $table->foreignId('product_id')->index()->constrained()->onDelete('cascade');
             $table->unsignedBigInteger('additional_id')->index();
             $table->foreign('additional_id')->references('id')->on('products')->onDelete('cascade');
-
+            $table->unique(['product_id','additional_id']);
         });
     }
 

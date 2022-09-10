@@ -1,12 +1,12 @@
 <template>
-<!--  <transition name="aside">-->
-    <div class="productpage-modal" :class="{ active: isActive }" >
+  <Transition name="slide-fade">
+    <div class="productpage-modal" v-if="isActive" >
       <div class="productpage-modal__close" @click="closeModal">
         <img src="@img/icons/close.svg" alt="">
       </div>
       <slot></slot>
     </div>
-<!--  </transition>-->
+  </Transition>
 
 </template>
 
@@ -29,7 +29,8 @@ export default {
 }
 </script>
 
-<style >
+<style scoped>
+
 .productpage-modal {
     position: fixed;
     z-index: 10;
@@ -38,40 +39,23 @@ export default {
     background: #fbfbfb;
     padding: 30px 20px;
     max-width: 600px;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
     flex-direction: column;
-    -webkit-transition: all .5s ease;
-    -o-transition: all .5s ease;
-    transition: all .5s ease;
-    transform: translate(-100%, 0);
-    pointer-events: none;
-    visibility: hidden;
     border-right: 1px solid #bfbfbf;
+
 }
 
-.productpage-modal.active {
-    transform: translate(0);
-    pointer-events: all;
-    visibility: visible;
+
+.slide-fade-enter-active,
+.slide-fade-leave-active{
+  transition: all 0.4s ease-out;
 }
 
-/*.aside-enter-active,
-.aside-leave-active {
-  transition: opacity .5s;
-  transform: translate(0);
-}
 
-.aside-enter,
-.aside-leave-to {
-  transform: translate(-100%, 0);
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+  transform: translateX(-100%);
   opacity: 0;
-
-}*/
-
+}
 
 </style>

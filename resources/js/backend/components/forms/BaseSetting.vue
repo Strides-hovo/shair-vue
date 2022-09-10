@@ -36,12 +36,12 @@ export default {
       required: true,
       type: Object
     }
-  },
+  },    
   methods: {
     UpdateSetting(){
       this.$emit('UpdateSetting')
     }
-  }
+  }     
 }
 </script>
 

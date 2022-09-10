@@ -3,6 +3,7 @@
 import axios from "axios";
 import apiRoutes from "@/routes/api-routes";
 import {BackendErrorHandler} from "@/helpers";
+import {create_translate} from "./products/mutations";
 
 const state = {
     about: { }
@@ -33,15 +34,7 @@ const mutations = {
 const getters = {
 
     GET_PAGE: (state) => (language_id) => {
-
-         const translate = state.about.translate && state.about.translate.language_id === language_id
-        ? state.about.translate
-             : (state.about.translations
-                 ? state.about.translations.find(tr => tr.language_id === language_id ) || {}
-                 : {})
-
-
-        state.about.translate = translate
+        state.about.translate = create_translate(state.about,language_id)
         return state.about
     },
 

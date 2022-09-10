@@ -15,8 +15,8 @@ class ProductTranslateFactory extends Factory
     public function definition()
     {
         return [
-            'product_id' => Product::all()->random()->id,
-            'language_id' => Language::all()->random()->id,
+            'product_id' => Product::all()->unique()->random()->id,
+            'language_id' => Language::all()->unique()->random()->id,
             'name' => $this->faker->name,
             'short_description' => $this->faker->text,
             'description' => $this->faker->realText,

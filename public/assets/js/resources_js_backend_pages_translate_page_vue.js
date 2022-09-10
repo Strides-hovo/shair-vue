@@ -28,7 +28,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     language: "lang/getLanguage"
   })), {}, {
     translates: function translates() {
-      return this.$trans._translate() || {};
+      return this.$trans._translate(this.language ? this.language.code : null) || {};
     }
   }),
   methods: {

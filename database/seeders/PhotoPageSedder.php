@@ -2,12 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\PagePhotoGallery;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Database\Seeder;
+
 use App\Models\PhotoPage;
 use App\Models\PhotoPageGallery;
 use App\Models\PhotoPageTranslate;
+use Illuminate\Database\Seeder;
 
 
 class PhotoPageSedder extends Seeder

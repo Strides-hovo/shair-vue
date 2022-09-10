@@ -1,0 +1,99 @@
+<router-view v-if="this.$route.name === 'BackendProduct'"></router-view>
+
+  <div v-else style="width: 100%">
+  
+  <left-aside :is-active="ButtonLeftAside" @CloseLeftAside="ButtonLeftAside = false">
+    <base-setting v-model:page="page" @UpdateSetting="UpdateSetting" />
+  </left-aside>
+
+  <div class="cart-btns">
+
+    <button class="cart-btns__item packages-add-new btn circle" @click="create">
+        <base-icon icon="add-icon" width="14" height="14" />
+    </button>
+
+    <button class="cart-btns__item btn" @click="export_data">ייצוא לאקסל</button>
+
+    <base-translate-slide>
+        <button class="cart-btns__item btn"
+                v-if="selectedIds.length > 0"
+                @click="destroy" >מחיקה</button>
+    </base-translate-slide>
+   
+  </div>
+  <div class="container-content">
+    <div class="container-content__top container-content__top_tabs">
+      <div class="container-content__top-row">
+      
+        <div class="settings-btn products-seo-btn" @click="ButtonLeftAside = true">
+
+            <base-icon icon="setting" width="15" height="16" />
+        </div>
+
+        <LanguageSelect  />
+
+        <div class="container-content__top-title">
+          הגדרות מוצרים
+          <span> מוצרים למכירה </span>
+        </div>
+      </div>
+ 
+      <the-products-status 
+      :ButtonSaleTab="ButtonSaleTab"
+      :ButtonRentTab="ButtonRentTab"
+      @toggleTab="toggleTab"
+      :products_status="products_status"
+      />
+
+    </div>
+    <div class="container-content__submenu">
+      <div class="search" >
+        <button>חפש</button>
+        <input type="text" placeholder="חיפוש לפי שם / סכום / מסי הזמה " v-model="searchName" />
+      </div>
+      <div class="container-content__submenu-select">
+        <label>
+          <select @change="ChangeCategory">
+            <option value="0">כל המוצרים</option>
+            <option
+              v-for="category in categories"
+              :key="category.id"
+              :value="category.id"
+            >
+              {{ category.translate.name }}
+            </option>
+          </select>
+        </label>
+        <span> מוצרים לתצוגה: </span>
+      </div>
+    </div>
+    <div class="container-content__body">
+      <table class="orders productspage">
+        <thead>
+          <tr>
+            <td>
+              <label>
+                <input type="checkbox" v-model="selectAll" />
+                <span class="fake" ></span>
+              </label>
+            </td>
+            <td>תמונה של המוצר</td>
+            <td>שם המוצר</td>
+            <td>קטגוריה ואפשרות</td>
+            <td>פעולות</td>
+          </tr>
+        </thead>
+        <tbody>
+         
+          <the-products-cart 
+            v-for="product in products" :key="product.id"
+            :product="product"
+            v-model:selectedIds="selectedIds"
+            @copy="Copy"
+          />
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

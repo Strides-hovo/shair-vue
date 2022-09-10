@@ -3,15 +3,13 @@
 namespace App\Http\Requests;
 
 use App\Models\PageVideoGallery;
+use App\Traits\FailedValidation;
 use Illuminate\Foundation\Http\FormRequest;
 
 class VideoGalleryRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
+    use FailedValidation;
+
     public function authorize()
     {
         return true;
@@ -33,7 +31,7 @@ class VideoGalleryRequest extends FormRequest
             'meta_description' => 'nullable|string',
             'meta_keywords' => 'nullable|string'
         ];
-        if ($this->method() === 'POST'){
+        if ($this->method() === 'POST') {
             $rules['slug'] = 'required|string';
             $rules['meta_title'] = 'required|string';
 
@@ -41,10 +39,10 @@ class VideoGalleryRequest extends FormRequest
         return $rules;
     }
 
-    public function prepareForValidation() :void
+    public function prepareForValidation(): void
     {
-        if ($this->has('language_id')){
-            $page = PageVideoGallery::firstOrCreate(['language_id' => $this->language_id],['language_id' => $this->language_id]);
+        if ($this->has('language_id')) {
+            $page = PageVideoGallery::firstOrCreate(['language_id' => $this->language_id], ['language_id' => $this->language_id]);
 
             $this->merge(['page_video_gallery_id' => $page->id]);
         }

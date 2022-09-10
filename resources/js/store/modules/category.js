@@ -1,26 +1,22 @@
+// noinspection JSUnresolvedVariable
 
 
-import axios from "axios";
 import apiRoutes from "../../routes/api-routes";
+import {BackendErrorHandler, export_data, GroupSizes} from "@/helpers";
+import {create_translate} from "./products/mutations";
 
-function downloadI(uri, name) {
-    let link = document.createElement("a");
-    link.setAttribute('download', name);
-    link.href = uri;
-    document.body.appendChild(link);
-    link.click();
-    link.remove();
-}
+
 
 const state = {
-    categories: []
+    categories: [],
+    FRONT_PRODUCTS: []
 }
 
 const actions = {
 
     async export(){
        await axios.get(apiRoutes('category.export')).then(response => {
-           downloadI(apiRoutes('category.export'), 'name')
+           export_data(apiRoutes('category.export'), 'name')
       })
     },
 
@@ -29,34 +25,51 @@ const actions = {
         commit('set', response.data.data)
     },
 
+    async SET_PRODUCTS_BY_CATEGORY({ commit }) {
+        let response = await axios.get(apiRoutes("category.index"),{ params: {frontend: true}});
+        commit("SET_FRONT_PRODUCTS", (await response.data.data));
+    },
+
+
     async create({commit},category){
-        let response = await axios.post(apiRoutes('category.store'), category).catch(err => err)
-        commit('create', response.data.data)
+        await axios.post(apiRoutes('category.store'), category)
+            .then(response => {commit('create', response.data.data)})
+            .catch(err => BackendErrorHandler(err))
+
     },
 
     async update({ commit }, category) {
-        let response = await axios.put(apiRoutes('category.update', category.id), category).catch(err => err)
-        commit('update', response.data.data)
+        await axios.put(apiRoutes('category.update', category.id), category)
+            .then(response => {commit('update', response.data.data)})
+            .catch(err => BackendErrorHandler(err))
     },
 
     async destroy({ commit },category){
-         await axios.delete(apiRoutes('category.destroy',category.id), category).catch(err => alert(err))
-        commit('destroy', category)
+         await axios.delete(apiRoutes('category.destroy',category.id), category)
+             .then(response => {commit('destroy', category)})
+             .catch(err => BackendErrorHandler(err))
+
     },
 
     async updateSize({commit },size){
-      const response =  await axios.put(apiRoutes('category-size.update', size.id), size).catch(err => alert(err))
-        commit('updateSize',response.data.data )
+        await axios.put(apiRoutes('category-size.update', size.id), size)
+          .then(response => {commit('updateSize',response.data.data )})
+          .catch(err => BackendErrorHandler(err))
+
     },
 
     async deleteSize({commit},ids){
-        await axios.delete(apiRoutes('category-size.destroy', ids), ids).catch(err => alert(err))
-        commit('deleteSize',ids)
+        await axios.delete(apiRoutes('category-size.destroy', ids), ids)
+            .then(response => {commit('deleteSize',ids)})
+            .catch(err => BackendErrorHandler(err))
+
     },
 
     async createSize({commit},size){
-         let response = await axios.post(apiRoutes('category-size.store'), size).catch(err => alert(err))
-        commit('createSize',response.data.data )
+         await axios.post(apiRoutes('category-size.store'), size)
+             .then(response => {commit('createSize',response.data.data )})
+             .catch(err => BackendErrorHandler(err))
+
     }
 
 }
@@ -65,6 +78,10 @@ const mutations = {
 
     set(state, categories) {
         state.categories = categories
+    },
+
+    SET_FRONT_PRODUCTS(state, products) {
+        state.FRONT_PRODUCTS = products;
     },
 
     create: (state,category) => {
@@ -95,14 +112,15 @@ const mutations = {
         state.categories = state.categories.filter(c => c.id !== category.id)
     },
 
-    createSize: (state, size) =>{
-        if (typeof size.category_id !== 'undefined' ){
+    createSize: (state, size) => {
+        if ( 'category_id' in size ){
             state.categories = state.categories.map(cat => {
                 if(cat.id === size.category_id) {
                     cat.sizes.push(size)
                 }
                 return cat
             })
+            console.log(state.categories)
         }
 
     },
@@ -138,31 +156,81 @@ const getters = {
     getByLanguage: (state) => (language_id) => {
       
         return state.categories.map(category => {
-            category.translate = category.translations
-            .find(translate => translate.language_id === +language_id && category.id === translate.category_id ) || {}
+            category.translate = create_translate(category,language_id)
+            return category
+        })
+    },
+
+    FilterSizes: (state) => (id,language_id) => {
+        const res = state.categories.find(c => c.id === Number(id)) || {}
+        const category = {...res}
+
+        if ('id' in category){
+            category.sizes = GroupSizes( res.sizes ) || {}
+            category.translate = create_translate(category,language_id)
+        }
+
+        return category
+    },
+
+    GET_CATEGORIES_PRODUCTS: (state) => (languageId) => {
+        return state.FRONT_PRODUCTS.map(category => {
+            category.translate = create_translate(category, languageId);
+            /*category.products = category.products.map(product => {
+                product.translate = create_translate(product, languageId);
+                product.sizes = GroupSizes(product.sizes)
+                product.photos = product.photos.map(photo => {
+                    photo.translate = create_translate(photo, languageId);
+                    return photo
+                })
+                return product
+            })*/
             return category
         })
     },
 
 
-    FilterSizes: (state) => (id,language_id) => {
-        const res = state.categories.find(c => c.id === +id)
-        const category = { ...res }
-        console.log(typeof category)
-        if (typeof category.translations !== 'undefined' ) {
-            category.translate = category.translations
-                .find(translate => translate.language_id === +language_id && category.id === translate.category_id ) || {}
-            category.sizes = category.sizes.reduce((group, size) => {
-                const { height } = size;
-                group[height] = group[height] ?? [];
-                group[height].push(size);
-                return group;
-            }, {});
+
+    GET_CATEGORY_PRODUCTS: (state) => ( languageId, cat_id = null) => {
+        state.FRONT_PRODUCTS = state.FRONT_PRODUCTS.map(category => {
+            category.translate = create_translate(category, languageId);
+            if(category && 'products' in category){
+                category.products = category.products.map(product => {
+                    product.translate = create_translate(product, languageId);
+                    product.sizes = GroupSizes(product.sizes)
+                    product.photos = product.photos.map(photo => {
+                        photo.translate = create_translate(photo, languageId);
+                        return photo
+                    })
+                    return product
+                })
+            }
+            return category
+        })
+
+        if (cat_id){
+            return  state.FRONT_PRODUCTS.find(cat => cat.id === Number(cat_id))
+        }
+        return state.FRONT_PRODUCTS
+    },
+
+    GET_PRODUCT: (state) => (id, languageId) => {
+
+        const product = state.FRONT_PRODUCTS.map(category => {
+            return category.products.find((product) => product.id === Number(id))
+        }).find(product => product)
+
+        if (product && 'id' in product ){
+            product.sizes = GroupSizes(product.sizes) || {}
+            product.translate = create_translate(product, languageId);
+            product.photos = product.photos.map((photo) => {
+                photo.translate = create_translate(photo, languageId);
+                return photo;
+            });
         }
 
-        return category
-    }
-
+        return product
+    },
 
 }
 

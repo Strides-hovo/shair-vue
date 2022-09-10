@@ -3,8 +3,9 @@
 namespace App\Http\Requests;
 
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Traits\FailedValidation;
 use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Foundation\Http\FormRequest;
 
 class LanguageRequest extends FormRequest
 {
@@ -14,11 +15,12 @@ class LanguageRequest extends FormRequest
         return true;
     }
 
+    use FailedValidation;
 
     public function rules()
     {
 
-        if($this->method() == 'POST'){
+        if ($this->method() == 'POST') {
 
             $rules = [
                 'code' => 'required|unique:languages',
@@ -26,10 +28,9 @@ class LanguageRequest extends FormRequest
                 'dir' => 'required|in:ltr,rtl',
                 'status' => 'boolean|nullable',
             ];
-        }
-        else{
+        } else {
             $rules = [
-                'code' => 'nullable|unique:languages,code,' . $this->id ,
+                'code' => 'nullable|unique:languages,code,' . $this->id,
                 'name' => 'nullable|unique:languages,name,' . $this->id,
                 'dir' => 'nullable|in:ltr,rtl',
                 'status' => 'boolean|nullable',
@@ -39,9 +40,6 @@ class LanguageRequest extends FormRequest
         return $rules;
     }
 
-    public function failedValidation(Validator $validator)
-    {
-        return $validator->errors();
-    }
+
 
 }

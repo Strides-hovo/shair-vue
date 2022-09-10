@@ -16,8 +16,8 @@ class VideoPageTranslateFactory extends Factory
     {
 
         return [
-            'language_id' => Language::all()->random()->id,
-            'video_page_id' => VideoPage::all()->random()->id,
+            'language_id' => Language::all()->unique()->random()->id,
+            'video_page_id' => VideoPage::all()->unique()->random()->id,
             'name' => $this->faker->name,
             'description' => $this->faker->text,
             'slug' => $this->faker->slug,

@@ -19,8 +19,8 @@ class ProductPhotoTranslateFactory extends Factory
     public function definition()
     { 
         return [
-            'language_id' => Language::all()->random()->id,
-            'product_photo_id' => ProductPhoto::all()->random()->id,
+            'language_id' => Language::all()->unique()->random()->id,
+            'product_photo_id' => ProductPhoto::all()->unique()->random()->id,
             'alt' => $this->faker->title,
             'title' => $this->faker->title,
             

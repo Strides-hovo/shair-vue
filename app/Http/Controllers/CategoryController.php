@@ -5,15 +5,19 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
 use App\Exports\CategoryExport;
+use App\Traits\CustomValidate;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
 class CategoryController extends Controller
 {
 
+    use CustomValidate;
+
     public function index()
     {
-        return response()->success(Category::withs()->get());
+        $frontend = request('frontend') ?? false;
+        return response()->success(Category::withs($frontend)->get());
     }
 
 
@@ -21,9 +25,14 @@ class CategoryController extends Controller
     {
         try {
             $category = Category::create($request->validated());
-            Category::setLanguageId($request->language_id);
+            if ($request->has('translate')) {
+                merge_translate($request, $category, 'category_id');
+                $this->translate($category);
+            }
+
             return response()->success($category->loads());
-        } catch (\Exception $e) {
+        }
+        catch (\Exception $e) {
             return response()->error($e->getMessage());
         }
     }
@@ -33,6 +42,7 @@ class CategoryController extends Controller
     {
         $category->update($request->validated());
         if ($request->has('translate')) {
+            merge_translate($request, $category, 'category_id');
             $this->translate($category);
         }
 
@@ -40,21 +50,28 @@ class CategoryController extends Controller
     }
 
 
+    /**
+     * @throws \Illuminate\Validation\ValidationException
+     */
     public function translate(Category $category): void
     {
         $request = request();
-        $translate = $request->validate([
-            'translate.meta_title' => 'nullable|string',
-            'translate.meta_description' => 'nullable|string',
-            'translate.meta_keywords' => 'nullable|string',
+        $translate = self::merger_translate($request, $category, 'category_id','category_translate');
 
-            'translate.name' => 'nullable|string',
-            'translate.title' => 'nullable|string',
-            'translate.category_id' => 'nullable|exists:products,id',
-            'translate.language_id' => 'nullable|exists:languages,id',
-        ]);
+        /*$translate = array_merge_recursive(meta_translate($request),
+            $request->validate([
+                    'translate.name' => 'required|string',
+                    'translate.category_id' => 'required|exists:categories,id',
+                ]
+            ));*/
 
-        $category->translations()->updateOrCreate(['language_id' => $request['translate']['language_id']], $translate['translate']);
+
+        Category::setLanguageId($request['translate']['language_id']);
+        $category->translations()->updateOrCreate(
+            [
+                'language_id' => $request['translate']['language_id'],
+                'category_id' => $request['translate']['category_id']
+            ], $translate['translate']);
 
     }
 
@@ -65,8 +82,7 @@ class CategoryController extends Controller
         try {
             $category->delete();
             return response()->success('Category Deleted');
-        }
-        catch (\ErrorException $e) {
+        } catch (\ErrorException $e) {
             return response()->error($e->getMessage());
         }
 

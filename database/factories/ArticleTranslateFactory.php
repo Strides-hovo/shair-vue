@@ -17,8 +17,8 @@ class ArticleTranslateFactory extends Factory
      */
     public function definition()
     {
-        return neta_seeder( [
-            'article_id' => Article::all()->random()->id,
+        return meta_seeder( [
+            'article_id' => Article::all()->unique()->random()->id,
             'author' => $this->faker->firstName,
             'name' => $this->faker->titleFemale,
             'short_description' => $this->faker->realText(50),

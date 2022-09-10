@@ -85,8 +85,6 @@ const mutations = {
     SET_SITE_LANGUAGE: (state,language_id = null) =>{
         state.SITE_LANGUAGE = language_id ? state.languages.find(lang => lang.id === +language_id) : state.languages.find(l => l.status === true) || {}
         state.languageId = state.SITE_LANGUAGE.id
-        console.log(state.SITE_LANGUAGE)
-        
     },
  
     // setLanguageId: (state, language_id = null) => {

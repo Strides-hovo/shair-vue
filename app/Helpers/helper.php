@@ -62,6 +62,8 @@ function changeImageName(string $imageOldName,string $imageNewName ): string|nul
 }
 
 
+
+
 function meta_migrations (Blueprint &$table) : void {
 
     $table->string('slug',100)->nullable();
@@ -72,7 +74,7 @@ function meta_migrations (Blueprint &$table) : void {
 }
 
 
-function neta_seeder(array $array, $faker ): array
+function meta_seeder(array $array, $faker ): array
 {
 
     return array_merge($array, [
@@ -86,7 +88,6 @@ function neta_seeder(array $array, $faker ): array
 
 function meta_translate(Request $request): array{
 
-
     return $request->validate([
         'translate.slug' => 'nullable|string',
         'translate.meta_description' => 'nullable|string',
@@ -94,5 +95,55 @@ function meta_translate(Request $request): array{
         'translate.meta_keywords' => 'nullable|string',
         'translate.language_id' => 'required|exists:languages,id',
     ]);
+}
+
+
+function multidimensional_key_exists(string $key,array $array): bool{
+
+    if (array_key_exists($key, $array)) return true;
+    foreach ($array as $item){
+        if (array_key_exists($key, $item)) return true;
+    }
+    return false;
+}
+
+function filter_product_additional(string $key,array $array){
+    if (array_key_exists($key, $array)) return $array[$key];
+    $data = [];
+    foreach ($array as $item){
+        if (array_key_exists($key, $item)) $data[] = $item[$key];
+    }
+    return !empty($data) ? $data : $array;
+}
+
+
+function str_debug( $data, $type = false): void{
+    if ($type)
+        var_dump('<pre>',$data, '</pre>');
+    else echo '<pre>' . print_r($data, true) . '</pre>';
+}
+
+
+function str_chunk(iterable $items, $prefix = 'tr_') :array
+{
+    if(empty($items)) return [];
+    $vars = [];
+    foreach ($items as $k => $item) {
+        $var = $prefix . $k;
+        $vars[] = $var;
+        $$var = $item;
+    }
+    $data = [];
+    foreach ($vars as $var) {
+        $data[$var] = $$var;
+    }
+    return $data;
+}
+
+
+function merge_translate($request,Model $model, string $key): void{
+    $translate = $request->input('translate');
+    $translate = array_merge_recursive($translate, [$key => $model->id]);
+    $request->merge(['translate' => $translate]);
 
 }

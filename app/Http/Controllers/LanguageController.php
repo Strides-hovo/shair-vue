@@ -1,17 +1,13 @@
-<?php
+<?php /** @noinspection PhpUndefinedMethodInspection */
 
 namespace App\Http\Controllers;
 
 use App\Http\Requests\LanguageRequest;
 use App\Models\Language;
 use App\Services\Translate;
-use Exception;
-use Illuminate\Http\Request;
 
 class LanguageController extends Controller
 {
-
-    private string $error_message = '';
 
     public function index()
     {
@@ -24,9 +20,13 @@ class LanguageController extends Controller
         try {
             $language = Language::create($request->validated());
             $request->merge(['key' => $language->code]);
-            $file = file_get_contents(resource_path("js/translate/en.json"));
-            $request->merge(['data' => json_decode($file) ]);
-            Translate::store($request);
+
+            if (file_exists(resource_path("js/translate/default.json"))){
+                $file = file_get_contents(resource_path("js/translate/default.json"));
+                $request->merge(['data' => json_decode($file) ]);
+                Translate::store($request);
+            }
+
         }
         catch (\Exception $e) {
             return response()->error($e->getMessage());
@@ -75,8 +75,9 @@ class LanguageController extends Controller
         }
         catch (\Exception $e) {
             report($e);
-            $this->error_message = 'Languages cannot be deleted';
-            return response()->error( $this->error_message );
+            $error_message = '';
+            $error_message = 'Languages cannot be deleted';
+            return response()->error($error_message);
         }
 
         return response()->success(Language::all());

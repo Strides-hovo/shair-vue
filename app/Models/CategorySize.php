@@ -12,6 +12,8 @@ class CategorySize extends Model
 
     protected $fillable = ['width','height','category_id','status','sorting','by_default'];
 
+    public $timestamps = false;
+
     protected $casts = [
         'status' => 'boolean',
         'sorting' => 'integer',

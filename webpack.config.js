@@ -9,7 +9,7 @@ module.exports = {
         extensions: [".js", ".jsx", ".json", ".ts", ".tsx",'.vue'],// other stuff
 
         fallback: {
-            "fs": false,
+            //"fs": fs,
             "path": require.resolve("path-browserify")
         }
     },

@@ -2,16 +2,14 @@
 
 namespace App\Http\Requests;
 
-use App\Models\VideoGalleryItem;
+
+use App\Traits\FailedValidation;
 use Illuminate\Foundation\Http\FormRequest;
 
 class VideoGalleryItemRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
+    use FailedValidation;
+
     public function authorize()
     {
         return true;
@@ -32,8 +30,5 @@ class VideoGalleryItemRequest extends FormRequest
     }
 
 
-    public function prepareForValidation(): void
-    {
-        StrPrepareForValidation($this,VideoGalleryItem::class,'video');
-    }
+
 }

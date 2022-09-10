@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * @method static where(string $string, bool $true)
+ * @method static create(mixed $validated)
  */
 class Language extends Model
 {

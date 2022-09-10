@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
-use App\InterFaces\MakeRelations;
+use App\Models\Page;
 use App\Traits\MakeLanguages;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\InterFaces\MakeRelations;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 
 class PhotoPage extends Model implements MakeRelations
@@ -43,5 +45,9 @@ class PhotoPage extends Model implements MakeRelations
     }
 
 
+    public function page(): HasOne
+    {
+        return $this->hasOne(Page::class);
+    }
 
 }

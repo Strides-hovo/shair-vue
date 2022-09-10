@@ -1,5 +1,8 @@
+// noinspection JSUnresolvedVariable
+
 import store from '../store'
 import {addRoute} from "../routes/routes";
+import {mapState} from "vuex";
 
 function GET_ADMIN_LANGUAGE_ID(){
     return store.getters['lang/getLanguageId']
@@ -30,8 +33,47 @@ const filter_photo = (languageId,photos) => {
 }
 
 export const BackendErrorHandler = ({response}) => {
-    alert(response.data.message)
+    if ('errors' in response.data){
+        let errors = 'Error ';
+        for (const  error of Object.entries(response.data.errors)) {
+            errors += error.join(' ')
+        }
+        alert(errors )
+    }
+    else{
+        alert(response.data.message)
+    }
+
 }
+
+
+export const GroupSizes = ( sizes ) => {
+
+    if (!sizes || sizes.length === 0) return []
+    if(!('2.1' in sizes) && !('sizes' in sizes) && !('2.3' in sizes)  ){
+        return sizes.reduce((group, size) => {
+            const { height } = size;
+            group[height] = group[height] ?? [];
+            group[height].push(size);
+            return group;
+        }, {});
+    }
+  else{
+      return sizes
+    }
+}
+
+
+export const export_data = (uri, name) => {
+    let link = document.createElement("a");
+    link.setAttribute('download', name);
+    link.href = uri;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+}
+
+
 
 
 const routePages = async () => {
@@ -73,6 +115,14 @@ export const generate_routes =  (page_routes) => {
 
 }
 
+export const selectAll = (data) => ({
+    get: function () {
+        return this.selectedIds.length === data.length && this.selectedIds.length > 0
+      },
+      set: function (value) {
+        this.selectedIds = value ? data.map(i => i.id) : []
+      }
+})
 
 
 const generate = (route, name, page ) => {

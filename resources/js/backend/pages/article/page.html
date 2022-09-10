@@ -68,6 +68,9 @@
         </div>
     </div>
     <base-product-list
-            v-model:ButtonProductList="ButtonProductList" @checkProduct="checkProduct" v-model:product_id="page.product_id" />
+            v-model:ButtonProductList="ButtonProductList"
+            @checkProduct="checkProduct"
+            :check_product_ids="[page.product_id]"
+    />
 </div>
 

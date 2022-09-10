@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Traits\FilteredSlug;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class ProductPhotoTranslate extends Model
 {
-    use HasFactory;
+    use HasFactory, FilteredSlug;
 
     protected $guarded = [];
     public $timestamps = false;

@@ -5,8 +5,6 @@
   <div class="gallery" v-else>
 
 
-    <a href="" @click.prevent="$router.replace('products')">Products</a>
-    <a href="" @click.prevent="$router.replace('продукты')">products-2</a>
     <div class="notfound__bg">
       <img src="@img/light-bg.png" alt="">
     </div>
@@ -24,7 +22,7 @@
       </div>
       <div class="combobox-list" :class="{active: ButtonMobileTab}">
         <div class="combobox-list__item" v-for="page in pages" :key="page.id">
-          <router-link :to="{ name: 'PhotoGallery', params: { slug: page.translate.slug, id: page.id } }">
+          <router-link :to="{ name: 'PhotoGallery', params: { _slug: page.translate.slug, id: page.id } }">
             {{ page.translate.name }}
           </router-link>
         </div>
@@ -37,7 +35,7 @@
 
             <div class="gallery-page__body-item" v-for="page in pages" :key="page.id">
 
-              <router-link :to="{ name: 'PhotoGallery', params: { slug: page.translate.slug, id: page.id } }">
+              <router-link :to="{ name: 'PhotoGallery', params: { _slug: page.translate.slug, id: page.id } }">
                                 <span class="gallery-page__body-img" v-if="page.galleries">
                                     <img v-lazy="page.galleries[0].image" :alt="page.galleries[0].image_alt"
                                          :title="page.galleries[0].image_title">
@@ -63,7 +61,7 @@
 
 import {mapActions, mapGetters} from 'vuex'
 
-import PhotoPageSidebar from "@frontend/components/sidebar/PhotoPageSidebar";
+import PhotoPageSidebar from "@frontend/components/sidebar/PageSidebar";
 
 export default {
 

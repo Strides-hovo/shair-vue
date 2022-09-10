@@ -10,7 +10,7 @@ const routes = [
     },
     {
         path: "/admin/languages",
-        name: 'Lang',
+        name: 'BackendLang',
         component: () => import('@backend/pages/lang/index'),
         props: true
     },
@@ -56,7 +56,7 @@ const routes = [
     },
     {
         path: "/admin/about",
-        name: 'AboutPage',
+        name: 'BackendAbout',
         component: () => import('@backend/pages/about/index'),
         props: true,
     },
@@ -80,20 +80,20 @@ const routes = [
     },
     {
         path: "/admin/categories",
-        name: 'Category',
-        component: () => import('@backend/pages/category/index'),
+        name: 'BackendCategory',
+        component: () => import('@backend/pages/category/category'),
         props: true,
     },
     {
         path: "/admin/product",
-        name: 'Products',
-        component: () => import('@backend/pages/products/index'),
+        name: 'BackendProducts',
+        component: () => import('@backend/pages/products/pages'),
         props: true,
         children: [
             {
                 path: ":id",
-                name: 'Product',
-                component: () => import('@backend/pages/products/product/index'),
+                name: 'BackendProduct',
+                component: () => import('@backend/pages/products/page'),
                 props: true
             }
         ]
@@ -107,9 +107,6 @@ const routes = [
     },
 ];
 
-// for (let route of routes ){
-//     route['meta'] = {}
-//     route['meta']['layout'] = 'backend'
-// }
+
 
 export default routes

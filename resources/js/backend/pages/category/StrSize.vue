@@ -194,9 +194,11 @@ export default {
   },
 
   computed: {
+
     size() {
       return this.sizes[this.activeItem] || []
     },
+
     selectFirst: {
       get() {
         return this.size.length === this.SelectedFirstList.length

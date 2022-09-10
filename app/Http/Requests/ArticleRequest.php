@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Models\Article;
+use App\Traits\FailedValidation;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\ValidationException;
@@ -13,7 +14,7 @@ use JetBrains\PhpStorm\ArrayShape;
  */
 class ArticleRequest extends FormRequest
 {
-
+    use FailedValidation;
 
     public function authorize()
     {
@@ -34,19 +35,7 @@ class ArticleRequest extends FormRequest
     }
 
 
-    protected function failedValidation(Validator $validator)
-    {
 
-        $errors = response()->json([
-            'status' => 'Error',
-            'message' => 'Ops! Some errors occurred',
-            'errors' => $validator->errors()
-        ], 400);
-
-        throw (new ValidationException($validator, $errors))
-            ->errorBag($this->errorBag)
-            ->redirectTo($this->getRedirectUrl());
-    }
 
 
     public function prepareForValidation(): void

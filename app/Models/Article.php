@@ -2,13 +2,15 @@
 
 namespace App\Models;
 
-use App\InterFaces\MakeRelations;
+use App\Models\Page;
 use App\Traits\MakeLanguages;
+use App\InterFaces\MakeRelations;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 
 /**
@@ -18,6 +20,9 @@ class Article extends Model implements MakeRelations
 {
     use HasFactory, MakeLanguages;
 
+    protected $attributes = [
+        'page_name' => 'Articles'
+    ];
 
     protected $casts = ['sorting' => 'integer'];
 
@@ -72,7 +77,7 @@ class Article extends Model implements MakeRelations
     }
 
 
-    public function page()
+    public function page(): HasOne
     {
         return $this->hasOne(Page::class,'name','page_name');
     }

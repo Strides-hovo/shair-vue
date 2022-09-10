@@ -2,7 +2,7 @@
 
 const routes = [
     {
-        path: '',
+        path: '/:slug',
         name: 'Home',
         component: () => import('@frontend/pages/home/index'),
         meta : {}
@@ -39,7 +39,7 @@ const routes = [
     },
 
     {
-        path: '/page-photo',
+        path: '/p/:slug',
         name: 'PhotoGalleries',
         component: () => import('@frontend/pages/page-photo/pages'),
         props: true,
@@ -48,7 +48,7 @@ const routes = [
         },
         children: [
             {
-                path: ":id/:slug",
+                path: ":id/:_slug",
                 name: 'PhotoGallery',
                 component: () => import('@frontend/pages/page-photo/page'),
                 props: true,
@@ -56,12 +56,10 @@ const routes = [
                     parent: ['Home', 'PhotoGalleries', 'PhotoGallery' ]
                 }
             },
-
-
         ]
     },
     {
-        path: '/page-video',
+        path: '/v/:slug',
         name: 'VideoGalleries',
         component: () => import('@frontend/pages/page-video/pages'),
         props: true,
@@ -70,7 +68,7 @@ const routes = [
         },
         children: [
             {
-                path: ":id/:slug",
+                path: ":id/:_slug",
                 name: 'VideoGallery',
                 component: () => import('@frontend/pages/page-video/page'),
                 props: true,
@@ -80,6 +78,55 @@ const routes = [
             }
         ]
     },
+
+
+    // {
+    //     path: '/ca/:id?/:slug',
+    //     name: 'Categories',
+    //     component: () => import('@frontend/pages/product/category'),
+    //     props: true,
+    //     meta : {
+    //         parent: ['Home', 'Categories']
+    //     },
+    //     children: [
+    //         {
+    //             path: ":_id/:_slug",
+    //             name: 'Product',
+    //             component: () => import('@frontend/pages/product/page'),
+    //             props: true,
+    //             meta : {
+    //                 parent: ['Home', 'Products', 'Product']
+    //             }
+    //         }
+    //     ]
+    //
+    // },
+
+
+
+    {
+        path: '/ca/:id?/:slug',
+        name: 'Products',
+        component: () => import('@frontend/pages/product/pages'),
+        props: true,
+        meta : {
+            parent: ['Home', 'Products']
+        },
+    },
+    {
+        path: "/pr/:id/:slug",
+        name: 'Product',
+        component: () => import('@frontend/pages/product/page'),
+        props: true,
+        meta : {
+            parent: ['Home', 'Products', 'Product']
+        }
+    },
+
+
+
+
+
 
 
     

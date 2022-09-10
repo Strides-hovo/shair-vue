@@ -2923,13 +2923,13 @@ h6 {
   width: 26px;
 }
 
-.pricelist-modal__cost-count button:nth-of-type(1) img {
+.pricelist-modal__cost-count button:nth-of-type(1) svg {
   -webkit-transform: rotate(90deg);
       -ms-transform: rotate(90deg);
           transform: rotate(90deg);
 }
 
-.pricelist-modal__cost-count button:nth-of-type(2) img {
+.pricelist-modal__cost-count button:nth-of-type(2) svg {
   -webkit-transform: rotate(-90deg);
       -ms-transform: rotate(-90deg);
           transform: rotate(-90deg);

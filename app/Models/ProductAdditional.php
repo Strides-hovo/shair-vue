@@ -11,9 +11,13 @@ class ProductAdditional extends Model
     use HasFactory;
 
     protected $guarded = [];
+    public $timestamps = false;
 
     public function product(): BelongsTo
     {
         return $this->belongsTo(Product::class);
     }
+
+
+
 }

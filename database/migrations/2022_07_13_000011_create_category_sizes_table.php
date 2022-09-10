@@ -22,14 +22,9 @@ return new class extends Migration
             $table->boolean('by_default')->default(false);
             $table->integer('sorting')->default(1);
 
-            $table->string('invoice_code')->nullable();
-            $table->string('sku')->nullable();
-            $table->float('price')->nullable();
-            $table->float('price_delivery_sale')->nullable();
-            $table->float('price_delivery_rent')->nullable();
+            $table->unique(['category_id','height','width']);
 
 
-            $table->timestamps();
         });
     }
 

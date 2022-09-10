@@ -38,7 +38,7 @@ export default {
     },
 
     page() {
-      return this.pageData('article', this.languageId)
+      return this.pageData('Articles', this.languageId)
     }
 
   },
@@ -91,7 +91,7 @@ export default {
     if (this.pages.length === 0) {
       this['article/SET_ARTICLES']()
     }
-    if (!this.page) {
+    if (! ('name' in  this.page) ) {
       this['page/SET_PAGES']()
     }
   }

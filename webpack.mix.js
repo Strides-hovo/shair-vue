@@ -1,6 +1,7 @@
 const mix = require('laravel-mix');
 const path = require('path')
 
+
 // require('laravel-mix-simple-image-processing')
 //"laravel-mix-simple-image-processing": "^1.0.7",
 mix
@@ -12,8 +13,6 @@ mix
     .options({
         processCssUrls: false,
     })
-
-
     // .imgs({
     //     source: 'resources/js/assets/img',
     //     destination: 'public/img',
