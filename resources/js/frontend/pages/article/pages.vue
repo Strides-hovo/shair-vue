@@ -63,6 +63,7 @@ export default {
   },
   watch:{
     'page.page.translate.slug'(slug){
+      if (slug)
       this.$router.replace({ name: 'Articles', params: { slug } })
     }
   },
@@ -76,7 +77,7 @@ export default {
       this['article/SET_ARTICLES'](true)
     }
 
-    const slug = this.page?.page.translate?.slug
+    const slug = this.page.page?.translate?.slug
     if (slug && this.$route.name === 'Articles'){
       this.$router.replace({ name: 'Articles', params: {slug } })
     }
