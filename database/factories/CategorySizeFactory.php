@@ -9,11 +9,12 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 class CategorySizeFactory extends Factory
 {
 
+    private static int $i = 1;
     public function definition()
     {
-
+        self::$i++;
         return [
-            'width' => $this->faker->randomFloat('.',1,15),
+            'width' => self::$i ,
             'height' => $this->faker->randomElement(['2.1','2.3']),
             'category_id' => Category::all()->unique('id')->random()->id ,
             'status' => true,

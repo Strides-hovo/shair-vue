@@ -103,7 +103,15 @@ async deletePhotos({commit},ids) {
 async createPhoto({commit},photo) {
   const response = await axios.post(apiRoutes('product-photo.store'),photo)
   commit('CREATE_PHOTO', (await response.data.data))
+},
+
+
+async createVideo({commit},video) {
+  const response = await axios.post(apiRoutes('product.video.store'),video)
+  commit('UPDATE_PRODUCT', (await response.data.data))
 }
+
+
 
 };
 

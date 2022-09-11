@@ -113,7 +113,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
-    products: {
+    categories: {
       required: true,
       "default": []
     }
@@ -123,20 +123,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       routeName: 'Products'
     };
   },
-  computed: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapGetters)({
+  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapGetters)({
     language: 'lang/GET_SITE_LANGUAGE',
     productsData: 'category/GET_CATEGORIES_PRODUCTS'
-  })), {}, {
-    categories: function categories() {
-      return this.productsData(this.language.id);
-    }
-  }),
-  methods: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapActions)(['category/SET_PRODUCTS_BY_CATEGORY'])),
-  mounted: function mounted() {
-    if (this.categories.length === 0) {
-      this['category/SET_PRODUCTS_BY_CATEGORY']();
-    }
-  }
+  }))
 });
 
 /***/ }),
@@ -231,7 +221,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   }),
   methods: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_4__.mapActions)(['category/SET_PRODUCTS_BY_CATEGORY', 'page/SET_PAGES'])),
   mounted: function mounted() {
-    if (!('products' in this.categories)) {
+    if (this.categories.length === 0) {
       this['category/SET_PRODUCTS_BY_CATEGORY']();
     }
 
@@ -441,7 +431,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_2, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($options.categories, function (category) {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_2, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.categories, function (category) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", {
       key: category.id,
       "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)({
@@ -532,10 +522,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }), 128
   /* KEYED_FRAGMENT */
   ))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_the_products_sidebar, {
-    products: $options.categories
+    categories: $options.categories
   }, null, 8
   /* PROPS */
-  , ["products"])])])), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("  <base-meta-info"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("      v-model:metaInfo=\"setMetaInfo\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("      v-if=\"page\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("  />")], 2112
+  , ["categories"])])])), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("  <base-meta-info"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("      v-model:metaInfo=\"setMetaInfo\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("      v-if=\"page\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("  />")], 2112
   /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
   );
 }

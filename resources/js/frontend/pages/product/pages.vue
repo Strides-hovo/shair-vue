@@ -19,7 +19,7 @@
         />
       </div>
 
-      <the-products-sidebar :products="categories" />
+      <the-products-sidebar :categories="categories" />
 
     </div>
   </div>
@@ -114,10 +114,11 @@ export default {
 
   },
   mounted() {
-    if (! ('products' in this.categories) ) {
+    if ( this.categories.length  === 0) {
       this['category/SET_PRODUCTS_BY_CATEGORY']()
     }
 
+   
 
     if (! ('id' in this.page) ){
       this['page/SET_PAGES']()

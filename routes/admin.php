@@ -63,7 +63,7 @@ Route::group(['prefix' => 'admin','middleware' => 'api'],function (){
         Route::apiResource('category-size',\App\Http\Controllers\CategorySizeController::class)->except(['show','index','destroy']);
         Route::delete('category-size-destroy/{ids}',[\App\Http\Controllers\CategorySizeController::class,'destroy'])->name('category-size.destroy');
 
-        Route::apiResource('product',ProductController::class)->except(['show','destroy']);
+        Route::apiResource('product',ProductController::class)->except(['destroy']);
         Route::delete('product/{ids}', [ProductController::class,'destroy'])->name('product.destroy');
 
         Route::put('product/status/{status}', [ProductController::class,'status'])->name('product.status');
@@ -74,6 +74,7 @@ Route::group(['prefix' => 'admin','middleware' => 'api'],function (){
         Route::apiResource('product-photo',ProductPhotoController::class)->only(['store','update']);
         Route::delete('product-photo/{ids}', [ProductPhotoController::class,'destroy'])->name('product-photo.destroy');
         Route::post('product-size',[\App\Http\Controllers\ProductSizeController::class,'updateOrCreate'])->name('product.size.updateOrCreate');
+        Route::post('product-video',[\App\Http\Controllers\ProductVideoController::class,'store'])->name('product.video.store');
     });
 
 

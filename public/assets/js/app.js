@@ -24471,6 +24471,35 @@ var actions = {
         }
       }, _callee14);
     }))();
+  },
+  createVideo: function createVideo(_ref16, video) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee15() {
+      var commit, response;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee15$(_context15) {
+        while (1) {
+          switch (_context15.prev = _context15.next) {
+            case 0:
+              commit = _ref16.commit;
+              _context15.next = 3;
+              return axios.post((0,_routes_api_routes__WEBPACK_IMPORTED_MODULE_1__["default"])('product.video.store'), video);
+
+            case 3:
+              response = _context15.sent;
+              _context15.t0 = commit;
+              _context15.next = 7;
+              return response.data.data;
+
+            case 7:
+              _context15.t1 = _context15.sent;
+              (0, _context15.t0)('UPDATE_PRODUCT', _context15.t1);
+
+            case 9:
+            case "end":
+              return _context15.stop();
+          }
+        }
+      }, _callee15);
+    }))();
   }
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (actions);
@@ -49999,7 +50028,7 @@ function del(target, key) {
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"language.index":"api/admin/language","language.store":"api/admin/language","language.show":"api/admin/language/{language}","language.update":"api/admin/language/{language}","language.destroy":"api/admin/language-delete/{ids?}","photo-page.index":"api/admin/photo-page","photo-page.store":"api/admin/photo-page","photo-page.update":"api/admin/photo-page/{photo_page}","photo-page.destroy":"api/admin/photo-page/{photo_page}","photo-gallery.store":"api/admin/photo-gallery","photo-gallery.update":"api/admin/photo-gallery/{photo_gallery}","photo-gallery.destroy":"api/admin/photo-gallery/{ids}","video-page.index":"api/admin/video-page","video-page.store":"api/admin/video-page","video-page.update":"api/admin/video-page/{video_page}","video-page.destroy":"api/admin/video-page/{video_page}","video-gallery.store":"api/admin/video-gallery","video-gallery.update":"api/admin/video-gallery/{video_gallery}","video-gallery.destroy":"api/admin/video-gallery/{ids}","page.index":"api/admin/page","page.firstOrCreate":"api/admin/page","about.index":"api/admin/about","about.store":"api/admin/about","tiny.upload":"api/admin/about-update","article.index":"api/admin/article","article.store":"api/admin/article","article.update":"api/admin/article/{article}","article.destroy":"api/admin/article/{article}","get.images":"api/admin/all-images/{type?}","image.upload":"api/admin/image-upload","category.index":"api/admin/category","category.store":"api/admin/category","category.update":"api/admin/category/{category}","category.destroy":"api/admin/category/{category}","category-size.store":"api/admin/category-size","category-size.update":"api/admin/category-size/{category_size}","category-size.destroy":"api/admin/category-size-destroy/{ids}","product.index":"api/admin/product","product.store":"api/admin/product","product.update":"api/admin/product/{product}","product.destroy":"api/admin/product/{ids}","product.status":"api/admin/product/status/{status}","product.copy":"api/admin/product/copy","product.update.additions":"api/admin/product/addition/{product}","product.delete.additions":"api/admin/product/addition/{product}/{ids}","product-photo.store":"api/admin/product-photo","product-photo.update":"api/admin/product-photo/{product_photo}","product-photo.destroy":"api/admin/product-photo/{ids}","product.size.updateOrCreate":"api/admin/product-size","category.export":"api/admin/export/category","product.export":"api/admin/export/product/{id?}","translate.store":"api/admin/export/create-translate","product.import":"api/admin/product-import","menus":"api/menus"}');
+module.exports = JSON.parse('{"language.index":"api/admin/language","language.store":"api/admin/language","language.show":"api/admin/language/{language}","language.update":"api/admin/language/{language}","language.destroy":"api/admin/language-delete/{ids?}","photo-page.index":"api/admin/photo-page","photo-page.store":"api/admin/photo-page","photo-page.update":"api/admin/photo-page/{photo_page}","photo-page.destroy":"api/admin/photo-page/{photo_page}","photo-gallery.store":"api/admin/photo-gallery","photo-gallery.update":"api/admin/photo-gallery/{photo_gallery}","photo-gallery.destroy":"api/admin/photo-gallery/{ids}","video-page.index":"api/admin/video-page","video-page.store":"api/admin/video-page","video-page.update":"api/admin/video-page/{video_page}","video-page.destroy":"api/admin/video-page/{video_page}","video-gallery.store":"api/admin/video-gallery","video-gallery.update":"api/admin/video-gallery/{video_gallery}","video-gallery.destroy":"api/admin/video-gallery/{ids}","page.index":"api/admin/page","page.firstOrCreate":"api/admin/page","about.index":"api/admin/about","about.store":"api/admin/about","tiny.upload":"api/admin/about-update","article.index":"api/admin/article","article.store":"api/admin/article","article.update":"api/admin/article/{article}","article.destroy":"api/admin/article/{article}","get.images":"api/admin/all-images/{type?}","image.upload":"api/admin/image-upload","category.index":"api/admin/category","category.store":"api/admin/category","category.update":"api/admin/category/{category}","category.destroy":"api/admin/category/{category}","category-size.store":"api/admin/category-size","category-size.update":"api/admin/category-size/{category_size}","category-size.destroy":"api/admin/category-size-destroy/{ids}","product.index":"api/admin/product","product.store":"api/admin/product","product.show":"api/admin/product/{product}","product.update":"api/admin/product/{product}","product.destroy":"api/admin/product/{ids}","product.status":"api/admin/product/status/{status}","product.copy":"api/admin/product/copy","product.update.additions":"api/admin/product/addition/{product}","product.delete.additions":"api/admin/product/addition/{product}/{ids}","product-photo.store":"api/admin/product-photo","product-photo.update":"api/admin/product-photo/{product_photo}","product-photo.destroy":"api/admin/product-photo/{ids}","product.size.updateOrCreate":"api/admin/product-size","product.video.store":"api/admin/product-video","category.export":"api/admin/export/category","product.export":"api/admin/export/product/{id?}","translate.store":"api/admin/export/create-translate","product.import":"api/admin/product-import","menus":"api/menus"}');
 
 /***/ }),
 

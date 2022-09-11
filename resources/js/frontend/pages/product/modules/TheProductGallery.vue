@@ -21,16 +21,13 @@
                  :title="photo.translate?.title"
             >
           </div>
-
         </div>
-
         <div class="pricelist-modal-button-prev" @click="prev" >
           <base-icon icon="slider-arrow-prev" width="41" height="59"/>
         </div>
         <div class="pricelist-modal-button-next" @click="next" >
           <base-icon icon="slider-arrow-next" width="41" height="59"/>
         </div>
-
       </div>
 
       <ul class="pricelist-modal__img-list page">
@@ -43,12 +40,15 @@
                :title="photo.translate?.title"
           >
         </li>
-
       </ul>
     </div>
 
-    <div class="product-body__img-btn">
-      <a download :href="product.Instruction_file" v-if="product.Instruction_file">
+    <div v-if="VideoTab">
+      <the-product-video :product="product" />
+    </div>
+
+    <div class="product-body__img-btn" v-if="product.Instruction_file">
+      <a download :href="product.Instruction_file" >
       דף הרכבה להורדה
       </a>
     </div>
@@ -74,8 +74,10 @@
 </template>
 
 <script>
+import TheProductVideo from "./TheProductVideo";
 export default {
   name: 'TheProductGallery',
+  components:{TheProductVideo},
   props: {
     product: {}
   },

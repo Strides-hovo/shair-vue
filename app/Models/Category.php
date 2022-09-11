@@ -36,8 +36,9 @@ class Category extends Model implements MakeRelations
     public static function withs(bool $frontend = false): Builder
     {
 
+        $fr = ['translations','products.sizes', 'products.translations', 'products.photos.translations', 'products.videos'];
         if ($frontend){
-            return self::with('translations','products.sizes', 'products.translations', 'products.photos.translations');
+            return self::with($fr);
         }
         return self::with([ 'translations', 'sizes']);
     }

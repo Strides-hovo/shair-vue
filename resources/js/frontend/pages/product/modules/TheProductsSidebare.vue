@@ -23,7 +23,7 @@ import { mapActions, mapGetters } from "vuex";
 
 export default {
     props:{
-      products: {
+      categories: {
         required: true,
         default: []
       }
@@ -41,20 +41,12 @@ export default {
       productsData: 'category/GET_CATEGORIES_PRODUCTS'
     }),
 
-    categories() {
-      return this.productsData( this.language.id )
-    },
+    
   },
 
-  methods:{
-    ...mapActions(['category/SET_PRODUCTS_BY_CATEGORY',])
-  },
+  
+  
 
-  mounted() {
-    if (this.categories.length === 0){
-      this['category/SET_PRODUCTS_BY_CATEGORY']()
-    }
-  }
 
 }
 </script>

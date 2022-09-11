@@ -13,7 +13,7 @@ class ProductSizeFactory extends Factory
     public function definition()
     {
         return [
-            'product_id' => Product::all()->random()->id,
+            'product_id' => Product::all()->unique('id')->random()->id,
             'sku' => $this->faker->randomNumber(),
             'price' => $this->faker->randomFloat(2,1,100),
             'invoice_code' => $this->faker->randomNumber(),

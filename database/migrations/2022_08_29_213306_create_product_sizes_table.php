@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('invoice_code')->nullable();
             $table->integer('delivery_sale')->nullable();
             $table->integer('delivery_rent')->nullable();
-            $table->unique(['product_id','sku','category_size_id']);
+            $table->unique(['product_id','category_size_id']);
         });
     }
 

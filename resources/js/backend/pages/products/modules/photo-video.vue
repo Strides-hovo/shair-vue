@@ -2,14 +2,14 @@
   <div class="cart-btns">
 
     <div class="cart-btns__item product-add-new btn circle" @click="ButtonNewPhoto = true">
-      <img src="@img/icons/add-icon.svg"  />
+      <img src="@img/icons/add-icon.svg" />
     </div>
 
     <base-translate-slide :is-active="selectedItems.length > 0">
-       <button class="cart-btns__item btn" @click="DeleteSelected" v-if="selectedItems.length > 0">מחיקה</button>
+      <button class="cart-btns__item btn" @click="DeleteSelected" v-if="selectedItems.length > 0">מחיקה</button>
     </base-translate-slide>
 
-    
+
   </div>
   <div class="container-content__body">
     <div class="product-content__tabs tabs">
@@ -54,13 +54,12 @@
       </div>
       <div class="product-video__input">
         <label>
-          <button>שמור</button>
-          <input type="text">
+          <button @click="CreateVideo">שמור</button>
+          <input type="text" v-model="NewVideo.url">
         </label>
       </div>
-      <div class="product-video__item">
-        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay;
-        clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+      <div class="product-video__item" v-for="video in videos" :key="video.id">
+        <youtube-vue3 :videoid="video.url" :loop="0" :autoplay="0" width="300"  />
       </div>
     </div>
   </div>
@@ -76,7 +75,7 @@
           <button class="upload-image">upload</button>
         </base-file-upload>
         <div class="input-btn">
-          <button class="upload-image" @click="CreateImage" :disabled="!NewPhoto.image" >Save</button>
+          <button class="upload-image" @click="CreateImage" :disabled="!NewPhoto.image">Save</button>
         </div>
       </div>
       <div class="form-column">
@@ -88,7 +87,7 @@
           <label for="">Title</label>
           <input type="text" class="form-control" v-model="NewPhoto.translate.title">
         </div>
-  
+
       </div>
     </div>
 
@@ -99,26 +98,26 @@
 import Photo from "./photo";
 import BaseFileUpload from "@backend/components/BaseFileUpload";
 import BaseTranslateSlide from "@backend/components/BaseTranslateSlide.vue";
+import { YoutubeVue3 } from 'youtube-vue3'
 import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "photo-video",
-  components: { Photo, BaseFileUpload, BaseTranslateSlide },
+  components: { Photo, BaseFileUpload, BaseTranslateSlide, YoutubeVue3 },
   props: {
-    photos: Array,
-    product_id: Number
+    product: {}
   },
   data: () => ({
     activeTabs: 'photo',
     selectedItems: [],
     ButtonNewPhoto: false,
-    NewPhoto: { image: null,translate: {} }
+    NewPhoto: { image: null, translate: {} },
+    NewVideo: {url: null}
   }),
 
   computed: {
     ...mapGetters({
       languageId: 'lang/getLanguageId',
-
     }),
 
     selectAll: {
@@ -130,12 +129,22 @@ export default {
       }
     },
 
+    photos(){
+      return this.product.photos
+    },
 
+    videos(){
+      return this.product.videos
+    }
 
   },
   methods: {
 
-    ...mapActions(['products/deletePhotos', 'products/createPhoto']),
+    ...mapActions([
+      'products/deletePhotos', 
+      'products/createPhoto',
+      'products/createVideo'
+    ]),
     activeTab(name) {
       return this.activeTabs === name
     },
@@ -151,7 +160,7 @@ export default {
     UploadNewFile(image) {
       this.NewPhoto.image = image.src
       this.NewPhoto.name = image.name
-      this.NewPhoto.product_id = this.product_id
+      this.NewPhoto.product_id = this.product.id
       this.NewPhoto.translate.language_id = this.languageId
 
 
@@ -161,7 +170,13 @@ export default {
       console.log(this.NewPhoto)
       this['products/createPhoto'](this.NewPhoto)
       this.ButtonNewPhoto = false
-      this.NewPhoto = { image: null,translate: {} }
+      this.NewPhoto = { image: null, translate: {} }
+    },
+
+    CreateVideo(){
+      this.NewVideo.product_id = this.product.id
+      this['products/createVideo'](this.NewVideo)
+      console.log(this.NewVideo );
     }
   },
 
@@ -169,8 +184,6 @@ export default {
 }
 </script  >
 <style lang="scss" >
-
-
 .lang-new__content {
   justify-content: flex-start;
 }

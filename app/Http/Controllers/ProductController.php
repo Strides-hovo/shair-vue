@@ -31,6 +31,10 @@ class ProductController extends Controller
         return response()->success(Product::withs()->get());
     }
 
+    public function show(Product $product)
+    {
+        return $product->load('sizes');
+    }
 
     /**
      * @param ProductRequest $request

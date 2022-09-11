@@ -146,7 +146,7 @@
     </div>
   </div>
 
-  <photo-video v-if="activeTab('photo')" :photos="product.photos" :product_id="product.id" />
+  <photo-video v-if="activeTab('photo')" :product="product" />
   <options v-if="activeTab('options')"
            :product="product"
 

@@ -5,16 +5,18 @@
 
 namespace App\Models;
 
-use App\InterFaces\MakeRelations;
+
 use App\Traits\MakeLanguages;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\InterFaces\MakeRelations;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasManyThrough;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Staudenmeir\EloquentHasManyDeep\HasRelationships;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 
 /**
  * @method static first()
@@ -22,7 +24,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  */
 class Product extends Model implements MakeRelations
 {
-    use HasFactory, MakeLanguages;
+    use HasFactory, MakeLanguages, HasRelationships;
 
     protected $guarded = [];
 
@@ -56,11 +58,12 @@ class Product extends Model implements MakeRelations
 
     public static function withs(bool $frontend = false): Builder
     {
+        $fr = ['additions', 'sizes', 'translations',  'photos.translations', 'videos', 'category.translations'];
         if ($frontend){
-            return self::with(['additions', 'sizes', 'translations',  'photos.translations', 'videos.translations', 'category.translations']);
+            return self::with($fr);
         }
 
-        return self::with(['additions', 'sizes', 'translations',  'photos.translations', 'videos.translations', 'category.translations']);
+        return self::with($fr);
     }
 
 
@@ -79,9 +82,10 @@ class Product extends Model implements MakeRelations
     const PRODUCT_SIZES = [
         'width',
         'height',
-        'categories.id as category_id',
+        // 'categories.id as category_id',
         'category_sizes.id as category_size_id',
         'product_sizes.status as status',
+        'product_sizes.product_id',
         'product_sizes.sku',
         'product_sizes.price',
         'product_sizes.invoice_code',
@@ -90,21 +94,37 @@ class Product extends Model implements MakeRelations
     ];
 
 
-    public function sizes()
+    public function tt()
     {
-
-       return $this
+        return $this
             ->HasManyThrough(CategorySize::class, Category::class, 'id', 'category_id','category_id','id')
             ->select(self::PRODUCT_SIZES)
-            ->leftJoin('product_sizes','product_sizes.category_size_id','=','category_sizes.id');
-
+            ->join('product_sizes','product_sizes.category_size_id','=','category_sizes.id')
+            //->dd()
+            ;
     }
+
+ 
 
 
 
     /**
      * Relations
      */
+
+   /**
+     * @tables product|category|category_sizes|product_sizes
+     * product hasOne => category => hasMany => category_size => hasMany => product_size
+     */
+
+    public function sizes()
+    {
+        return $this
+        ->hasManyDeep( ProductSize::class, [Category::class,CategorySize::class ],['id','product_sizes.product_id'])
+        ->select(self::PRODUCT_SIZES);
+
+    }
+
 
     public function additions(): BelongsToMany
     {
