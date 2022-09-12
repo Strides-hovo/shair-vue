@@ -67,7 +67,8 @@ __webpack_require__.r(__webpack_exports__);
         return ph.by_default;
       })) || this.product.photos[0];
     }
-  }
+  },
+  methods: {}
 });
 
 /***/ }),

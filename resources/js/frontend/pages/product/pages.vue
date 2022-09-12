@@ -83,11 +83,6 @@ export default {
         }, [])
       }
       return  this.categories.products
-
-
-
-
-
     },
 
     page() {

@@ -84,6 +84,7 @@ class Product extends Model implements MakeRelations
         'height',
         // 'categories.id as category_id',
         'category_sizes.id as category_size_id',
+        'product_sizes.id as product_size_id',
         'product_sizes.status as status',
         'product_sizes.product_id',
         'product_sizes.sku',

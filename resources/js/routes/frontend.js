@@ -78,7 +78,12 @@ const routes = [
             }
         ]
     },
-
+    {
+        path: '/cart',
+        name: 'Cart',
+        component: () => import('@frontend/pages/cart/page'),
+        props: true
+    },
 
     // {
     //     path: '/ca/:id?/:slug',

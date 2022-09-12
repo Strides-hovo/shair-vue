@@ -17,9 +17,9 @@ import about from './modules/about';
 import page from "./modules/page";
 import Breadcrumb from "./modules/frontend/BreadCramp";
 import menu from './modules/frontend/RigthSidebar'
-import Cookies from "js-cookie";
+import cart from './modules/cart'
 
-const paths = ['lang','PhotoPage','PageVideo','products', 'Breadcrumb', 'article','category' ]
+const paths = ['lang','PhotoPage','PageVideo','products', 'Breadcrumb', 'article','category','cart' ]
 const modules = {
     lang,
     SidebarOptions,
@@ -32,45 +32,17 @@ const modules = {
     article,
     page,
     Breadcrumb,
-    menu
+    menu,
+    cart
 }
 
 
 const dataState = createPersistedState({
-    paths,
-    /*storage: {
-        getItem: (key) => Cookies.get(key),
-        // Please see https://github.com/js-cookie/js-cookie#json, on how to handle JSON.
-        setItem: (key, value) =>
-            Cookies.set(key, value, { expires: 3, secure: true }),
-        removeItem: (key) => Cookies.remove(key),
-    },*/
+    paths
 })
 
 
-/*
-export default new Vuex.Store({
-    modules: {
-        lang,
-        SidebarOptions,
-        Portions,
-        PhotoPage,
-        PageVideo,
 
-        category,
-        products,
-
-        about,
-        article,
-        page,
-        Breadcrumb,
-        menu
-
-    },
-    plugins: [dataState]
-})
-
-*/
 
 
 export default new Vuex.Store({

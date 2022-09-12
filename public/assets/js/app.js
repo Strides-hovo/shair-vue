@@ -20868,7 +20868,10 @@ __webpack_require__.r(__webpack_exports__);
   "add-icon": "<path d=\"M6 1C6 0.447716 6.44772 0 7 0C7.55228 0 8 0.447715 8 1V13C8 13.5523 7.55228 14 7 14C6.44772 14 6 13.5523 6 13V1Z\" fill=\"white\"/>\n                  <path d=\"M1 8C0.447716 8 0 7.55228 0 7C0 6.44772 0.447715 6 1 6H13C13.5523 6 14 6.44772 14 7C14 7.55228 13.5523 8 13 8H1Z\" fill=\"white\"/>",
   "slider-arrow-prev": "<g filter=\"url(#filter0_d_210_10059)\">\n        <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M32.1353 2.63552L14.2707 20.5001L32.1353 38.3647L29.5 41L9.00008 20.5001L29.5 0.000232697L32.1353 2.63552Z\" fill=\"white\"/>\n        </g>\n        <defs>\n            <filter id=\"filter0_d_210_10059\" x=\"0.368365\" y=\"0\" width=\"40.3985\" height=\"58.2633\" filterUnits=\"userSpaceOnUse\" color-interpolation-filters=\"sRGB\">\n            <feFlood flood-opacity=\"0\" result=\"BackgroundImageFix\"/>\n            <feColorMatrix in=\"SourceAlpha\" type=\"matrix\" values=\"0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0\" result=\"hardAlpha\"/>\n            <feOffset dy=\"8.63163\"/>\n            <feGaussianBlur stdDeviation=\"4.31582\"/>\n            <feColorMatrix type=\"matrix\" values=\"0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0\"/>\n            <feBlend mode=\"normal\" in2=\"BackgroundImageFix\" result=\"effect1_dropShadow_210_10059\"/>\n            <feBlend mode=\"normal\" in=\"SourceGraphic\" in2=\"effect1_dropShadow_210_10059\" result=\"shape\"/>\n            </filter>\n        </defs>",
   "slider-arrow-next": "<g filter=\"url(#filter0_d_210_10056)\">\n            <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M9.05615 2.6355L26.9208 20.5001L9.05615 38.3647L11.6914 41L32.1913 20.5001L11.6914 0.000232697L9.05615 2.6355Z\" fill=\"white\"/></g>\n        <defs>\n                <filter id=\"filter0_d_210_10056\" x=\"0.424518\" y=\"0\" width=\"40.3985\" height=\"58.2633\" filterUnits=\"userSpaceOnUse\" color-interpolation-filters=\"sRGB\">\n                <feFlood flood-opacity=\"0\" result=\"BackgroundImageFix\"/>\n                <feColorMatrix in=\"SourceAlpha\" type=\"matrix\" values=\"0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0\" result=\"hardAlpha\"/>\n                <feOffset dy=\"8.63163\"/>\n                <feGaussianBlur stdDeviation=\"4.31582\"/>\n                <feColorMatrix type=\"matrix\" values=\"0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0\"/>\n                <feBlend mode=\"normal\" in2=\"BackgroundImageFix\" result=\"effect1_dropShadow_210_10056\"/>\n                <feBlend mode=\"normal\" in=\"SourceGraphic\" in2=\"effect1_dropShadow_210_10056\" result=\"shape\"/>\n                </filter>\n            </defs>",
-  "modal-close": "<path d=\"M2.53553 2L45.5355 45M45 2L2 45\" stroke=\"white\" stroke-width=\"5\"/>"
+  "modal-close": "<path d=\"M2.53553 2L45.5355 45M45 2L2 45\" stroke=\"white\" stroke-width=\"5\"/>",
+  "cart-pluse": "<path d=\"M8 0H9V17H8V0Z\" fill=\"white\"/><path d=\"M17 8V9H0V8H17Z\" fill=\"white\"/>",
+  "cart-minuse": "<path d=\"M17 0V1L0 1V0L17 0Z\" fill=\"white\"/>",
+  trash: "<path d=\"M27.4118 37H7.41907C5.30621 37 3.58462 35.2955 3.58462 33.2036L3.58459 7.3563H0V5.54609H35V7.3563H31.2462L31.2463 33.2036C31.2463 35.2955 29.5247 37 27.4118 37ZM5.37131 7.3563V32.6851C5.37131 34.2444 6.79982 35.2114 8.37468 35.2114H26.6835C28.2583 35.2114 29.4558 34.2444 29.4558 32.6851V7.3563H5.37131Z\" fill=\"#53A200\"/>\n    <path d=\"M3.87769e-05 5.58233L10.7608 5.5823V4.24581C10.7608 2.15391 12.4824 0 14.5953 0H19.8457C21.9585 0 23.6801 2.15391 23.6801 4.24581V5.5823L34.8268 5.58233V6.55081H3.87769e-05V5.58233ZM21.8501 5.5823V4.24581C21.8501 2.68657 20.797 1.83964 19.2221 1.83964H15.3089C13.734 1.83964 12.609 2.68657 12.609 4.24581V5.5823H21.8501Z\" fill=\"#53A200\"/>\n    <path d=\"M16.4602 12.9249H18.3156V29.673H16.4602V12.9249Z\" fill=\"#53A200\"/><path d=\"M22.1203 12.9249H23.9757V29.673H22.1203V12.9249Z\" fill=\"#53A200\"/><path d=\"M10.9733 12.9249H12.8287V29.673H10.9733V12.9249Z\" fill=\"#53A200\"/>"
 });
 
 /***/ }),
@@ -21442,6 +21445,13 @@ var routes = [{
       parent: ['Home', 'VideoGalleries', 'VideoGallery']
     }
   }]
+}, {
+  path: '/cart',
+  name: 'Cart',
+  component: function component() {
+    return __webpack_require__.e(/*! import() */ "resources_js_frontend_pages_cart_page_vue").then(__webpack_require__.bind(__webpack_require__, /*! @frontend/pages/cart/page */ "./resources/js/frontend/pages/cart/page.vue"));
+  },
+  props: true
 }, // {
 //     path: '/ca/:id?/:slug',
 //     name: 'Categories',
@@ -21625,7 +21635,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_page__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./modules/page */ "./resources/js/store/modules/page.js");
 /* harmony import */ var _modules_frontend_BreadCramp__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./modules/frontend/BreadCramp */ "./resources/js/store/modules/frontend/BreadCramp.js");
 /* harmony import */ var _modules_frontend_RigthSidebar__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./modules/frontend/RigthSidebar */ "./resources/js/store/modules/frontend/RigthSidebar.js");
-/* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! js-cookie */ "./node_modules/js-cookie/dist/js.cookie.mjs");
+/* harmony import */ var _modules_cart__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./modules/cart */ "./resources/js/store/modules/cart.js");
 
 
 
@@ -21641,7 +21651,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var paths = ['lang', 'PhotoPage', 'PageVideo', 'products', 'Breadcrumb', 'article', 'category'];
+var paths = ['lang', 'PhotoPage', 'PageVideo', 'products', 'Breadcrumb', 'article', 'category', 'cart'];
 var modules = {
   lang: _modules_language__WEBPACK_IMPORTED_MODULE_1__["default"],
   SidebarOptions: _modules_Sidebar_options__WEBPACK_IMPORTED_MODULE_2__["default"],
@@ -21654,43 +21664,12 @@ var modules = {
   article: _modules_article__WEBPACK_IMPORTED_MODULE_8__["default"],
   page: _modules_page__WEBPACK_IMPORTED_MODULE_10__["default"],
   Breadcrumb: _modules_frontend_BreadCramp__WEBPACK_IMPORTED_MODULE_11__["default"],
-  menu: _modules_frontend_RigthSidebar__WEBPACK_IMPORTED_MODULE_12__["default"]
+  menu: _modules_frontend_RigthSidebar__WEBPACK_IMPORTED_MODULE_12__["default"],
+  cart: _modules_cart__WEBPACK_IMPORTED_MODULE_13__["default"]
 };
 var dataState = (0,vuex_persistedstate__WEBPACK_IMPORTED_MODULE_0__["default"])({
   paths: paths
-  /*storage: {
-      getItem: (key) => Cookies.get(key),
-      // Please see https://github.com/js-cookie/js-cookie#json, on how to handle JSON.
-      setItem: (key, value) =>
-          Cookies.set(key, value, { expires: 3, secure: true }),
-      removeItem: (key) => Cookies.remove(key),
-  },*/
-
 });
-/*
-export default new Vuex.Store({
-    modules: {
-        lang,
-        SidebarOptions,
-        Portions,
-        PhotoPage,
-        PageVideo,
-
-        category,
-        products,
-
-        about,
-        article,
-        page,
-        Breadcrumb,
-        menu
-
-    },
-    plugins: [dataState]
-})
-
-*/
-
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (new vuex__WEBPACK_IMPORTED_MODULE_14__["default"].Store({
   modules: modules,
   plugins: [dataState]
@@ -22889,6 +22868,159 @@ var getters = {
 
       return article;
     };
+  }
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  namespaced: true,
+  state: state,
+  getters: getters,
+  actions: actions,
+  mutations: mutations
+});
+
+/***/ }),
+
+/***/ "./resources/js/store/modules/cart.js":
+/*!********************************************!*\
+  !*** ./resources/js/store/modules/cart.js ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _routes_api_routes__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/routes/api-routes */ "./resources/js/routes/api-routes.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
+
+var state = {
+  CART: []
+};
+var actions = {
+  SET: function SET(_ref) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+      var commit, response;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              commit = _ref.commit;
+              _context.next = 3;
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().get((0,_routes_api_routes__WEBPACK_IMPORTED_MODULE_1__["default"])('order.index'));
+
+            case 3:
+              response = _context.sent;
+              commit('SET', response.data.data);
+
+            case 5:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }))();
+  },
+  CREATE: function CREATE(_ref2, product) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+      var commit, response;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              commit = _ref2.commit;
+              _context2.next = 3;
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().post((0,_routes_api_routes__WEBPACK_IMPORTED_MODULE_1__["default"])('order.store'), product);
+
+            case 3:
+              response = _context2.sent;
+              commit('CREATE', response.data.data);
+
+            case 5:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2);
+    }))();
+  },
+  UPDATE: function UPDATE(_ref3, order) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
+      var commit, response;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+        while (1) {
+          switch (_context3.prev = _context3.next) {
+            case 0:
+              commit = _ref3.commit;
+              _context3.next = 3;
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().put((0,_routes_api_routes__WEBPACK_IMPORTED_MODULE_1__["default"])('order.update', order.id), order);
+
+            case 3:
+              response = _context3.sent;
+              commit('UPDATE', response.data.data);
+
+            case 5:
+            case "end":
+              return _context3.stop();
+          }
+        }
+      }, _callee3);
+    }))();
+  },
+  DESTROY: function DESTROY(_ref4, order) {
+    var commit = _ref4.commit;
+    var response = axios__WEBPACK_IMPORTED_MODULE_2___default().post((0,_routes_api_routes__WEBPACK_IMPORTED_MODULE_1__["default"])('order.destroy', order.id), order);
+    commit('DESTROY', order);
+  }
+};
+var mutations = {
+  SET: function SET(state, cart) {
+    state.CART = cart;
+  },
+  ADD: function ADD(state, product) {
+    var pro = state.CART.find(function (pr) {
+      return pr.product_id === product.product_id;
+    });
+
+    if (pro) {
+      state.CART = state.CART.map(function (pr) {
+        if (pr.product_id === product.product_id) {
+          pr.quantity = product.quantity;
+        }
+
+        return pr;
+      });
+    } else {
+      state.CART.push(product);
+    }
+  },
+  CREATE: function CREATE(state, order) {
+    state.CART.push(order);
+  },
+  UPDATE: function UPDATE(state, order) {
+    state.CART = state.CART.map(function (or) {
+      return or.id === order.id ? order : or;
+    });
+  },
+  DESTROY: function DESTROY(state, order) {
+    state.CART = state.CART.filter(function (or) {
+      return or.id !== order.id;
+    });
+  }
+};
+var getters = {
+  GET_CART: function GET_CART(state) {
+    return state.CART;
   }
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -49393,155 +49525,6 @@ webpackContext.id = "./resources/js/translate sync recursive ^\\.\\/.*$";
 
 /***/ }),
 
-/***/ "./node_modules/js-cookie/dist/js.cookie.mjs":
-/*!***************************************************!*\
-  !*** ./node_modules/js-cookie/dist/js.cookie.mjs ***!
-  \***************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/*! js-cookie v3.0.1 | MIT */
-/* eslint-disable no-var */
-function assign (target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i];
-    for (var key in source) {
-      target[key] = source[key];
-    }
-  }
-  return target
-}
-/* eslint-enable no-var */
-
-/* eslint-disable no-var */
-var defaultConverter = {
-  read: function (value) {
-    if (value[0] === '"') {
-      value = value.slice(1, -1);
-    }
-    return value.replace(/(%[\dA-F]{2})+/gi, decodeURIComponent)
-  },
-  write: function (value) {
-    return encodeURIComponent(value).replace(
-      /%(2[346BF]|3[AC-F]|40|5[BDE]|60|7[BCD])/g,
-      decodeURIComponent
-    )
-  }
-};
-/* eslint-enable no-var */
-
-/* eslint-disable no-var */
-
-function init (converter, defaultAttributes) {
-  function set (key, value, attributes) {
-    if (typeof document === 'undefined') {
-      return
-    }
-
-    attributes = assign({}, defaultAttributes, attributes);
-
-    if (typeof attributes.expires === 'number') {
-      attributes.expires = new Date(Date.now() + attributes.expires * 864e5);
-    }
-    if (attributes.expires) {
-      attributes.expires = attributes.expires.toUTCString();
-    }
-
-    key = encodeURIComponent(key)
-      .replace(/%(2[346B]|5E|60|7C)/g, decodeURIComponent)
-      .replace(/[()]/g, escape);
-
-    var stringifiedAttributes = '';
-    for (var attributeName in attributes) {
-      if (!attributes[attributeName]) {
-        continue
-      }
-
-      stringifiedAttributes += '; ' + attributeName;
-
-      if (attributes[attributeName] === true) {
-        continue
-      }
-
-      // Considers RFC 6265 section 5.2:
-      // ...
-      // 3.  If the remaining unparsed-attributes contains a %x3B (";")
-      //     character:
-      // Consume the characters of the unparsed-attributes up to,
-      // not including, the first %x3B (";") character.
-      // ...
-      stringifiedAttributes += '=' + attributes[attributeName].split(';')[0];
-    }
-
-    return (document.cookie =
-      key + '=' + converter.write(value, key) + stringifiedAttributes)
-  }
-
-  function get (key) {
-    if (typeof document === 'undefined' || (arguments.length && !key)) {
-      return
-    }
-
-    // To prevent the for loop in the first place assign an empty array
-    // in case there are no cookies at all.
-    var cookies = document.cookie ? document.cookie.split('; ') : [];
-    var jar = {};
-    for (var i = 0; i < cookies.length; i++) {
-      var parts = cookies[i].split('=');
-      var value = parts.slice(1).join('=');
-
-      try {
-        var foundKey = decodeURIComponent(parts[0]);
-        jar[foundKey] = converter.read(value, foundKey);
-
-        if (key === foundKey) {
-          break
-        }
-      } catch (e) {}
-    }
-
-    return key ? jar[key] : jar
-  }
-
-  return Object.create(
-    {
-      set: set,
-      get: get,
-      remove: function (key, attributes) {
-        set(
-          key,
-          '',
-          assign({}, attributes, {
-            expires: -1
-          })
-        );
-      },
-      withAttributes: function (attributes) {
-        return init(this.converter, assign({}, this.attributes, attributes))
-      },
-      withConverter: function (converter) {
-        return init(assign({}, this.converter, converter), this.attributes)
-      }
-    },
-    {
-      attributes: { value: Object.freeze(defaultAttributes) },
-      converter: { value: Object.freeze(converter) }
-    }
-  )
-}
-
-var api = init(defaultConverter, { path: '/' });
-/* eslint-enable no-var */
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (api);
-
-
-/***/ }),
-
 /***/ "./node_modules/vue3-lazyload/dist/index.mjs":
 /*!***************************************************!*\
   !*** ./node_modules/vue3-lazyload/dist/index.mjs ***!
@@ -50028,7 +50011,7 @@ function del(target, key) {
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"language.index":"api/admin/language","language.store":"api/admin/language","language.show":"api/admin/language/{language}","language.update":"api/admin/language/{language}","language.destroy":"api/admin/language-delete/{ids?}","photo-page.index":"api/admin/photo-page","photo-page.store":"api/admin/photo-page","photo-page.update":"api/admin/photo-page/{photo_page}","photo-page.destroy":"api/admin/photo-page/{photo_page}","photo-gallery.store":"api/admin/photo-gallery","photo-gallery.update":"api/admin/photo-gallery/{photo_gallery}","photo-gallery.destroy":"api/admin/photo-gallery/{ids}","video-page.index":"api/admin/video-page","video-page.store":"api/admin/video-page","video-page.update":"api/admin/video-page/{video_page}","video-page.destroy":"api/admin/video-page/{video_page}","video-gallery.store":"api/admin/video-gallery","video-gallery.update":"api/admin/video-gallery/{video_gallery}","video-gallery.destroy":"api/admin/video-gallery/{ids}","page.index":"api/admin/page","page.firstOrCreate":"api/admin/page","about.index":"api/admin/about","about.store":"api/admin/about","tiny.upload":"api/admin/about-update","article.index":"api/admin/article","article.store":"api/admin/article","article.update":"api/admin/article/{article}","article.destroy":"api/admin/article/{article}","get.images":"api/admin/all-images/{type?}","image.upload":"api/admin/image-upload","category.index":"api/admin/category","category.store":"api/admin/category","category.update":"api/admin/category/{category}","category.destroy":"api/admin/category/{category}","category-size.store":"api/admin/category-size","category-size.update":"api/admin/category-size/{category_size}","category-size.destroy":"api/admin/category-size-destroy/{ids}","product.index":"api/admin/product","product.store":"api/admin/product","product.show":"api/admin/product/{product}","product.update":"api/admin/product/{product}","product.destroy":"api/admin/product/{ids}","product.status":"api/admin/product/status/{status}","product.copy":"api/admin/product/copy","product.update.additions":"api/admin/product/addition/{product}","product.delete.additions":"api/admin/product/addition/{product}/{ids}","product-photo.store":"api/admin/product-photo","product-photo.update":"api/admin/product-photo/{product_photo}","product-photo.destroy":"api/admin/product-photo/{ids}","product.size.updateOrCreate":"api/admin/product-size","product.video.store":"api/admin/product-video","category.export":"api/admin/export/category","product.export":"api/admin/export/product/{id?}","translate.store":"api/admin/export/create-translate","product.import":"api/admin/product-import","menus":"api/menus"}');
+module.exports = JSON.parse('{"language.index":"api/admin/language","language.store":"api/admin/language","language.show":"api/admin/language/{language}","language.update":"api/admin/language/{language}","language.destroy":"api/admin/language-delete/{ids?}","photo-page.index":"api/admin/photo-page","photo-page.store":"api/admin/photo-page","photo-page.update":"api/admin/photo-page/{photo_page}","photo-page.destroy":"api/admin/photo-page/{photo_page}","photo-gallery.store":"api/admin/photo-gallery","photo-gallery.update":"api/admin/photo-gallery/{photo_gallery}","photo-gallery.destroy":"api/admin/photo-gallery/{ids}","video-page.index":"api/admin/video-page","video-page.store":"api/admin/video-page","video-page.update":"api/admin/video-page/{video_page}","video-page.destroy":"api/admin/video-page/{video_page}","video-gallery.store":"api/admin/video-gallery","video-gallery.update":"api/admin/video-gallery/{video_gallery}","video-gallery.destroy":"api/admin/video-gallery/{ids}","page.index":"api/admin/page","page.firstOrCreate":"api/admin/page","about.index":"api/admin/about","about.store":"api/admin/about","tiny.upload":"api/admin/about-update","article.index":"api/admin/article","article.store":"api/admin/article","article.update":"api/admin/article/{article}","article.destroy":"api/admin/article/{article}","get.images":"api/admin/all-images/{type?}","image.upload":"api/admin/image-upload","category.index":"api/admin/category","category.store":"api/admin/category","category.update":"api/admin/category/{category}","category.destroy":"api/admin/category/{category}","category-size.store":"api/admin/category-size","category-size.update":"api/admin/category-size/{category_size}","category-size.destroy":"api/admin/category-size-destroy/{ids}","product.index":"api/admin/product","product.store":"api/admin/product","product.show":"api/admin/product/{product}","product.update":"api/admin/product/{product}","product.destroy":"api/admin/product/{ids}","product.status":"api/admin/product/status/{status}","product.copy":"api/admin/product/copy","product.update.additions":"api/admin/product/addition/{product}","product.delete.additions":"api/admin/product/addition/{product}/{ids}","product-photo.store":"api/admin/product-photo","product-photo.update":"api/admin/product-photo/{product_photo}","product-photo.destroy":"api/admin/product-photo/{ids}","product.size.updateOrCreate":"api/admin/product-size","product.video.store":"api/admin/product-video","category.export":"api/admin/export/category","product.export":"api/admin/export/product/{id?}","translate.store":"api/admin/export/create-translate","product.import":"api/admin/product-import","menus":"api/menus","order.index":"api/order","order.store":"api/order","order.update":"api/order/{order}","order.destroy":"api/order/{order}"}');
 
 /***/ }),
 
@@ -50140,7 +50123,7 @@ module.exports = JSON.parse('{"about_sidebar":"Open mobile Sidebar","Home":"Home
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_backend_pages_dashboard_Dashboard_vue":1,"resources_js_backend_pages_lang_index_vue":1,"resources_js_backend_pages_translate_page_vue":1,"resources_js_backend_pages_library_Library_vue":1,"resources_js_backend_pages_page-photo_index_vue":1,"resources_js_backend_pages_page-photo_page_index_vue":1,"resources_js_backend_pages_page-video_index_vue":1,"resources_js_backend_pages_page-video_page_index_vue":1,"resources_js_backend_pages_about_index_vue":1,"resources_js_backend_pages_article_pages_vue":1,"resources_js_backend_pages_article_page_vue":1,"resources_js_backend_pages_category_category_vue":1,"resources_js_backend_pages_products_pages_vue":1,"resources_js_backend_pages_products_page_vue":1,"resources_js_backend_pages_404_vue":1,"resources_js_frontend_pages_home_index_vue":1,"resources_js_frontend_pages_about_page_vue":1,"resources_js_frontend_pages_article_pages_vue":1,"resources_js_frontend_pages_article_page_vue":1,"resources_js_frontend_pages_page-photo_pages_vue":1,"resources_js_frontend_pages_page-photo_page_vue":1,"resources_js_frontend_pages_page-video_pages_vue":1,"resources_js_frontend_pages_page-video_page_vue":1,"resources_js_frontend_pages_product_pages_vue":1,"resources_js_frontend_pages_product_page_vue":1,"resources_js_frontend_pages_NotFound_vue":1,"resources_js_layouts_backend_vue":1,"resources_js_layouts_frontend_vue":1,"resources_js_frontend_pages_products_pages_vue":1,"resources_js_frontend_components_BaseVideoPlayer_vue":1}[chunkId]) return "assets/js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_backend_pages_dashboard_Dashboard_vue":1,"resources_js_backend_pages_lang_index_vue":1,"resources_js_backend_pages_translate_page_vue":1,"resources_js_backend_pages_library_Library_vue":1,"resources_js_backend_pages_page-photo_index_vue":1,"resources_js_backend_pages_page-photo_page_index_vue":1,"resources_js_backend_pages_page-video_index_vue":1,"resources_js_backend_pages_page-video_page_index_vue":1,"resources_js_backend_pages_about_index_vue":1,"resources_js_backend_pages_article_pages_vue":1,"resources_js_backend_pages_article_page_vue":1,"resources_js_backend_pages_category_category_vue":1,"resources_js_backend_pages_products_pages_vue":1,"resources_js_backend_pages_products_page_vue":1,"resources_js_backend_pages_404_vue":1,"resources_js_frontend_pages_home_index_vue":1,"resources_js_frontend_pages_about_page_vue":1,"resources_js_frontend_pages_article_pages_vue":1,"resources_js_frontend_pages_article_page_vue":1,"resources_js_frontend_pages_page-photo_pages_vue":1,"resources_js_frontend_pages_page-photo_page_vue":1,"resources_js_frontend_pages_page-video_pages_vue":1,"resources_js_frontend_pages_page-video_page_vue":1,"resources_js_frontend_pages_cart_page_vue":1,"resources_js_frontend_pages_product_pages_vue":1,"resources_js_frontend_pages_product_page_vue":1,"resources_js_frontend_pages_NotFound_vue":1,"resources_js_layouts_backend_vue":1,"resources_js_layouts_frontend_vue":1,"resources_js_frontend_pages_products_pages_vue":1,"resources_js_frontend_components_BaseVideoPlayer_vue":1}[chunkId]) return "assets/js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

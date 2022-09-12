@@ -54,5 +54,9 @@
     "product.export": "api\/admin\/export\/product\/{id?}",
     "translate.store": "api\/admin\/export\/create-translate",
     "product.import": "api\/admin\/product-import",
-    "menus": "api\/menus"
+    "menus": "api\/menus",
+    "order.index": "api\/order",
+    "order.store": "api\/order",
+    "order.update": "api\/order\/{order}",
+    "order.destroy": "api\/order\/{order}"
 }

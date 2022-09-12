@@ -43,7 +43,9 @@ export default {
       return this.product.photos?.find(ph => ph.by_default) || this.product.photos[0]
     }
   },
-
+  methods: {
+    
+  }
 
 }
 </script>
