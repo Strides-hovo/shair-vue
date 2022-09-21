@@ -32,7 +32,7 @@ export default {
     }),
 
     categories() {
-      return this.categoryById(this.languageId)
+      return this.categoryById(this.languageId).sort((a,b) => a.sorting - b.sorting)
     },
 
     category() {

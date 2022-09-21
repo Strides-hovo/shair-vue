@@ -7,7 +7,9 @@ use App\Models\Category;
 use App\Exports\CategoryExport;
 use App\Traits\CustomValidate;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 use Maatwebsite\Excel\Facades\Excel;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class CategoryController extends Controller
 {
@@ -51,22 +53,13 @@ class CategoryController extends Controller
 
 
     /**
-     * @throws \Illuminate\Validation\ValidationException
+     * @throws ValidationException
      */
     public function translate(Category $category): void
     {
         $request = request();
         $translate = self::merger_translate($request, $category, 'category_id','category_translate');
 
-        /*$translate = array_merge_recursive(meta_translate($request),
-            $request->validate([
-                    'translate.name' => 'required|string',
-                    'translate.category_id' => 'required|exists:categories,id',
-                ]
-            ));*/
-
-
-        Category::setLanguageId($request['translate']['language_id']);
         $category->translations()->updateOrCreate(
             [
                 'language_id' => $request['translate']['language_id'],
@@ -89,7 +82,7 @@ class CategoryController extends Controller
     }
 
 
-    public function export(): \Symfony\Component\HttpFoundation\BinaryFileResponse
+    public function export(): BinaryFileResponse
     {
         return Excel::download(new CategoryExport, 'categories.xlsx');
     }

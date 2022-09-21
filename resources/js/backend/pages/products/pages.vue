@@ -51,7 +51,7 @@ export default {
 
 
     page() {
-      return this.pageData('Products', this.languageId)
+      return this.pageData('Products', this.languageId) || {translate: {}}
     },
 
 
@@ -144,13 +144,14 @@ export default {
     if (this.products.length === 0) {
       await this['products/set']()
     }
-    //
 
+    if (!this.categories.length ) {
+      await this['category/set']()
+    }
 
     if (!this.page.name) {
       this['page/SET_PAGES']()
     }
-
 
   }
 }

@@ -12,10 +12,7 @@ export default {
     computed: {
         ...mapGetters({ CART: 'cart/GET_CART' }),
         quantity(){
-           return this.CART.reduce( (i,product) => {
-            console.log(product,i);
-                return i + product.quantity
-            },0 )
+           return this.CART.reduce( (i,product) => i + product.quantity,0 )
         }
     }
 }

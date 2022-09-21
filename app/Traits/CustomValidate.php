@@ -36,6 +36,26 @@ trait CustomValidate
     }
 
 
+    public static function ValidDates(array $dates, array $rules):array
+    {
+
+        $validator = Validator::make($dates, $rules);
+
+        $errors = response()->json([
+            'status' => 'Error',
+            'message' => 'Ops! Some errors occurred',
+            'errors' => $validator->errors()
+        ], 400);
+
+        try {
+            return $validator->validate();
+        }catch (\Exception $e){
+            throw new ValidationException($validator,$errors );
+        }
+    }
+
+
+
     /**
      * @param Request $request
      * @param $modelName
@@ -80,7 +100,21 @@ trait CustomValidate
             'category_translate' =>  self::customValidate($request, [
                 'translate.name' => 'required|string',
                 'translate.category_id' => 'required|exists:categories,id',
+                'translate.language_id' => 'required|exists:languages,id',
+                'translate.footer_text' => 'nullable|string',
+                'translate.meta_description' => 'nullable|string',
+                'translate.meta_title' => 'nullable|string',
             ]),
+            'order_details' =>  self::customValidate($request, [
+                'details.*.product_id' => 'required|exists:products,id',
+                'details.*.product_size_id' => 'required|exists:product_sizes,id',
+                'details.*.quantity' => 'required|numeric',
+                'details.*.price' => 'required|numeric',
+                'details.*.height' => 'required|string',
+                'details.*.width' => 'required|numeric',
+                'details.*.discount' => 'nullable|numeric',
+            ]),
+
 
         };
     }

@@ -111,8 +111,8 @@ export default {
 
     export_data() {
       //this['products/export']()
-      
-      this['products/export'](this.product.id)
+      console.log(this.product.id, this.activeTab)
+      this['products/export']({id:this.product.id,size: this.activeTab})
     },
 
     import_data(){

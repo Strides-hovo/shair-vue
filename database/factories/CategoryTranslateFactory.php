@@ -6,9 +6,7 @@ use App\Models\Language;
 use App\Models\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\CategoryTranslate>
- */
+
 class CategoryTranslateFactory extends Factory
 {
     
@@ -19,8 +17,9 @@ class CategoryTranslateFactory extends Factory
             'language_id' => Language::all()->unique()->random()->id,
             'category_id' => Category::all()->unique()->random()->id,
             'name' => $this->faker->name,
-            'description' => $this->faker->text,
-            'slug' => $this->faker->slug,
+            'meta_title' => $this->faker->title,
+            'meta_description' => $this->faker->text,
+            'footer_text' => $this->faker->text,
         ];
     }
 }

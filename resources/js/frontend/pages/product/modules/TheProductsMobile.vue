@@ -1,24 +1,27 @@
 <template>
     <div class="combobox mobile">
-        <div class="combobox__active">
+        <div class="combobox__active"
+             :class="{active: ButtonMobileTab}"
+             @click="ButtonMobileTab = !ButtonMobileTab"
+        >
             <base-icon icon='arrow-green' width="18" height="10" />
             <span>
                 מסגרת סוכה מברזל
             </span>
         </div>
-        <div class="combobox-list">
-            <div class="combobox-list__item">
-                item 1
+        <div class="combobox-list" :class="{active: ButtonMobileTab}">
+            <div class="combobox-list__item"
+                 v-for="product in products"
+                 :key="product.id"
+            >
+               <router-link
+                   class="nav-link"
+                   v-if="product.translate.slug"
+                   :to="{name: 'Product', params: {id: product.id, slug: product.translate.slug } }" >
+                 {{ product.translate.name }}
+               </router-link>
             </div>
-            <div class="combobox-list__item">
-                item 1
-            </div>
-            <div class="combobox-list__item">
-                item 1
-            </div>
-            <div class="combobox-list__item">
-                item 1
-            </div>
+
         </div>
     </div>
 </template>
@@ -30,9 +33,16 @@ export default {
         products: {
           default: []
         }
-    }
+    },
+  data:() => ({
+      ButtonMobileTab: false,
+  })
 }
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
+.nav-link {
+  color: #fff;
+  text-decoration: none;
+}
 </style>

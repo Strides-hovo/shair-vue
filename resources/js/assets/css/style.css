@@ -309,7 +309,7 @@ h6 {
   transition: all .3s ease;
 }
 
-.combobox__active.active img {
+.combobox__active.active svg {
   -webkit-transform: scale(-1);
       -ms-transform: scale(-1);
           transform: scale(-1);
@@ -2704,7 +2704,7 @@ h6 {
   padding: 0 5px;
 }
 
-.pricelist-content__item-value .pricelist-item-value-dec img {
+.pricelist-content__item-value .pricelist-item-value-dec img,.pricelist-item-value-dec svg {
   width: 11px;
   height: 7px;
   -o-object-fit: contain;
@@ -3544,7 +3544,7 @@ h6 {
   display: none;
 }
 
-.cart-slider__item .cart-slider-button-prev img {
+.cart-slider__item .cart-slider-button-prev svg {
   -webkit-transform: rotate(180deg);
       -ms-transform: rotate(180deg);
           transform: rotate(180deg);

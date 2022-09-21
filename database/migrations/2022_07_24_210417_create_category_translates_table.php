@@ -18,10 +18,10 @@ return new class extends Migration
 
             $table->foreignId('category_id')->constrained()->onDelete('cascade');
             $table->string('name');
-            $table->text('description')->nullable();
-
-            meta_migrations($table);
-
+            $table->string('meta_title')->nullable();
+            $table->string('meta_description')->nullable();
+            $table->text('footer_text')->nullable();
+            $table->foreignId('language_id')->index()->constrained()->onDelete('cascade');
         });
     }
 

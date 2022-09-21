@@ -1,14 +1,15 @@
 <template>
   <div class="products-slidebar">
-    <ul class="products-slidebar__content">
+
+    <ul class="products-slidebar__content" v-if="categories.length">
       <li
           v-for="category of categories"
           :key="category.id"
-          :class="{active: category.translate.slug === this.$route.params.slug }"
+          :class="{active: category.id === Number(this.$route.params.id) }"
       >
         <router-link
-            v-if="category.translate.slug"
-            :to="{ name: routeName, params: { slug: category.translate.slug, id: category.id } }"
+            v-if="page.translate.slug"
+            :to="{ name: routeName, params: { slug: page.translate.slug, id: category.id } }"
         >
           {{ category.translate.name }}
         </router-link>
@@ -23,9 +24,9 @@ import { mapActions, mapGetters } from "vuex";
 
 export default {
     props:{
-      categories: {
+      page: {
         required: true,
-        default: []
+        type: Object
       }
     },
 
@@ -38,16 +39,31 @@ export default {
   computed:{
     ...mapGetters({
       language: 'lang/GET_SITE_LANGUAGE',
-      productsData: 'category/GET_CATEGORIES_PRODUCTS'
+      catData: 'category/GET_FRONT_CATEGORIES'
     }),
 
-    
+    categories(){
+      return this.catData(this.language.id)
+    }
   },
 
-  
-  
+  methods:{
+      ...mapActions(['category/set'])
+  },
+
+  async mounted() {
+      if ( this.categories && !this.categories.length ){
+       await this['category/set']()
+      }
+
+  }
 
 
 }
 </script>
 
+<style>
+  li.active > a{
+    color: #fff;
+  }
+</style>

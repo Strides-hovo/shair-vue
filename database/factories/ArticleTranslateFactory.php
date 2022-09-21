@@ -5,9 +5,7 @@ namespace Database\Factories;
 use App\Models\Article;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\ArticleTranslate>
- */
+
 class ArticleTranslateFactory extends Factory
 {
     /**
@@ -17,7 +15,7 @@ class ArticleTranslateFactory extends Factory
      */
     public function definition()
     {
-        return meta_seeder( [
+        return meta_seeder([
             'article_id' => Article::all()->unique()->random()->id,
             'author' => $this->faker->firstName,
             'name' => $this->faker->titleFemale,

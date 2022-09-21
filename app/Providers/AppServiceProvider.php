@@ -3,6 +3,9 @@
 
 namespace App\Providers;
 
+use App\Models\Category;
+use App\Models\Coupon;
+use App\Models\Order;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\ServiceProvider;
@@ -29,6 +32,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+
         Response::macro('success',function ($data,int $code = 200, $message = ''): JsonResponse{
              return response()->json([
                 'status' => 'Success',
@@ -44,5 +48,8 @@ class AppServiceProvider extends ServiceProvider
                 'data' => $data
             ], $code);
         });
+
+
+
     }
 }

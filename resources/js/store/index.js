@@ -18,8 +18,11 @@ import page from "./modules/page";
 import Breadcrumb from "./modules/frontend/BreadCramp";
 import menu from './modules/frontend/RigthSidebar'
 import cart from './modules/cart'
+import coupon from "./modules/coupon";
 
-const paths = ['lang','PhotoPage','PageVideo','products', 'Breadcrumb', 'article','category','cart' ]
+
+const paths2 = ['lang','PhotoPage','PageVideo','products', 'Breadcrumb', 'article','category','cart' ]
+const paths = ['lang', 'cart', 'products' ]
 const modules = {
     lang,
     SidebarOptions,
@@ -33,7 +36,8 @@ const modules = {
     page,
     Breadcrumb,
     menu,
-    cart
+    cart,
+    coupon
 }
 
 

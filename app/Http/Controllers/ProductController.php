@@ -1,4 +1,5 @@
 <?php
+/** @noinspection PhpComposerExtensionStubsInspection */
 /** @noinspection PhpParamsInspection */
 /** @noinspection PhpUndefinedFieldInspection */
 /** @noinspection PhpDynamicAsStaticMethodCallInspection */
@@ -7,7 +8,8 @@
 namespace App\Http\Controllers;
 
 use App\Exports\ProductExport;
-use App\Exports\ProductsExport;
+use App\Exports\ProductSizesExport;
+use App\Exports\ProductTranslateExport;
 use App\Http\Requests\ProductRequest;
 use App\Imports\ProductImport;
 use App\Models\Product;
@@ -18,8 +20,12 @@ use App\Services\ProductService;
 use App\Traits\CustomValidate;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Validation\ValidationException;
 use Maatwebsite\Excel\Facades\Excel;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
+use ZipArchive;
+
 
 class ProductController extends Controller
 {
@@ -31,10 +37,27 @@ class ProductController extends Controller
         return response()->success(Product::withs()->get());
     }
 
+
+
+
+
+
+
     public function show(Product $product)
     {
-        return $product->load('sizes');
+        return $product;
     }
+
+
+
+
+
+
+
+
+
+
+
 
     /**
      * @param ProductRequest $request
@@ -45,6 +68,7 @@ class ProductController extends Controller
     {
 
         $product = Product::create($request->validated());
+
         if ($request->has('translate')) {
             $this->translate($request, $product);
         }
@@ -110,7 +134,7 @@ class ProductController extends Controller
     }
 
 
-    public function updateAdditions(Request $request, Product $product )
+    public function updateAdditions(Request $request, Product $product)
     {
         $additions = filter_product_additional('pivot', $request->additions);
         ProductAdditional::where('product_id', $product->id)->delete();
@@ -119,22 +143,17 @@ class ProductController extends Controller
     }
 
 
-    public function deleteAdditions(Product $product, $ids )
+    public function deleteAdditions(Product $product, $ids)
     {
-        
-        if (is_string($ids)){
-            $ids = explode(',',$ids);
+
+        if (is_string($ids)) {
+            $ids = explode(',', $ids);
         }
-        ProductAdditional::where('product_id',$product->id)->whereIn('additional_id', $ids)->delete();
+        ProductAdditional::where('product_id', $product->id)->whereIn('additional_id', $ids)->delete();
         return response()->success($product->loads());
 
     }
 
-
-    public function updateSetting(Request $request, Product $product )
-    {
-
-    }
 
     /**
      * @throws ValidationException
@@ -147,7 +166,6 @@ class ProductController extends Controller
             $translate['translate']
         );
     }
-
 
 
     /**
@@ -177,21 +195,53 @@ class ProductController extends Controller
         return response()->success('Product Deleted');
     }
 
-    //: \Symfony\Component\HttpFoundation\BinaryFileResponse
-    public function export( int|string $id )
+
+    public function export(int|string $id, string $size) : BinaryFileResponse
     {
-        return Excel::download(new ProductExport($id), 'products.xlsx')
-            //->headers('Content-type', 'application/vnd.ms-excel')
-            ;
+        return Excel::download(new ProductExport($id), 'invoices.xlsx');
     }
+
+
+
+    /**
+     * @param int|string $id
+     * @param string $size
+     * @return BinaryFileResponse
+     */
+    public function zipExport(int|string $id, string $size): BinaryFileResponse
+    {
+        $product = (new ProductExport($id))->store('export/product.xlsx');
+        $sizes = (new ProductSizesExport($id, $size))->store('export/product-size.xlsx');
+        $translates = (new ProductTranslateExport($id))->store('export/product-translates.xlsx');
+
+        $zip = new ZipArchive;
+        $zipName = 'product.zip';
+
+        if ($zip->open(public_path($zipName), ZipArchive::CREATE) === TRUE) {
+            $files = File::files(storage_path('app/export'));
+
+            foreach ($files as $file) {
+                $fileName = basename($file);
+                $zip->addFile($file, $fileName);
+            }
+            $zip->close();
+        }
+
+        return response()->download(public_path($zipName));
+    }
+
 
 
     public function import(Request $request)
     {
 
-       $response = Excel::import(new ProductImport, $request->file('file') );
+        $import = new ProductImport;
+        Excel::import($import, $request->file('file'));
 
-        return response()->success($response);
+        return response()->success( $import->product );
     }
+
+
+
 
 }

@@ -36,8 +36,6 @@ class ProductSeeder extends Seeder
         'KGoH7SyOWsY',
         'XwaH-qT4Rm0',
         'HQnjypbh4Yg',
-
-
     ];
 
     public function run()
@@ -48,8 +46,7 @@ class ProductSeeder extends Seeder
         ProductPhoto::factory(40)->create();
         ProductPhotoTranslate::factory(80)->create();
 
-        //ProductSize::factory(20)->create();
-        $test = $this->sizes();
+        $this->sizes();
 
         $this->videos();
     }
@@ -69,12 +66,10 @@ class ProductSeeder extends Seeder
     public function sizes()
     {
         $products = Product::all();
-        $cat_sizes = CategorySize::all();
+
         $dates = [];
-        $products->each(function($product) use($cat_sizes, &$dates) {
-            $cats = $cat_sizes->splice(0,2)->each(function($size) use($product, &$dates){
-                $dates[] = $this->sizes_data($product->id, $size->id);
-            });
+        $products->each(function($product) use( &$dates) {
+            $dates[] = $this->sizes_data($product);
         });
         
         ProductSize::insert($dates);
@@ -82,12 +77,13 @@ class ProductSeeder extends Seeder
     }
 
 
-    public function sizes_data($product_id, $category_size_id)
+    public function sizes_data(Product $product)
     {
         $faker = \Faker\Factory::create('ru_RU');
+
         return [
-            'product_id' => $product_id,
-            'category_size_id' => $category_size_id,
+            'product_id' => $product->id,
+            'category_size_id' => $product->category->sizes->random()->id ,
             'sku' => $faker->randomNumber(),
             'price' => $faker->randomFloat(2,1,100),
             'invoice_code' => $faker->randomNumber(),

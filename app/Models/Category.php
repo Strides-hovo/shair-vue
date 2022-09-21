@@ -36,11 +36,11 @@ class Category extends Model implements MakeRelations
     public static function withs(bool $frontend = false): Builder
     {
 
-        $fr = ['translations','products.sizes', 'products.translations', 'products.photos.translations', 'products.videos'];
+        $fr = ['translations', 'products.translations', 'products.photos.translations', 'products.videos'];
         if ($frontend){
-            return self::with($fr);
+            return self::with('translations','products');
         }
-        return self::with([ 'translations', 'sizes']);
+        return self::with([ 'translations', 'sizes', 'products']);
     }
 
 
@@ -58,6 +58,10 @@ class Category extends Model implements MakeRelations
             $model->sizes()->delete();
             $model->translations()->delete();
         });
+        static::addGlobalScope('order', function (Builder $builder) {
+            $builder->orderBy('categories.sorting', 'asc');
+        });
+
     }
 
 

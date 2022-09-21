@@ -21,7 +21,6 @@
 
         </div>
 
-
       </label>
     </div>
   </div>
@@ -71,8 +70,10 @@
         תוויות:
       </div>
       <div class="info-col__body">
-        <div class="info-col__body-item" v-for="flag of flags" :key="flag.key">
+        <div class="info-col__body-item" v-for="(flag,i) of flags" :key="flag.key">
+
           <label class="radio">
+
             <input type="radio" :checked="product.flag === flag.key" name="flag" :value="flag.key"
                    v-model="product.flag">
             <span class="fake"></span>
@@ -80,6 +81,9 @@
                   {{ flag.val }}
                 </span>
           </label>
+          <div v-if="i === 0" class="flag-text">
+            <input type="text" v-model="product.translate.flag_text">
+          </div>
         </div>
 
 
@@ -214,6 +218,14 @@ export default {
 }
 </script>
 <style >
+.info-col__body-item{
+  display: flex;
+}
+.flag-text input{
+  background: none;
+  border-bottom: 1px solid #87A8C9;
+  margin-right: 10px;
+}
 
 .container-content__body-info.article .info-item.small label .select {
   cursor: pointer;

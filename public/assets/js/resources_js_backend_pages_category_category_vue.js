@@ -113,7 +113,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   computed: {
     size: function size() {
-      return this.sizes[this.activeItem] || [];
+      var _this$sizes$this$acti;
+
+      return ((_this$sizes$this$acti = this.sizes[this.activeItem]) === null || _this$sizes$this$acti === void 0 ? void 0 : _this$sizes$this$acti.sort(function (a, b) {
+        return a.sorting - b.sorting;
+      })) || [];
     },
     selectFirst: {
       get: function get() {
@@ -138,10 +142,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   methods: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapActions)(['category/updateSize', 'category/deleteSize', 'category/createSize'])), {}, {
     isActive: function isActive(menuItem) {
-      return this.activeItem == menuItem;
+      return this.activeItem === menuItem;
     },
     setActive: function setActive(menuItem) {
-      this.size = this.sizes[menuItem];
       this.activeItem = menuItem;
     },
     updateSize: function updateSize(size) {
@@ -267,7 +270,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     categoryData: 'category/FilterSizes'
   })), {}, {
     categories: function categories() {
-      return this.categoryById(this.languageId);
+      return this.categoryById(this.languageId).sort(function (a, b) {
+        return a.sorting - b.sorting;
+      });
     },
     category: function category() {
       return this.categoryData(this.id, this.languageId);
@@ -607,7 +612,7 @@ var _hoisted_44 = {
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_base_translate_slide = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("base-translate-slide");
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <transition name=\"fade\">\r\n    <div class=\"products-modal-size__new\" v-if=\"ButtonNewSize\">\r\n      <button>הוסף</button>\r\n      <input type=\"number\" placeholder=\"new size\" v-model.number=\"NewSize\">\r\n    </div>\r\n  </transition> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_base_translate_slide, {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_base_translate_slide, {
     "is-active": $props.ButtonNewSize
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -1094,18 +1099,18 @@ function render(_ctx, _cache) {
     type: "text",
     placeholder: "סוכה טלסקופית",
     "onUpdate:modelValue": _cache[7] || (_cache[7] = function ($event) {
-      return _ctx.category.translate.meta_keywords = $event;
+      return _ctx.category.translate.meta_description = $event;
     })
   }, null, 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.category.translate.meta_keywords]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_26, [_hoisted_27, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("textarea", {
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.category.translate.meta_description]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_26, [_hoisted_27, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("textarea", {
     placeholder: "Description",
     "onUpdate:modelValue": _cache[8] || (_cache[8] = function ($event) {
-      return _ctx.category.translate.description = $event;
+      return _ctx.category.translate.footer_text = $event;
     })
   }, null, 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.category.translate.description]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.category.translate.footer_text]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     "class": "products-modal-seo__btn btn",
     onClick: _cache[9] || (_cache[9] = function () {
       return _ctx.update && _ctx.update.apply(_ctx, arguments);

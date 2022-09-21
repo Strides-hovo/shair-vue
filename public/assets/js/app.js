@@ -20859,19 +20859,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  setting: "<path d=\"M7.45597 10.107C6.27099 10.107 5.31038 9.14761 5.31038 7.96415C5.31038 6.78068 6.27099 5.82129 7.45597 5.82129C8.64095 5.82129 9.60156 6.78068 9.60156 7.96415C9.60156 9.14761 8.64095 10.107 7.45597 10.107Z\" stroke=\"black\" stroke-miterlimit=\"10\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n    <path d=\"M1.12794 4.96429L1.66434 4.05357C1.98618 3.51786 2.62986 3.35714 3.11262 3.67857L3.38082 3.83929C4.45361 4.48214 5.79461 3.67857 5.79461 2.44643V2.07143C5.79461 1.48214 6.27737 1 6.86741 1H7.9402C8.53024 1 9.013 1.48214 9.013 2.07143V2.39286C9.013 3.625 10.354 4.42857 11.4268 3.78571L11.7486 3.625C12.285 3.30357 12.9287 3.51786 13.1969 4L13.7333 4.91071C14.0551 5.44643 13.8942 6.08929 13.3578 6.41071L13.0896 6.57143C12.0168 7.21429 12.0168 8.71429 13.0896 9.35714L13.3578 9.51786C13.8942 9.83929 14.0551 10.4821 13.7333 10.9643L13.1969 11.875C12.8751 12.4107 12.2314 12.5714 11.7486 12.25L11.4804 12.0893C10.4076 11.4464 9.06664 12.25 9.06664 13.4821V13.8571C9.06664 14.4464 8.58388 14.9286 7.99384 14.9286H6.92105C6.33101 14.9286 5.84825 14.4464 5.84825 13.8571V13.5357C5.84825 12.3036 4.50725 11.5 3.43446 12.1429L3.16626 12.3036C2.62986 12.625 1.98618 12.4107 1.71798 11.9286L1.18158 11.0179C0.859742 10.4821 1.0743 9.83929 1.55706 9.57143L1.82526 9.41071C2.89806 8.76786 2.89806 7.26786 1.82526 6.625L1.55706 6.46429C1.02066 6.08929 0.859743 5.44643 1.12794 4.96429Z\" stroke=\"black\" stroke-miterlimit=\"10\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>",
+  setting: "<path d=\"M7.45597 10.107C6.27099 10.107 5.31038 9.14761 5.31038 7.96415C5.31038 6.78068 6.27099 5.82129 7.45597 5.82129C8.64095 5.82129 9.60156 6.78068 9.60156 7.96415C9.60156 9.14761 8.64095 10.107 7.45597 10.107Z\" stroke=\"black\" stroke-miterlimit=\"10\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n                <path d=\"M1.12794 4.96429L1.66434 4.05357C1.98618 3.51786 2.62986 3.35714 3.11262 3.67857L3.38082 3.83929C4.45361 4.48214 5.79461 3.67857 5.79461 2.44643V2.07143C5.79461 1.48214 6.27737 1 6.86741 1H7.9402C8.53024 1 9.013 1.48214 9.013 2.07143V2.39286C9.013 3.625 10.354 4.42857 11.4268 3.78571L11.7486 3.625C12.285 3.30357 12.9287 3.51786 13.1969 4L13.7333 4.91071C14.0551 5.44643 13.8942 6.08929 13.3578 6.41071L13.0896 6.57143C12.0168 7.21429 12.0168 8.71429 13.0896 9.35714L13.3578 9.51786C13.8942 9.83929 14.0551 10.4821 13.7333 10.9643L13.1969 11.875C12.8751 12.4107 12.2314 12.5714 11.7486 12.25L11.4804 12.0893C10.4076 11.4464 9.06664 12.25 9.06664 13.4821V13.8571C9.06664 14.4464 8.58388 14.9286 7.99384 14.9286H6.92105C6.33101 14.9286 5.84825 14.4464 5.84825 13.8571V13.5357C5.84825 12.3036 4.50725 11.5 3.43446 12.1429L3.16626 12.3036C2.62986 12.625 1.98618 12.4107 1.71798 11.9286L1.18158 11.0179C0.859742 10.4821 1.0743 9.83929 1.55706 9.57143L1.82526 9.41071C2.89806 8.76786 2.89806 7.26786 1.82526 6.625L1.55706 6.46429C1.02066 6.08929 0.859743 5.44643 1.12794 4.96429Z\" stroke=\"black\" stroke-miterlimit=\"10\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>",
   calendar: "<path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M1.38364 2.7946V6.88422H20.5456V2.7946H16.4649V4.13422H15.1277V2.7946H6.84854V4.13422H5.48813V2.7946H1.38364ZM5.48635 0H6.87057V1.38658H15.1497V0H16.4864V1.38658H22V20.6836H20.5694V8.29696H1.40741V20.6836H22V22H0V1.38658H5.48813L5.48635 0Z\" fill=\"#82AD00\"/>",
   edit: "<path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M15.5799 5.84757L13.6757 8.76852L8.59062 16.5505L7.72507 17.8802L1.2767 21.3025L0 22L0.064927 20.5177C0.064927 20.5177 0.302959 14.763 0.47607 13.1936L8.3526 1.16096C8.73561 0.588695 9.32634 0.189818 9.99715 0.0492526C10.6701 -0.0817342 11.3669 0.0508151 11.9446 0.419823L14.8442 2.29446C15.1255 2.47637 15.3679 2.71262 15.5561 2.98952C15.7466 3.26642 15.8786 3.57846 15.9478 3.90753C16.0084 4.23836 16.0171 4.57704 15.9695 4.91024C15.8851 5.23985 15.7531 5.55551 15.5799 5.84757ZM13.9138 3.0792L11.5551 1.55333C11.0986 1.26478 10.5489 1.16339 10.0188 1.26995C9.49296 1.38689 9.02989 1.69797 8.72045 2.14188L8.20111 2.94841L8.91521 3.42797L2.79141 12.8012L2.07735 12.3434L1.34162 13.4769C1.19015 14.7194 1.01704 18.5559 1.01704 18.5559L2.35864 19.4714L7.11917 17.2044L7.8549 16.0709L7.14081 15.5914L13.2646 6.21814L13.9787 6.6977L14.498 5.89116C14.643 5.66468 14.7447 5.41354 14.801 5.15002C14.8442 4.89026 14.8442 4.62506 14.801 4.36529C14.7447 4.10859 14.643 3.86465 14.498 3.64595C14.3552 3.41005 14.154 3.21498 13.9138 3.0792ZM4.24123 13.7385L10.3866 4.36529L11.8364 5.30261L5.71265 14.6758L4.24123 13.7385Z\" fill=\"#82AD00\"/>",
-  close: "<path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M13.3008 0.5L14.0078 1.207L7.71475 7.5L7.00775 8.207L6.30075 7.5L13.3008 0.5ZM7.00775 6.793L6.30075 7.5L13.3008 14.5L14.0078 13.793L7.71475 7.5L7.00775 6.793Z\" fill=\"#82AD00\"/>\n            <path d=\"M7.00775 8.207L7.71475 7.5L7.00775 6.793L6.30075 7.5L7.00775 8.207Z\" fill=\"#82AD00\"/>\n            <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M0.718719 0.5L0.0117188 1.207L6.30472 7.5L7.01172 8.207L7.71872 7.5L0.718719 0.5ZM7.01172 6.793L7.71872 7.5L0.718719 14.5L0.0117188 13.793L6.30472 7.5L7.01172 6.793Z\" fill=\"#82AD00\"/>\n            <path d=\"M7.01172 8.207L6.30472 7.5L7.01172 6.793L7.71872 7.5L7.01172 8.207Z\" fill=\"#82AD00\"/>",
+  close: "<path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M13.3008 0.5L14.0078 1.207L7.71475 7.5L7.00775 8.207L6.30075 7.5L13.3008 0.5ZM7.00775 6.793L6.30075 7.5L13.3008 14.5L14.0078 13.793L7.71475 7.5L7.00775 6.793Z\" fill=\"#82AD00\"/>\n                <path d=\"M7.00775 8.207L7.71475 7.5L7.00775 6.793L6.30075 7.5L7.00775 8.207Z\" fill=\"#82AD00\"/>\n                <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M0.718719 0.5L0.0117188 1.207L6.30472 7.5L7.01172 8.207L7.71872 7.5L0.718719 0.5ZM7.01172 6.793L7.71872 7.5L0.718719 14.5L0.0117188 13.793L6.30472 7.5L7.01172 6.793Z\" fill=\"#82AD00\"/>\n                <path d=\"M7.01172 8.207L6.30472 7.5L7.01172 6.793L7.71872 7.5L7.01172 8.207Z\" fill=\"#82AD00\"/>",
   div: "<path d=\"M0 0H1V3H0V0Z\" fill=\"#C4C4C4\"/><path d=\"M0 12H1V15H0V12Z\" fill=\"#C4C4C4\"/><path d=\"M0 6H1V9H0V6Z\" fill=\"#C4C4C4\"/>",
   "arrow-green": "<path d=\"M1.52148 1L9.00029 8.73063L16.4791 1\" stroke=\"#53A300\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>",
   "add-icon": "<path d=\"M6 1C6 0.447716 6.44772 0 7 0C7.55228 0 8 0.447715 8 1V13C8 13.5523 7.55228 14 7 14C6.44772 14 6 13.5523 6 13V1Z\" fill=\"white\"/>\n                  <path d=\"M1 8C0.447716 8 0 7.55228 0 7C0 6.44772 0.447715 6 1 6H13C13.5523 6 14 6.44772 14 7C14 7.55228 13.5523 8 13 8H1Z\" fill=\"white\"/>",
-  "slider-arrow-prev": "<g filter=\"url(#filter0_d_210_10059)\">\n        <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M32.1353 2.63552L14.2707 20.5001L32.1353 38.3647L29.5 41L9.00008 20.5001L29.5 0.000232697L32.1353 2.63552Z\" fill=\"white\"/>\n        </g>\n        <defs>\n            <filter id=\"filter0_d_210_10059\" x=\"0.368365\" y=\"0\" width=\"40.3985\" height=\"58.2633\" filterUnits=\"userSpaceOnUse\" color-interpolation-filters=\"sRGB\">\n            <feFlood flood-opacity=\"0\" result=\"BackgroundImageFix\"/>\n            <feColorMatrix in=\"SourceAlpha\" type=\"matrix\" values=\"0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0\" result=\"hardAlpha\"/>\n            <feOffset dy=\"8.63163\"/>\n            <feGaussianBlur stdDeviation=\"4.31582\"/>\n            <feColorMatrix type=\"matrix\" values=\"0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0\"/>\n            <feBlend mode=\"normal\" in2=\"BackgroundImageFix\" result=\"effect1_dropShadow_210_10059\"/>\n            <feBlend mode=\"normal\" in=\"SourceGraphic\" in2=\"effect1_dropShadow_210_10059\" result=\"shape\"/>\n            </filter>\n        </defs>",
-  "slider-arrow-next": "<g filter=\"url(#filter0_d_210_10056)\">\n            <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M9.05615 2.6355L26.9208 20.5001L9.05615 38.3647L11.6914 41L32.1913 20.5001L11.6914 0.000232697L9.05615 2.6355Z\" fill=\"white\"/></g>\n        <defs>\n                <filter id=\"filter0_d_210_10056\" x=\"0.424518\" y=\"0\" width=\"40.3985\" height=\"58.2633\" filterUnits=\"userSpaceOnUse\" color-interpolation-filters=\"sRGB\">\n                <feFlood flood-opacity=\"0\" result=\"BackgroundImageFix\"/>\n                <feColorMatrix in=\"SourceAlpha\" type=\"matrix\" values=\"0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0\" result=\"hardAlpha\"/>\n                <feOffset dy=\"8.63163\"/>\n                <feGaussianBlur stdDeviation=\"4.31582\"/>\n                <feColorMatrix type=\"matrix\" values=\"0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0\"/>\n                <feBlend mode=\"normal\" in2=\"BackgroundImageFix\" result=\"effect1_dropShadow_210_10056\"/>\n                <feBlend mode=\"normal\" in=\"SourceGraphic\" in2=\"effect1_dropShadow_210_10056\" result=\"shape\"/>\n                </filter>\n            </defs>",
+  "slider-arrow-prev": "<g filter=\"url(#filter0_d_210_10059)\">\n                <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M32.1353 2.63552L14.2707 20.5001L32.1353 38.3647L29.5 41L9.00008 20.5001L29.5 0.000232697L32.1353 2.63552Z\" fill=\"white\"/>\n                </g>\n                <defs>\n                    <filter id=\"filter0_d_210_10059\" x=\"0.368365\" y=\"0\" width=\"40.3985\" height=\"58.2633\" filterUnits=\"userSpaceOnUse\" color-interpolation-filters=\"sRGB\">\n                    <feFlood flood-opacity=\"0\" result=\"BackgroundImageFix\"/>\n                    <feColorMatrix in=\"SourceAlpha\" type=\"matrix\" values=\"0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0\" result=\"hardAlpha\"/>\n                    <feOffset dy=\"8.63163\"/>\n                    <feGaussianBlur stdDeviation=\"4.31582\"/>\n                    <feColorMatrix type=\"matrix\" values=\"0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0\"/>\n                    <feBlend mode=\"normal\" in2=\"BackgroundImageFix\" result=\"effect1_dropShadow_210_10059\"/>\n                    <feBlend mode=\"normal\" in=\"SourceGraphic\" in2=\"effect1_dropShadow_210_10059\" result=\"shape\"/>\n                    </filter>\n                </defs>",
+  "slider-arrow-next": "<g filter=\"url(#filter0_d_210_10056)\">\n            <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M9.05615 2.6355L26.9208 20.5001L9.05615 38.3647L11.6914 41L32.1913 20.5001L11.6914 0.000232697L9.05615 2.6355Z\" fill=\"white\"/></g>\n            <defs>\n                <filter id=\"filter0_d_210_10056\" x=\"0.424518\" y=\"0\" width=\"40.3985\" height=\"58.2633\" filterUnits=\"userSpaceOnUse\" color-interpolation-filters=\"sRGB\">\n                <feFlood flood-opacity=\"0\" result=\"BackgroundImageFix\"/>\n                <feColorMatrix in=\"SourceAlpha\" type=\"matrix\" values=\"0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0\" result=\"hardAlpha\"/>\n                <feOffset dy=\"8.63163\"/>\n                <feGaussianBlur stdDeviation=\"4.31582\"/>\n                <feColorMatrix type=\"matrix\" values=\"0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0\"/>\n                <feBlend mode=\"normal\" in2=\"BackgroundImageFix\" result=\"effect1_dropShadow_210_10056\"/>\n                <feBlend mode=\"normal\" in=\"SourceGraphic\" in2=\"effect1_dropShadow_210_10056\" result=\"shape\"/>\n                </filter>\n            </defs>",
   "modal-close": "<path d=\"M2.53553 2L45.5355 45M45 2L2 45\" stroke=\"white\" stroke-width=\"5\"/>",
   "cart-pluse": "<path d=\"M8 0H9V17H8V0Z\" fill=\"white\"/><path d=\"M17 8V9H0V8H17Z\" fill=\"white\"/>",
   "cart-minuse": "<path d=\"M17 0V1L0 1V0L17 0Z\" fill=\"white\"/>",
-  trash: "<path d=\"M27.4118 37H7.41907C5.30621 37 3.58462 35.2955 3.58462 33.2036L3.58459 7.3563H0V5.54609H35V7.3563H31.2462L31.2463 33.2036C31.2463 35.2955 29.5247 37 27.4118 37ZM5.37131 7.3563V32.6851C5.37131 34.2444 6.79982 35.2114 8.37468 35.2114H26.6835C28.2583 35.2114 29.4558 34.2444 29.4558 32.6851V7.3563H5.37131Z\" fill=\"#53A200\"/>\n    <path d=\"M3.87769e-05 5.58233L10.7608 5.5823V4.24581C10.7608 2.15391 12.4824 0 14.5953 0H19.8457C21.9585 0 23.6801 2.15391 23.6801 4.24581V5.5823L34.8268 5.58233V6.55081H3.87769e-05V5.58233ZM21.8501 5.5823V4.24581C21.8501 2.68657 20.797 1.83964 19.2221 1.83964H15.3089C13.734 1.83964 12.609 2.68657 12.609 4.24581V5.5823H21.8501Z\" fill=\"#53A200\"/>\n    <path d=\"M16.4602 12.9249H18.3156V29.673H16.4602V12.9249Z\" fill=\"#53A200\"/><path d=\"M22.1203 12.9249H23.9757V29.673H22.1203V12.9249Z\" fill=\"#53A200\"/><path d=\"M10.9733 12.9249H12.8287V29.673H10.9733V12.9249Z\" fill=\"#53A200\"/>"
+  trash: "<path d=\"M27.4118 37H7.41907C5.30621 37 3.58462 35.2955 3.58462 33.2036L3.58459 7.3563H0V5.54609H35V7.3563H31.2462L31.2463 33.2036C31.2463 35.2955 29.5247 37 27.4118 37ZM5.37131 7.3563V32.6851C5.37131 34.2444 6.79982 35.2114 8.37468 35.2114H26.6835C28.2583 35.2114 29.4558 34.2444 29.4558 32.6851V7.3563H5.37131Z\" fill=\"#53A200\"/>\n            <path d=\"M3.87769e-05 5.58233L10.7608 5.5823V4.24581C10.7608 2.15391 12.4824 0 14.5953 0H19.8457C21.9585 0 23.6801 2.15391 23.6801 4.24581V5.5823L34.8268 5.58233V6.55081H3.87769e-05V5.58233ZM21.8501 5.5823V4.24581C21.8501 2.68657 20.797 1.83964 19.2221 1.83964H15.3089C13.734 1.83964 12.609 2.68657 12.609 4.24581V5.5823H21.8501Z\" fill=\"#53A200\"/>\n            <path d=\"M16.4602 12.9249H18.3156V29.673H16.4602V12.9249Z\" fill=\"#53A200\"/><path d=\"M22.1203 12.9249H23.9757V29.673H22.1203V12.9249Z\" fill=\"#53A200\"/><path d=\"M10.9733 12.9249H12.8287V29.673H10.9733V12.9249Z\" fill=\"#53A200\"/>",
+  "delete-ico": "<path d=\"M10.8393 7.89644V17.5518V7.89644ZM7.78571 4.10356H13.2143H7.78571ZM7.78571 4.10356H3.03571H7.78571ZM7.78571 4.10356V2.37918C7.7849 2.19863 7.81964 2.01973 7.8875 1.85288C7.95536 1.68576 8.05525 1.53397 8.18119 1.40575C8.30714 1.27781 8.45697 1.17616 8.622 1.1063C8.78703 1.03671 8.96399 1.00055 9.14286 1H11.8571C12.0357 1.00055 12.2127 1.03671 12.3778 1.1063C12.5428 1.17616 12.6926 1.27781 12.8186 1.40575C12.9448 1.53397 13.0444 1.68576 13.1122 1.85288C13.1801 2.01973 13.2148 2.19863 13.2143 2.37918V4.10356H7.78571ZM13.2143 4.10356H17.9643H13.2143ZM1 4.10356H3.03571H1ZM3.03571 4.10356V18.931C3.03463 19.2016 3.08648 19.4701 3.18854 19.7205C3.29033 19.971 3.43988 20.1989 3.62907 20.391C3.81798 20.5833 4.04272 20.7359 4.28999 20.8403C4.53754 20.9447 4.80299 20.9992 5.07143 21H15.9286C16.1967 20.9992 16.4622 20.9447 16.7098 20.8403C16.9573 20.7359 17.1818 20.5833 17.371 20.391C17.5599 20.1989 17.7097 19.971 17.8115 19.7205C17.9133 19.4701 17.9651 19.2016 17.9643 18.931V4.10356H3.03571ZM17.9643 4.10356H20H17.9643ZM7.44643 7.89644V17.5518V7.89644ZM14.2321 7.89644V17.5518V7.89644Z\" stroke=\"#82AD00\" stroke-width=\"2\" stroke-linejoin=\"round\"/>",
+  "edit-ico": "<path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M15.5799 5.84757L13.6757 8.76852L8.59062 16.5505L7.72507 17.8802L1.2767 21.3025L0 22L0.064927 20.5177C0.064927 20.5177 0.302959 14.763 0.47607 13.1936L8.3526 1.16096C8.73561 0.588695 9.32634 0.189818 9.99715 0.0492526C10.6701 -0.0817342 11.3669 0.0508151 11.9446 0.419823L14.8442 2.29446C15.1255 2.47637 15.3679 2.71262 15.5561 2.98952C15.7466 3.26642 15.8786 3.57846 15.9478 3.90753C16.0084 4.23836 16.0171 4.57704 15.9695 4.91024C15.8851 5.23985 15.7531 5.55551 15.5799 5.84757ZM13.9138 3.0792L11.5551 1.55333C11.0986 1.26478 10.5489 1.16339 10.0188 1.26995C9.49296 1.38689 9.02989 1.69797 8.72045 2.14188L8.20111 2.94841L8.91521 3.42797L2.79141 12.8012L2.07735 12.3434L1.34162 13.4769C1.19015 14.7194 1.01704 18.5559 1.01704 18.5559L2.35864 19.4714L7.11917 17.2044L7.8549 16.0709L7.14081 15.5914L13.2646 6.21814L13.9787 6.6977L14.498 5.89116C14.643 5.66468 14.7447 5.41354 14.801 5.15002C14.8442 4.89026 14.8442 4.62506 14.801 4.36529C14.7447 4.10859 14.643 3.86465 14.498 3.64595C14.3552 3.41005 14.154 3.21498 13.9138 3.0792ZM4.24123 13.7385L10.3866 4.36529L11.8364 5.30261L5.71265 14.6758L4.24123 13.7385Z\" fill=\"#82AD00\"/>",
+  show: "<path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M13 0C20.1707 0 26 8 26 8C26 8 20.1951 16 13 16C5.80488 16 0 8 0 8C0 8 5.82927 0 13 0ZM13 1.33333C19 1.33333 23.8537 7.90303 23.8537 7.90303C23.8537 7.90303 19 14.4727 13 14.4727C7 14.4727 2.14635 7.90303 2.14635 7.90303C2.14635 7.90303 7 1.33333 13 1.33333ZM12.9756 1.45455C14.042 1.45697 15.0846 1.76872 15.9756 2.35151C16.861 2.93697 17.5493 3.77284 17.9512 4.75151C18.36 5.73284 18.4702 6.81163 18.2683 7.85454C18.0507 8.88678 17.5432 9.83661 16.8049 10.5939C16.0483 11.3406 15.0861 11.8473 14.0398 12.0502C12.9934 12.2531 11.91 12.1428 10.9268 11.7333C9.94147 11.3309 9.09927 10.6451 8.50829 9.76412C7.91732 8.88315 7.60439 7.84679 7.60976 6.78788C7.60586 6.08412 7.74439 5.38691 8.01659 4.73722C8.28903 4.08752 8.68976 3.4989 9.19512 3.00605C10.199 2.01187 11.5585 1.45406 12.9756 1.45455ZM14.8537 2.35151C15.4341 2.35175 16.002 2.52025 16.4878 2.83637C16.9783 3.15249 17.361 3.60872 17.5854 4.14545C17.8098 4.68145 17.8693 5.27151 17.7563 5.84097C17.6434 6.41067 17.3632 6.93406 16.9512 7.34545C16.5407 7.75879 16.0132 8.03806 15.439 8.14545C14.8659 8.25963 14.2715 8.20073 13.7322 7.976C13.1932 7.75127 12.7341 7.37139 12.4146 6.88484C12.0966 6.40217 11.9271 5.83758 11.9268 5.26061C11.9241 4.87806 11.9988 4.4989 12.1463 4.14545C12.2907 3.79078 12.5066 3.46885 12.7805 3.2C13.0554 2.93309 13.3781 2.71927 13.7317 2.56969C14.0871 2.42302 14.4688 2.34884 14.8537 2.35151Z\" fill=\"#82AD00\"/>",
+  not_show: "<path d=\"M16.7632 1.70142C15.5716 1.26608 14.3081 0.999848 13 0.999848C5.82927 0.999848 0 8.99985 0 8.99985C0 8.99985 1.83533 11.5292 4.72116 13.7435L5.85065 12.614C3.57936 10.8425 2.14635 8.90286 2.14635 8.90286C2.14635 8.90286 7 2.33319 13 2.33319C13.9337 2.33319 14.8396 2.49228 15.7037 2.76093L16.7632 1.70142Z\" fill=\"#82AD00\"/>\n        <path d=\"M15.428 3.03662C14.6697 2.65701 13.8302 2.45633 12.9756 2.45441C11.5585 2.45392 10.199 3.01172 9.19513 4.00589C8.68976 4.49875 8.28903 5.08737 8.01659 5.73706C7.74438 6.38675 7.60585 7.08399 7.60976 7.78772C7.60538 8.64966 7.8119 9.49664 8.2076 10.2571L11.9389 6.52576C11.9309 6.43781 11.9268 6.34927 11.9268 6.26047C11.9241 5.8779 11.9988 5.49875 12.1463 5.1453C12.2907 4.79062 12.5066 4.46869 12.7805 4.19986C13.0554 3.93295 13.3781 3.71912 13.7317 3.56955C14.0871 3.42288 14.4688 3.34869 14.8537 3.35135C14.937 3.35135 15.0202 3.35489 15.1028 3.36182L15.428 3.03662Z\" fill=\"#82AD00\"/>\n        <path d=\"M12.4188 13.1169L18.3306 7.20508C18.3942 7.75192 18.3741 8.30805 18.2683 8.85437C18.0507 9.88663 17.5432 10.8365 16.8049 11.5938C16.0483 12.3405 15.0861 12.8471 14.0398 13.05C13.503 13.1541 12.9565 13.1758 12.4188 13.1169Z\" fill=\"#82AD00\"/>\n        <path d=\"M10.4456 15.0901C11.2646 15.3312 12.12 15.4726 13 15.4726C19 15.4726 23.8537 8.90286 23.8537 8.90286C23.8537 8.90286 22.4664 7.02512 20.2583 5.27738L21.2748 4.2609C24.1595 6.47403 26 8.99985 26 8.99985C26 8.99985 20.1951 16.9998 13 16.9998C11.69 16.9998 10.4261 16.7346 9.23486 16.3008L10.4456 15.0901Z\" fill=\"#82AD00\"/>\n        <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M5.29289 16.707C4.90237 16.3164 4.90237 15.6833 5.29289 15.2927L19.8787 0.706956C20.2692 0.316432 20.9024 0.316431 21.2929 0.706956C21.6834 1.09748 21.6834 1.73065 21.2929 2.12117L6.70711 16.707C6.31658 17.0975 5.68342 17.0975 5.29289 16.707Z\" fill=\"#82AD00\"/>",
+  copy: "<path d=\"M20 4V16C20 16.5523 19.5523 17 19 17H14M20 4L17.5 1M20 4H17.5V1M17.5 1H7C6.44772 1 6 1.44772 6 2V6M15 8V20C15 20.5523 14.5523 21 14 21H2C1.44772 21 1 20.5523 1 20V6C1 5.44772 1.44772 5 2 5H12.5M15 8L12.5 5M15 8H12.5V5\" stroke=\"#82AD00\" stroke-width=\"2\"/>",
+  "cart-slider-btn": "<rect width=\"130\" height=\"433\" fill=\"url(#paint0_linear_3009_15)\"/>\n            <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M45.5547 235.419L40.9912 239.983L17.9998 216.991L40.9912 194L45.5547 198.563L27.1268 216.991L45.5547 235.419Z\" fill=\"black\"/>\n            <defs>\n            <linearGradient id=\"paint0_linear_3009_15\" x1=\"0\" y1=\"0\" x2=\"130\" y2=\"0\" gradientUnits=\"userSpaceOnUse\">\n            <stop stop-color=\"white\"/>\n            <stop offset=\"1\" stop-color=\"white\" stop-opacity=\"0\"/>\n            </linearGradient>\n            </defs>"
 });
 
 /***/ }),
@@ -20991,6 +20997,7 @@ function _translate() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "BackendErrorHandler": () => (/* binding */ BackendErrorHandler),
+/* harmony export */   "FrontGroupSizes": () => (/* binding */ FrontGroupSizes),
 /* harmony export */   "GroupSizes": () => (/* binding */ GroupSizes),
 /* harmony export */   "ITEM_FILTERED": () => (/* binding */ ITEM_FILTERED),
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
@@ -21065,21 +21072,41 @@ var BackendErrorHandler = function BackendErrorHandler(_ref) {
     alert(response.data.message);
   }
 };
-var GroupSizes = function GroupSizes(sizes) {
-  if (!sizes || sizes.length === 0) return [];
-
-  if (!('2.1' in sizes) && !('sizes' in sizes) && !('2.3' in sizes)) {
-    return sizes.reduce(function (group, size) {
-      var _group$height;
-
-      var height = size.height;
-      group[height] = (_group$height = group[height]) !== null && _group$height !== void 0 ? _group$height : [];
-      group[height].push(size);
-      return group;
-    }, {});
-  } else {
+var FrontGroupSizes = function FrontGroupSizes(sizes) {
+  if (!sizes.length || '2.1' in sizes || '2.3' in sizes) {
     return sizes;
   }
+
+  var s_sizes = sizes.filter(function (size) {
+    return size.price && size.product_id;
+  });
+
+  if (!s_sizes.length) {
+    return s_sizes;
+  }
+
+  return s_sizes.reduce(function (group, size) {
+    var _group$height;
+
+    var height = size.height;
+    group[height] = (_group$height = group[height]) !== null && _group$height !== void 0 ? _group$height : [];
+    group[height].push(size);
+    return group;
+  }, {});
+};
+var GroupSizes = function GroupSizes(sizes) {
+  if (!sizes.length || '2.1' in sizes || '2.3' in sizes) {
+    return sizes;
+  }
+
+  return sizes.reduce(function (group, size) {
+    var _group$height2;
+
+    var height = size.height;
+    group[height] = (_group$height2 = group[height]) !== null && _group$height2 !== void 0 ? _group$height2 : [];
+    group[height].push(size);
+    return group;
+  }, {});
 };
 var export_data = function export_data(uri, name) {
   var link = document.createElement("a");
@@ -21343,6 +21370,12 @@ var routes = [{
     },
     props: true
   }]
+}, {
+  path: '/admin/coupon',
+  name: 'BackendCoupon',
+  component: function component() {
+    return __webpack_require__.e(/*! import() */ "resources_js_backend_pages_coupon_page_vue").then(__webpack_require__.bind(__webpack_require__, /*! @backend/pages/coupon/page */ "./resources/js/backend/pages/coupon/page.vue"));
+  }
 }, {
   path: "/admin/:pathMatch(.*)*",
   name: '404',
@@ -21621,7 +21654,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
 /* harmony import */ var vuex_persistedstate__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex-persistedstate */ "./node_modules/vuex-persistedstate/dist/vuex-persistedstate.es.js");
 /* harmony import */ var _modules_language__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/language */ "./resources/js/store/modules/language.js");
 /* harmony import */ var _modules_Sidebar_options__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/Sidebar-options */ "./resources/js/store/modules/Sidebar-options.js");
@@ -21636,6 +21669,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_frontend_BreadCramp__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./modules/frontend/BreadCramp */ "./resources/js/store/modules/frontend/BreadCramp.js");
 /* harmony import */ var _modules_frontend_RigthSidebar__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./modules/frontend/RigthSidebar */ "./resources/js/store/modules/frontend/RigthSidebar.js");
 /* harmony import */ var _modules_cart__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./modules/cart */ "./resources/js/store/modules/cart.js");
+/* harmony import */ var _modules_coupon__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./modules/coupon */ "./resources/js/store/modules/coupon.js");
 
 
 
@@ -21651,7 +21685,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var paths = ['lang', 'PhotoPage', 'PageVideo', 'products', 'Breadcrumb', 'article', 'category', 'cart'];
+
+var paths2 = ['lang', 'PhotoPage', 'PageVideo', 'products', 'Breadcrumb', 'article', 'category', 'cart'];
+var paths = ['lang', 'cart', 'products'];
 var modules = {
   lang: _modules_language__WEBPACK_IMPORTED_MODULE_1__["default"],
   SidebarOptions: _modules_Sidebar_options__WEBPACK_IMPORTED_MODULE_2__["default"],
@@ -21665,12 +21701,13 @@ var modules = {
   page: _modules_page__WEBPACK_IMPORTED_MODULE_10__["default"],
   Breadcrumb: _modules_frontend_BreadCramp__WEBPACK_IMPORTED_MODULE_11__["default"],
   menu: _modules_frontend_RigthSidebar__WEBPACK_IMPORTED_MODULE_12__["default"],
-  cart: _modules_cart__WEBPACK_IMPORTED_MODULE_13__["default"]
+  cart: _modules_cart__WEBPACK_IMPORTED_MODULE_13__["default"],
+  coupon: _modules_coupon__WEBPACK_IMPORTED_MODULE_14__["default"]
 };
 var dataState = (0,vuex_persistedstate__WEBPACK_IMPORTED_MODULE_0__["default"])({
   paths: paths
 });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (new vuex__WEBPACK_IMPORTED_MODULE_14__["default"].Store({
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (new vuex__WEBPACK_IMPORTED_MODULE_15__["default"].Store({
   modules: modules,
   plugins: [dataState]
 }));
@@ -22133,7 +22170,7 @@ var SidebarOptions = [{
     text: 'Доставка',
     hasItem: []
   }, {
-    url: "/coupons",
+    url: "/admin/coupon",
     text: 'Купоны',
     hasItem: []
   }]
@@ -22894,14 +22931,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _routes_api_routes__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/routes/api-routes */ "./resources/js/routes/api-routes.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
 
 
 var state = {
@@ -22917,7 +22951,7 @@ var actions = {
             case 0:
               commit = _ref.commit;
               _context.next = 3;
-              return axios__WEBPACK_IMPORTED_MODULE_2___default().get((0,_routes_api_routes__WEBPACK_IMPORTED_MODULE_1__["default"])('order.index'));
+              return axios.get((0,_routes_api_routes__WEBPACK_IMPORTED_MODULE_1__["default"])('order.index'));
 
             case 3:
               response = _context.sent;
@@ -22940,7 +22974,7 @@ var actions = {
             case 0:
               commit = _ref2.commit;
               _context2.next = 3;
-              return axios__WEBPACK_IMPORTED_MODULE_2___default().post((0,_routes_api_routes__WEBPACK_IMPORTED_MODULE_1__["default"])('order.store'), product);
+              return axios.post((0,_routes_api_routes__WEBPACK_IMPORTED_MODULE_1__["default"])('order.store'), product);
 
             case 3:
               response = _context2.sent;
@@ -22954,7 +22988,7 @@ var actions = {
       }, _callee2);
     }))();
   },
-  UPDATE: function UPDATE(_ref3, order) {
+  ADD_COUPON: function ADD_COUPON(_ref3, name) {
     return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
       var commit, response;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
@@ -22963,11 +22997,11 @@ var actions = {
             case 0:
               commit = _ref3.commit;
               _context3.next = 3;
-              return axios__WEBPACK_IMPORTED_MODULE_2___default().put((0,_routes_api_routes__WEBPACK_IMPORTED_MODULE_1__["default"])('order.update', order.id), order);
+              return axios.post((0,_routes_api_routes__WEBPACK_IMPORTED_MODULE_1__["default"])('coupon.apply', name), name);
 
             case 3:
               response = _context3.sent;
-              commit('UPDATE', response.data.data);
+              commit('ADD_COUPON', response.data.data);
 
             case 5:
             case "end":
@@ -22977,9 +23011,32 @@ var actions = {
       }, _callee3);
     }))();
   },
-  DESTROY: function DESTROY(_ref4, order) {
-    var commit = _ref4.commit;
-    var response = axios__WEBPACK_IMPORTED_MODULE_2___default().post((0,_routes_api_routes__WEBPACK_IMPORTED_MODULE_1__["default"])('order.destroy', order.id), order);
+  UPDATE: function UPDATE(_ref4, order) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
+      var commit, response;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
+        while (1) {
+          switch (_context4.prev = _context4.next) {
+            case 0:
+              commit = _ref4.commit;
+              _context4.next = 3;
+              return axios.put((0,_routes_api_routes__WEBPACK_IMPORTED_MODULE_1__["default"])('order.update', order.id), order);
+
+            case 3:
+              response = _context4.sent;
+              commit('UPDATE', response.data.data);
+
+            case 5:
+            case "end":
+              return _context4.stop();
+          }
+        }
+      }, _callee4);
+    }))();
+  },
+  DESTROY: function DESTROY(_ref5, order) {
+    var commit = _ref5.commit;
+    var response = axios.post((0,_routes_api_routes__WEBPACK_IMPORTED_MODULE_1__["default"])('order.destroy', order.id), order);
     commit('DESTROY', order);
   }
 };
@@ -22987,25 +23044,30 @@ var mutations = {
   SET: function SET(state, cart) {
     state.CART = cart;
   },
-  ADD: function ADD(state, product) {
-    var pro = state.CART.find(function (pr) {
-      return pr.product_id === product.product_id;
+  ADD: function ADD(state, order) {
+    var index = state.CART.findIndex(function (item) {
+      return item.product_id === order.product_id;
     });
 
-    if (pro) {
-      state.CART = state.CART.map(function (pr) {
-        if (pr.product_id === product.product_id) {
-          pr.quantity = product.quantity;
-        }
-
-        return pr;
-      });
+    if (index !== -1) {
+      state.CART[index].quantity = order.quantity;
     } else {
-      state.CART.push(product);
+      state.CART.push(order);
+    }
+  },
+  ADD_TAKE: function ADD_TAKE(state, order) {
+    var index = state.CART.findIndex(function (item) {
+      return item.product_id === order.product_id;
+    });
+
+    if (index !== -1) {
+      state.CART[index].quantity = order.quantity;
     }
   },
   CREATE: function CREATE(state, order) {
-    state.CART.push(order);
+    if (order && 'id' in order) {
+      state.CART = [];
+    }
   },
   UPDATE: function UPDATE(state, order) {
     state.CART = state.CART.map(function (or) {
@@ -23014,8 +23076,25 @@ var mutations = {
   },
   DESTROY: function DESTROY(state, order) {
     state.CART = state.CART.filter(function (or) {
-      return or.id !== order.id;
+      return or.product_id !== order.product_id;
     });
+  },
+  ADD_COUPON: function ADD_COUPON(state, coupon) {
+    if (coupon) {
+      var orders = state.CART.filter(function (order) {
+        return coupon.category_ids.includes(order.category_id);
+      }).map(function (order) {
+        if (coupon.operation === 'sum') {
+          order.discount = coupon.discount;
+        } else if (coupon.operation === 'percent') {
+          order.discount = order.price * order.quantity * (coupon.discount / 100);
+        }
+
+        order.coupon_id = coupon.id;
+        return order;
+      });
+      console.log(coupon, state.CART, orders);
+    }
   }
 };
 var getters = {
@@ -23047,7 +23126,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _routes_api_routes__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../routes/api-routes */ "./resources/js/routes/api-routes.js");
-/* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/helpers */ "./resources/js/helpers/index.js");
+/* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../helpers */ "./resources/js/helpers/index.js");
 /* harmony import */ var _products_mutations__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./products/mutations */ "./resources/js/store/modules/products/mutations.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
@@ -23067,6 +23146,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 var state = {
   categories: [],
+  FRONT_CATEGORIES: [],
   FRONT_PRODUCTS: []
 };
 var actions = {
@@ -23214,22 +23294,24 @@ var actions = {
       }, _callee6);
     }))();
   },
-  updateSize: function updateSize(_ref6, size) {
+  createSize: function createSize(_ref6, size) {
     return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee7() {
-      var commit;
+      var commit, response;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee7$(_context7) {
         while (1) {
           switch (_context7.prev = _context7.next) {
             case 0:
               commit = _ref6.commit;
               _context7.next = 3;
-              return axios.put((0,_routes_api_routes__WEBPACK_IMPORTED_MODULE_1__["default"])('category-size.update', size.id), size).then(function (response) {
-                commit('updateSize', response.data.data);
-              })["catch"](function (err) {
+              return axios.post((0,_routes_api_routes__WEBPACK_IMPORTED_MODULE_1__["default"])('category-size.store'), size)["catch"](function (err) {
                 return (0,_helpers__WEBPACK_IMPORTED_MODULE_2__.BackendErrorHandler)(err);
               });
 
             case 3:
+              response = _context7.sent;
+              commit('createSize', response.data.data);
+
+            case 5:
             case "end":
               return _context7.stop();
           }
@@ -23237,7 +23319,7 @@ var actions = {
       }, _callee7);
     }))();
   },
-  deleteSize: function deleteSize(_ref7, ids) {
+  updateSize: function updateSize(_ref7, size) {
     return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee8() {
       var commit;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee8$(_context8) {
@@ -23246,8 +23328,8 @@ var actions = {
             case 0:
               commit = _ref7.commit;
               _context8.next = 3;
-              return axios["delete"]((0,_routes_api_routes__WEBPACK_IMPORTED_MODULE_1__["default"])('category-size.destroy', ids), ids).then(function (response) {
-                commit('deleteSize', ids);
+              return axios.put((0,_routes_api_routes__WEBPACK_IMPORTED_MODULE_1__["default"])('category-size.update', size.id), size).then(function (response) {
+                commit('updateSize', response.data.data);
               })["catch"](function (err) {
                 return (0,_helpers__WEBPACK_IMPORTED_MODULE_2__.BackendErrorHandler)(err);
               });
@@ -23260,7 +23342,7 @@ var actions = {
       }, _callee8);
     }))();
   },
-  createSize: function createSize(_ref8, size) {
+  deleteSize: function deleteSize(_ref8, ids) {
     return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee9() {
       var commit;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee9$(_context9) {
@@ -23269,8 +23351,8 @@ var actions = {
             case 0:
               commit = _ref8.commit;
               _context9.next = 3;
-              return axios.post((0,_routes_api_routes__WEBPACK_IMPORTED_MODULE_1__["default"])('category-size.store'), size).then(function (response) {
-                commit('createSize', response.data.data);
+              return axios["delete"]((0,_routes_api_routes__WEBPACK_IMPORTED_MODULE_1__["default"])('category-size.destroy', ids), ids).then(function (response) {
+                commit('deleteSize', ids);
               })["catch"](function (err) {
                 return (0,_helpers__WEBPACK_IMPORTED_MODULE_2__.BackendErrorHandler)(err);
               });
@@ -23318,28 +23400,22 @@ var mutations = {
     });
   },
   createSize: function createSize(state, size) {
-    if ('category_id' in size) {
-      state.categories = state.categories.map(function (cat) {
-        if (cat.id === size.category_id) {
-          cat.sizes.push(size);
-        }
+    var index = state.categories.findIndex(function (item) {
+      return item.id === size.category_id;
+    });
 
-        return cat;
-      });
-      console.log(state.categories);
+    if (index !== -1) {
+      state.categories[index].sizes.push(size);
     }
   },
   updateSize: function updateSize(state, size) {
-    console.log(size);
-    state.categories = state.categories.map(function (cat) {
-      if (cat.id === size.category_id) {
-        cat.sizes.map(function (s) {
-          return s.id === size.id ? size : s;
-        });
-      }
-
-      return cat;
+    var index = state.categories.findIndex(function (item) {
+      return item.id === size.category_id;
     });
+
+    if (index !== -1) {
+      state.categories[index].size = size;
+    }
   },
   deleteSize: function deleteSize(state, ids) {
     state.categories = state.categories.map(function (c) {
@@ -23371,7 +23447,7 @@ var getters = {
       var category = _objectSpread({}, res);
 
       if ('id' in category) {
-        category.sizes = (0,_helpers__WEBPACK_IMPORTED_MODULE_2__.GroupSizes)(res.sizes) || {};
+        category.sizes = (0,_helpers__WEBPACK_IMPORTED_MODULE_2__.GroupSizes)(category.sizes) || {};
         category.translate = (0,_products_mutations__WEBPACK_IMPORTED_MODULE_3__.create_translate)(category, language_id);
       }
 
@@ -23446,6 +23522,209 @@ var getters = {
       }
 
       return product;
+    };
+  },
+  GET_FRONT_CATEGORY: function GET_FRONT_CATEGORY(state) {
+    return function (id, languageId) {
+      var category = state.categories.find(function (cat) {
+        return cat.id === Number(id);
+      });
+
+      if (category) {
+        category.translate = (0,_products_mutations__WEBPACK_IMPORTED_MODULE_3__.create_translate)(category, languageId);
+      }
+
+      return category;
+    };
+  },
+  GET_FRONT_CATEGORIES: function GET_FRONT_CATEGORIES(state) {
+    return function (languageId) {
+      return state.categories.filter(function (category) {
+        return category.products.length;
+      }).map(function (category) {
+        category.translate = (0,_products_mutations__WEBPACK_IMPORTED_MODULE_3__.create_translate)(category, languageId);
+        return category;
+      });
+    };
+  }
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  namespaced: true,
+  state: state,
+  getters: getters,
+  actions: actions,
+  mutations: mutations
+});
+
+/***/ }),
+
+/***/ "./resources/js/store/modules/coupon.js":
+/*!**********************************************!*\
+  !*** ./resources/js/store/modules/coupon.js ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _routes_api_routes__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/routes/api-routes */ "./resources/js/routes/api-routes.js");
+/* harmony import */ var _products_mutations__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./products/mutations */ "./resources/js/store/modules/products/mutations.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
+
+var state = {
+  COUPON: []
+};
+var actions = {
+  SET: function SET(_ref) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+      var commit, response;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              commit = _ref.commit;
+              _context.next = 3;
+              return axios.get((0,_routes_api_routes__WEBPACK_IMPORTED_MODULE_1__["default"])('coupon.index'));
+
+            case 3:
+              response = _context.sent;
+              commit('SET', response.data.data);
+
+            case 5:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }))();
+  },
+  CREATE: function CREATE(_ref2, coupon) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+      var commit, response;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              commit = _ref2.commit;
+              _context2.next = 3;
+              return axios.post((0,_routes_api_routes__WEBPACK_IMPORTED_MODULE_1__["default"])('coupon.store'), coupon);
+
+            case 3:
+              response = _context2.sent;
+              commit('CREATE', response.data.data);
+
+            case 5:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2);
+    }))();
+  },
+  COPY: function COPY(_ref3, coupon) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
+      var commit, response;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+        while (1) {
+          switch (_context3.prev = _context3.next) {
+            case 0:
+              commit = _ref3.commit;
+              _context3.next = 3;
+              return axios.post((0,_routes_api_routes__WEBPACK_IMPORTED_MODULE_1__["default"])('coupon.copy', coupon.id), coupon);
+
+            case 3:
+              response = _context3.sent;
+              commit('CREATE', response.data.data);
+
+            case 5:
+            case "end":
+              return _context3.stop();
+          }
+        }
+      }, _callee3);
+    }))();
+  },
+  UPDATE: function UPDATE(_ref4, coupon) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
+      var commit, response;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
+        while (1) {
+          switch (_context4.prev = _context4.next) {
+            case 0:
+              commit = _ref4.commit;
+              _context4.next = 3;
+              return axios.put((0,_routes_api_routes__WEBPACK_IMPORTED_MODULE_1__["default"])('coupon.update', coupon.id), coupon);
+
+            case 3:
+              response = _context4.sent;
+              commit('UPDATE', response.data.data);
+
+            case 5:
+            case "end":
+              return _context4.stop();
+          }
+        }
+      }, _callee4);
+    }))();
+  },
+  DESTROY: function DESTROY(_ref5, ids) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5() {
+      var commit;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee5$(_context5) {
+        while (1) {
+          switch (_context5.prev = _context5.next) {
+            case 0:
+              commit = _ref5.commit;
+              _context5.next = 3;
+              return axios["delete"]((0,_routes_api_routes__WEBPACK_IMPORTED_MODULE_1__["default"])('coupon.destroy', ids), ids);
+
+            case 3:
+              commit('DESTROY', ids);
+
+            case 4:
+            case "end":
+              return _context5.stop();
+          }
+        }
+      }, _callee5);
+    }))();
+  }
+};
+var mutations = {
+  SET: function SET(state, COUPON) {
+    state.COUPON = COUPON;
+  },
+  CREATE: function CREATE(state, coupon) {
+    state.COUPON.push(coupon);
+  },
+  UPDATE: function UPDATE(state, coupon) {
+    state.COUPON = state.COUPON.map(function (or) {
+      return or.id === coupon.id ? coupon : or;
+    });
+  },
+  DESTROY: function DESTROY(state, ids) {
+    state.COUPON = state.COUPON.filter(function (or) {
+      return !ids.includes(or.id);
+    });
+  }
+};
+var getters = {
+  GET_COUPONS: function GET_COUPONS(state) {
+    return function (languageId) {
+      return state.COUPON.map(function (c) {
+        c.translate = (0,_products_mutations__WEBPACK_IMPORTED_MODULE_2__.create_translate)(c, languageId);
+        return c;
+      });
     };
   }
 };
@@ -24036,12 +24315,8 @@ var getters = {
     return function (name, languageId) {
       var page = state.pages.find(function (p) {
         return p.name === name;
-      });
-
-      if (page) {
-        page.translate = (0,_products_mutations__WEBPACK_IMPORTED_MODULE_2__.create_translate)(page, languageId);
-      }
-
+      }) || {};
+      page.translate = (0,_products_mutations__WEBPACK_IMPORTED_MODULE_2__.create_translate)(page, languageId);
       return page || {};
     };
   }
@@ -24074,17 +24349,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _products_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./products/actions */ "./resources/js/store/modules/products/actions.js");
-/* harmony import */ var _products_mutations__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./products/mutations */ "./resources/js/store/modules/products/mutations.js");
-/* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../helpers */ "./resources/js/helpers/index.js");
+/* harmony import */ var _products_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./products/actions */ "./resources/js/store/modules/products/actions.js");
+/* harmony import */ var _products_mutations__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./products/mutations */ "./resources/js/store/modules/products/mutations.js");
+/* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../helpers */ "./resources/js/helpers/index.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 
 
 
@@ -24104,14 +24376,14 @@ var getters = {
       var products = state.PRODUCTS_TR.map(function (product) {
         var _product$photos;
 
-        product.translate = (0,_products_mutations__WEBPACK_IMPORTED_MODULE_2__.create_translate)(product, languageId);
+        product.translate = (0,_products_mutations__WEBPACK_IMPORTED_MODULE_1__.create_translate)(product, languageId);
 
         if (product.category) {
-          product.category.translate = (0,_products_mutations__WEBPACK_IMPORTED_MODULE_2__.create_translate)(product.category, languageId);
+          product.category.translate = (0,_products_mutations__WEBPACK_IMPORTED_MODULE_1__.create_translate)(product.category, languageId);
         }
 
         product.photos = (_product$photos = product.photos) === null || _product$photos === void 0 ? void 0 : _product$photos.map(function (photo) {
-          photo.translate = (0,_products_mutations__WEBPACK_IMPORTED_MODULE_2__.create_translate)(photo, languageId);
+          photo.translate = (0,_products_mutations__WEBPACK_IMPORTED_MODULE_1__.create_translate)(photo, languageId);
           return photo;
         });
         return product;
@@ -24145,10 +24417,10 @@ var getters = {
       var product = _objectSpread({}, res);
 
       if ('id' in product) {
-        product.sizes = (0,_helpers__WEBPACK_IMPORTED_MODULE_3__.GroupSizes)(res.sizes) || {};
-        product.translate = (0,_products_mutations__WEBPACK_IMPORTED_MODULE_2__.create_translate)(product, languageId);
+        product.sizes = (0,_helpers__WEBPACK_IMPORTED_MODULE_2__.GroupSizes)(res.sizes) || {};
+        product.translate = (0,_products_mutations__WEBPACK_IMPORTED_MODULE_1__.create_translate)(product, languageId);
         product.photos = product.photos.map(function (photo) {
-          photo.translate = (0,_products_mutations__WEBPACK_IMPORTED_MODULE_2__.create_translate)(photo, languageId);
+          photo.translate = (0,_products_mutations__WEBPACK_IMPORTED_MODULE_1__.create_translate)(photo, languageId);
           return photo;
         });
       }
@@ -24161,13 +24433,13 @@ var getters = {
       return state.PRODUCTS_TR.filter(function (product) {
         return ids.includes(product.id);
       }).map(function (product) {
-        product.translate = (0,_products_mutations__WEBPACK_IMPORTED_MODULE_2__.create_translate)(product, languageId);
+        product.translate = (0,_products_mutations__WEBPACK_IMPORTED_MODULE_1__.create_translate)(product, languageId);
 
         if (!product.category) {
           product.category = {};
         }
 
-        product.category.translate = (0,_products_mutations__WEBPACK_IMPORTED_MODULE_2__.create_translate)(product.category, languageId);
+        product.category.translate = (0,_products_mutations__WEBPACK_IMPORTED_MODULE_1__.create_translate)(product.category, languageId);
         return product;
       }) || [];
     };
@@ -24177,10 +24449,10 @@ var getters = {
       var category_id = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "";
       var name = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
       var products = state.PRODUCTS_TR.map(function (pr) {
-        pr.translate = (0,_products_mutations__WEBPACK_IMPORTED_MODULE_2__.create_translate)(pr, languageId);
+        pr.translate = (0,_products_mutations__WEBPACK_IMPORTED_MODULE_1__.create_translate)(pr, languageId);
 
         if (pr.category) {
-          pr.category.translate = (0,_products_mutations__WEBPACK_IMPORTED_MODULE_2__.create_translate)(pr.category, languageId);
+          pr.category.translate = (0,_products_mutations__WEBPACK_IMPORTED_MODULE_1__.create_translate)(pr.category, languageId);
         }
 
         return pr;
@@ -24205,11 +24477,46 @@ var getters = {
   },
   GET_PRODUCTS: function GET_PRODUCTS(state) {
     return function (languageId) {
-      return state.PRODUCTS_TR.map(function (pr) {
-        pr.translate = (0,_products_mutations__WEBPACK_IMPORTED_MODULE_2__.create_translate)(pr, languageId);
-        pr.category.translate = (0,_products_mutations__WEBPACK_IMPORTED_MODULE_2__.create_translate)(pr.category, languageId);
+      var prs = state.PRODUCTS_TR.filter(function (product) {
+        return product.status;
+      }).map(function (pr) {
+        pr.translate = (0,_products_mutations__WEBPACK_IMPORTED_MODULE_1__.create_translate)(pr, languageId);
+
+        if (pr.category) {
+          pr.category.translate = (0,_products_mutations__WEBPACK_IMPORTED_MODULE_1__.create_translate)(pr.category, languageId);
+        }
+
         return pr;
       });
+      return prs;
+    };
+  },
+  GET_FRONT_PRODUCTS: function GET_FRONT_PRODUCTS(state) {
+    return function (languageId) {
+      var category_id = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+      var products;
+
+      if (category_id) {
+        products = state.PRODUCTS_TR.filter(function (product) {
+          return product.category_id === Number(category_id);
+        });
+      } else {
+        products = state.PRODUCTS_TR;
+      }
+
+      return products.filter(function (product) {
+        return product.status;
+      }).map(function (product) {
+        return product_translate(product, languageId);
+      });
+    };
+  },
+  GET_FRONT_PRODUCT: function GET_FRONT_PRODUCT(state) {
+    return function (id, languageId) {
+      var product = state.PRODUCTS_TR.find(function (product) {
+        return product.id === Number(id);
+      });
+      return product_translate(product, languageId);
     };
   }
 };
@@ -24217,9 +24524,27 @@ var getters = {
   namespaced: true,
   state: state,
   getters: getters,
-  actions: _products_actions__WEBPACK_IMPORTED_MODULE_1__["default"],
-  mutations: _products_mutations__WEBPACK_IMPORTED_MODULE_2__["default"]
+  actions: _products_actions__WEBPACK_IMPORTED_MODULE_0__["default"],
+  mutations: _products_mutations__WEBPACK_IMPORTED_MODULE_1__["default"]
 });
+
+function product_translate(product, languageId) {
+  product.translate = (0,_products_mutations__WEBPACK_IMPORTED_MODULE_1__.create_translate)(product, languageId);
+
+  if (product.category) {
+    product.category.translate = (0,_products_mutations__WEBPACK_IMPORTED_MODULE_1__.create_translate)(product.category, languageId);
+  }
+
+  if (product.photos) {
+    product.photos = product.photos.map(function (photo) {
+      photo.translate = (0,_products_mutations__WEBPACK_IMPORTED_MODULE_1__.create_translate)(photo, languageId);
+      return photo;
+    });
+  }
+
+  product.sizes = (0,_helpers__WEBPACK_IMPORTED_MODULE_2__.FrontGroupSizes)(product.sizes) || {};
+  return product;
+}
 
 /***/ }),
 
@@ -24261,15 +24586,10 @@ var actions = {
 
             case 3:
               response = _context.sent;
-              _context.t0 = commit;
-              _context.next = 7;
-              return response.data.data;
+              commit("SET", response.data.data);
+              return _context.abrupt("return", response.data.data);
 
-            case 7:
-              _context.t1 = _context.sent;
-              (0, _context.t0)("SET", _context.t1);
-
-            case 9:
+            case 6:
             case "end":
               return _context.stop();
           }
@@ -24356,24 +24676,26 @@ var actions = {
       }, _callee4);
     }))();
   },
-  "export": function _export(_ref5, id) {
+  "export": function _export(_ref5, _ref6) {
     return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5() {
-      var commit;
+      var commit, id, size;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee5$(_context5) {
         while (1) {
           switch (_context5.prev = _context5.next) {
             case 0:
               commit = _ref5.commit;
-              _context5.next = 3;
-              return axios.get((0,_routes_api_routes__WEBPACK_IMPORTED_MODULE_1__["default"])('product.export', id), {
+              id = _ref6.id, size = _ref6.size;
+              _context5.next = 4;
+              return axios.get((0,_routes_api_routes__WEBPACK_IMPORTED_MODULE_1__["default"])('product.export', id, size), {
                 params: {
-                  id: id
+                  id: id,
+                  size: size
                 }
               }).then(function (response) {
-                (0,_helpers__WEBPACK_IMPORTED_MODULE_2__.export_data)((0,_routes_api_routes__WEBPACK_IMPORTED_MODULE_1__["default"])('product.export', id), 'name');
+                (0,_helpers__WEBPACK_IMPORTED_MODULE_2__.export_data)((0,_routes_api_routes__WEBPACK_IMPORTED_MODULE_1__["default"])('product.export', id, size), 'name');
               });
 
-            case 3:
+            case 4:
             case "end":
               return _context5.stop();
           }
@@ -24381,18 +24703,24 @@ var actions = {
       }, _callee5);
     }))();
   },
-  import_file: function import_file(_ref6, file) {
+  import_file: function import_file(_ref7, file) {
     return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee6() {
-      var commit;
+      var commit, response;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee6$(_context6) {
         while (1) {
           switch (_context6.prev = _context6.next) {
             case 0:
-              commit = _ref6.commit;
+              commit = _ref7.commit;
               _context6.next = 3;
-              return axios.post((0,_routes_api_routes__WEBPACK_IMPORTED_MODULE_1__["default"])('product.import'), file);
+              return axios.post((0,_routes_api_routes__WEBPACK_IMPORTED_MODULE_1__["default"])('product.import'), file)["catch"](function (err) {
+                return (0,_helpers__WEBPACK_IMPORTED_MODULE_2__.BackendErrorHandler)(err);
+              });
 
             case 3:
+              response = _context6.sent;
+              commit("UPDATE_PRODUCT", response.data.data);
+
+            case 5:
             case "end":
               return _context6.stop();
           }
@@ -24400,14 +24728,14 @@ var actions = {
       }, _callee6);
     }))();
   },
-  updateOrCreateSize: function updateOrCreateSize(_ref7, size) {
+  updateOrCreateSize: function updateOrCreateSize(_ref8, size) {
     return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee7() {
       var commit, response;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee7$(_context7) {
         while (1) {
           switch (_context7.prev = _context7.next) {
             case 0:
-              commit = _ref7.commit;
+              commit = _ref8.commit;
               _context7.next = 3;
               return axios.post((0,_routes_api_routes__WEBPACK_IMPORTED_MODULE_1__["default"])("product.size.updateOrCreate"), size)["catch"](function (err) {
                 return (0,_helpers__WEBPACK_IMPORTED_MODULE_2__.BackendErrorHandler)(err);
@@ -24424,14 +24752,14 @@ var actions = {
       }, _callee7);
     }))();
   },
-  update: function update(_ref8, product) {
+  update: function update(_ref9, product) {
     return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee8() {
       var commit, response;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee8$(_context8) {
         while (1) {
           switch (_context8.prev = _context8.next) {
             case 0:
-              commit = _ref8.commit;
+              commit = _ref9.commit;
               _context8.next = 3;
               return axios.put((0,_routes_api_routes__WEBPACK_IMPORTED_MODULE_1__["default"])("product.update", product.id), product)["catch"](function (err) {
                 return (0,_helpers__WEBPACK_IMPORTED_MODULE_2__.BackendErrorHandler)(err);
@@ -24449,14 +24777,14 @@ var actions = {
       }, _callee8);
     }))();
   },
-  updateAdditions: function updateAdditions(_ref9, product) {
+  updateAdditions: function updateAdditions(_ref10, product) {
     return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee9() {
       var commit, response;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee9$(_context9) {
         while (1) {
           switch (_context9.prev = _context9.next) {
             case 0:
-              commit = _ref9.commit;
+              commit = _ref10.commit;
               _context9.next = 3;
               return axios.put((0,_routes_api_routes__WEBPACK_IMPORTED_MODULE_1__["default"])("product.update.additions", product.id), product)["catch"](function (err) {
                 return (0,_helpers__WEBPACK_IMPORTED_MODULE_2__.BackendErrorHandler)(err);
@@ -24474,15 +24802,15 @@ var actions = {
       }, _callee9);
     }))();
   },
-  deleteAdditions: function deleteAdditions(_ref10, _ref11) {
+  deleteAdditions: function deleteAdditions(_ref11, _ref12) {
     return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee10() {
       var commit, id, ids, response;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee10$(_context10) {
         while (1) {
           switch (_context10.prev = _context10.next) {
             case 0:
-              commit = _ref10.commit;
-              id = _ref11.id, ids = _ref11.ids;
+              commit = _ref11.commit;
+              id = _ref12.id, ids = _ref12.ids;
               console.log(id, ids);
               _context10.next = 5;
               return axios["delete"]((0,_routes_api_routes__WEBPACK_IMPORTED_MODULE_1__["default"])("product.delete.additions", id, ids), id, ids)["catch"](function (err) {
@@ -24501,14 +24829,14 @@ var actions = {
       }, _callee10);
     }))();
   },
-  destroy: function destroy(_ref12, ids) {
+  destroy: function destroy(_ref13, ids) {
     return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee11() {
       var commit;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee11$(_context11) {
         while (1) {
           switch (_context11.prev = _context11.next) {
             case 0:
-              commit = _ref12.commit;
+              commit = _ref13.commit;
               _context11.next = 3;
               return axios["delete"]((0,_routes_api_routes__WEBPACK_IMPORTED_MODULE_1__["default"])("product.destroy", ids), ids)["catch"](function (err) {
                 return (0,_helpers__WEBPACK_IMPORTED_MODULE_2__.BackendErrorHandler)(err);
@@ -24527,14 +24855,14 @@ var actions = {
   },
 
   /*Photo*/
-  UpdatePhoto: function UpdatePhoto(_ref13, photo) {
+  UpdatePhoto: function UpdatePhoto(_ref14, photo) {
     return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee12() {
       var commit, response;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee12$(_context12) {
         while (1) {
           switch (_context12.prev = _context12.next) {
             case 0:
-              commit = _ref13.commit;
+              commit = _ref14.commit;
               _context12.next = 3;
               return axios.put((0,_routes_api_routes__WEBPACK_IMPORTED_MODULE_1__["default"])("product-photo.update", photo.id), photo)["catch"](function (err) {
                 return (0,_helpers__WEBPACK_IMPORTED_MODULE_2__.BackendErrorHandler)(err);
@@ -24552,14 +24880,14 @@ var actions = {
       }, _callee12);
     }))();
   },
-  deletePhotos: function deletePhotos(_ref14, ids) {
+  deletePhotos: function deletePhotos(_ref15, ids) {
     return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee13() {
       var commit, response;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee13$(_context13) {
         while (1) {
           switch (_context13.prev = _context13.next) {
             case 0:
-              commit = _ref14.commit;
+              commit = _ref15.commit;
               _context13.next = 3;
               return axios["delete"]((0,_routes_api_routes__WEBPACK_IMPORTED_MODULE_1__["default"])('product-photo.destroy', ids), ids);
 
@@ -24575,14 +24903,14 @@ var actions = {
       }, _callee13);
     }))();
   },
-  createPhoto: function createPhoto(_ref15, photo) {
+  createPhoto: function createPhoto(_ref16, photo) {
     return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee14() {
       var commit, response;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee14$(_context14) {
         while (1) {
           switch (_context14.prev = _context14.next) {
             case 0:
-              commit = _ref15.commit;
+              commit = _ref16.commit;
               _context14.next = 3;
               return axios.post((0,_routes_api_routes__WEBPACK_IMPORTED_MODULE_1__["default"])('product-photo.store'), photo);
 
@@ -24604,14 +24932,14 @@ var actions = {
       }, _callee14);
     }))();
   },
-  createVideo: function createVideo(_ref16, video) {
+  createVideo: function createVideo(_ref17, video) {
     return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee15() {
       var commit, response;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee15$(_context15) {
         while (1) {
           switch (_context15.prev = _context15.next) {
             case 0:
-              commit = _ref16.commit;
+              commit = _ref17.commit;
               _context15.next = 3;
               return axios.post((0,_routes_api_routes__WEBPACK_IMPORTED_MODULE_1__["default"])('product.video.store'), video);
 
@@ -49462,7 +49790,11 @@ webpackContext.id = "./resources/js/routes sync recursive \\.\\/routes.js$/";
 
 var map = {
 	"./ar.json": "./resources/js/translate/ar.json",
+	"./br.json": "./resources/js/translate/br.json",
 	"./default.json": "./resources/js/translate/default.json",
+	"./en.json": "./resources/js/translate/en.json",
+	"./fr.json": "./resources/js/translate/fr.json",
+	"./gr.json": "./resources/js/translate/gr.json",
 	"./ru.json": "./resources/js/translate/ru.json"
 };
 
@@ -49497,8 +49829,16 @@ webpackContext.id = "./resources/js/translate sync recursive .json$";
 var map = {
 	"./ar": "./resources/js/translate/ar.json",
 	"./ar.json": "./resources/js/translate/ar.json",
+	"./br": "./resources/js/translate/br.json",
+	"./br.json": "./resources/js/translate/br.json",
 	"./default": "./resources/js/translate/default.json",
 	"./default.json": "./resources/js/translate/default.json",
+	"./en": "./resources/js/translate/en.json",
+	"./en.json": "./resources/js/translate/en.json",
+	"./fr": "./resources/js/translate/fr.json",
+	"./fr.json": "./resources/js/translate/fr.json",
+	"./gr": "./resources/js/translate/gr.json",
+	"./gr.json": "./resources/js/translate/gr.json",
 	"./ru": "./resources/js/translate/ru.json",
 	"./ru.json": "./resources/js/translate/ru.json"
 };
@@ -50011,13 +50351,24 @@ function del(target, key) {
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"language.index":"api/admin/language","language.store":"api/admin/language","language.show":"api/admin/language/{language}","language.update":"api/admin/language/{language}","language.destroy":"api/admin/language-delete/{ids?}","photo-page.index":"api/admin/photo-page","photo-page.store":"api/admin/photo-page","photo-page.update":"api/admin/photo-page/{photo_page}","photo-page.destroy":"api/admin/photo-page/{photo_page}","photo-gallery.store":"api/admin/photo-gallery","photo-gallery.update":"api/admin/photo-gallery/{photo_gallery}","photo-gallery.destroy":"api/admin/photo-gallery/{ids}","video-page.index":"api/admin/video-page","video-page.store":"api/admin/video-page","video-page.update":"api/admin/video-page/{video_page}","video-page.destroy":"api/admin/video-page/{video_page}","video-gallery.store":"api/admin/video-gallery","video-gallery.update":"api/admin/video-gallery/{video_gallery}","video-gallery.destroy":"api/admin/video-gallery/{ids}","page.index":"api/admin/page","page.firstOrCreate":"api/admin/page","about.index":"api/admin/about","about.store":"api/admin/about","tiny.upload":"api/admin/about-update","article.index":"api/admin/article","article.store":"api/admin/article","article.update":"api/admin/article/{article}","article.destroy":"api/admin/article/{article}","get.images":"api/admin/all-images/{type?}","image.upload":"api/admin/image-upload","category.index":"api/admin/category","category.store":"api/admin/category","category.update":"api/admin/category/{category}","category.destroy":"api/admin/category/{category}","category-size.store":"api/admin/category-size","category-size.update":"api/admin/category-size/{category_size}","category-size.destroy":"api/admin/category-size-destroy/{ids}","product.index":"api/admin/product","product.store":"api/admin/product","product.show":"api/admin/product/{product}","product.update":"api/admin/product/{product}","product.destroy":"api/admin/product/{ids}","product.status":"api/admin/product/status/{status}","product.copy":"api/admin/product/copy","product.update.additions":"api/admin/product/addition/{product}","product.delete.additions":"api/admin/product/addition/{product}/{ids}","product-photo.store":"api/admin/product-photo","product-photo.update":"api/admin/product-photo/{product_photo}","product-photo.destroy":"api/admin/product-photo/{ids}","product.size.updateOrCreate":"api/admin/product-size","product.video.store":"api/admin/product-video","category.export":"api/admin/export/category","product.export":"api/admin/export/product/{id?}","translate.store":"api/admin/export/create-translate","product.import":"api/admin/product-import","menus":"api/menus","order.index":"api/order","order.store":"api/order","order.update":"api/order/{order}","order.destroy":"api/order/{order}"}');
+module.exports = JSON.parse('{"language.index":"api/admin/language","language.store":"api/admin/language","language.show":"api/admin/language/{language}","language.update":"api/admin/language/{language}","language.destroy":"api/admin/language-delete/{ids?}","photo-page.index":"api/admin/photo-page","photo-page.store":"api/admin/photo-page","photo-page.update":"api/admin/photo-page/{photo_page}","photo-page.destroy":"api/admin/photo-page/{photo_page}","photo-gallery.store":"api/admin/photo-gallery","photo-gallery.update":"api/admin/photo-gallery/{photo_gallery}","photo-gallery.destroy":"api/admin/photo-gallery/{ids}","video-page.index":"api/admin/video-page","video-page.store":"api/admin/video-page","video-page.update":"api/admin/video-page/{video_page}","video-page.destroy":"api/admin/video-page/{video_page}","video-gallery.store":"api/admin/video-gallery","video-gallery.update":"api/admin/video-gallery/{video_gallery}","video-gallery.destroy":"api/admin/video-gallery/{ids}","page.index":"api/admin/page","page.firstOrCreate":"api/admin/page","about.index":"api/admin/about","about.store":"api/admin/about","tiny.upload":"api/admin/about-update","article.index":"api/admin/article","article.store":"api/admin/article","article.update":"api/admin/article/{article}","article.destroy":"api/admin/article/{article}","get.images":"api/admin/all-images/{type?}","image.upload":"api/admin/image-upload","category.index":"api/admin/category","category.store":"api/admin/category","category.update":"api/admin/category/{category}","category.destroy":"api/admin/category/{category}","category-size.store":"api/admin/category-size","category-size.update":"api/admin/category-size/{category_size}","category-size.destroy":"api/admin/category-size-destroy/{ids}","product.index":"api/admin/product","product.store":"api/admin/product","product.show":"api/admin/product/{product}","product.update":"api/admin/product/{product}","product.destroy":"api/admin/product/{ids}","product.status":"api/admin/product/status/{status}","product.copy":"api/admin/product/copy","product.update.additions":"api/admin/product/addition/{product}","product.delete.additions":"api/admin/product/addition/{product}/{ids}","product-photo.store":"api/admin/product-photo","product-photo.update":"api/admin/product-photo/{product_photo}","product-photo.destroy":"api/admin/product-photo/{ids}","product.size.updateOrCreate":"api/admin/product-size","product.video.store":"api/admin/product-video","coupon.index":"api/admin/coupon","coupon.store":"api/admin/coupon","coupon.update":"api/admin/coupon/{coupon}","coupon.destroy":"api/admin/coupon/{ids}","coupon.copy":"api/admin/coupon/{coupon}","category.export":"api/admin/export/category","product.export":"api/admin/export/product/{id}/{size}","translate.store":"api/admin/export/create-translate","product.import":"api/admin/product-import","menus":"api/menus","order.index":"api/order","order.store":"api/order","order.update":"api/order/{order}","order.destroy":"api/order/{order}","coupon.apply":"api/coupon-name/{name}"}');
 
 /***/ }),
 
 /***/ "./resources/js/translate/ar.json":
 /*!****************************************!*\
   !*** ./resources/js/translate/ar.json ***!
+  \****************************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = JSON.parse('{"about_sidebar":"Open mobile Sidebar","Home":"Home page","About":"About page","Articles":"Articles","Article":"Article","Products":"Продукты","Product":"Product","PhotoGalleries":"PhotoGalleries","PhotoGallery":"PhotoGallery","VideoGalleries":"VideoGalleries","VideoGallery":"gaaa jjj Sidebar 6","NotFound":"gaaa jjj Sidebar 6","Product_Noting":"gaaa jjj Sidebar 6","Product_Size_Noting":"gaaa jjj Sidebar 6"}');
+
+/***/ }),
+
+/***/ "./resources/js/translate/br.json":
+/*!****************************************!*\
+  !*** ./resources/js/translate/br.json ***!
   \****************************************/
 /***/ ((module) => {
 
@@ -50033,7 +50384,40 @@ module.exports = JSON.parse('{"about_sidebar":"Open mobile Sidebar","Home":"Home
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"about_sidebar":"Open mobile Sidebar","Home":"Home page","About":"About page","Articles":"Articles","Article":"Article","Products":"Продукты","Product":"Product","PhotoGalleries":"PhotoGalleries","PhotoGallery":"PhotoGallery","VideoGalleries":"VideoGalleries","VideoGallery":"gaaa jjj Sidebar 6","NotFound":"gaaa jjj Sidebar 6"}');
+module.exports = JSON.parse('{"about_sidebar":"Open mobile Sidebar","Home":"Home page","About":"About page","Articles":"Articles","Article":"Article","Products":"Продукты","Product":"Product","PhotoGalleries":"PhotoGalleries","PhotoGallery":"PhotoGallery","VideoGalleries":"VideoGalleries","VideoGallery":"gaaa jjj Sidebar 6","NotFound":"gaaa jjj Sidebar 6","Product_Noting":"gaaa jjj Sidebar 6","Product_Size_Noting":"gaaa jjj Sidebar 6"}');
+
+/***/ }),
+
+/***/ "./resources/js/translate/en.json":
+/*!****************************************!*\
+  !*** ./resources/js/translate/en.json ***!
+  \****************************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = JSON.parse('{"about_sidebar":"Open mobile Sidebar","Home":"Home page","About":"About page","Articles":"Articles","Article":"Article","Products":"Продукты","Product":"Product","PhotoGalleries":"PhotoGalleries","PhotoGallery":"PhotoGallery","VideoGalleries":"VideoGalleries","VideoGallery":"gaaa jjj Sidebar 6","NotFound":"gaaa jjj Sidebar 6","Product_Noting":"gaaa jjj Sidebar 6","Product_Size_Noting":"gaaa jjj Sidebar 6"}');
+
+/***/ }),
+
+/***/ "./resources/js/translate/fr.json":
+/*!****************************************!*\
+  !*** ./resources/js/translate/fr.json ***!
+  \****************************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = JSON.parse('{"about_sidebar":"Open mobile Sidebar","Home":"Home page","About":"About page","Articles":"Articles","Article":"Article","Products":"Продукты","Product":"Product","PhotoGalleries":"PhotoGalleries","PhotoGallery":"PhotoGallery","VideoGalleries":"VideoGalleries","VideoGallery":"gaaa jjj Sidebar 6","NotFound":"gaaa jjj Sidebar 6","Product_Noting":"Not","Product Size Noting":"fr Noting size product"}');
+
+/***/ }),
+
+/***/ "./resources/js/translate/gr.json":
+/*!****************************************!*\
+  !*** ./resources/js/translate/gr.json ***!
+  \****************************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = JSON.parse('{"about_sidebar":"Open mobile Sidebar","Home":"Home page","About":"About page","Articles":"Articles","Article":"Article","Products":"Продукты","Product":"Product","PhotoGalleries":"PhotoGalleries","PhotoGallery":"PhotoGallery","VideoGalleries":"VideoGalleries","VideoGallery":"gaaa jjj Sidebar 6","NotFound":"gaaa jjj Sidebar 6","Product_Noting":"gaaa jjj Sidebar 6","Product_Size_Noting":"gaaa jjj Sidebar 6"}');
 
 /***/ }),
 
@@ -50123,7 +50507,7 @@ module.exports = JSON.parse('{"about_sidebar":"Open mobile Sidebar","Home":"Home
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_backend_pages_dashboard_Dashboard_vue":1,"resources_js_backend_pages_lang_index_vue":1,"resources_js_backend_pages_translate_page_vue":1,"resources_js_backend_pages_library_Library_vue":1,"resources_js_backend_pages_page-photo_index_vue":1,"resources_js_backend_pages_page-photo_page_index_vue":1,"resources_js_backend_pages_page-video_index_vue":1,"resources_js_backend_pages_page-video_page_index_vue":1,"resources_js_backend_pages_about_index_vue":1,"resources_js_backend_pages_article_pages_vue":1,"resources_js_backend_pages_article_page_vue":1,"resources_js_backend_pages_category_category_vue":1,"resources_js_backend_pages_products_pages_vue":1,"resources_js_backend_pages_products_page_vue":1,"resources_js_backend_pages_404_vue":1,"resources_js_frontend_pages_home_index_vue":1,"resources_js_frontend_pages_about_page_vue":1,"resources_js_frontend_pages_article_pages_vue":1,"resources_js_frontend_pages_article_page_vue":1,"resources_js_frontend_pages_page-photo_pages_vue":1,"resources_js_frontend_pages_page-photo_page_vue":1,"resources_js_frontend_pages_page-video_pages_vue":1,"resources_js_frontend_pages_page-video_page_vue":1,"resources_js_frontend_pages_cart_page_vue":1,"resources_js_frontend_pages_product_pages_vue":1,"resources_js_frontend_pages_product_page_vue":1,"resources_js_frontend_pages_NotFound_vue":1,"resources_js_layouts_backend_vue":1,"resources_js_layouts_frontend_vue":1,"resources_js_frontend_pages_products_pages_vue":1,"resources_js_frontend_components_BaseVideoPlayer_vue":1}[chunkId]) return "assets/js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_backend_pages_dashboard_Dashboard_vue":1,"resources_js_backend_pages_lang_index_vue":1,"resources_js_backend_pages_translate_page_vue":1,"resources_js_backend_pages_library_Library_vue":1,"resources_js_backend_pages_page-photo_index_vue":1,"resources_js_backend_pages_page-photo_page_index_vue":1,"resources_js_backend_pages_page-video_index_vue":1,"resources_js_backend_pages_page-video_page_index_vue":1,"resources_js_backend_pages_about_index_vue":1,"resources_js_backend_pages_article_pages_vue":1,"resources_js_backend_pages_article_page_vue":1,"resources_js_backend_pages_category_category_vue":1,"resources_js_backend_pages_products_pages_vue":1,"resources_js_backend_pages_products_page_vue":1,"resources_js_backend_pages_coupon_page_vue":1,"resources_js_backend_pages_404_vue":1,"resources_js_frontend_pages_home_index_vue":1,"resources_js_frontend_pages_about_page_vue":1,"resources_js_frontend_pages_article_pages_vue":1,"resources_js_frontend_pages_article_page_vue":1,"resources_js_frontend_pages_page-photo_pages_vue":1,"resources_js_frontend_pages_page-photo_page_vue":1,"resources_js_frontend_pages_page-video_pages_vue":1,"resources_js_frontend_pages_page-video_page_vue":1,"resources_js_frontend_pages_cart_page_vue":1,"resources_js_frontend_pages_product_pages_vue":1,"resources_js_frontend_pages_product_page_vue":1,"resources_js_frontend_pages_NotFound_vue":1,"resources_js_layouts_backend_vue":1,"resources_js_layouts_frontend_vue":1,"resources_js_frontend_pages_products_pages_vue":1,"resources_js_frontend_components_BaseVideoPlayer_vue":1}[chunkId]) return "assets/js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

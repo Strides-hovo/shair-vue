@@ -15,7 +15,6 @@
 import TheHeader from "@frontend/components/header/TheHeader";
 import TheFooter from "@frontend/components/footer/TheFooter.vue";
 
-
 export default {
   name: 'frontend',
   components: { TheHeader,TheFooter },

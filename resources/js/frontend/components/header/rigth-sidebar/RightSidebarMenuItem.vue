@@ -1,20 +1,23 @@
 <template>
 
   <li v-if="menu.children">
-    <div class="header-menu__btns-item menu-dropdown-btn">
+    <div class="header-menu__btns-item menu-dropdown-btn" v-if="menu.slug">
               <span class="header-menu__btn" @click="subMenu = !subMenu">
                 <img src="@img/icons/menu-arrow.svg" alt="">
                 {{  $trans._lang(menu.name) }}
               </span>
       <Transition name="slide-up">
         <div class="menu-dropdown-content" v-show="subMenu">
-
-          <router-link class="header-menu__btns-item"
-                       v-for="ch in menu.children" :key="ch.name"
-                       :to="{ name: ch.name, params: {slug: ch.slug} }"
+        <div v-for="ch in menu.children" :key="ch.name" >
+          <router-link class="header-menu__btns-item" v-if="ch.slug"
+                       :to="{ name: ch.name, params: {slug: ch.slug } }"
           >
+
             {{  $trans._lang(ch.name) }}
           </router-link>
+        </div>
+
+
         </div>
       </Transition>
     </div>

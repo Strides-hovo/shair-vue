@@ -8,3 +8,4 @@ use App\Http\Controllers\OrderController;
 Route::get('menus', [Menus::class,'menu'])->name('menus');
 
 Route::apiResource('order',OrderController::class)->except('show');
+Route::post('coupon-name/{name}',[OrderController::class,'couponApply'])->name('coupon.apply');

@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('name')->nullable();
             $table->text('short_description')->nullable();
             $table->text('description')->nullable();
-            $table->text('footer_text')->nullable();
+
             $table->string('image_alt')->nullable();
             $table->string('image_title')->nullable();
             

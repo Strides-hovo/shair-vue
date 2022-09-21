@@ -1,13 +1,5 @@
 <template>
 
-  <!-- <transition name="fade">
-    <div class="products-modal-size__new" v-if="ButtonNewSize">
-      <button>הוסף</button>
-      <input type="number" placeholder="new size" v-model.number="NewSize">
-    </div>
-  </transition> -->
-
-
   <base-translate-slide :is-active="ButtonNewSize">
     <div class="products-modal-size__new" v-show="ButtonNewSize">
       <button>הוסף</button>
@@ -196,8 +188,9 @@ export default {
   computed: {
 
     size() {
-      return this.sizes[this.activeItem] || []
+      return this.sizes[this.activeItem]?.sort((a,b) => a.sorting - b.sorting) || []
     },
+
 
     selectFirst: {
       get() {
@@ -227,11 +220,10 @@ export default {
     ]),
 
     isActive(menuItem) {
-      return this.activeItem == menuItem
+      return this.activeItem === menuItem
     },
 
     setActive(menuItem) {
-      this.size = this.sizes[menuItem]
       this.activeItem = menuItem
     },
 

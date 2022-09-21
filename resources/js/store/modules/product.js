@@ -1,9 +1,8 @@
-import {filter} from "lodash";
 import actions from "./products/actions";
 import mutations from "./products/mutations";
 import {TranslateProducts} from "./products/mutations";
 import {create_translate} from "./products/mutations";
-import {GroupSizes} from "../../helpers";
+import {FrontGroupSizes, GroupSizes} from "../../helpers";
 
 const state = {
 
@@ -46,7 +45,7 @@ const getters = {
         const res = state.PRODUCTS_TR.find((product) => product.id === Number(id))
         const product = {...res}
 
-        if ('id' in product ){
+        if ('id' in product) {
             product.sizes = GroupSizes(res.sizes) || {}
 
             product.translate = create_translate(product, languageId);
@@ -72,36 +71,58 @@ const getters = {
     },
 
     GET_PRODUCTS_FILTER: (state) => (languageId, category_id = "", name = null) => {
-                let products = state.PRODUCTS_TR.map((pr) => {
-                    pr.translate = create_translate(pr, languageId);
-                    if (pr.category) {
-                        pr.category.translate = create_translate(pr.category, languageId);
-                    }
-
-                    return pr;
-                });
-
-                if (category_id) {
-                    products = products.filter((pr) => pr.category_id === category_id);
-                }
-
-                if (name) {
-                    products = products.filter((pr) => pr.translate.name?.includes(name));
-                }
-
-                return products;
-            },
-
-    GET_PRODUCTS: (state) => (languageId) => {
-        return state.PRODUCTS_TR.map((pr) => {
+        let products = state.PRODUCTS_TR.map((pr) => {
             pr.translate = create_translate(pr, languageId);
-            pr.category.translate = create_translate(pr.category, languageId);
+            if (pr.category) {
+                pr.category.translate = create_translate(pr.category, languageId);
+            }
 
             return pr;
         });
+
+        if (category_id) {
+            products = products.filter((pr) => pr.category_id === category_id);
+        }
+
+        if (name) {
+            products = products.filter((pr) => pr.translate.name?.includes(name));
+        }
+
+        return products;
+    },
+
+    GET_PRODUCTS: ( state ) => (languageId) => {
+        const prs = state.PRODUCTS_TR
+            .filter(product => product.status)
+            .map((pr) => {
+            pr.translate = create_translate(pr, languageId);
+            if (pr.category) {
+                pr.category.translate = create_translate(pr.category, languageId);
+            }
+            return pr;
+        });
+        return prs
     },
 
 
+    GET_FRONT_PRODUCTS: (state) => (languageId, category_id = null) => {
+        let products;
+        if (category_id) {
+            products = state.PRODUCTS_TR
+                .filter(product => product.category_id === Number(category_id))
+        } else {
+            products = state.PRODUCTS_TR
+        }
+        return products
+            .filter(product => product.status)
+            .map(product => product_translate(product, languageId))
+
+    },
+
+    GET_FRONT_PRODUCT: (state) => (id, languageId) => {
+        const product = state.PRODUCTS_TR.find(product => product.id === Number(id))
+        return product_translate(product, languageId)
+    }
 
 };
 
@@ -112,3 +133,19 @@ export default {
     actions,
     mutations,
 };
+
+
+function product_translate(product, languageId) {
+    product.translate = create_translate(product, languageId);
+    if (product.category) {
+        product.category.translate = create_translate(product.category, languageId);
+    }
+    if (product.photos) {
+        product.photos = product.photos.map((photo) => {
+            photo.translate = create_translate(photo, languageId);
+            return photo;
+        });
+    }
+    product.sizes = FrontGroupSizes(product.sizes) || {}
+    return product
+}

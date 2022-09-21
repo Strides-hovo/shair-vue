@@ -26,7 +26,7 @@ const SidebarOptions = [
                 hasItem: []
             },
             {
-                url: "/coupons",
+                url: "/admin/coupon",
                 text: 'Купоны',
                 hasItem: []
             },

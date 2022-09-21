@@ -26,8 +26,13 @@
       <input type="text" class="footer__follow-input" placeholder="מס’ טלפון שלך">
       <button class="footer__follow-btn">שלח</button>
     </form>
-    <div class="footer__text">
-      {{ content?.footer_text }}
+    <div class="footer__text" v-if="content.footer_text">
+      <p v-for="( text,line) of content.footer_text.split('\n')"
+      :key="line"
+      >
+        {{ text }}
+      </p>
+<!--      {{ content?.footer_text }}-->
      
     </div>
     <nav class="footer-body">

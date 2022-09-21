@@ -54,30 +54,16 @@
     </div>
   </div>
 
-  <div class="product-photo__modal" :class="{active: ButtonModal}">
-    <div class="product-photo__modal-bg"></div>
-    <div class="product-photo__modal-content">
-      <div class="product-photo__modal-close" @click="ButtonModal = false">
-        <base-icon icon="modal-close" width="48" height="47" />
-      </div>
-      <div class="product-photo__modal-img">
-        <img :src="photo.image"
-             :alt="photo.translate?.alt"
-             :title="photo.translate?.title"
-        >
-      </div>
-    </div>
-  </div>
-
-
+  <base-photo-modal  v-model:ButtonModal="ButtonModal" :photo="photo" />
 
 </template>
 
 <script>
 import TheProductVideo from "./TheProductVideo";
+import BasePhotoModal from "@frontend/components/BasePhotoModal";
 export default {
   name: 'TheProductGallery',
-  components:{TheProductVideo},
+  components:{TheProductVideo, BasePhotoModal},
   props: {
     product: {}
   },

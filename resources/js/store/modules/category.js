@@ -2,75 +2,87 @@
 
 
 import apiRoutes from "../../routes/api-routes";
-import {BackendErrorHandler, export_data, GroupSizes} from "@/helpers";
-import {create_translate} from "./products/mutations";
+import {BackendErrorHandler, export_data, GroupSizes} from '../../helpers'
 
+import {create_translate} from "./products/mutations";
 
 
 const state = {
     categories: [],
+    FRONT_CATEGORIES: [],
     FRONT_PRODUCTS: []
 }
 
 const actions = {
 
-    async export(){
-       await axios.get(apiRoutes('category.export')).then(response => {
-           export_data(apiRoutes('category.export'), 'name')
-      })
+    async export() {
+        await axios.get(apiRoutes('category.export')).then(response => {
+            export_data(apiRoutes('category.export'), 'name')
+        })
     },
 
-    async set({ commit }) {
+    async set({commit}) {
         let response = await axios.get(apiRoutes('category.index'))
         commit('set', response.data.data)
     },
 
-    async SET_PRODUCTS_BY_CATEGORY({ commit }) {
-        let response = await axios.get(apiRoutes("category.index"),{ params: {frontend: true}});
+
+
+    async SET_PRODUCTS_BY_CATEGORY({commit}) {
+        let response = await axios.get(apiRoutes("category.index"), {params: {frontend: true}});
         commit("SET_FRONT_PRODUCTS", (await response.data.data));
     },
 
 
-    async create({commit},category){
+    async create({commit}, category) {
         await axios.post(apiRoutes('category.store'), category)
-            .then(response => {commit('create', response.data.data)})
+            .then(response => {
+                commit('create', response.data.data)
+            })
             .catch(err => BackendErrorHandler(err))
 
     },
 
-    async update({ commit }, category) {
+    async update({commit}, category) {
         await axios.put(apiRoutes('category.update', category.id), category)
-            .then(response => {commit('update', response.data.data)})
+            .then(response => {
+                commit('update', response.data.data)
+            })
             .catch(err => BackendErrorHandler(err))
     },
 
-    async destroy({ commit },category){
-         await axios.delete(apiRoutes('category.destroy',category.id), category)
-             .then(response => {commit('destroy', category)})
-             .catch(err => BackendErrorHandler(err))
+    async destroy({commit}, category) {
+        await axios.delete(apiRoutes('category.destroy', category.id), category)
+            .then(response => {
+                commit('destroy', category)
+            })
+            .catch(err => BackendErrorHandler(err))
 
     },
 
-    async updateSize({commit },size){
+    async createSize({commit}, size) {
+        const response = await axios.post(apiRoutes('category-size.store'), size)
+            .catch(err => BackendErrorHandler(err))
+        commit('createSize', response.data.data)
+
+    },
+
+    async updateSize({commit}, size) {
         await axios.put(apiRoutes('category-size.update', size.id), size)
-          .then(response => {commit('updateSize',response.data.data )})
-          .catch(err => BackendErrorHandler(err))
-
-    },
-
-    async deleteSize({commit},ids){
-        await axios.delete(apiRoutes('category-size.destroy', ids), ids)
-            .then(response => {commit('deleteSize',ids)})
+            .then(response => {
+                commit('updateSize', response.data.data)
+            })
             .catch(err => BackendErrorHandler(err))
 
     },
 
-    async createSize({commit},size){
-         await axios.post(apiRoutes('category-size.store'), size)
-             .then(response => {commit('createSize',response.data.data )})
-             .catch(err => BackendErrorHandler(err))
-
-    }
+    async deleteSize({commit}, ids) {
+        await axios.delete(apiRoutes('category-size.destroy', ids), ids)
+            .then(response => {
+                commit('deleteSize', ids)
+            })
+            .catch(err => BackendErrorHandler(err))
+    },
 
 }
 
@@ -80,21 +92,22 @@ const mutations = {
         state.categories = categories
     },
 
+
+
     SET_FRONT_PRODUCTS(state, products) {
         state.FRONT_PRODUCTS = products;
     },
 
-    create: (state,category) => {
+    create: (state, category) => {
         state.categories.push(category)
     },
 
-    updateField: (state, category ) => {
+    updateField: (state, category) => {
         state.categories = state.categories.map(c => {
-            if(c.id === category.id ){
-                if (typeof category.status !== 'undefined' ){
+            if (c.id === category.id) {
+                if (typeof category.status !== 'undefined') {
                     c.status = category.status
-                }
-                else{
+                } else {
                     c.sorting = category.sorting
                 }
             }
@@ -102,39 +115,29 @@ const mutations = {
         })
     },
 
-    update: (state, category ) => {
+    update: (state, category) => {
         state.categories = state.categories.map(c => {
             return c.id === category.id ? category : c
         })
     },
 
-    destroy: (state, category ) => {
+    destroy: (state, category) => {
         state.categories = state.categories.filter(c => c.id !== category.id)
     },
 
     createSize: (state, size) => {
-        if ( 'category_id' in size ){
-            state.categories = state.categories.map(cat => {
-                if(cat.id === size.category_id) {
-                    cat.sizes.push(size)
-                }
-                return cat
-            })
-            console.log(state.categories)
+        const index = state.categories.findIndex(item => item.id === size.category_id)
+        if (index !== -1) {
+            state.categories[index].sizes.push(size)
         }
 
     },
 
-    updateSize: (state, size) =>{
-        console.log(size)
-        state.categories = state.categories.map(cat => {
-            if(cat.id === size.category_id) {
-                cat.sizes.map(s => {
-                    return s.id === size.id ? size : s
-                })
-            }
-            return cat
-        })
+    updateSize: (state, size) => {
+        const index = state.categories.findIndex(item => item.id === size.category_id)
+        if (index !== -1) {
+            state.categories[index].size = size
+        }
     },
 
     deleteSize: (state, ids) => {
@@ -154,24 +157,26 @@ const getters = {
     },
 
     getByLanguage: (state) => (language_id) => {
-      
+
         return state.categories.map(category => {
-            category.translate = create_translate(category,language_id)
+            category.translate = create_translate(category, language_id)
             return category
         })
     },
 
-    FilterSizes: (state) => (id,language_id) => {
+
+    FilterSizes: (state) => (id, language_id) => {
         const res = state.categories.find(c => c.id === Number(id)) || {}
         const category = {...res}
 
-        if ('id' in category){
-            category.sizes = GroupSizes( res.sizes ) || {}
-            category.translate = create_translate(category,language_id)
+        if ('id' in category) {
+            category.sizes = GroupSizes(category.sizes) || {}
+            category.translate = create_translate(category, language_id)
         }
 
         return category
     },
+
 
     GET_CATEGORIES_PRODUCTS: (state) => (languageId) => {
         return state.FRONT_PRODUCTS.map(category => {
@@ -190,11 +195,10 @@ const getters = {
     },
 
 
-
-    GET_CATEGORY_PRODUCTS: (state) => ( languageId, cat_id = null) => {
+    GET_CATEGORY_PRODUCTS: (state) => (languageId, cat_id = null) => {
         state.FRONT_PRODUCTS = state.FRONT_PRODUCTS.map(category => {
             category.translate = create_translate(category, languageId);
-            if(category && 'products' in category){
+            if (category && 'products' in category) {
                 category.products = category.products.map(product => {
                     product.translate = create_translate(product, languageId);
                     product.sizes = GroupSizes(product.sizes)
@@ -208,8 +212,8 @@ const getters = {
             return category
         })
 
-        if (cat_id){
-            return  state.FRONT_PRODUCTS.find(cat => cat.id === Number(cat_id))
+        if (cat_id) {
+            return state.FRONT_PRODUCTS.find(cat => cat.id === Number(cat_id))
         }
         return state.FRONT_PRODUCTS
     },
@@ -220,7 +224,7 @@ const getters = {
             return category.products.find((product) => product.id === Number(id))
         }).find(product => product)
 
-        if (product && 'id' in product ){
+        if (product && 'id' in product) {
             product.sizes = GroupSizes(product.sizes) || {}
             product.translate = create_translate(product, languageId);
             product.photos = product.photos.map((photo) => {
@@ -231,6 +235,25 @@ const getters = {
 
         return product
     },
+
+
+    GET_FRONT_CATEGORY: (state) => (id, languageId) => {
+        const category = state.categories.find(cat => cat.id === Number(id))
+        if (category) {
+            category.translate = create_translate(category, languageId);
+        }
+        return category
+    },
+
+
+    GET_FRONT_CATEGORIES: (state) => ( languageId) => {
+        return state.categories
+            .filter(category => category.products.length)
+            .map(category => {
+                category.translate = create_translate(category, languageId);
+            return category
+        })
+    }
 
 }
 

@@ -50,13 +50,19 @@
     "product-photo.destroy": "api\/admin\/product-photo\/{ids}",
     "product.size.updateOrCreate": "api\/admin\/product-size",
     "product.video.store": "api\/admin\/product-video",
+    "coupon.index": "api\/admin\/coupon",
+    "coupon.store": "api\/admin\/coupon",
+    "coupon.update": "api\/admin\/coupon\/{coupon}",
+    "coupon.destroy": "api\/admin\/coupon\/{ids}",
+    "coupon.copy": "api\/admin\/coupon\/{coupon}",
     "category.export": "api\/admin\/export\/category",
-    "product.export": "api\/admin\/export\/product\/{id?}",
+    "product.export": "api\/admin\/export\/product\/{id}\/{size}",
     "translate.store": "api\/admin\/export\/create-translate",
     "product.import": "api\/admin\/product-import",
     "menus": "api\/menus",
     "order.index": "api\/order",
     "order.store": "api\/order",
     "order.update": "api\/order\/{order}",
-    "order.destroy": "api\/order\/{order}"
+    "order.destroy": "api\/order\/{order}",
+    "coupon.apply": "api\/coupon-name\/{name}"
 }

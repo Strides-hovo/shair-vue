@@ -1,8 +1,4 @@
-@php
-
-    
-    
-@endphp
+@php @endphp
 <table>
     <thead>
         <tr>

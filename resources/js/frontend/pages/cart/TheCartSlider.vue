@@ -1,85 +1,139 @@
 <template>
-    <div class="cart-slider">
-        <div class="cart-slider__title title">
-            <span></span>
-           {{ title }}
-            <span></span>
-        </div>
-        <div class="cart-slider__item">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide pricelist-content__item" v-for="product in products" :key="product.id">
-                    <div class="pricelist-content__item-img">
-                        <span class="tip">
-                            קנה קבל
-                            <div class="tip-content">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, cupiditate ullam quidem
-                                tenetur nam
-                                exercitationem commodi! Quasi corrupti sint doloremque blanditiis odit aperiam quisquam?
-                                Facere facilis
-                                culpa debitis expedita fuga.
-                            </div>
-                        </span>
-                        <img src="@img/pricelist/01.jpg" alt="">
-                        <span class="pricelist-content__item-price_mob"> ₪ {{ product.cost }} מחיר:  </span>
-                    </div>
-                    <div class="pricelist-content__item-text">
-                        <div class="pricelist-content__item-title"> {{ product.translate.name }}</div>
-                        <div class="pricelist-content__item-desc">
-                            {{ product.translate.short_description }}
-                        </div>
-                        <div class="pricelist-content__item-link">
-                            read more
-                        </div>
-                    </div>
-                    <div class="pricelist-content__item-char bigbtn">
-                        <div class="pricelist-content__item-price">₪ {{ product.cost }} מחיר: </div>
-                        <div class="pricelist-content__item-length">
-                            <base-icon icon="arrow-green" width="18" height="10" />
-                            2.30<span>גובה:</span>
-                            <ul class="pricelist-content__item-dropdown">
-                                <li>
-                                    40x40
-                                </li>
-                               
-                            </ul>
-                        </div>
-                        <div class="pricelist-content__item-size">
-                            <base-icon icon="arrow-green" width="18" height="10" />
-                            
-                            40x40<span>גודל:</span>
-                            <ul class="pricelist-content__item-dropdown">
-                                <li>40x40</li>
-                                
-                            </ul>
-                        </div>
-                        <div class="pricelist-content__item-buy">הוסף לעגלה</div>
-                    </div>
-                </div>
-                
-            </div>
-            <div class="cart-slider-button-prev">
-                <img src="@img/cart/slider-btn.svg" alt="">
-            </div>
-            <div class="cart-slider-button-next">
-                <img src="@img/cart/slider-btn.svg" alt="">
-            </div>
-        </div>
+  <div class="cart-slider">
+    <div class="cart-slider__title title">
+      <span></span>
+      {{ title }}
+      <span></span>
     </div>
+    <div class="cart-slider__item">
+      <div class="slider">
+<!--    -->
+        <swiper
+            :modules="modules"
+            :navigation="{
+                prevEl: prev,
+                nextEl: next,
+              }"
+            :breakpoints="breakpoints"
+            :slides-per-view="5"
+        >
+          <swiper-slide
+              v-for="product in products"
+              :key="product.id"
+          >
+            <CartSliderItem
+                :product="product"
+            />
+          </swiper-slide>
+
+        </swiper>
+      </div>
+
+
+      <div ref="prev" class="cart-slider-button-prev">
+        <base-icon icon="cart-slider-btn" width="130" height="433" />
+      </div>
+      <div ref="next" class="cart-slider-button-next">
+        <base-icon icon="cart-slider-btn" width="130" height="433" />
+      </div>
+
+    </div>
+  </div>
 
 </template>
 
+
 <script>
+
+import CartSliderItem from "./CartSliderItem";
+import {Swiper, SwiperSlide,   } from 'swiper/vue';
+import 'swiper/css';
+import { Navigation } from 'swiper';
+import 'swiper/css/navigation';
+import { ref } from 'vue';
+
 export default {
-    name: 'TheCartSlider',
-    props:{
-        title: '',
-        products: {
-            default: []
-        }
+  name: 'TheCartSlider',
+  components: { CartSliderItem, Swiper, SwiperSlide  },
+  data: () => ({
+
+    breakpoints: {
+      375: {
+        slidesPerView: 1,
+        spaceBetween: 20
+      },
+      768: {
+        slidesPerView: 2,
+        spaceBetween: 20,
+      },
+      1024: {
+        slidesPerView: 5,
+        spaceBetween: 20
+      }
+    },
+
+
+  }),
+  props: {
+    title: '',
+    products: {
+      default: []
     }
+  },
+
+  methods:{
+    // modules(){
+    //   return {
+    //     modules: [Navigation.name ],
+    //     prev: null,
+    //     next: null,
+    //   };
+    // },
+    // next() {
+    //   console.log( this.$refs.hits );
+    //   // this.$refs.hits.$swiper.slideNext();
+    //   this.index = (this.index + 1) % this.products.length;
+    // },
+    // prev() {
+    //   // this.$refs.hits.slidePrev();
+    //   this.index = this.index === 0 ? (this.products.length - 1) : (this.index - 1) % this.products.length;
+    // },
+
+    /*getGalleryIds(){
+      let output = [];
+      const border = this.products.length - (this.index + this.limit)
+
+      if(border > 0){
+        output = this.products.slice(this.index,this.limit + this.index)
+      }
+      else{
+        const next = this.index - this.products.length
+        const prev = this.limit + next
+        output = this.products.slice(next)
+        output = output.concat( this.products.slice(0,prev))
+      }
+      return output;
+    },
+    */
+
+  },
+
+
+  setup() {
+    const prev = ref(null);
+    const next = ref(null);
+
+    return {
+      modules: [Navigation],
+      prev,next
+    };
+  },
 }
 </script>
 
-<style lang="scss" scoped>
-
+<style>
+.swiper-button-prev,
+.swiper-button-next{
+  color: #000;
+}
 </style>

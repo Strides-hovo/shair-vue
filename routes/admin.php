@@ -3,6 +3,7 @@
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CouponController;
 use App\Http\Controllers\Galleries\PhotoPageController;
 use App\Http\Controllers\Galleries\PhotoPageGalleryController;
 use App\Http\Controllers\Galleries\VideoPageController;
@@ -75,12 +76,16 @@ Route::group(['prefix' => 'admin','middleware' => 'api'],function (){
         Route::delete('product-photo/{ids}', [ProductPhotoController::class,'destroy'])->name('product-photo.destroy');
         Route::post('product-size',[\App\Http\Controllers\ProductSizeController::class,'updateOrCreate'])->name('product.size.updateOrCreate');
         Route::post('product-video',[\App\Http\Controllers\ProductVideoController::class,'store'])->name('product.video.store');
+
+        Route::apiResource('coupon',CouponController::class)->except(['show','destroy']);
+        Route::delete('coupon/{ids}', [CouponController::class,'destroy'])->name('coupon.destroy');
+        Route::post('coupon/{coupon}', [CouponController::class,'copy'])->name('coupon.copy');
     });
 
 
     Route::group(['prefix' => 'export'],function(){
         Route::get('category', [CategoryController::class, 'export'])->name('category.export');
-        Route::get('product/{id?}', [ProductController::class, 'export'])->name('product.export');
+        Route::get('product/{id}/{size}', [ProductController::class, 'zipExport'])->name('product.export');
         Route::post('create-translate',[\App\Services\Translate::class,'store'])->name('translate.store');
     });
     Route::post('product-import', [ProductController::class, 'import'])->name('product.import');

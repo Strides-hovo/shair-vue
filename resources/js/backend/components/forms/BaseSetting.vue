@@ -21,6 +21,10 @@
       <span>Meta Keywords:</span>
       <input type="text" placeholder="אנא הזינו Meta Keywords" v-model="page.translate.meta_keywords">
     </div>
+    <div class="products-modal-seo__content-item">
+      <span>Footer text:</span>
+      <textarea v-model="page.translate.footer_text"></textarea>
+    </div>
   </div>
   <button class="productpage-modal__btn btn" @click="UpdateSetting">
     שמור
@@ -34,7 +38,16 @@ export default {
   props: {
     page: {
       required: true,
-      type: Object
+      type: Object,
+      default: {
+        translate: {
+          slug: null,
+          meta_title: null,
+          meta_description: null,
+          meta_keywords: null,
+          footer_text: null,
+        }
+      }
     }
   },    
   methods: {

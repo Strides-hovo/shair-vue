@@ -3,41 +3,51 @@
 namespace App\Exports;
 
 use App\Models\Product;
-use Illuminate\Contracts\View\View;
-use Maatwebsite\Excel\Concerns\FromView;
 use Maatwebsite\Excel\Concerns\Exportable;
+use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
+use Maatwebsite\Excel\Concerns\WithHeadings;
+use Maatwebsite\Excel\Concerns\WithMapping;
 
-
-class ProductExport implements  FromView, WithMultipleSheets
+class ProductExport implements ShouldAutoSize, FromQuery, WithHeadings
 {
 
-    public Product $product;
+
+    private int|string $id;
     use Exportable;
-    
+
     const PRODUCT_FIELDS = [
-        'id', 'category_id', 'status', 'Instruction_file', 'rent', 'sale', 'guarantee', 'dimension', 'flag', 'translations',
+         'id','category_id', 'status', 'Instruction_file', 'rent', 'sale', 'guarantee', 'dimension', 'flag'
     ];
 
-    const TRANSLATE_FIELDS = [
-        'language_id', 'name', 'short_description', 'description', 'advantage', 'flag_text', 'slug', 'meta_title', 'meta_description', 'meta_keywords',
-    ];
 
-    public function __construct(int | string $id = null)
+    public function __construct(int|string $id)
     {
-        $this->product = Product::find($id)->load('translations');
+        $this->id = $id;
     }
 
-    public function view(): View
+
+    public function query()
     {
-        $product = $this->product;
-
-        $translate = array_merge(...array_fill(0, count($product->translations), self::TRANSLATE_FIELDS));
-
-        $headers = self::PRODUCT_FIELDS;
-        $trs = self::TRANSLATE_FIELDS;
-        //dd( $headers );
-        return view('export.product', compact('product', 'headers','trs'));
+        return Product::query()->where('id', $this->id)->select(self::PRODUCT_FIELDS);
     }
 
+    public function headings(): array
+    {
+        return self::PRODUCT_FIELDS;
+    }
+
+    public function map($row): array
+    {
+        return [
+            $row->category->translate->name,
+            $row->status,
+            $row->Instruction_file,
+            $row->rent,
+            $row->sale,
+            $row->guarantee,
+            $row->dimension,
+            $row->flag
+        ];
+    }
 }

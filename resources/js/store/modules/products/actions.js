@@ -7,7 +7,8 @@ const actions = {
 
   async set({ commit }) {
     let response = await axios.get(apiRoutes("product.index"));
-    commit("SET", (await response.data.data));
+    commit("SET", ( response.data.data));
+    return response.data.data
   },
 
 
@@ -36,15 +37,19 @@ const actions = {
     commit("CREATE_PRODUCT", response.data.data);
   },
 
-  async export({ commit }, id ){
-    await axios.get(apiRoutes('product.export', id ), { params: {id} } ).then(response => {
-      export_data(apiRoutes('product.export',id), 'name')
+  async export({ commit }, {id, size} ){
+
+    await axios.get(apiRoutes('product.export', id,size ), { params: {id,size} } )
+        .then(response => {
+      export_data(apiRoutes('product.export',id,size), 'name')
     })
   },
 
 
   async import_file({ commit },file ){
-    await axios.post( apiRoutes('product.import'),  file )
+    const response = await axios.post( apiRoutes('product.import'),  file )
+        .catch((err) => BackendErrorHandler(err) );
+    commit("UPDATE_PRODUCT", response.data.data);
   },
 
 

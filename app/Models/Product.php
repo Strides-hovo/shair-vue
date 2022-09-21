@@ -6,27 +6,30 @@
 namespace App\Models;
 
 
-use App\Traits\MakeLanguages;
 use App\InterFaces\MakeRelations;
-use Illuminate\Database\Eloquent\Model;
+use App\Traits\MakeLanguages;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Relations\HasOne;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Staudenmeir\EloquentHasManyDeep\HasRelationships;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\HasManyThrough;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Staudenmeir\EloquentHasManyDeep\HasRelationships;
 
 /**
  * @method static first()
  * @method static find(int $int)
+ * @property mixed $s
  */
 class Product extends Model implements MakeRelations
 {
     use HasFactory, MakeLanguages, HasRelationships;
 
     protected $guarded = [];
+
+    protected $appends = ['sizes'];
+
+    public static string $loadSize = '2.1';
 
     private string $relationTranslate = ProductTranslate::class;
 
@@ -53,12 +56,19 @@ class Product extends Model implements MakeRelations
             $model->addition()->delete();
             $model->translations()->delete();
         });
+
     }
 
 
+    public function scopeActive($query)
+    {
+        return $query->where('status', true);
+    }
+    
+
     public static function withs(bool $frontend = false): Builder
     {
-        $fr = ['additions', 'sizes', 'translations',  'photos.translations', 'videos', 'category.translations'];
+        $fr = ['additions',  'translations',  'photos.translations', 'videos', 'category.translations'];
         if ($frontend){
             return self::with($fr);
         }
@@ -69,7 +79,7 @@ class Product extends Model implements MakeRelations
 
     public function loads(): Product
     {
-        return $this->load(['additions', 'sizes', 'translations', 'category.translations', 'photos.translations', 'videos', ])->refresh();
+        return $this->load(['additions',  'translations', 'category.translations', 'photos.translations', 'videos', ])->refresh();
     }
 
 
@@ -80,10 +90,11 @@ class Product extends Model implements MakeRelations
 
 
     const PRODUCT_SIZES = [
+        'categories.id as category_id',
         'width',
         'height',
-        // 'categories.id as category_id',
         'category_sizes.id as category_size_id',
+        'category_sizes.sorting as sorting',
         'product_sizes.id as product_size_id',
         'product_sizes.status as status',
         'product_sizes.product_id',
@@ -95,17 +106,91 @@ class Product extends Model implements MakeRelations
     ];
 
 
-    public function tt()
+
+    public function s()
     {
         return $this
             ->HasManyThrough(CategorySize::class, Category::class, 'id', 'category_id','category_id','id')
+            ->where('category_sizes.status',true)
             ->select(self::PRODUCT_SIZES)
-            ->join('product_sizes','product_sizes.category_size_id','=','category_sizes.id')
-            //->dd()
-            ;
+            ->leftJoin('product_sizes','product_sizes.category_size_id','=','category_sizes.id');
     }
 
- 
+
+    public function sizes9()
+    {
+        return $this
+            ->HasManyThrough(CategorySize::class, Category::class, 'id', 'category_id','category_id','id')
+            ->where('category_sizes.status',true)
+            ->select(['width','height'])
+            ;
+
+    }
+
+
+
+
+
+
+    /**
+     * @return mixed category_sizes use product_sizes
+     * @filter if clear double, clear stranger data
+     * @noinspection PhpInconsistentReturnPointsInspection
+     */
+    public function getSizesAttribute()
+    {
+
+        $result = $this->s->reject(function ($size){
+            $double = $this->doubleId();
+            if (!is_null($double)){
+                return in_array($size->category_size_id,$double->toArray()) && $size->product_id !== $this->id;
+            }
+        })->map(function ($size){
+            $isset = $size->product_id === $this->id;
+            return $isset ? $size : $this->sizes_filtered($size);
+        });
+
+        unset($this->s);
+        return $result->values()->all();
+    }
+
+
+    private function sizes_filtered($size)
+    {
+        return collect([
+            "width" => $size->width,
+            "height"=> $size->height,
+            "category_size_id" => $size->category_size_id,
+            "category_id" => $size->category_id,
+            "sorting" => null,
+            "product_size_id" => null,
+            "status" => null,
+            "product_id" => null,
+            "sku" => null,
+            "price" => null,
+            "invoice_code" => null,
+            "delivery_sale" => null,
+            "delivery_rent" => null,
+            "laravel_through_key" => $size->laravel_through_key
+        ]);
+    }
+
+
+
+    private function doubleId()
+    {
+        $sizes = $this->s;
+        $unique = $sizes->unique('category_size_id');
+        $dupes = $sizes->diffAssoc($unique)->map(fn($size) => $size->category_size_id);
+        if ($dupes) {
+            return $dupes;
+        } else {
+            return null;
+        }
+    }
+
+
+
 
 
 
@@ -118,13 +203,8 @@ class Product extends Model implements MakeRelations
      * product hasOne => category => hasMany => category_size => hasMany => product_size
      */
 
-    public function sizes()
-    {
-        return $this
-        ->hasManyDeep( ProductSize::class, [Category::class,CategorySize::class ],['id','product_sizes.product_id'])
-        ->select(self::PRODUCT_SIZES);
 
-    }
+
 
 
     public function additions(): BelongsToMany
@@ -140,11 +220,6 @@ class Product extends Model implements MakeRelations
         return $this->hasOne(Category::class,'id','category_id');
     }
 
-
-//    public function sizes(): HasMany
-//    {
-//        return $this->hasMany(ProductSize::class);
-//    }
 
 
     public function photos(): HasMany
@@ -162,10 +237,13 @@ class Product extends Model implements MakeRelations
         return $this->hasMany(ProductVideo::class);
     }
 
-
-
-
-
+    /**
+     * @param string $size
+     */
+    public static function setSize(string $size): void
+    {
+       self::$loadSize = $size;
+    }
 
 
 }

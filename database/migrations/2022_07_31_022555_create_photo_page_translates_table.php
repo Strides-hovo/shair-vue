@@ -12,13 +12,9 @@ return new class extends Migration
         Schema::create('photo_page_translates', function (Blueprint $table) {
             $table->id();
             $table->foreignId('photo_page_id')->index()->constrained()->onDelete('cascade');
-            $table->foreignId('language_id')->index()->constrained()->onDelete('cascade');
-            $table->string('slug',100)->nullable();
             $table->string('name');
             $table->text('description')->nullable();
-            $table->string('meta_title')->nullable();
-            $table->string('meta_description')->nullable();
-            $table->string('meta_keywords')->nullable();
+            meta_migrations($table);
         });
     }
 

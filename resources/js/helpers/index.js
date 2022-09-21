@@ -46,21 +46,39 @@ export const BackendErrorHandler = ({response}) => {
 
 }
 
+export const FrontGroupSizes = ( sizes ) => {
+
+    if (!sizes.length || ('2.1' in sizes ) || ('2.3' in sizes )){
+        return sizes
+    }
+
+    const s_sizes = sizes.filter(size => size.price && size.product_id)
+    if(!s_sizes.length){
+        return s_sizes
+    }
+
+    return s_sizes.reduce((group, size) => {
+        const { height } = size;
+        group[height] = group[height] ?? [];
+        group[height].push(size);
+        return group;
+    }, {});
+
+}
 
 export const GroupSizes = ( sizes ) => {
 
-    if (!sizes || sizes.length === 0) return []
-    if(!('2.1' in sizes) && !('sizes' in sizes) && !('2.3' in sizes)  ){
-        return sizes.reduce((group, size) => {
+    if (!sizes.length || ('2.1' in sizes ) || ('2.3' in sizes )){
+        return sizes
+    }
+
+    return sizes.reduce((group, size) => {
             const { height } = size;
             group[height] = group[height] ?? [];
             group[height].push(size);
             return group;
-        }, {});
-    }
-  else{
-      return sizes
-    }
+    }, {});
+
 }
 
 

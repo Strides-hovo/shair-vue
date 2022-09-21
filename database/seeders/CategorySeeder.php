@@ -15,6 +15,6 @@ class CategorySeeder extends Seeder
     {
         Category::factory(10)->create();
         CategoryTranslate::factory(20)->create();
-        CategorySize::factory(20)->create();
+        CategorySize::factory(10)->create();
     }
 }

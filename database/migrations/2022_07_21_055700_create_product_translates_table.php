@@ -14,18 +14,14 @@ return new class extends Migration
         Schema::create('product_translates', function (Blueprint $table) {
             $table->id();
             $table->foreignId('product_id')->constrained()->onDelete('cascade');
-            $table->foreignId('language_id')->constrained()->onDelete('cascade');
             $table->string('name')->nullable();
             $table->text('short_description')->nullable();
             $table->text('description')->nullable();
             $table->string('advantage')->nullable()->comment('преимущество');
-            
             $table->string('flag_text')->nullable();
-            $table->string('slug',100)->nullable();
-            $table->string('meta_title')->nullable();
-            $table->string('meta_description')->nullable();
-            $table->string('meta_keywords')->nullable();
-            
+            meta_migrations($table);
+
+            $table->unique(['product_id','language_id']);
         });
     }
 

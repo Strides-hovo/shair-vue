@@ -21,6 +21,7 @@ return new class extends Migration
             $table->boolean('guarantee')->default(false);
             $table->boolean('dimension')->default(false)->comment('Товар с размерами');
             $table->enum('flag',['noting','stock','sale','new'])->default('noting');
+
             $table->timestamps();
         });
     }

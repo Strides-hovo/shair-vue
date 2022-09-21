@@ -130,7 +130,7 @@ export default {
     },
 
     photos(){
-      return this.product.photos
+      return this.product.photos ? this.product.photos.sort((a,b) => a.sorting - b.sorting) : []
     },
 
     videos(){

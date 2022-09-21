@@ -5,6 +5,9 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\ValidationException;
+
 function StrPrepareForValidation($request, $model,  $type = 'image'): void
 {
 
@@ -67,14 +70,16 @@ function changeImageName(string $imageOldName,string $imageNewName ): string|nul
 function meta_migrations (Blueprint &$table) : void {
 
     $table->string('slug',100)->nullable();
+    $table->string('meta_keywords')->nullable();
     $table->string('meta_title')->nullable();
     $table->string('meta_description')->nullable();
-    $table->string('meta_keywords')->nullable();
+    $table->text('footer_text')->nullable();
     $table->foreignId('language_id')->index()->constrained()->onDelete('cascade');
+
 }
 
 
-function meta_seeder(array $array, $faker ): array
+function meta_seeder(array $array, $faker, $language_id = null ): array
 {
 
     return array_merge($array, [
@@ -82,19 +87,32 @@ function meta_seeder(array $array, $faker ): array
         'meta_title' => $faker->name,
         'meta_description' => $faker->name,
         'meta_keywords' => $faker->name,
-        'language_id' => $faker->randomElement([1,2]),
+        'footer_text' => $faker->text(120),
+        'language_id' => $language_id ? :$faker->randomElement([1,2]),
     ]);
 }
 
 function meta_translate(Request $request): array{
+    $validator = Validator::make($request->all(), [
+        'translate.slug' => 'nullable|string',
+        'translate.meta_description' => 'nullable|string',
+        'translate.meta_title' => 'nullable|string',
+        'translate.meta_keywords' => 'nullable|string',
+        'translate.footer_text' => 'nullable|string',
+        'translate.language_id' => 'required|exists:languages,id',
+    ]);
+    if ($validator->fails()){
+        throw new ValidationException($validator,$validator->errors() );
+    }
 
-    return $request->validate([
+    return $validator->validate();
+    /*return $request->validate([
         'translate.slug' => 'nullable|string',
         'translate.meta_description' => 'nullable|string',
         'translate.meta_title' => 'nullable|string',
         'translate.meta_keywords' => 'nullable|string',
         'translate.language_id' => 'required|exists:languages,id',
-    ]);
+    ]);*/
 }
 
 
@@ -141,9 +159,40 @@ function str_chunk(iterable $items, $prefix = 'tr_') :array
 }
 
 
+
+function OneDimensional(array $array): array{
+    $result = [];
+    array_walk_recursive($array, function ($item, $key) use (&$result) {
+        $result[] = $item;
+    });
+    return $result;
+}
+
+
+function array_repeat(int $n,array $array): array{
+   return array_merge(...array_fill(0, $n, $array));
+}
+
+
+
 function merge_translate($request,Model $model, string $key): void{
     $translate = $request->input('translate');
     $translate = array_merge_recursive($translate, [$key => $model->id]);
     $request->merge(['translate' => $translate]);
 
 }
+
+
+function generate_translate($i = 0 ): array{
+
+    static $id = 1;
+    $id = $i % 2 === 0 ? ($id + 1) : $id;
+    $data['id']  = $id;
+    $data['lang'] = $i % 2 === 0 ? 1 : 2;
+
+    //$i++;
+    return $data;
+}
+
+
+

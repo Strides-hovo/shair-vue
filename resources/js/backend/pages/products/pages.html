@@ -3,7 +3,7 @@
   <div v-else style="width: 100%">
   
   <left-aside :is-active="ButtonLeftAside" @CloseLeftAside="ButtonLeftAside = false">
-    <base-setting v-model:page="page" @UpdateSetting="UpdateSetting" />
+    <base-setting  :page="page" @UpdateSetting="UpdateSetting" />
   </left-aside>
 
   <div class="cart-btns">

@@ -98,7 +98,11 @@ const routes = [
             }
         ]
     },
-
+    {
+        path: '/admin/coupon',
+        name: 'BackendCoupon',
+        component: () => import('@backend/pages/coupon/page'),
+    },
     {
         path: "/admin/:pathMatch(.*)*",
         name: '404',
