@@ -9,7 +9,7 @@ const state = {
 const actions = {
 
     async SET_ARTICLES({commit}, frontend = 0) {
-        console.log(frontend)
+
         const articles = await axios.get(apiRoutes("article.index"), {params: {frontend}})
         commit("SET_ARTICLES", articles.data.data);
     },
@@ -22,7 +22,7 @@ const actions = {
 
     async UPDATE({commit}, article) {
         const response = await axios.put(apiRoutes("article.update", article.id), article);
-        console.log(response.data.data)
+
         commit("UPDATE", response.data.data);
     },
 
@@ -71,7 +71,7 @@ const getters = {
     GET_ARTICLES_TR: state => (language_id) => {
         return state.ARTICLES.map(article => {
             article.translate = create_translate(article, language_id)
-            console.log(article)
+
             
             if (article.page){
                 article.page.translate = create_translate(article.page, language_id)

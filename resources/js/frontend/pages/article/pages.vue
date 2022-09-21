@@ -76,12 +76,14 @@ export default {
     if (this.pages  && (this.pages.length === 0 || !this.pages.recommended )) {
       this['article/SET_ARTICLES'](true)
     }
-
-    const slug = this.page.page?.translate?.slug
-    if (slug && this.$route.name === 'Articles'){
-      this.$router.replace({ name: 'Articles', params: {slug } })
+    if (this.page){
+      if (this.page.page){
+        const slug = this.page.page?.translate?.slug
+        if (slug && this.$route.name === 'Articles'){
+          this.$router.replace({ name: 'Articles', params: {slug } })
+        }
+      }
     }
-
   },
 
 

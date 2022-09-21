@@ -22731,19 +22731,18 @@ var actions = {
             case 0:
               commit = _ref.commit;
               frontend = _arguments.length > 1 && _arguments[1] !== undefined ? _arguments[1] : 0;
-              console.log(frontend);
-              _context.next = 5;
+              _context.next = 4;
               return axios.get((0,_routes_api_routes__WEBPACK_IMPORTED_MODULE_1__["default"])("article.index"), {
                 params: {
                   frontend: frontend
                 }
               });
 
-            case 5:
+            case 4:
               articles = _context.sent;
               commit("SET_ARTICLES", articles.data.data);
 
-            case 7:
+            case 6:
             case "end":
               return _context.stop();
           }
@@ -22786,10 +22785,9 @@ var actions = {
 
             case 3:
               response = _context3.sent;
-              console.log(response.data.data);
               commit("UPDATE", response.data.data);
 
-            case 6:
+            case 5:
             case "end":
               return _context3.stop();
           }
@@ -22868,7 +22866,6 @@ var getters = {
     return function (language_id) {
       return state.ARTICLES.map(function (article) {
         article.translate = (0,_products_mutations__WEBPACK_IMPORTED_MODULE_2__.create_translate)(article, language_id);
-        console.log(article);
 
         if (article.page) {
           article.page.translate = (0,_products_mutations__WEBPACK_IMPORTED_MODULE_2__.create_translate)(article.page, language_id);

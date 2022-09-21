@@ -92,6 +92,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     Sidebar: _sidebar_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
     baseBreadcrumb: _components_BaseBreadcrumb__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
+  emits: ['footerContent'],
   data: function data() {
     return {
       pages: [' אודות סוכות הדר', ' הלכות סוכה כשרה', ' שאלות נפוצות לסוכות לנצח', ' אחריות לסוכה', 'המלצות לרכישת סוכות הדר', ' סוכות לעסקים', 'משלוחים לסוכות לנצח ולסכך לסוכה', 'הגדלת סוכה לנצח', ' קטלוג סוכות הדר', ' עמוד מחירון סוכות המלא'],
@@ -128,6 +129,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     if (!this.page.translate.id) {
       this['about/SET_PAGE']();
     }
+
+    this.$emit('footerContent', {
+      footer_text: 'about'
+    });
   }
 });
 

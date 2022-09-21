@@ -51,21 +51,25 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   methods: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapActions)(['article/SET_ARTICLES'])),
   mounted: function mounted() {
-    var _this$page$page, _this$page$page$trans;
-
     if (this.pages && (this.pages.length === 0 || !this.pages.recommended)) {
       this['article/SET_ARTICLES'](true);
     }
 
-    var slug = (_this$page$page = this.page.page) === null || _this$page$page === void 0 ? void 0 : (_this$page$page$trans = _this$page$page.translate) === null || _this$page$page$trans === void 0 ? void 0 : _this$page$page$trans.slug;
+    if (this.page) {
+      if (this.page.page) {
+        var _this$page$page, _this$page$page$trans;
 
-    if (slug && this.$route.name === 'Articles') {
-      this.$router.replace({
-        name: 'Articles',
-        params: {
-          slug: slug
+        var slug = (_this$page$page = this.page.page) === null || _this$page$page === void 0 ? void 0 : (_this$page$page$trans = _this$page$page.translate) === null || _this$page$page$trans === void 0 ? void 0 : _this$page$page$trans.slug;
+
+        if (slug && this.$route.name === 'Articles') {
+          this.$router.replace({
+            name: 'Articles',
+            params: {
+              slug: slug
+            }
+          });
         }
-      });
+      }
     }
   }
 });

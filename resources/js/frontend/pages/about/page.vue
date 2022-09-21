@@ -52,6 +52,7 @@ export default {
 
   name: 'about',
   components: {Sidebar, baseBreadcrumb},
+  emits:['footerContent'],
   data: () => ({
     pages: [
       ' אודות סוכות הדר',
@@ -101,7 +102,9 @@ export default {
     if (!this.page.translate.id) {
       this['about/SET_PAGE']()
     }
-
+    this.$emit('footerContent',{
+      footer_text: 'about'
+    })
   },
 
 
