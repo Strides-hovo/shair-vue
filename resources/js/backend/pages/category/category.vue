@@ -57,7 +57,7 @@ export default {
         this.ButtonEdit = false
         this.ButtonSeo = false
         this.ButtonSize = false
-      },400)
+      },0)
     },
 
     FilterSizes(id) {
@@ -66,9 +66,10 @@ export default {
 
     OpenLeftAside(form, id) {
       this.id = id
-
       this[form] = true
-      this.ButtonLeftAside = true
+      setTimeout( () => {
+        this.ButtonLeftAside = true
+      },0)
     },
 
 
@@ -109,7 +110,68 @@ export default {
 </script>
 
 <style>
+.products-modal-edit {
+  position: fixed;
+  z-index: 10;
+  height: 100vh;
+  left: 0;
+  background: #fbfbfb;
+  padding: 15px 20px;
+  width: 450px;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  border-right: 1px solid #bfbfbf;
+}
+.products-modal-size {
+  position: fixed;
+  z-index: 10;
+  height: 100vh;
+  left: 0;
+  background: #fbfbfb;
+  padding: 15px 20px;
+  width: 530px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  border-right: 1px solid #bfbfbf;
+}
 
+.products-modal-seo {
+  position: fixed;
+  z-index: 10;
+  height: 100vh;
+  left: 0;
+  background: #fbfbfb;
+  padding: 15px 20px;
+  width: 450px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  border-right: 1px solid #bfbfbf;
+}
+
+
+
+.slide-fade-enter-active,
+.slide-fade-leave-active{
+  transition: all 0.4s ease-out;
+}
+
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+  transform: translateX(-100%);
+  opacity: 0;
+}
 
 
 .tab-pane.fade {

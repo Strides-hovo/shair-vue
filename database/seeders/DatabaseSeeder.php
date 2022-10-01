@@ -23,7 +23,9 @@ class DatabaseSeeder extends Seeder
             //VideoPageSeeder::class,
             ArticleSeeder::class,
             AboutSeeder::class,
-            PageSeeder::class
+            PageSeeder::class,
+            BranchSeeder::class,
+
         ]);
 
     }

@@ -30,7 +30,6 @@ class ProductImport implements ToCollection, WithHeadingRow, SkipsEmptyRows , Wi
      */
     public function collection(Collection $rows)
     {
-
         $product_id = $rows[0]['product_id'] ?? $rows[0]['id'];
 
         if ($rows[0]->has('id') && !$rows[0]->has('product_id')) {
@@ -104,7 +103,7 @@ class ProductImport implements ToCollection, WithHeadingRow, SkipsEmptyRows , Wi
                 'id' => $row['id'],
                 'category_id' => $row['category_id'],
                 'status' => $row['status'],
-                'Instruction_file' => $row['Instruction_file'] ? $this->upload($row['Instruction_file']) : null,
+                'Instruction_file' => isset($row['Instruction_file']) ? $this->upload($row['Instruction_file']) : null,
                 'rent' => $row['rent'],
                 'sale' => $row['sale'],
                 'guarantee' => $row['guarantee'],

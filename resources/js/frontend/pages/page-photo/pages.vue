@@ -85,13 +85,10 @@ export default {
       return this.language_id ? this.PagesData(this.language_id) : null
     },
   },
-
   async mounted() {
     if (!this.pages || this.pages.length === 0) {
       await this['PhotoPage/set']()
     }
-
-
   }
 
 }

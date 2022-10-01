@@ -24,38 +24,39 @@ class Article extends Model implements MakeRelations
         'page_name' => 'Articles'
     ];
 
-    protected $casts = ['sorting' => 'integer'];
+    protected $casts = [
+        'sorting' => 'integer',
+        'in_home' => 'boolean'
+    ];
 
-    protected $fillable = ['product_id','published_at','image','image_name','status','sorting','page_name'];
+    protected $fillable = ['product_id', 'published_at', 'image', 'image_name', 'status', 'sorting', 'page_name','in_home'];
 
     private static bool $recommended = false;
 
     private string $relationTranslate = ArticleTranslate::class;
 
 
-    public static function withs(bool $frontend = false ): Builder
+    public static function withs(bool $frontend = false): Builder
     {
 
         self::$recommended = $frontend;
 
-        if (self::$recommended === true){
-            return self::with(['translations','product.translations','product.photos.translations','page.translations' ]);
-        }
-        else{
-            return self::with(['translations','page.translations' ]);
+        if (self::$recommended === true) {
+            return self::with(['translations', 'product.translations', 'product.photos.translations', 'page.translations']);
+        } else {
+            return self::with(['translations', 'page.translations']);
         }
 
     }
 
 
-
     public function loads(): self
     {
-        if (self::$recommended === true){
-            return $this->load(['translate', 'translations','product.translations'])
+        if (self::$recommended === true) {
+            return $this->load(['translate', 'translations', 'product.translations'])
                 ->setAppends(['recommended']);
-        }else{
-            return $this->load([ 'translations','page.translations'])->refresh();
+        } else {
+            return $this->load(['translations', 'page.translations'])->refresh();
         }
 
     }
@@ -70,8 +71,8 @@ class Article extends Model implements MakeRelations
     public function recommended(): Attribute
     {
         return Attribute::make(
-            get: function (){
-                return self::$recommended === true ? self::whereNot('id',$this->id)->inRandomOrder()->limit(2)->get()->load(['translations']) : [];
+            get: function () {
+                return self::$recommended === true ? self::whereNot('id', $this->id)->inRandomOrder()->limit(2)->get()->load(['translations']) : [];
             }
         );
     }
@@ -79,9 +80,8 @@ class Article extends Model implements MakeRelations
 
     public function page(): HasOne
     {
-        return $this->hasOne(Page::class,'name','page_name');
+        return $this->hasOne(Page::class, 'name', 'page_name');
     }
-
 
 
 }

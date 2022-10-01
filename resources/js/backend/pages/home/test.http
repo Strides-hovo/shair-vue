@@ -1,0 +1,4 @@
+GET http://shair.admin/api/admin/home
+Accept: application/json
+
+###

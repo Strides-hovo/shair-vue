@@ -17,7 +17,7 @@
            :alt="photo.translate?.alt"
            :title="photo.translate?.title"
       >
-      <span class="pricelist-content__item-price_mob"> ₪ {{ product.cost }} מחיר:  </span>
+      <span class="pricelist-content__item-price_mob"> ₪ {{ cost }} מחיר:  </span>
     </div>
     <div class="pricelist-content__item-text">
       <div class="pricelist-content__item-title"> {{ product.translate.name }}</div>
@@ -32,8 +32,8 @@
        </router-link>
 
     </div>
-    <div class="pricelist-content__item-char ">
-      <div class="pricelist-content__item-price">₪ {{ product.cost }} מחיר:</div>
+    <div class="pricelist-content__item-char" :class="{bigbtn: gift }">
+      <div class="pricelist-content__item-price">₪ {{ cost }} מחיר:</div>
       <div class="pricelist-content__item-length" @click="activeHeight = !activeHeight">
         <img src="@img/icons/arrow-green.svg" alt="next">
         <span>{{ activeSize }}</span>
@@ -58,7 +58,7 @@
 
       </div>
       <button class="pricelist-content__item-buy" @click="addToCart">הוסף לעגלה</button>
-      <div class="pricelist-content__item-value">
+      <div class="pricelist-content__item-value" v-if="!gift">
         <button class="pricelist-item-value-inc" @click="quantity++">
           <img src="@img/icons/arrow-green.svg" alt="prev">
         </button>
@@ -80,10 +80,15 @@ import product from "../../mixins/product";
 export default {
   name: "CartSliderItem",
   mixins: [product],
+  props:{
+    gift: false,
+    product: {}
+  },
   computed:{
     photo() {
-      //const product = this.products.find(pr => pr.id === Number(id))
-      return this.product.photos?.find(photo => photo.by_default) || this.product.photos ? this.product.photos[0] : {}
+      if (this.product){
+        return this.product.photos?.find(photo => photo.by_default) || this.product.photos ? this.product.photos[0] : {}
+      }
     },
   },
 

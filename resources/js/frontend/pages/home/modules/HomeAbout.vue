@@ -3,54 +3,30 @@
   <div class="about">
     <div class="about__title title">
       <span></span>
-      מי אנחנו
+      {{ page.translate.about_title }}
       <span></span>
     </div>
     <div class="container">
       <div class="about-body">
         <div class="about-body__col">
           <div class="about-body__col-title">
-            מי אנחנו
+            {{ page.translate.about_title }}
           </div>
           <div class="about-body__col-desc">
-            עובדטקסט הסבר על איך זה עובד טקסט הסבר על איך זה עובד טקסט הסבר על איך זה עובדטקסט הסבר על איך זה עובד
-            טקסט.
-            על איך זה עובד טקסט הסבר על איך זה עובדטקסט הסבר על איך זה עובד טקסט הסבר על איך זה עובד טקסט הסבר על איך
-            זה
-            הסבר על איך זה עובד טקסט הסבר על איך זה עובד טקסט הסבר על איך זה עובדטקסט הסבר על איך זה עובד טקסט הסבר
-            זה עובד טקסט הסבר על איך זה עובדטקסט הסבר על איך זה עובד טקסט הסבר על איך זה עובד טקסט הסבר על איך זה
-            עובדטקסט
-            הסבר על איך זה עובד טקסט הסבר על איך זה עובד טקסט הסבר על איך זה עובדטקסט הסבר על איך זה עובד טקסט הסבר על
-            איך
-            טקסט
+            {{ page.translate.about_content }}
           </div>
-          <div class="about-body__col-btn">
-            קרא עוד
-          </div>
+          <a class="about-body__col-btn" :href="page.about_link" target="_blank">
+            {{ $trans._lang('read more') }}
+          </a>
         </div>
         <div class="about-body__col about-body__col_img">
           <div class="about-body__img">
-            <div class="swiper about-big-img">
-              <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                  <img src="@img/about/01.png" srcset="@img/about/01.png 1x, @img/about/01@2x.png 2x" />
-                </div>
-                <div class="swiper-slide">
-                  <img src="@img/about/01.png" srcset="@img/about/01.png 1x, @img/about/01@2x.png 2x" />
-                </div>
-              </div>
-            </div>
-            <div thumbsSlider="" class="swiper about-small-img">
-              <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                  <img src="@img/about/01.png" srcset="@img/about/01.png 1x, @img/about/01@2x.png 2x" />
-                </div>
-                <div class="swiper-slide">
-                  <img src="@img/about/01.png" srcset="@img/about/01.png 1x, @img/about/01@2x.png 2x" />
-                </div>
-              </div>
-            </div>
-          </div>
+
+            <AboutSlider :abouts="page.abouts" />
+<!--            <AboutSlick />-->
+
+        </div>
+
         </div>
       </div>
     </div>
@@ -58,8 +34,33 @@
 </template>
 
 <script>
+
+
+
+
+
+import AboutSlider from "./AboutSlider";
+import AboutSlick from "./AboutSlick";
+
+
 export default {
-  name: 'StrAbout'
+  components: {
+    AboutSlick,
+    AboutSlider,
+  },
+  props:{
+    page: {}
+  },
+  data() {
+    return {
+    };
+  },
+
+  beforeUpdate() {
+    /*const swiper = this.$refs.Swiper
+    const dir =   this.$store.state.lang.SITE_LANGUAGE.dir*/
+  }
 }
+
 </script>
 

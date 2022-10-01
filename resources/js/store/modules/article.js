@@ -95,11 +95,44 @@ const getters = {
         })
     },
 
-    GET_ARTICLE: state => (id, language_id) => {
+    GET_ARTICLE2: state => (id, language_id) => {
 
         const article = state.ARTICLES.find(article => article.id === Number(id))
         article.translate = create_translate(article, language_id)
         if (article.product){
+            article.product.translate = create_translate(article.product, language_id) || {}
+        }
+
+        return article
+    },
+
+    GET_ARTICLE: state => (id, language_id) => {
+
+
+        const article = state.ARTICLES.find(article => article.id === Number(id))
+
+        if(article){
+            article.translate = create_translate(article, language_id)
+        }
+        
+        if (article && article.product){
+            article.product.translate = create_translate(article.product, language_id) || {}
+        }
+
+        return article
+    },
+
+
+    GET_FRONT_ARTICLE: state => (slug, language_id) => {
+        const article = state.ARTICLES.find(article => {
+           return  article.translations?.find(tr => tr.slug === slug)
+        })
+
+        if(article){
+            article.translate = create_translate(article, language_id)
+        }
+
+        if (article && article.product){
             article.product.translate = create_translate(article.product, language_id) || {}
         }
 

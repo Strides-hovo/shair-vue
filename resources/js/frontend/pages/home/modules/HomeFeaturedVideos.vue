@@ -3,62 +3,50 @@
         <div class="about-videos__title title title_arrow">
             <div class="title-arrow">
                 לכל הסרטונים
-                <img src="@img/icons/arrow.svg" alt="">
+                <img src="/img/icons/arrow.svg" alt="">
             </div>
             <span></span>
             סרטונים מובחרים
             <span></span>
         </div>
         <div class="about-videos__slider">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <div class="about-videos__slider-video">
-                        <img src="@img/video/about-video.png"
-                            srcset="@img/video/about-video.png 1x, @img/video/about-video@2x.png 2x" alt="">
-                    </div>
-                    <div class="about-videos__slider-title">
-                        שם של הסרטון שם של הסרטון
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="about-videos__slider-video">
-                        <img src="@img/video/about-video.png"
-                            srcset="@img/video/about-video.png 1x, @img/video/about-video@2x.png 2x" alt="">
-                    </div>
-                    <div class="about-videos__slider-title">
-                        שם של הסרטון שם של הסרטון
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="about-videos__slider-video">
-                        <img src="@img/video/about-video.png"
-                            srcset="@img/video/about-video.png 1x, @img/video/about-video@2x.png 2x" alt="">
-                    </div>
-                    <div class="about-videos__slider-title">
-                        שם של הסרטון שם של הסרטון
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="about-videos__slider-video">
-                        <img src="@img/video/about-video.png"
-                            srcset="@img/video/about-video.png 1x, @img/video/about-video@2x.png 2x" alt="">
-                    </div>
-                    <div class="about-videos__slider-title">
-                        שם של הסרטון שם של הסרטון
-                    </div>
-                </div>
-            </div>
+
+          <swiper
+
+              slides-per-view="4"
+              :spaceBetween="16"
+              :breakpoints="{
+                  768: {
+                    spaceBetween: 30,
+                  },
+              }"
+          >
+            <swiper-slide v-for="(video,i) in 5" :key="i" >
+              <div class="about-videos__slider-video">
+                <img src="/img/video/about-video.png" alt="">
+              </div>
+              <div class="about-videos__slider-title">
+                שם של הסרטון שם של הסרטון
+              </div>
+            </swiper-slide>
+
+
+          </swiper>
+
         </div>
         <div class="title-arrow title-arrow_mob">
             כל שאלות ותשובות
-            <img src="@img/icons/arrow.svg" alt="">
+            <img src="/img/icons/arrow.svg" alt="">
         </div>
     </div>
 </template>
 
 <script>
+import {Swiper, SwiperSlide,   } from 'swiper/vue';
+import 'swiper/css';
 export default {
-    name: 'FeaturedVideos'
+    name: 'FeaturedVideos',
+  components: {  Swiper, SwiperSlide  },
 }
 </script>
 

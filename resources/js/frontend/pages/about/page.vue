@@ -47,9 +47,10 @@ import Sidebar from './sidebar.vue'
 import {mapActions, mapGetters} from 'vuex'
 
 import baseBreadcrumb from "../../components/BaseBreadcrumb";
+import Breadcrumb from "../../mixins/Breadcrumb";
 
 export default {
-
+  mixins:[Breadcrumb],
   name: 'about',
   components: {Sidebar, baseBreadcrumb},
   emits:['footerContent'],
@@ -74,8 +75,8 @@ export default {
       if (slug)
       this.$router.replace({name: 'About', params: {slug}})
     },
-
   },
+
   computed: {
     ...mapGetters({
       language: 'lang/GET_SITE_LANGUAGE',
@@ -90,8 +91,12 @@ export default {
     },
     page() {
       return this.GET_PAGE(this.language.id)
-    }
-
+    },
+    pageName(){
+      if (this.page){
+        return this.page.translate.title
+      }
+    },
   },
 
   methods: {

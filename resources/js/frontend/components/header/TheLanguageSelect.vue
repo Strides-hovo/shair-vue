@@ -44,26 +44,14 @@ export default {
       language_id: 'lang/getLanguageId',
       pageDates: 'page/GET_ROUTES'
     }),
-    /*pages() {
-      const page = this.pageDates(this.language_id)
 
-      generate_routes(page)
-
-      console.log('lang: ',  this.$router.options.routes )
-
-      return page
-    }*/
   },
 
   mounted() {
     if (! this.language.code) {
       this['lang/set']()
     }
-    // if (!this.pages || this.pages.length === 0) {
-    //   this['page/SET_PAGES'](this.language_id)
-    // }
 
-    // console.log(this.pages.length)
   },
 
 }

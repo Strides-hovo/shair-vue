@@ -54,7 +54,9 @@ export default {
   name: 'TheProductCost',
   components: { TheProductMobileStep },
   mixins: [product],
-
+  props:{
+    product: {}
+  }
 
 }
 </script>

@@ -4,19 +4,19 @@
     <div class="container">
       <div class="product-body">
 
-        <the-product-cost :product="product"/>
+        <the-product-cost v-if="product"  :product="product"/>
 
         <div class="pricelist-modal__desc">
-          <div class="pricelist-modal__desc-title">{{ product.translate.name }}</div>
+          <div class="pricelist-modal__desc-title">{{ product?.translate.name }}</div>
 
-          <the-product-description :product="product"/>
+          <the-product-description v-if="product" :product="product"/>
 
-          <the-product-advantage :product="product"/>
+          <the-product-advantage v-if="product"  :product="product"/>
 
-          <the-product-step :product="{}"/>
+          <the-product-step v-if="product" :product="{}"/>
         </div>
 
-        <the-product-gallery :product="product"/>
+        <the-product-gallery v-if="product"  :product="product"/>
       </div>
     </div>
   </div>
@@ -34,10 +34,12 @@ import TheProductAdvantage from './modules/TheProductAdvantage.vue';
 import TheProductDescription from './modules/TheProductDescription.vue';
 import TheProductStep from './modules/TheProductStep.vue';
 import BaseMetaInfo from "@frontend/components/BaseMetaInfo";
+import Breadcrumb from "../../mixins/Breadcrumb";
 
 export default {
   name: 'FrontProduct',
   emits: ['footerContent'],
+  mixins: [Breadcrumb],
   components: {
     TheProductGallery, TheProductCost, TheProductDescription,
     TheProductAdvantage, TheProductStep, BaseMetaInfo},
@@ -45,40 +47,42 @@ export default {
   watch: {
     'product.translate.slug'(slug) {
       if (slug){
-        this.$router.replace({name: 'Product', params: {id: this.id, slug: slug}})
+        this.$router.replace({name: 'Product', params: {  slug}})
       }
       this.$emit('footerContent',{
         footer_text: this.product.translate.footer_text
       })
     },
-
   },
 
   props: {
-    id: {
-      required: true,
-    },
     slug: {
       required: true,
     }
   },
 
   computed: {
-
     ...mapGetters({
       language: 'lang/GET_SITE_LANGUAGE',
       productData: 'products/GET_FRONT_PRODUCT'
     }),
 
     product() {
-      return this.productData(this.id, this.language.id)
+      const product = this.productData(this.slug, this.language.id)
+      return product
+    },
+    
+    pageName(){
+      return this.product.translate.name
     },
 
     metaInfo(){
-      return {
-        title: this.product.translate.meta_title,
-        meta_description: this.product.translate.meta_description,
-        meta_keywords: this.product.translate.meta_keywords,
+      if (this.product){
+        return {
+          title: this.product.translate.meta_title,
+          meta_description: this.product.translate.meta_description,
+          meta_keywords: this.product.translate.meta_keywords,
+        }
       }
     }
   },
@@ -86,7 +90,6 @@ export default {
   methods:{
     ...mapActions([
       'category/SET_PRODUCTS_BY_CATEGORY',
-
     ]),
   },
 
@@ -94,11 +97,16 @@ export default {
     if (!this.product){
       this['category/SET_PRODUCTS_BY_CATEGORY']()
     }
+    else{
+      this.$emit('footerContent',{
+        footer_text: this.product.translate.footer_text
+      })
+    }
+  },
 
-    this.$emit('footerContent',{
-      footer_text: this.product.translate.footer_text
-    })
-  }
+
+
+
 }
 </script>
 

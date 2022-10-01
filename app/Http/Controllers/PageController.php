@@ -7,6 +7,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Page;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\ValidationException;
 
 class PageController extends Controller
 {
@@ -16,27 +18,35 @@ class PageController extends Controller
         return response()->success(Page::withs()->get());
     }
 
+    /**
+     * @throws ValidationException
+     */
     public function firstOrCreate(Request $request)
     {
-        
-        $data = $request->validate([
+
+        $validator = Validator::make($request->all(),[
             'name' => 'required|string',
             'parent_id' => 'nullable|exists:pages,id',
         ]);
 
+        if ($validator->fails()){
+            throw_validate($validator);
+        }
         $page = Page::firstOrCreate([
             'name' => $request->name,
-        ], $data);
+        ], $validator->validated());
+
 
         if ($request->has('translate')) {
             $translate = $request->input('translate');
             $translate = array_merge($translate, ['page_id' => $page->id]);
             $request->merge(['translate' => $translate]);
+            $this->translate($request, $page);
         } 
         else {
             return response()->success($page);
         }
-        $this->translate($request, $page);
+
         return response()->success($page->loads()->refresh());
     }
 

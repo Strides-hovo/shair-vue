@@ -15,7 +15,7 @@ class ProductSizesExport implements ShouldAutoSize,FromCollection, WithHeadings,
 
 
     use Exportable;
-    public Collection $sizes;
+    public Collection|array $sizes;
 
 
     const SIZE_FIELDS = [
@@ -28,13 +28,13 @@ class ProductSizesExport implements ShouldAutoSize,FromCollection, WithHeadings,
 
     public function __construct(int|string $product_id, string $size)
     {
-        //Product::setSize($size);
         $this->sizes = Product::find($product_id)->sizes;
     }
 
     public function collection(): Collection
     {
-        return $this->sizes;
+
+        return collect($this->sizes);
     }
 
 

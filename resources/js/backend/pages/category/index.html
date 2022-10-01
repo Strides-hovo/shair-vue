@@ -3,16 +3,16 @@
     class="cart-btns__item peoducts-add-new btn circle"
     @click="ButtonNewCategory = true"
   >
-    <img src="@img/icons/add-icon.svg" alt="" />
+      <base-icon icon="add-icon" width="14" height="14" />
   </div>
   <div class="cart-btns__item btn" @click="exportdata">export excel</div>
 </div>
-<div class="left_aside">
-  <LeftAside
-    :is-active="ButtonLeftAside"
-    @CloseLeftAside="CloseLeftAside"
-  ></LeftAside>
-</div>
+<!--<div class="left_aside">-->
+<!--  <LeftAside-->
+<!--    :is-active="ButtonLeftAside"-->
+<!--    @CloseLeftAside="CloseLeftAside"-->
+<!--  ></LeftAside>-->
+<!--</div>-->
 
 
 <add-category v-model:ButtonNewCategory="ButtonNewCategory" />
@@ -29,29 +29,36 @@
     </div>
   </div>
 
-  <teleport to=".productpage-modal" v-if="ButtonEdit">
-
-      <div class="products-modal-edit"  >
-        <div class="products-modal-edit__title">Name</div>
-        <div class="products-modal-edit__content">
-          <div class="products-modal-edit__content-item">
-            <span>שם של הקטגוריה: </span>
-            <input
-              type="text"
-              placeholder="סוכה טלסקופית"
-              v-model="category.translate.name"
-            />
+  <teleport to=".container-content__body .edit" v-if="ButtonEdit">
+      <Transition name="slide-fade">
+          <div class="products-modal-edit" v-if="ButtonLeftAside" >
+              <div class="products-modal-edit__close" @click="CloseLeftAside">
+                  <base-icon icon="close"  width="15" height="15" />
+              </div>
+              <div class="products-modal-edit__title">Name</div>
+              <div class="products-modal-edit__content">
+                  <div class="products-modal-edit__content-item">
+                      <span>שם של הקטגוריה: </span>
+                      <input
+                              type="text"
+                              placeholder="סוכה טלסקופית"
+                              v-model="category.translate.name"
+                      />
+                  </div>
+              </div>
+              <button class="products-modal-edit__btn btn" @click="update">שמור</button>
           </div>
-        </div>
-        <button class="products-modal-edit__btn btn" @click="update">שמור</button>
-      </div>
+      </Transition>
 
   </teleport>
 
-  <teleport to=".productpage-modal" v-if="ButtonSize">
-
-      <div class="products-modal-size" >
+  <teleport to=".container-content__body .edit" v-if="ButtonSize">
+      <Transition name="slide-fade">
+      <div class="products-modal-size"  v-if="ButtonLeftAside" >
         <div class="products-modal-size__top">
+            <div class="products-modal-size__close" @click="CloseLeftAside">
+                <base-icon icon="close"  width="15" height="15" />
+            </div>
           <span>
             <img src="@img/icons/div-ico.svg" alt="" />
           </span>
@@ -60,7 +67,7 @@
             @click="ButtonNewSize = !ButtonNewSize"
             :class="{ 'active': ButtonNewSize }"
           >
-            <img src="@img/icons/close.svg" alt="" />
+              <base-icon icon="close"  width="15" height="15" />
           </div>
           <div class="products-modal-size__title">
             גדלים עבור מסגרת סוכה טלסקופית
@@ -74,45 +81,50 @@
           :ButtonNewSize="ButtonNewSize"
         />
       </div>
-
+      </Transition>
   </teleport>
 
-  <teleport to=".productpage-modal" v-if="ButtonSeo">
+  <teleport to=".container-content__body .edit" v-if="ButtonSeo">
 
-      <div class="products-modal-seo" >
-        <div class="products-modal-seo__title">הגדרות products</div>
-        <div class="products-modal-seo__content">
+      <Transition name="slide-fade">
+          <div class="products-modal-seo" v-if="ButtonLeftAside" >
+              <div class="products-modal-seo__close" @click="CloseLeftAside">
+                  <base-icon icon="close"  width="15" height="15" />
+              </div>
+            <div class="products-modal-seo__title">הגדרות products</div>
+            <div class="products-modal-seo__content">
 
-          <div class="products-modal-seo__content-item">
-            <span>Meta Title: </span>
-            <input
-              type="text"
-              placeholder="סוכה טלסקופית"
-              v-model="category.translate.meta_title"
-            />
+              <div class="products-modal-seo__content-item">
+                <span>Meta Title: </span>
+                <input
+                  type="text"
+                  placeholder="סוכה טלסקופית"
+                  v-model="category.translate.meta_title"
+                />
+              </div>
+              <div class="products-modal-seo__content-item">
+                <span>Meta Description:</span>
+                <input
+                  type="text"
+                  placeholder="סוכה טלסקופית"
+                  v-model="category.translate.meta_description"
+                />
+              </div>
+              <div class="products-modal-seo__content-item">
+                <span>טקסט בתחתית:</span>
+                <textarea
+                  placeholder="Description"
+                  v-model="category.translate.footer_text"
+                ></textarea>
+              </div>
+            </div>
+            <div class="products-modal-seo__btn btn" @click="update">שמור</div>
           </div>
-          <div class="products-modal-seo__content-item">
-            <span>Meta Description:</span>
-            <input
-              type="text"
-              placeholder="סוכה טלסקופית"
-              v-model="category.translate.meta_description"
-            />
-          </div>
-          <div class="products-modal-seo__content-item">
-            <span>טקסט בתחתית:</span>
-            <textarea
-              placeholder="Description"
-              v-model="category.translate.footer_text"
-            ></textarea>
-          </div>
-        </div>
-        <div class="products-modal-seo__btn btn" @click="update">שמור</div>
-      </div>
-
+      </Transition>
   </teleport>
 
   <div class="container-content__body">
+      <div class="edit" ></div>
     <table class="orders products">
       <thead>
         <tr>
@@ -160,21 +172,23 @@
                 class="products-seo-btn"
                 @click="OpenLeftAside('ButtonSeo', cat.id)"
               >
-                <img src="@img/icons/seo.svg" alt="" />
+                   <base-icon icon="seo-ico" width="17" height="22" />
                 SEO
               </span>
               <span
                 class="products-size-btn"
                 @click="OpenLeftAside('ButtonSize', cat.id)"
               >
-                <img src="@img/icons/link-ico.svg" alt="" />
+
+                   <base-icon icon="link-ico" width="18" height="18" />
                 מידות
               </span>
               <span
                 class="products-edit-btn"
                 @click="OpenLeftAside('ButtonEdit', cat.id)"
               >
-                <img src="@img/icons/edit-ico.svg" alt="" />
+                  <base-icon icon="edit-ico" width="16" height="22" />
+
                 עריכה
               </span>
             </div>

@@ -5,6 +5,7 @@ import {create_translate} from "../products/mutations";
 
 const state = {
     Menus: [],
+    Cramps: []
 };
 
 
@@ -17,9 +18,19 @@ const actions = {
 
 
 const mutations = {
+
     SET_MENUS: (state, menus) => {
         state.Menus = menus
-    } 
+    },
+
+    ADD_CRAMP (state, options ) {
+
+        state.Cramps = state.Menus
+            .filter(br => options.names.includes(br.name))
+        if (state.Cramps.length){
+            state.Cramps.push({name: options.cramp, slug: 'ss'} )
+        }
+    },
 };
 
 
@@ -40,7 +51,26 @@ const getters = {
                 return {name: menu.name,slug: translate?.slug }
             }
         })
-    }
+    },
+
+
+    GET_CRAMPS: (state) => (languageId) => {
+
+        const a =  state.Cramps.map(br => {
+            const name = br.name
+            if (br.translations){
+                br.translate = create_translate(br,languageId)
+                const slug = br.translate.slug
+                return { name,slug }
+            }
+            else{
+                return name
+            }
+        })
+
+        return a
+    },
+
 }
 
 

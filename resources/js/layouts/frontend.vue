@@ -20,7 +20,8 @@ export default {
   components: { TheHeader,TheFooter },
   data() {
     return {
-      footer: {}
+      footer: {},
+
     }
   },
   methods:{

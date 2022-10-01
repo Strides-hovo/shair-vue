@@ -3,20 +3,20 @@
 
 <script>
 
-import BaseSetting from "@backend/components/forms/BaseSetting.vue";
+
 import TheProductsCart from "./modules/TheProductsCart.vue";
 import TheProductsStatus from "./modules/TheProductsStatus.vue";
 import BaseTranslateSlide from "@backend/components/BaseTranslateSlide.vue";
+import MyBaseSetting from "../../components/forms/MyBaseSetting";
 
 import {mapActions, mapGetters} from "vuex";
 
 export default {
 
   name: "BackendProducts",
-  components: {BaseSetting, TheProductsCart, BaseTranslateSlide, TheProductsStatus},
+  components: { TheProductsCart, BaseTranslateSlide, TheProductsStatus, MyBaseSetting},
 
   data: () => ({
-
     ButtonLeftAside: false,
     ButtonRentTab: false,
     ButtonSaleTab: true,
@@ -33,7 +33,6 @@ export default {
       languageId: 'lang/getLanguageId',
       categoriesByLang: 'category/getByLanguage',
       GET_PRODUCTS_TR_CAT: 'products/GET_PRODUCTS_TR_CAT',
-      pageData: 'page/GET_PAGE'
     }),
 
 
@@ -48,12 +47,6 @@ export default {
     categories() {
       return this.categoriesByLang(this.languageId)
     },
-
-
-    page() {
-      return this.pageData('Products', this.languageId) || {translate: {}}
-    },
-
 
     selectAll: {
       get: function () {
@@ -76,8 +69,7 @@ export default {
       'products/destroy',
       'products/export',
       'category/set',
-      'page/SET_PAGES',
-      'page/UPDATE_OR_CREATE',
+      'products/exportAll'
 
     ]),
 
@@ -118,6 +110,7 @@ export default {
     },
 
     export_data(){
+      //this['products/exportAll']()
       this['products/export']()
     },
 
@@ -149,9 +142,7 @@ export default {
       await this['category/set']()
     }
 
-    if (!this.page.name) {
-      this['page/SET_PAGES']()
-    }
+
 
   }
 }

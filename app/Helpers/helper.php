@@ -195,4 +195,12 @@ function generate_translate($i = 0 ): array{
 }
 
 
+function throw_validate($validator){
+    $errors = response()->json([
+        'status' => 'Error',
+        'message' => 'Ops! Some errors occurred',
+        'errors' => $validator->errors()
+    ], 400);
+    throw new ValidationException($validator, $errors);
+}
 

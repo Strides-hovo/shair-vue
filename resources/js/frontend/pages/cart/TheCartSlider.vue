@@ -7,7 +7,7 @@
     </div>
     <div class="cart-slider__item">
       <div class="slider">
-<!--    -->
+
         <swiper
             :modules="modules"
             :navigation="{
@@ -23,12 +23,12 @@
           >
             <CartSliderItem
                 :product="product"
+                :gift="gift"
             />
           </swiper-slide>
 
         </swiper>
       </div>
-
 
       <div ref="prev" class="cart-slider-button-prev">
         <base-icon icon="cart-slider-btn" width="130" height="433" />
@@ -56,7 +56,6 @@ export default {
   name: 'TheCartSlider',
   components: { CartSliderItem, Swiper, SwiperSlide  },
   data: () => ({
-
     breakpoints: {
       375: {
         slidesPerView: 1,
@@ -78,7 +77,8 @@ export default {
     title: '',
     products: {
       default: []
-    }
+    },
+    gift: false
   },
 
   methods:{

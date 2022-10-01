@@ -19,7 +19,7 @@
         {{ product.translate.short_description }}
       </div>
       <div class="products-item__content-btn">
-        <router-link :to="{name: routeName ,params: {id: product.id, slug: product.translate.slug} }">
+        <router-link :to="{name: routeName ,params: { slug: product.translate.slug} }">
           {{ $trans._lang('go to product') }}
         </router-link>
       </div>

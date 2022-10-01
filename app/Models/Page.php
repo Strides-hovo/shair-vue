@@ -8,11 +8,11 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
-
+use \Staudenmeir\EloquentHasManyDeep\HasRelationships;
 
 class Page extends Model implements MakeRelations
 {
-    use HasFactory, MakeLanguages;
+    use HasFactory, MakeLanguages, HasRelationships;
 
     public $timestamps = false;
 
@@ -45,6 +45,21 @@ class Page extends Model implements MakeRelations
     public function page(): ?HasOne
     {
         return null;
+    }
+
+
+    public function pages()
+    {
+        $article = $this
+            ->hasManyThrough(ArticleTranslate::class,Article::class,'page_name','article_id','name','id')
+        ->select('slug','meta_keywords','meta_description','footer_text','language_id')
+        ;
+        $about = $this
+            ->hasManyThrough(AboutTranslate::class,About::class,'page_name','about_id','name','id')
+            ->select('slug','meta_keywords','meta_description','footer_text','language_id');
+
+        return $about;
+        //return $this->hasManyDeep()  ;
     }
 
 }

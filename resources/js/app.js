@@ -12,7 +12,6 @@ import App from './App.vue';
 import VueLazyLoad from 'vue3-lazyload'
 import {_lang, _translate} from "./filters/localize";
 
-
 import helpers from './helpers'
 import BaseMetaInfo from '@frontend/components/BaseMetaInfo'
 
@@ -34,7 +33,7 @@ UiComponents.forEach(component => {
     app.component(component.name, component)
 });
 
-
+// app.config.devtools = true;
 
 app.component('base-meta-info', BaseMetaInfo);
 app.component('slide-up-down', SlideUpDown);

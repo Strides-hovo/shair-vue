@@ -76,7 +76,7 @@ class CouponController extends Controller
         try {
             $dates = $data->safe()->all();
             $coupon->translations()
-                ->updateOrCreate(['language_id' => $data['language_id'], 'coupon_id' => $data['coupon_id']], $dates);
+                ->updateOrCreate(['language_id' => $dates['language_id'], 'coupon_id' => $dates['coupon_id']], $dates);
         } catch (\Exception $e) {
             return;
         }

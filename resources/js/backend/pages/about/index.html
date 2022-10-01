@@ -2,7 +2,8 @@
   
  
 <left-aside :is-active="ButtonLeftAside" @CloseLeftAside="CloseLeftAside">
-  <str-setting :about="page" @UpdatePage="UpdatePage" />
+
+    <MyBaseSetting page-name="About" v-model:ButtonLeftAside="ButtonLeftAside" />
 </left-aside>
 
   <div class="cart-btns">

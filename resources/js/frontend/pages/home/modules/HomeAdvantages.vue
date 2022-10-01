@@ -2,74 +2,72 @@
   <div class="advantages">
     <div class="advantages__title title title_singleline">
       <span></span>
-      למה לקנות אצלנו
+      {{ $trans._lang('why buy from us') }}
       <span></span>
     </div>
     <div class="advantages-body">
       <div class="advantages-body__row">
         <div class="advantages-body__item">
           <div class="advantages-body__item-ico">
-            <img src="@img/advantages/01.png" srcset="@img/advantages/01.png 1x, @img/advantages/01@2x.png 2x"
-              alt="">
+            <img src="/img/advantages/01.png" alt="">
           </div>
           <div class="advantages-body__item-title">
-            אלפי לקוחות מרוצים
+            {{ $trans._lang('Thousands of satisfied customers') }}
           </div>
         </div>
         <div class="advantages-body__item">
           <div class="advantages-body__item-ico">
-            <img src="@img/advantages/03.png" srcset="@img/advantages/03.png 1x, @img/advantages/03@2x.png 2x"
-              alt="">
+            <img src="/img/advantages/03.png" alt="">
           </div>
           <div class="advantages-body__item-title">
-            10 שנים אחריות
+
+            {{ $trans._lang('10 years warranty') }}
           </div>
         </div>
         <div class="advantages-body__item">
           <div class="advantages-body__item-ico">
-            <img src="@img/advantages/06.png" srcset="@img/advantages/06.png 1x, @img/advantages/06@2x.png 2x"
-              alt="">
+            <img src="/img/advantages/06.png" alt="">
           </div>
           <div class="advantages-body__item-title">
-            משלוח מהיר
+            {{ $trans._lang('Fast shipping') }}
+
           </div>
         </div>
         <div class="advantages-body__item">
           <div class="advantages-body__item-ico">
-            <img src="@img/advantages/07.png" srcset="@img/advantages/07.png 1x, @img/advantages/07@2x.png 2x"
-              alt="">
+            <img src="/img/advantages/07.png" alt="">
           </div>
           <div class="advantages-body__item-title">
-            רכישה מאובטחת
+
+            {{ $trans._lang('Safe shopping') }}
           </div>
         </div>
       </div>
       <div class="advantages-body__row">
         <div class="advantages-body__item">
           <div class="advantages-body__item-ico">
-            <img src="@img/advantages/02.png" srcset="@img/advantages/02.png 1x, @img/advantages/02@2x.png 2x"
-              alt="">
+            <img src="/img/advantages/02.png" alt="">
           </div>
           <div class="advantages-body__item-title">
-            המחירים הזולים בישראל
+            {{ $trans._lang('The lowest prices in Israel') }}
+
           </div>
         </div>
         <div class="advantages-body__item">
           <div class="advantages-body__item-ico">
-            <img src="@img/advantages/04.png" srcset="@img/advantages/04.png 1x, @img/advantages/04@2x.png 2x"
-              alt="">
+            <img src="/img/advantages/04.png" alt="">
           </div>
           <div class="advantages-body__item-title">
-            12 תש' בלי ריבית
+
+            {{ $trans._lang('The lowest prices in Israel') }}
           </div>
         </div>
         <div class="advantages-body__item">
           <div class="advantages-body__item-ico">
-            <img src="@img/advantages/05.png" srcset="@img/advantages/05.png 1x, @img/advantages/05@2x.png 2x"
-              alt="">
+            <img src="/img/advantages/05.png" alt="">
           </div>
           <div class="advantages-body__item-title">
-            שירות לקוחות מצוין
+            {{ $trans._lang('12 years without interest') }}
           </div>
         </div>
       </div>

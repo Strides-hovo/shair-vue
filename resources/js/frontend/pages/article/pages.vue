@@ -17,7 +17,7 @@
               {{ page.translate.short_description }}
             </div>
             <router-link v-if="page.translate.slug"
-                         :to="{name: 'Article', params: {id: page.id, _slug: page.translate.slug}  }"
+                         :to="{name: 'Article', params: {slug: page.translate.slug}  }"
                          class="articles-body__item-btn">
               {{ $trans._lang('read more') }}
             </router-link>
@@ -37,10 +37,10 @@
 
 
 import {mapActions, mapGetters} from 'vuex'
-
+import Breadcrumb from "../../mixins/Breadcrumb";
 export default {
   name: 'Articles',
-
+  mixins: [Breadcrumb],
   data() {
     return {
       fronted: true
@@ -58,11 +58,15 @@ export default {
 
     page() {
       return this.pages.find(p => typeof p.translate.slug !== 'undefined')
+    },
+
+    pageName(){
+      return this.$trans._lang('Articles')
     }
 
   },
   watch:{
-    'page.page.translate.slug'(slug){
+    'page.translate.slug'(slug){
       if (slug)
       this.$router.replace({ name: 'Articles', params: { slug } })
     }
@@ -76,14 +80,7 @@ export default {
     if (this.pages  && (this.pages.length === 0 || !this.pages.recommended )) {
       this['article/SET_ARTICLES'](true)
     }
-    if (this.page){
-      if (this.page.page){
-        const slug = this.page.page?.translate?.slug
-        if (slug && this.$route.name === 'Articles'){
-          this.$router.replace({ name: 'Articles', params: {slug } })
-        }
-      }
-    }
+
   },
 
 

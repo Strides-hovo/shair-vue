@@ -1,0 +1,30 @@
+POST http://shair.admin/api/admin/home
+Content-Type: application/json
+
+{
+  "main_video": "main video",
+  "video": "video test",
+  "brands": ["pos","mod","dod"],
+  "about": ["pos","mod","dod"],
+  "icon_link": "link www",
+  "about_link": "aaa aaa",
+  "translate":
+    {
+      "language_id": 2,
+      "about_title": "abup",
+      "about_content": "about_content",
+      "about_link": "about_link",
+      "icon_title": "abup",
+      "icon_content": "about_content",
+      "icon_link": "about_link"
+    }
+
+}
+
+###
+GET http://shair.admin/api/admin/home
+Accept: application/json
+
+###
+
+

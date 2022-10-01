@@ -36,13 +36,16 @@
 import {mapGetters, mapActions} from 'vuex'
 
 import TheProductsSidebar from './modules/TheProductsSidebare'
-import TheProductsCart from '@frontend/pages/product/modules/TheProductsCart'
-import TheProductsMobile from '@frontend/pages/product/modules/TheProductsMobile'
+import TheProductsCart from './modules/TheProductsCart'
+import TheProductsMobile from './modules/TheProductsMobile'
+import Breadcrumb from "../../mixins/Breadcrumb";
 
 export default {
   name: 'frontProducts',
   emits: ['footerContent'],
   components: { TheProductsCart, TheProductsMobile, TheProductsSidebar},
+
+  mixins: [Breadcrumb],
 
   props: {
     id: {
@@ -52,6 +55,9 @@ export default {
       required: true
     }
   },
+
+
+
   watch: {
     'page.translate.slug'(slug) {
       if (slug) {
@@ -70,7 +76,10 @@ export default {
       catData: 'category/GET_FRONT_CATEGORY',
       productsData: 'products/GET_FRONT_PRODUCTS'
     }),
-
+    
+    pageName(){
+      return this.$trans._lang('Products')
+    },
 
     category() {
       return this.catData(this.id, this.language.id)

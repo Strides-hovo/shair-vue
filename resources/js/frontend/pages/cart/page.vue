@@ -66,15 +66,23 @@
 
   </div>
 
-  <TheCartSlider
-      title="Дополнительные продукты к выбранным вами продуктам"
-      :products="products"
+  <TheCartSlider v-if="orders"
+                 title="מגיע לכם לבחור 1 מתנות ללא תשלום"
+                 :products="products"
+                 :gift="true"
   />
 
-  <the-delivery :total="total" @couponApply="addCoupon"/>
-  <the-payment @SaveOrder="SaveOrder"/>
+  <TheCartSlider v-if="orders"
+                 title="Дополнительные продукты к выбранным вами продуктам"
+                 :products="products"
+  />
 
-  <base-photo-modal v-model:ButtonModal="ButtonModal" :photo="photo"/>
+  <the-delivery :total="total" @couponApply="addCoupon" v-if="products"/>
+
+  <the-payment @SaveOrder="SaveOrder" v-if="products"/>
+
+  <base-photo-modal v-model:ButtonModal="ButtonModal" :photo="photo" v-if="products"/>
+
 </template>
 
 <script>
@@ -84,21 +92,30 @@ import BasePhotoModal from "@frontend/components/BasePhotoModal";
 import ThePayment from "./ThePayment";
 import TheDelivery from "./TheDelivery";
 import TheCartSlider from "./TheCartSlider";
+import Breadcrumb from "../../mixins/Breadcrumb";
 
 export default {
+
   name: 'FrontCart',
+  mixins: [Breadcrumb],
   emits: ['footerContent'],
-  components: {BasePhotoModal, ThePayment, TheDelivery, TheCartSlider },
+  components: {BasePhotoModal, ThePayment, TheDelivery, TheCartSlider},
+
   data: () => ({
     ButtonModal: false,
     photo: {}
   }),
+
   computed: {
     ...mapGetters({
       orders: 'cart/GET_CART',
       productsData: 'products/GET_PRODUCTS_TR_CAT',
       language: 'lang/GET_SITE_LANGUAGE',
     }),
+
+    pageName(){
+      return this.$trans._lang('Cart')
+    },
 
     products() {
       return this.productsData(this.language.id)
@@ -111,12 +128,12 @@ export default {
       }, 0)
     },
 
-    additions(){
+    additions() {
       const ids = this.orders.map(order => order.product_id)
       return this.products.filter(product => ids.includes(product.id))
-    }
-
+    },
   },
+
   methods: {
     ...mapActions([
       'cart/SET',
@@ -182,18 +199,20 @@ export default {
 
     }
   },
+
   mounted() {
     if (!(this.products.length)) {
       this['products/set']()
     }
-
-  },
-
-  beforeMount() {
     this.$emit('footerContent', {
       footer_text: 'Органический текст для нужд органического продвижения Органический текст для'
     })
-  }
+
+  },
+
+  // beforeMount() {
+  //
+  // }
 }
 </script>
 

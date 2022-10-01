@@ -79,6 +79,20 @@ const routes = [
         ]
     },
     {
+        path: "/admin/faq-categories",
+        name: 'FaqCategories',
+        component: () => import('@backend/pages/faq/categories'),
+        props: true,
+        children: [
+            {
+                path: ":id",
+                name: 'BackendFaq',
+                component: () => import('@backend/pages/faq/page'),
+                props: true,
+            }
+        ]
+    },
+    {
         path: "/admin/categories",
         name: 'BackendCategory',
         component: () => import('@backend/pages/category/category'),
@@ -102,6 +116,18 @@ const routes = [
         path: '/admin/coupon',
         name: 'BackendCoupon',
         component: () => import('@backend/pages/coupon/page'),
+    },
+    {
+        path: '/admin/branches',
+        name: 'BackendBranches',
+        component: () => import('@backend/pages/branch/page'),
+        props: true
+    },
+    {
+        path: '/admin/main',
+        name: 'BackendMain',
+        component: () => import('@backend/pages/home/page'),
+        props: true
     },
     {
         path: "/admin/:pathMatch(.*)*",

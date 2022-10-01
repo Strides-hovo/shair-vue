@@ -1,16 +1,14 @@
 <div class="main__bg">
 </div>
- <!-- <div class="main">
+ <div class="main">
   <div class="main__img">
-    <img src="@img/main/img.png" alt="">
+    <video :src="page.main_video" controls />
   </div>
-</div> -->
+</div>
 
+   <HomeAdvantages />
 
-  <!-- <HomeAdvantages /> -->
-
-
-  <!-- <div class="video">
+  <div class="video">
     <div class="video__bg">
       <div class="notfound__bg">
       </div>
@@ -19,94 +17,49 @@
       <div class="video-body">
         <div class="video-body__col video-body__col_video">
           <div class="video-body__col-video">
+              <video :src="page.video" controls style="width: 100%"></video>
+
           </div>
         </div>
         <div class="video-body__col">
-          <div class="video-body__title">מה זה סוכה טלסקופית?</div>
+          <div class="video-body__title">{{ page.translate.icon_title }}</div>
           <div class="video-body__text">
-            איך זה עובדטקסט הסבר על איך זה עובד טקסט הסבר על איך זה עובד טקסט הסבר על איך זה עובדטקסט הסבר על איך זה
-            עובד
-            הסבר על איך זה עובד טקסט הסבר על איך איך זה עובדטקסט הסבר על איך זה עובד טקסט הסבר על איך זה עובד טקסט
-            הסבר על
-            עובד טקסט הסבר על איך זה עובד טקסט הסבר על איך זה עובדטקסט
-            טקסט
+              {{ page.translate.icon_content }}
           </div>
           <div class="video-content">
-            <div class="video-content__item">
+            <div class="video-content__item" v-for="icon in page.icons" :key="icon.id">
               <div class="video-content__item-ico">
-                <img src="@img/video/01.svg" alt="">
+                <img :src="icon.icon" alt="">
               </div>
               <div class="video-content__item-title">
-                מודולארית ניתנת
-                להגדלה
+                  {{ icon.translate.title }}
               </div>
             </div>
-            <div class="video-content__item">
-              <div class="video-content__item-ico">
-                <img src="@img/video/02.svg" alt="">
-              </div>
-              <div class="video-content__item-title">
-                בלעדי בישראל
-              </div>
-            </div>
-            <div class="video-content__item">
-              <div class="video-content__item-ico">
-                <img src="@img/video/03.svg" alt="">
-              </div>
-              <div class="video-content__item-title">
-                מתקפלת ונוחה
-                לאחסון
-              </div>
-            </div>
-            <div class="video-content__item">
-              <div class="video-content__item-ico">
-                <img src="@img/video/04.svg" alt="">
-              </div>
-              <div class="video-content__item-title">
-                שימושית לכל
-                השנה
-              </div>
-            </div>
-            <div class="video-content__item">
-              <div class="video-content__item-ico">
-                <img src="@img/video/05.svg" alt="">
-              </div>
-              <div class="video-content__item-title">
-                קלה להרכבה
-                ונוחה לשימוש
-              </div>
-            </div>
-            <div class="video-content__item">
-              <div class="video-content__item-ico">
-                <img src="@img/video/06.svg" alt="">
-              </div>
-              <div class="video-content__item-title">
-                מתכווננת לכל
-                גודל
-              </div>
-            </div>
+
           </div>
-          <a href="" class="video-body__col-btn">
+          <a :href="page.icon_link"  class="video-body__col-btn" target="_blank">
             לפרטים
           </a>
         </div>
       </div>
     </div>
-  </div> -->
+  </div>
 
- <!-- <HomeProducts />
+<BaseMetaInfo :meta-info="setMetaInfo" />
 
- <HomeAccordion />
+<HomeProducts />
 
- <HomeAbout />
+<HomeAccordion />
 
- <HomeSliderWhatsapp />
+<HomeAbout v-model:page="page" />
 
- <HomeSliderBrand />
+<HomeSliderWhatsapp />
+
+<HomeSliderBrand :brands="page.brands" />
 
  <HomeFeaturedVideos />
 
 
- <HomeFeaturedPosts /> -->
+ <HomeArticles :articles="page.articles" />
 
 

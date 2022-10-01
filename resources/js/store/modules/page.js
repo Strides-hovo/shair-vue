@@ -1,5 +1,6 @@
 import apiRoutes from "@/routes/api-routes";
 import {create_translate} from "./products/mutations";
+import {BackendErrorHandler} from "../../helpers";
 
 const state = {
     pages: [],
@@ -14,6 +15,7 @@ const actions = {
 
     async UPDATE_OR_CREATE({commit}, page) {
         const response = await axios.post(apiRoutes('page.firstOrCreate'), page)
+            .catch(err => BackendErrorHandler(err))
         commit('UPDATE_OR_CREATE', response.data.data)
     },
 
@@ -86,7 +88,7 @@ const getters = {
 
 
     GET_PAGE: (state) => (name, languageId) => {
-        const page = state.pages.find(p => p.name === name) || {}
+        const page = state.pages.find(p => p.name === name) || {name}
         page.translate = create_translate(page, languageId)
 
         return page || {}

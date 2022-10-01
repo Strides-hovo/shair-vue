@@ -4,8 +4,7 @@
 <div v-else style="width: 100%;">
 
     <left-aside :is-active="ButtonLeftAside" @CloseLeftAside="ButtonLeftAside = false">
-        <base-setting :page="page" @UpdateSetting="UpdateSetting" v-if="page" />
-
+        <MyBaseSetting page-name="Articles" v-model:ButtonLeftAside="ButtonLeftAside" />
     </left-aside>
     <div class="cart-btns">
         <div class="cart-btns__item branches-new-btn btn circle" @click="ButtonNewPageModal = true">
@@ -16,7 +15,7 @@
     <add-page
             :ButtonNewPageModal="ButtonNewPageModal"
             :NewPage="NewPage"
-            :SortLength="pages.length"
+            :SortLength="articles.length"
             @closeModal="closeNewPageModal"
             @saveNewPage="saveNewPage"
     />
@@ -32,35 +31,36 @@
                 <button>חפש</button>
                 <input type="text" placeholder="חיפוש לפי שם  " v-model="searchName">
             </div>
-
-
                 <div class="container-content__top-title">
                     עמודי מדיה
                     <span>
-                        Фотогалереи 2
+                        Articles
                     </span>
                 </div>
 
 
         </div>
         <div class="container-content__body">
-            <table class="orders cupons shipping-cities branches gallery-img">
+            <table class="orders cupons shipping-cities articles">
                 <thead>
                 <tr>
                     <td>
-                        Название
+                        Name
                     </td>
                     <td>
-                        сортировка
+                        Sort
                     </td>
                     <td>
-                        Действия
+                        In Home
+                    </td>
+                    <td>
+                        Action
                     </td>
                 </tr>
                 </thead>
                 <tbody>
 
-                <tr class="order-row" v-for="page in pages" :key="page.id">
+                <tr class="order-row opened" v-for="page in articles" :key="page.id">
                     <td>
                         {{ page.translate.name }}
                     </td>
@@ -68,10 +68,19 @@
                         <label>
                             <select v-model="page.sorting" :value="page.sorting"
                                     @change="UpdatePage({id: page.id, sorting: $event.target.value} )">
-                                <option v-for="item in (pages.length > 5 ? pages.length : 5)" :value="item"
+                                <option v-for="item in (articles.length > 5 ? articles.length : 5)" :value="item"
                                         :selected="item === page.sorting">{{ item }}
                                 </option>
                             </select>
+                        </label>
+                    </td>
+                    <td>
+                        <label class="check">
+                            <input type="checkbox"
+                                   @change="UpdatePage({ id: page.id, in_home: !page.in_home })"
+                                   :checked="page.in_home"
+                            >
+                            <span class="fake"></span>
                         </label>
                     </td>
                     <td>
@@ -85,9 +94,9 @@
                                 <img src="@img/icons/edit-ico.svg" alt="">עריכה
                             </router-link>
 
-                            <span @click="UpdatePage({ id: page.id, status: !page.status })">
-                                    <img :src="page.status ? showIcon : unshow">להציג
-                                </span>
+<!--                            <span @click="UpdatePage({ id: page.id, status: !page.status })">-->
+<!--                                    <img :src="page.status ? showIcon : unshow">להציג-->
+<!--                                </span>-->
                         </div>
                     </td>
                 </tr>

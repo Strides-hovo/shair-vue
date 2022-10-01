@@ -95,6 +95,7 @@ export default {
       'products/update',
       'products/export',
       'products/import_file',
+      'products/import_all',
       'category/set',
       'products/set',
     ]),
@@ -124,7 +125,9 @@ export default {
       const file = new FormData()
       file.append('file', SelectedFile, SelectedFile.name)
       console.log(SelectedFile, file)
-      let response = await this['products/import_file'](file)
+
+      let response = await this['products/import_all'](file)
+      //let response = await this['products/import_file'](file)
 
 
       this.$refs.import_data.value = ''

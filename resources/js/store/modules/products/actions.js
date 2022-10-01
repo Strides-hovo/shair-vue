@@ -38,10 +38,17 @@ const actions = {
   },
 
   async export({ commit }, {id, size} ){
-
     await axios.get(apiRoutes('product.export', id,size ), { params: {id,size} } )
         .then(response => {
       export_data(apiRoutes('product.export',id,size), 'name')
+    })
+  },
+
+
+  async exportAll({ commit } ){
+    await axios.get(apiRoutes('products.export' )  )
+        .then(response => {
+      export_data(apiRoutes('products.export'), 'name')
     })
   },
 
@@ -50,6 +57,14 @@ const actions = {
     const response = await axios.post( apiRoutes('product.import'),  file )
         .catch((err) => BackendErrorHandler(err) );
     commit("UPDATE_PRODUCT", response.data.data);
+  },
+
+
+  async import_all({ commit },file ){
+    const response = await axios.post( apiRoutes('products.import'),  file )
+        .catch((err) => BackendErrorHandler(err) );
+    console.log(response)
+
   },
 
 

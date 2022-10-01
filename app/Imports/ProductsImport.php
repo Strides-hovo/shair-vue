@@ -1,15 +1,15 @@
 <?php
 /** @noinspection PhpUndefinedMethodInspection */
+
 /** @noinspection PhpArrayShapeAttributeCanBeAddedInspection */
 
 namespace App\Imports;
 
 use App\Models\Product;
-use App\Models\ProductTranslate;
+use App\Traits\CustomValidate;
 use ErrorException;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
 use Maatwebsite\Excel\Concerns\SkipsEmptyRows;
 use Maatwebsite\Excel\Concerns\ToCollection;
@@ -19,8 +19,7 @@ class ProductsImport implements ToCollection, WithHeadingRow, SkipsEmptyRows
 {
 
 
-    private static int $product_id;
-
+    use CustomValidate;
 
     /**
      * @param Collection $rows
@@ -28,13 +27,8 @@ class ProductsImport implements ToCollection, WithHeadingRow, SkipsEmptyRows
      */
     public function collection(Collection $rows): void
     {
-        $rows->filter(function ($row) {
-            $this->product($row->all());
-
-            $row['product_id'] = self::$product_id;
-            $cols = $this->translation_fields($row->all());
-            ProductTranslate::create($cols);
-        });
+        $dates = $rows->map(fn($row) => $this->product_fields($row->toArray()));
+        Product::upsert($dates->toArray(), ['id']);
     }
 
 
@@ -46,11 +40,11 @@ class ProductsImport implements ToCollection, WithHeadingRow, SkipsEmptyRows
     {
         $product_data = $this->product_fields($row);
         if (!empty($product_data)) {
-            if (!empty($row['instruction_file'])){
+            if (!empty($row['instruction_file'])) {
                 $product_data['instruction_file'] = $this->upload($row['instruction_file']);
             }
             $product = Product::create($product_data);
-            self::$product_id = $product->id;
+            //self::$product_id = $product->id;
         }
     }
 
@@ -64,7 +58,8 @@ class ProductsImport implements ToCollection, WithHeadingRow, SkipsEmptyRows
             return [];
         }
 
-        return $this->customValidate($row, [
+        return $this->ValidDates($row, [
+            'id' => 'required|exists:products,id',
             'category_id' => 'required|exists:categories,id',
             'Instruction_file' => 'nullable|string',
             'status' => 'required|boolean',
@@ -73,50 +68,12 @@ class ProductsImport implements ToCollection, WithHeadingRow, SkipsEmptyRows
             'sale' => 'required|boolean',
             'guarantee' => 'required|boolean',
             'dimension' => 'required|boolean',
-        ], []);
+        ]);
     }
 
 
     /**
-     * @throws ValidationException
-     */
-    public function translation_fields(array $row): array
-    {
-        return $this->customValidate($row, [
-            'short_description' => 'required|string',
-            'description' => 'required|string',
-            'name' => 'required|string',
-            'advantage' => 'required|string',
-            'flag_text' => 'required|string',
-            'language_id' => 'required|exists:languages,id',
-            'product_id' => 'required|exists:products,id',
-            'slug' => 'required|string',
-        ], []);
-    }
 
-
-    /**
-     * @throws ValidationException
-     */
-    public function customValidate($rows = [], $rules = [], $errors = []): array
-    {
-        $validator = Validator::make($rows, $rules);
-        if ($errors) {
-            list($field, $message) = $errors;
-            $validator->errors()->add($field, $message);
-        }
-
-        $errors = response()->json([
-            'status' => 'Error',
-            'message' => 'Ops! Some errors occurred',
-            'errors' => $validator->errors()
-        ], 400);
-
-        if ($validator->fails()) {
-            throw new ValidationException($validator, $errors);
-        }
-        return $validator->validate();
-    }
 
 
     /**
@@ -132,7 +89,7 @@ class ProductsImport implements ToCollection, WithHeadingRow, SkipsEmptyRows
                 return "/storage/product/$name";
             }
         } catch (ErrorException $e) {
-            $this->customValidate([], [], ['instruction_file', $e->getMessage()]);
+            $this->ValidDates([], [], ['instruction_file', $e->getMessage()]);
         }
         return null;
     }

@@ -10,34 +10,40 @@ export default {
         quantity: 1,
         widthIndex: 0,
     }),
-    props: {
-        product: {}
-    },
+
     computed: {
         sizes() {
-            let sizes = this.product.sizes[this.activeSize]
-            if (sizes && sizes.length){
-                sizes = sizes
-                    .filter(size => size.status)
-                    .sort((a,b) => a.sorting - b.sorting)
+            if (this.product){
+                let sizes = this.product.sizes[this.activeSize]
+                if (sizes && sizes.length){
+                    sizes = sizes
+                        .filter(size => size.status)
+                        .sort((a,b) => a.sorting - b.sorting)
+                }
+                return sizes || []
             }
-            return sizes || []
         },
 
         widths() {
-            return this.sizes.map(size => size.width)
+            if (this.product) {
+                return this.sizes.map(size => size.width)
+            }
         },
 
         currentSize() {
-            return this.widths[this.widthIndex]
+            if (this.product) {
+                return this.widths[this.widthIndex]
+            }
         },
 
         cost() {
-            const cost = this.sizes.find(s => s.width === this.currentSize && s.status === true)
-            if (cost && cost.price) {
-                return cost.price * this.quantity
+            if (this.product){
+                const cost = this.sizes.find(s => s.width === this.currentSize && s.status === true)
+                if (cost && cost.price) {
+                    return cost.price * this.quantity
+                }
+                return 0
             }
-            return 0
         }
     },
     methods: {
@@ -56,6 +62,9 @@ export default {
         },
 
         addToCart() {
+            if (this.gift){
+                return false
+            }
             const product_size = this.sizes
                 .find(size => size.width === this.currentSize && size.height === parseFloat(this.activeSize))
 
@@ -87,6 +96,6 @@ export default {
         }
     },
     mounted() {
-        this.width = this.widths[0] ?? null
+        this.width = this.widths && this.widths[0] ? this.widths[0] : null
     }
 }

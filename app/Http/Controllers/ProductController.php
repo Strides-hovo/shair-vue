@@ -9,9 +9,11 @@ namespace App\Http\Controllers;
 
 use App\Exports\ProductExport;
 use App\Exports\ProductSizesExport;
+use App\Exports\ProductsSheetsExport;
 use App\Exports\ProductTranslateExport;
 use App\Http\Requests\ProductRequest;
 use App\Imports\ProductImport;
+use App\Imports\ProductsSheetsImport;
 use App\Models\Product;
 use App\Models\ProductAdditional;
 use App\Models\ProductSize;
@@ -214,11 +216,33 @@ class ProductController extends Controller
         $sizes = (new ProductSizesExport($id, $size))->store('export/product-size.xlsx');
         $translates = (new ProductTranslateExport($id))->store('export/product-translates.xlsx');
 
-        $zip = new ZipArchive;
         $zipName = 'product.zip';
+        $files = File::files(storage_path('app/export'));
 
+        return $this->ZipPack($files,$zipName);
+    }
+
+
+    public function exportAll()
+    {
+        $export = new ProductsSheetsExport;
+        return Excel::download($export, 'products.xlsx');
+    }
+
+
+    public function importAll(Request $request)
+    {
+        $import = new ProductsSheetsImport;
+        Excel::import($import, $request->file('file'));
+
+        return 'ok';
+    }
+
+
+    private function ZipPack(array $files, string $zipName): BinaryFileResponse
+    {
+        $zip = new ZipArchive;
         if ($zip->open(public_path($zipName), ZipArchive::CREATE) === TRUE) {
-            $files = File::files(storage_path('app/export'));
 
             foreach ($files as $file) {
                 $fileName = basename($file);
@@ -226,9 +250,9 @@ class ProductController extends Controller
             }
             $zip->close();
         }
-
         return response()->download(public_path($zipName));
     }
+
 
 
 

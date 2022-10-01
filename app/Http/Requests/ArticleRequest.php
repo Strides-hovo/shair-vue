@@ -31,6 +31,7 @@ class ArticleRequest extends FormRequest
             'image_name' => 'nullable|string',
             'sorting' => 'nullable|integer',
             'status' => 'nullable|boolean',
+            'in_home' => 'nullable|boolean',
         );
     }
 

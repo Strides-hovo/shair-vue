@@ -2,7 +2,7 @@
   <div class="tents">
     <div class="tents__title title">
       <span></span>
-      חבילות שלנו
+      {{ $trans._lang('Our packages') }}
       <span></span>
     </div>
     <div class="container">
@@ -27,7 +27,7 @@
           </div>
           <a href="" class="tents-body__item-link"></a>
           <div class="tents-body__item-img">
-            <img src="@img/tents/01.png" srcset="@img/tents/01.png 1x, @img/tents/01@2x.png 2x" alt="">
+            <img src="/img/tents/01.png" alt="">
           </div>
           <div class="tents-body__item-info">
             <div class="tents-body__item-title">שם של החבילה</div>
@@ -61,7 +61,7 @@
           </div>
           <a href="" class="tents-body__item-link"></a>
           <div class="tents-body__item-img">
-            <img src="@img/tents/01.png" srcset="@img/tents/01.png 1x, @img/tents/01@2x.png 2x" alt="">
+            <img v-lazy="{src: '/img/tents/01.png'}" alt="">
           </div>
           <div class="tents-body__item-info">
             <div class="tents-body__item-title">שם של החבילה</div>
@@ -75,142 +75,7 @@
             <div class="tents-body__item-price"> 1345 ₪ </div>
           </div>
         </div>
-        <div class="tents-body__item">
-          <div class="tents-body__item-tip">
-            קנה קבל
-            <span>
-              <p>
-                טקסט תיאור של קנה קבל
-              </p>
-              <p>
-                טקסט תיאור של קנה קבל
-              </p>
-              <p>
-                טקסט תיאור של קנה קבל
-              </p>
-              <p>
-                טקסט תיאור של קנה קבל
-              </p>
-            </span>
-          </div>
-          <a href="" class="tents-body__item-link"></a>
-          <div class="tents-body__item-img">
-            <img src="@img/tents/01.png" srcset="@img/tents/01.png 1x, @img/tents/01@2x.png 2x" alt="">
-          </div>
-          <div class="tents-body__item-info">
-            <div class="tents-body__item-title">שם של החבילה</div>
-            <div class="tents-body__item-descr">
-              החבילה טקסט תיאור של החבילה טקסט תיאור של החבילה טקסט
-              תיאור של החבילה
-            </div>
-          </div>
-          <div class="tents-body__item-bottom">
-            <div class="tents-body__item-btn">לפרטים</div>
-            <div class="tents-body__item-price"> 1345 ₪ </div>
-          </div>
-        </div>
-        <div class="tents-body__item">
-          <div class="tents-body__item-tip">
-            קנה קבל
-            <span>
-              <p>
-                טקסט תיאור של קנה קבל
-              </p>
-              <p>
-                טקסט תיאור של קנה קבל
-              </p>
-              <p>
-                טקסט תיאור של קנה קבל
-              </p>
-              <p>
-                טקסט תיאור של קנה קבל
-              </p>
-            </span>
-          </div>
-          <a href="" class="tents-body__item-link"></a>
-          <div class="tents-body__item-img">
-            <img src="@img/tents/01.png" srcset="@img/tents/01.png 1x, @img/tents/01@2x.png 2x" alt="">
-          </div>
-          <div class="tents-body__item-info">
-            <div class="tents-body__item-title">שם של החבילה</div>
-            <div class="tents-body__item-descr">
-              החבילה טקסט תיאור של החבילה טקסט תיאור של החבילה טקסט
-              תיאור של החבילה
-            </div>
-          </div>
-          <div class="tents-body__item-bottom">
-            <div class="tents-body__item-btn">לפרטים</div>
-            <div class="tents-body__item-price"> 1345 ₪ </div>
-          </div>
-        </div>
-        <div class="tents-body__item">
-          <div class="tents-body__item-tip">
-            קנה קבל
-            <span>
-              <p>
-                טקסט תיאור של קנה קבל
-              </p>
-              <p>
-                טקסט תיאור של קנה קבל
-              </p>
-              <p>
-                טקסט תיאור של קנה קבל
-              </p>
-              <p>
-                טקסט תיאור של קנה קבל
-              </p>
-            </span>
-          </div>
-          <a href="" class="tents-body__item-link"></a>
-          <div class="tents-body__item-img">
-            <img src="@img/tents/01.png" srcset="@img/tents/01.png 1x, @img/tents/01@2x.png 2x" alt="">
-          </div>
-          <div class="tents-body__item-info">
-            <div class="tents-body__item-title">שם של החבילה</div>
-            <div class="tents-body__item-descr">
-              החבילה טקסט תיאור של החבילה טקסט תיאור של החבילה טקסט
-              תיאור של החבילה
-            </div>
-          </div>
-          <div class="tents-body__item-bottom">
-            <div class="tents-body__item-btn">לפרטים</div>
-            <div class="tents-body__item-price"> 1345 ₪ </div>
-          </div>
-        </div>
-        <div class="tents-body__item">
-          <div class="tents-body__item-tip">
-            קנה קבל
-            <span>
-              <p>
-                טקסט תיאור של קנה קבל
-              </p>
-              <p>
-                טקסט תיאור של קנה קבל
-              </p>
-              <p>
-                טקסט תיאור של קנה קבל
-              </p>
-              <p>
-                טקסט תיאור של קנה קבל
-              </p>
-            </span>
-          </div>
-          <a href="" class="tents-body__item-link"></a>
-          <div class="tents-body__item-img">
-            <img src="@img/tents/01.png" srcset="@img/tents/01.png 1x, @img/tents/01@2x.png 2x" alt="">
-          </div>
-          <div class="tents-body__item-info">
-            <div class="tents-body__item-title">שם של החבילה</div>
-            <div class="tents-body__item-descr">
-              החבילה טקסט תיאור של החבילה טקסט תיאור של החבילה טקסט
-              תיאור של החבילה
-            </div>
-          </div>
-          <div class="tents-body__item-bottom">
-            <div class="tents-body__item-btn">לפרטים</div>
-            <div class="tents-body__item-price"> 1345 ₪ </div>
-          </div>
-        </div>
+
       </div>
     </div>
   </div>

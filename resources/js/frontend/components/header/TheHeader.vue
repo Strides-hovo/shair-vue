@@ -1,5 +1,5 @@
 <template>
-  <header class="header">
+  <header class="header" :class="{sticky : sticky }">
     <div class="header-body">
       <div class="header-body__col">
         <div class="header-body__btns">
@@ -33,10 +33,12 @@
       </div>
     </div>
 
+
+
     <the-right-sidebar :is-active="ButtonMenu" @closeMenu="ButtonMenu = false"  />
 
   </header>
-
+  <div class="observer" ref="observer"></div>
   <div class="mobile-bottom">
     <a href="" class="mobile-bottom__wu">
       <img src="@img/icons/wu.svg" alt="">
@@ -74,7 +76,9 @@
       <button class="footer__follow-btn">שלח</button>
     </form>
   </div>
+
   <base-breadcrumb />
+
 </template>
 
 <script>
@@ -88,10 +92,26 @@ import TheRightSidebar from "./rigth-sidebar/TheRightSidebar";
 export default {
   name: "TheHeader",
   components: { TheLanguageSelect, TheRightSidebar, TheWcag, TheCart,BaseBreadcrumb },
-  data: () => ({
-    ButtonMenu: false
-  }),
-
+  props:{
+    breadCramps: []
+  },
+  data() {
+    return {
+      ButtonMenu: false,
+      sticky: true
+    }
+  },
+  mounted() {
+    const options = {
+      rootMargin: '0px',
+      threshold: 1.0
+    }
+    const callback = (entries, observer) => {
+      this.sticky = entries[0].isIntersecting === false;
+    };
+    const observer = new IntersectionObserver(callback, options);
+    observer.observe(this.$refs.observer)
+  }
 
 }
 

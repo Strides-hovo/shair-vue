@@ -3,6 +3,7 @@
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CouponController;
 use App\Http\Controllers\Galleries\PhotoPageController;
 use App\Http\Controllers\Galleries\PhotoPageGalleryController;
@@ -52,6 +53,19 @@ Route::group(['prefix' => 'admin','middleware' => 'api'],function (){
         Route::post('about-update',[AboutController::class,'uploadImage'])->name('tiny.upload');
 
         Route::apiResource('article',\App\Http\Controllers\ArticleController::class)->except('show');
+        Route::apiResource('contact',ContactController::class)
+            ->only(['index','store','update']);
+        Route::post('contact-mail',[ContactController::class,'sendEmail'])->name('contact.send.mail');
+
+        Route::apiResource('branch',\App\Http\Controllers\BranchController::class)
+            ->except(['show']);
+
+        Route::apiResource('home',\App\Http\Controllers\HomeController::class)->only('index','store');
+
+        Route::post('home-icon-create/{page?}',[\App\Http\Controllers\HomeIconController::class,'store'])->name('home.icon.store');
+        Route::put('home-icon-update/{icon}',[\App\Http\Controllers\HomeIconController::class,'update'])->name('home.icon.update');
+        Route::delete('home-icon-destroy/{icon}',[\App\Http\Controllers\HomeIconController::class,'destroy'])->name('home.icon.destroy');
+
     });
 
     Route::get('all-images/{type?}',[\App\Services\Images::class,'getImages'])->name('get.images');
@@ -86,8 +100,10 @@ Route::group(['prefix' => 'admin','middleware' => 'api'],function (){
     Route::group(['prefix' => 'export'],function(){
         Route::get('category', [CategoryController::class, 'export'])->name('category.export');
         Route::get('product/{id}/{size}', [ProductController::class, 'zipExport'])->name('product.export');
+        Route::get('products-all', [ProductController::class, 'exportAll'])->name('products.export');
         Route::post('create-translate',[\App\Services\Translate::class,'store'])->name('translate.store');
     });
     Route::post('product-import', [ProductController::class, 'import'])->name('product.import');
+    Route::post('products-import', [ProductController::class, 'importAll'])->name('products.import');
 
 });

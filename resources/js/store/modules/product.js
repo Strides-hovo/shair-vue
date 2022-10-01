@@ -3,6 +3,8 @@ import mutations from "./products/mutations";
 import {TranslateProducts} from "./products/mutations";
 import {create_translate} from "./products/mutations";
 import {FrontGroupSizes, GroupSizes} from "../../helpers";
+import router from "../../routes/routes";
+
 
 const state = {
 
@@ -119,9 +121,25 @@ const getters = {
 
     },
 
-    GET_FRONT_PRODUCT: (state) => (id, languageId) => {
+    /*GET_FRONT_PRODUCT: (state) => (id, languageId) => {
         const product = state.PRODUCTS_TR.find(product => product.id === Number(id))
-        return product_translate(product, languageId)
+        if (product){
+            return product_translate(product, languageId)
+        }
+    },*/
+
+    GET_FRONT_PRODUCT: (state) => (slug, languageId) => {
+        const product = state.PRODUCTS_TR.find(product => {
+            return product.translations?.find(tr => tr.slug === slug)
+        })
+        if (product){
+            product.translate = create_translate(product,languageId)
+        }
+        else{
+            router.replace({name: 'NotFound'})
+        }
+
+        return product
     }
 
 };
@@ -136,6 +154,8 @@ export default {
 
 
 function product_translate(product, languageId) {
+
+
     product.translate = create_translate(product, languageId);
     if (product.category) {
         product.category.translate = create_translate(product.category, languageId);

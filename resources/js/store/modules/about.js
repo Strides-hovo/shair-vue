@@ -34,8 +34,11 @@ const mutations = {
 const getters = {
 
     GET_PAGE: (state) => (language_id) => {
-        state.about.translate = create_translate(state.about,language_id)
-        return state.about
+        if (state.about){
+            state.about.translate = create_translate(state.about,language_id)
+        }
+
+        return state.about || {translate: {language_id}}
     },
 
 

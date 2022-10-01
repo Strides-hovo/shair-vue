@@ -2,81 +2,32 @@
   <div class="faq">
     <div class="faq__title title title_arrow">
       <div class="title-arrow">
-        כל שאלות ותשובות
-        <img src="@img/icons/arrow.svg" alt="">
+        {{ $trans._lang('Any questions and answers') }}
+        <base-icon icon="home-arrow" width="10" height="16" />
       </div>
       <span></span>
-      שאלות ותשובות
+        {{ $trans._lang('Questions and answers') }}
       <span></span>
     </div>
     <div class="container">
       <div class="faq-body one">
-        <div class="faq-body__item">
-          <div class="faq-body__item-title"><img src="@img/icons/cross.svg" alt=""> כמה עולה סוכה?</div>
-          <div class="faq-body__item-content">
-            עובדטקסט הסבר על איך זה עובד טקסט הסבר על איך זה עובד טקסט הסבר על איך זה עובדטקסט הסבר על איך זה עובד
-            טקסט.
-            על איך זה עובד טקסט הסבר על איך זה עובדטקסט הסבר על איך זה עובד טקסט הסבר על איך זה עובד טקסט הסבר על איך
-            זה
-            הסבר על איך זה עובדטקסט הסבר על איך זה עובד טקסט הסבר
-          </div>
-        </div>
-        <div class="faq-body__item">
-          <div class="faq-body__item-title"><img src="@img/icons/cross.svg" alt="">ממה עשוי סכך הדר?</div>
-          <div class="faq-body__item-content">
-            עובדטקסט הסבר על איך זה עובד טקסט הסבר על איך זה עובד טקסט הסבר על איך זה עובדטקסט הסבר על איך זה עובד
-            טקסט.
-            על איך זה עובד טקסט הסבר על איך זה עובדטקסט הסבר על איך זה עובד טקסט הסבר על איך זה עובד טקסט הסבר על איך
-            זה
-            הסבר על איך זה עובדטקסט הסבר על איך זה עובד טקסט הסבר
-          </div>
-        </div>
-        <div class="faq-body__item">
-          <div class="faq-body__item-title"><img src="@img/icons/cross.svg" alt="">האם מי שרוכש סכך מקבל תיק לאיחסון
-            הסכך?</div>
-          <div class="faq-body__item-content">
-            עובדטקסט הסבר על איך זה עובד טקסט הסבר על איך זה עובד טקסט הסבר על איך זה עובדטקסט הסבר על איך זה עובד
-            טקסט.
-            על איך זה עובד טקסט הסבר על איך זה עובדטקסט הסבר על איך זה עובד טקסט הסבר על איך זה עובד טקסט הסבר על איך
-            זה
-            הסבר על איך זה עובדטקסט הסבר על איך זה עובד טקסט הסבר
-          </div>
-        </div>
-        <div class="faq-body__item">
-          <div class="faq-body__item-title"><img src="@img/icons/cross.svg" alt="">האם הסכך עובר חיטוי כנגד מזיקים?
-          </div>
-          <div class="faq-body__item-content">
-            עובדטקסט הסבר על איך זה עובד טקסט הסבר על איך זה עובד טקסט הסבר על איך זה עובדטקסט הסבר על איך זה עובד
-            טקסט.
-            על איך זה עובד טקסט הסבר על איך זה עובדטקסט הסבר על איך זה עובד טקסט הסבר על איך זה עובד טקסט הסבר על איך
-            זה
-            הסבר על איך זה עובדטקסט הסבר על איך זה עובד טקסט הסבר
-          </div>
-        </div>
-        <div class="faq-body__item">
-          <div class="faq-body__item-title"><img src="@img/icons/cross.svg" alt="">
-            אני צריך סוכה גדולה, איזו יש לכם?
-          </div>
-          <div class="faq-body__item-content">
-            עובדטקסט הסבר על איך זה עובד טקסט הסבר על איך זה עובד טקסט הסבר על איך זה עובדטקסט הסבר על איך זה עובד
-            טקסט.
-            על איך זה עובד טקסט הסבר על איך זה עובדטקסט הסבר על איך זה עובד טקסט הסבר על איך זה עובד טקסט הסבר על איך
-            זה
-            הסבר על איך זה עובדטקסט הסבר על איך זה עובד טקסט הסבר
-          </div>
-        </div>
+
+      <AccordionItem />
       </div>
       <div class="title-arrow title-arrow_mob">
         כל שאלות ותשובות
-        <img src="@img/icons/arrow.svg" alt="">
+        <base-icon icon="home-arrow" width="20" height="19" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import BaseIcon from "../../../../backend/components/UI/BaseIcon";
+import AccordionItem from "./AccordionItem";
 export default {
-  name: 'HomeAccordion'
+  name: 'HomeAccordion',
+  components: {AccordionItem, BaseIcon}
 }
 </script>
 

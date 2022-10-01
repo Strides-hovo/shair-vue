@@ -4,11 +4,11 @@
 
 import {mapActions, mapGetters} from "vuex";
 import AddPage from '@backend/components/forms/AddPage'
-import BaseSetting from "@backend/components/forms/BaseSetting";
 
+import MyBaseSetting from "../../components/forms/MyBaseSetting";
 export default {
   name: "BackendArticles",
-  components: {AddPage, BaseSetting},
+  components: {AddPage, MyBaseSetting },
 
   data: () => ({
     showIcon: require('@img/icons/show.svg').default,
@@ -28,19 +28,12 @@ export default {
   computed: {
     ...mapGetters({
       pagesDates: 'article/GET_ARTICLES',
-      pageData: 'page/GET_PAGE',
       languageId: 'lang/getLanguageId',
-
     }),
 
-    pages() {
-      return this.pagesDates(this.languageId, this.searchName)
+    articles() {
+      return this.pagesDates(this.languageId, this.searchName)?.sort((a,b) => a.sorting - b.sorting)
     },
-
-    page() {
-      return this.pageData('Articles', this.languageId)
-    }
-
   },
 
   methods: {
@@ -49,11 +42,12 @@ export default {
       'article/UPDATE',
       'article/DESTROY',
       'article/CREATE',
-      'page/SET_PAGES',
-      'page/UPDATE'
+
+
     ]),
 
     UpdatePage(article) {
+      console.log(article)
       this['article/UPDATE'](article)
     },
 
@@ -78,22 +72,15 @@ export default {
       this.ButtonNewPageModal = false
     },
 
-    UpdateSetting() {
-      const page = this.page
-      page.translate.language_id = this.languageId
-      this['page/UPDATE'](page)
-      this.ButtonLeftAside = false
-    }
+
 
   },
 
   mounted() {
-    if (this.pages.length === 0) {
+    if (!this.articles.length) {
       this['article/SET_ARTICLES']()
     }
-    if (! ('name' in  this.page) ) {
-      this['page/SET_PAGES']()
-    }
+
   }
 }
 </script>

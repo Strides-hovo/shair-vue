@@ -3550,6 +3550,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   height: 66px;
   border-bottom: 3px solid #286B9E;
   padding: 0 20px;
+  width: 100%;
 }
 
 .lang-new__content-edit {
@@ -3629,6 +3630,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   font-size: 24px;
   line-height: 33px;
   color: #2B2B2B;
+  margin-left: auto;
+  display: block;
 }
 
 .products-modal-edit {

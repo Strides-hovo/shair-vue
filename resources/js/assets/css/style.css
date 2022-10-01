@@ -528,7 +528,7 @@ h6 {
 }
 
 .video-body__title {
-  display: none;
+  /*display: none;*/
   font-family: 'Heebo';
   font-style: normal;
   font-weight: 400;
@@ -904,7 +904,7 @@ h6 {
 }
 
 .faq-body__item-content {
-  display: none;
+  /*display: none;*/
   margin: 10px 0 0 0;
   font-family: 'Heebo';
   font-style: normal;
@@ -5742,7 +5742,7 @@ h6 {
   color: #346600;
 }
 
-.branches-sidebar__faks a {
+.branches-sidebar__faks a,.branches-sidebar__faks p {
   display: block;
   margin: 3px 0 0;
   font-family: 'Heebo';
@@ -9253,7 +9253,7 @@ body.ltr .branches-sidebar__faks span {
   text-align: left;
 }
 
-body.ltr .branches-sidebar__faks a {
+body.ltr .branches-sidebar__faks a,body.ltr .branches-sidebar__faks p {
   text-align: left;
 }
 

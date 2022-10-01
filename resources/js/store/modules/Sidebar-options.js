@@ -81,6 +81,21 @@ const SidebarOptions = [
                 text: 'Article',
                 hasItem: []
             },
+            {
+                url: "/admin/branches",
+                text: 'Branchs',
+                hasItem: []
+            },
+            {
+                url: "/admin/main",
+                text: 'Home page',
+                hasItem: []
+            },
+            {
+                url: "/admin/faq-categories",
+                text: 'faq categories',
+                hasItem: []
+            },
             
         ]
     },

@@ -4,12 +4,11 @@
 <script>
 
 import {mapActions, mapGetters} from 'vuex'
-import StrSetting from "./modules/StrSetting";
 
+import MyBaseSetting from "../../components/forms/MyBaseSetting";
 export default {
   name: 'About',
-
-  components: {StrSetting},
+  components: { MyBaseSetting},
 
   data: () => ({
     defaultLanguage: null,
@@ -21,13 +20,11 @@ export default {
     ...mapGetters({
       language_id: 'lang/getLanguageId',
       language: 'lang/getLanguage',
-      about: 'about/GET_PAGE',
+      pageData: 'about/GET_PAGE',
     }),
 
     page() {
-      const page = this.about(this.language_id)
-      const id = page.id ?? null
-      return page.translate && page.translate.language_id ? page : this.newPage(id)
+      return this.pageData(this.language_id)
     },
 
   },
@@ -36,17 +33,7 @@ export default {
       'about/SET_PAGE',
       'about/UPDATE_PAGE',
     ]),
-    newPage(about_id) {
-      let translate = {
-        translate : {
-          language_id: this.language_id,
-          content: '',
-          title: '',
-        }
-      }
-      if(about_id)  translate.translate.about_id = about_id
-      return translate
-    },
+
     UpdatePage() {
       this['about/UPDATE_PAGE'](this.page)
       this.CloseLeftAside()

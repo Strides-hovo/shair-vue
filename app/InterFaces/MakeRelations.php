@@ -15,7 +15,7 @@ interface MakeRelations
 
     public function loads(): self;
 
-    public function page(): ?HasOne;
+    //public function page(): ?HasOne;
     
 
 }

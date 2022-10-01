@@ -20,7 +20,7 @@ class About extends Model implements MakeRelations
 
     public static function withs( $frontend = false): Builder
     {
-        return self::with([ 'translate','translations']);
+        return self::with([ 'translate','translations','page']);
     }
 
     public function loads(): MakeRelations

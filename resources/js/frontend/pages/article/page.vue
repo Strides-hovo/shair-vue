@@ -124,34 +124,44 @@
     </div>
   </div>
 
-<!--  <teleport to=".footer__text" >
-    {{ page.translate.footer_text }}
-  </teleport>-->
+
 
 
 </template>
 
 <script>
 import {mapGetters} from "vuex";
-
+import Breadcrumb from "../../mixins/Breadcrumb";
 export default {
   name: "Article",
+  mixins: [Breadcrumb],
   props: {
-    _slug: String,
-    id: String
+    slug: {
+      type: String,
+      required: true
+    },
+
   },
 
   computed:{
-    ...mapGetters({pageData: 'article/GET_ARTICLE', language: 'lang/GET_SITE_LANGUAGE' }),
+    ...mapGetters({
+      pageData: 'article/GET_FRONT_ARTICLE',
+      language: 'lang/GET_SITE_LANGUAGE' }
+    ),
 
     page(){
-      return this.pageData(this.id, this.language.id)
+      return this.pageData(this.slug, this.language.id)
+    },
+
+    pageName(){
+      return this.page.translate.name
     }
   },
+
   watch:{
     'page.translate.slug'(slug){
       if (slug){
-        this.$router.replace({ name: 'Article', params: {id: this.id, _slug: slug } })
+        this.$router.replace({ name: 'Article', params: {slug: slug } })
       }
     },
     'page.translate.footer_text'(footer_text){
@@ -160,6 +170,7 @@ export default {
       })
     }
   },
+
   methods: {
     author_data(){
       return this.page.published_at + ' ' + this.page.translate.author
@@ -168,7 +179,7 @@ export default {
 
   mounted() {
     const slug = this.page?.translate?.slug
-    this.$router.replace({ name: 'Article', params: {id: this.id, _slug: slug } })
+    this.$router.replace({ name: 'Article', params: { slug: slug } })
 
     this.$emit('footerContent',{
       footer_text: this.page.translate.footer_text

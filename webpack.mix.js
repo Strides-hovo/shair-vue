@@ -2,8 +2,6 @@ const mix = require('laravel-mix');
 const path = require('path')
 
 
-// require('laravel-mix-simple-image-processing')
-//"laravel-mix-simple-image-processing": "^1.0.7",
 mix
     .js(
         'resources/js/app.js',
@@ -13,10 +11,6 @@ mix
     .options({
         processCssUrls: false,
     })
-    // .imgs({
-    //     source: 'resources/js/assets/img',
-    //     destination: 'public/img',
-    // })
     .alias({
         '@': path.join(__dirname, 'resources/js'),
         '@backend': path.join(__dirname, 'resources/js/backend'),
@@ -24,4 +18,4 @@ mix
         '@img': path.join(__dirname,'resources/js/assets/img'),
     })
     .disableNotifications()
-    .version().webpackConfig(require('./webpack.config'));
+    .version().webpackConfig(require('./webpack.config')).sourceMaps();
