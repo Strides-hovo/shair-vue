@@ -8,9 +8,9 @@
       <div class="branch-body">
         <div class="branch-body__map">
 
-<!--          <GoogleMap :api-key="Map_key" style="width: 100%; height: 500px" :center="center" :zoom="15" v-if="branch">-->
-<!--            <Marker :options="{ position: center }" />-->
-<!--          </GoogleMap>-->
+          <GoogleMap :api-key="Map_key" style="width: 100%; height: 500px" :center="center" :zoom="15" v-if="branch">
+            <Marker :options="{ position: center }" />
+          </GoogleMap>
 
         </div>
         <div class="branch-body__info">

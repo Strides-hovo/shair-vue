@@ -60,14 +60,14 @@ export default {
     if (!('id' in this.page)){
       this['home/SET']()
     }
-
-
   },
 
   beforeUpdate() {
-    this.$emit('footerContent',{
-      footer_text: this.page.page.translate.footer_text
-    })
+    if(this.page.page){
+      this.$emit('footerContent',{
+        footer_text: this.page.page.translate.footer_text
+      })
+    }
   }
 
 

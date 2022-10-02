@@ -34,6 +34,7 @@ class PageSeeder extends Seeder
             ['name' => 'PhotoGalleries', 'sub_menu' => false, 'parent_id' => 4],
             ['name' => 'VideoGalleries', 'sub_menu' => false, 'parent_id' => 4],
             ['name' => 'Products', 'sub_menu' => false, 'parent_id' => null],
+            ['name' => 'Contact', 'sub_menu' => false, 'parent_id' => null],
         ];
     }
 
@@ -52,6 +53,8 @@ class PageSeeder extends Seeder
             ['page_id' => 6, 'slug' => $this->faker->slug, 'language_id' => 2],
             ['page_id' => 7, 'slug' => $this->faker->slug, 'language_id' => 2],
             ['page_id' => 7, 'slug' => $this->faker->slug, 'language_id' => 1],
+            ['page_id' => 8, 'slug' => $this->faker->slug, 'language_id' => 1],
+            ['page_id' => 8, 'slug' => $this->faker->slug, 'language_id' => 1],
         ];
     }
 
